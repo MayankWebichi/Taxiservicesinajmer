@@ -1,0 +1,224 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateServiceSchema } from "@/utils/seo";
+
+const pageTitle = "Ajmer to Mumbai Taxi | Outstation Cab Booking — Panwar Taxi (2026)";
+const pageDescription = "Book Ajmer to Mumbai outstation taxi. 1,250 km journey via NH 48. Innova Crysta & Tempo Traveller available. Experienced highway drivers, 24/7 service. Call now for best rate.";
+
+const waSUV   = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Mumbai", vehicle: "Toyota Innova Crysta", tripType: "Outstation One Way" });
+const waTempo = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Mumbai", vehicle: "Tempo Traveller (12–17 Seater)", tripType: "Outstation One Way" });
+const waGeneral = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Mumbai", tripType: "Outstation" });
+
+const serviceSchema = generateServiceSchema(
+  "Ajmer to Mumbai Outstation Taxi Service",
+  "Long-distance outstation cab service from Ajmer to Mumbai via Ahmedabad and NH 48. Comfortable AC vehicles with experienced intercity drivers.",
+  `${business.website}/ajmer-to-mumbai-taxi/`
+);
+
+const faqs = [
+  {
+    question: "How much does a taxi from Ajmer to Mumbai cost?",
+    answer: "The Ajmer to Mumbai distance is approximately 1,230–1,260 km. At our outstation rate of ₹14/km for Sedan and ₹18/km for Innova Crysta, the approximate fare works out to ₹17,200–₹22,700 for one-way. Call us for a precise fixed-price quote based on your travel date.",
+    category: "Pricing" as const
+  },
+  {
+    question: "How long does it take from Ajmer to Mumbai by cab?",
+    answer: "The journey takes approximately 18–22 hours by road depending on the route taken. We recommend a 2-day journey with a driver night halt in Ahmedabad or Surat for passenger comfort and safety.",
+    category: "Routes" as const
+  },
+  {
+    question: "Which route is taken from Ajmer to Mumbai?",
+    answer: "The standard route is Ajmer → Beawar → Pali → Sirohi → Ahmedabad → Surat → Mumbai via NH 48. This is the fastest and most well-maintained route.",
+    category: "Routes" as const
+  },
+  {
+    question: "Is a Tempo Traveller available for Ajmer to Mumbai group travel?",
+    answer: "Yes, we offer 12-seater and 17-seater AC Tempo Travellers for group travel from Ajmer to Mumbai. Please call or WhatsApp for a customized group fare quote.",
+    category: "Booking" as const
+  },
+  {
+    question: "Why should I take a cab instead of a train from Ajmer to Mumbai?",
+    answer: "A private cab from Ajmer to Mumbai gives you complete flexibility — travel at your own schedule, stop anywhere for sightseeing, and travel in a group without separate train bookings. It is also often more economical for families of 5–6 people when compared to AC train tickets.",
+    category: "Booking" as const
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/ajmer-to-mumbai-taxi/" schemaMarkup={serviceSchema}>
+  <Header />
+
+  <main id="main-content">
+    <section class="route-hero">
+      <div class="container text-center">
+        <span class="heritage-pill">Long Distance Outstation Route • NH 48 • Since 2008</span>
+        <h1 class="route-title">Ajmer to Mumbai Taxi Service</h1>
+        <p class="route-subtitle">Outstation Cab Booking • 1,250 km • Via Ahmedabad • AC Vehicles • 24/7 Availability</p>
+        <div class="hero-fare-pills">
+          <div class="h-pill">Innova Crysta: <strong>Call for Rate</strong></div>
+          <div class="h-pill">Tempo Traveller: <strong>Call for Group Rate</strong></div>
+          <div class="h-pill">Sedan: <strong>₹14/km</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="route-content-section">
+      <div class="container">
+        <div class="route-grid">
+          <div class="route-main">
+            <span class="section-subtitle">India's Longest Operated Route from Ajmer</span>
+            <h2 class="section-title">Trusted Ajmer to Mumbai Long-Distance Cab</h2>
+            <p>
+              Need a private cab from Ajmer all the way to Mumbai? Panwar Taxi's experienced drivers handle intercity outstation routes across India, including this 1,250 km journey from Ajmer to the financial capital. Whether you're relocating, traveling for business, or going for an extended family trip — our verified outstation cabs ensure you travel comfortably and safely.
+            </p>
+            <p>
+              We recommend a 2-day journey with a comfortable driver halt in Ahmedabad or Surat, ensuring you arrive fresh. All our outstation vehicles are regularly serviced, fully insured, and operated by experienced long-distance drivers.
+            </p>
+
+            <h3 class="tier-heading">Recommended Vehicles for Ajmer to Mumbai</h3>
+            <div class="pricing-cards-row two-col">
+              <div class="p-card featured-p-card">
+                <span class="p-type gold">Most Popular for Families</span>
+                <h4 class="p-car">Toyota Innova Crysta</h4>
+                <div class="p-fare">₹18/km <small>outstation rate</small></div>
+                <ul class="p-features">
+                  <li>✓ 6/7 Captain Seats</li>
+                  <li>✓ Premium Suspension — Ideal for Long Trips</li>
+                  <li>✓ 4+ Large Suitcases</li>
+                  <li>✓ Driver Night Halt Included</li>
+                  <li>✓ Toll Receipts Provided</li>
+                </ul>
+                <a href={waSUV} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm p-btn">
+                  Book Innova Crysta
+                </a>
+              </div>
+
+              <div class="p-card">
+                <span class="p-type">Group Travel</span>
+                <h4 class="p-car">Tempo Traveller (12–17 Seater)</h4>
+                <div class="p-fare">Call for Rate <small>group quote</small></div>
+                <ul class="p-features">
+                  <li>✓ 12 to 17 Passengers</li>
+                  <li>✓ Pushback Seats + AC</li>
+                  <li>✓ Overhead Luggage Racks</li>
+                  <li>✓ Ideal for Office Tours / Pilgrimages</li>
+                  <li>✓ Experienced Coach Driver</li>
+                </ul>
+                <a href={waTempo} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">
+                  Get Group Quote
+                </a>
+              </div>
+            </div>
+
+            <div class="route-itinerary-box">
+              <h3>Recommended 2-Day Itinerary</h3>
+              <ul>
+                <li>• <strong>Day 1 — Ajmer to Ahmedabad (600 km):</strong> Depart early morning. Breakfast stop at Pali or Sirohi. Lunch break at Palanpur. Overnight stay in Ahmedabad.</li>
+                <li>• <strong>Day 2 — Ahmedabad to Mumbai (550 km):</strong> Depart after breakfast. Tea break at Surat. Arrive Mumbai by evening.</li>
+                <li>• <strong>Mumbai Drops Available:</strong> Bandra, Andheri, Dadar, Borivali, Thane, Navi Mumbai, Pune (on request), and all major localities.</li>
+                <li>• <strong>Driver Allowance:</strong> Driver night halt allowance of ₹500/night is included in your quoted fare — no hidden charges.</li>
+              </ul>
+            </div>
+          </div>
+
+          <aside class="route-sidebar">
+            <div class="sidebar-box">
+              <h3 class="side-title">Quick Route Summary</h3>
+              <div class="side-list">
+                <div class="side-item">
+                  <span class="s-label">Origin:</span>
+                  <span class="s-val">Ajmer / Pushkar</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Destination:</span>
+                  <span class="s-val">Mumbai (Any Locality)</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Highway:</span>
+                  <span class="s-val">NH 48 via Ahmedabad</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Distance:</span>
+                  <span class="s-val">~1,250 km</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Travel Time:</span>
+                  <span class="s-val">2 Days (Recommended)</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Rate from:</span>
+                  <span class="s-val gold-text">₹14/km (Sedan)</span>
+                </div>
+              </div>
+              <div class="side-actions">
+                <a href={waGeneral} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm full-w">
+                  WhatsApp for Quote
+                </a>
+                <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn--sm full-w">
+                  Call: {business.phoneFormatted}
+                </a>
+              </div>
+            </div>
+            <div class="sidebar-trust">
+              <h4>Why Book With Us?</h4>
+              <p>18+ years of Ajmer outstation expertise. Experienced long-distance drivers, all-inclusive transparent pricing, zero advance needed. Pay only at destination.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <FAQ items={faqs} title="Ajmer to Mumbai Taxi FAQs" subtitle="Frequently Asked Questions" />
+  </main>
+
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .route-hero { background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%); color: #FFF; padding: calc(var(--header-height, 74px) + 38px) 0 36px; border-bottom: 3px solid var(--color-accent); }
+  .heritage-pill { display: inline-block; background: rgba(197,155,39,0.2); border: 1px solid var(--color-accent); color: var(--color-accent-light); font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 14px; border-radius: var(--radius-full); margin-bottom: 12px; }
+  .route-title { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 2.75rem); color: #FFF; margin-bottom: 6px; }
+  .route-subtitle { font-size: 1.125rem; color: rgba(255,255,255,0.9); max-width: 720px; margin: 0 auto var(--space-lg); }
+  .hero-fare-pills { display: flex; justify-content: center; gap: var(--space-sm); flex-wrap: wrap; }
+  .h-pill { background: rgba(0,0,0,0.3); border: 1px solid rgba(197,155,39,0.4); padding: 6px 14px; border-radius: var(--radius-full); font-size: 0.875rem; color: #F8E6B8; }
+  .h-pill strong { color: #FFF; }
+  .route-content-section { padding: var(--space-4xl) 0; background: #FFF; }
+  .route-grid { display: grid; grid-template-columns: 1fr 340px; gap: var(--space-3xl); }
+  .tier-heading { font-family: var(--font-heading); font-size: 1.375rem; color: var(--color-primary); margin: var(--space-2xl) 0 var(--space-md); }
+  .pricing-cards-row { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-md); margin-bottom: var(--space-2xl); }
+  .pricing-cards-row.two-col { grid-template-columns: repeat(2,1fr); }
+  .p-card { background: #FFF; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-lg); display: flex; flex-direction: column; box-shadow: 0 4px 12px rgba(34,24,28,0.05); }
+  .featured-p-card { border: 2px solid var(--color-accent); background: var(--color-cream); }
+  .p-type { font-size: 0.75rem; font-weight: 700; color: var(--color-primary); text-transform: uppercase; display: block; margin-bottom: 2px; }
+  .p-type.gold { color: var(--color-accent-dark); }
+  .p-car { font-family: var(--font-heading); font-size: 1.125rem; color: var(--color-text); margin-bottom: var(--space-xs); }
+  .p-fare { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-md); }
+  .p-fare small { font-size: 0.75rem; font-weight: 500; color: var(--color-text-muted); }
+  .p-features { list-style: none; padding: 0; margin: 0 0 var(--space-lg); display: flex; flex-direction: column; gap: 6px; font-size: 0.8125rem; color: var(--color-text); flex: 1; }
+  .p-btn { width: 100%; justify-content: center; margin-top: auto; }
+  .route-itinerary-box { background: var(--color-cream); border: 1px solid var(--color-border); border-left: 4px solid var(--color-accent); padding: var(--space-xl); border-radius: var(--radius-md); }
+  .route-itinerary-box h3 { font-family: var(--font-heading); color: var(--color-primary); font-size: 1.25rem; margin-bottom: var(--space-sm); }
+  .route-itinerary-box ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.875rem; color: var(--color-text); }
+  .route-sidebar { display: flex; flex-direction: column; gap: var(--space-lg); }
+  .sidebar-box { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-xl); }
+  .side-title { font-family: var(--font-heading); font-size: 1.125rem; color: var(--color-primary); margin-bottom: var(--space-md); padding-bottom: 6px; border-bottom: 2px solid var(--color-accent); }
+  .side-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: var(--space-lg); }
+  .side-item { display: flex; justify-content: space-between; font-size: 0.84375rem; padding-bottom: 4px; border-bottom: 1px dashed var(--color-border); }
+  .s-label { color: var(--color-text-muted); }
+  .s-val { font-weight: 600; color: var(--color-text); }
+  .gold-text { color: var(--color-primary); font-weight: 700; }
+  .side-actions { display: flex; flex-direction: column; gap: 8px; }
+  .full-w { width: 100%; justify-content: center; }
+  .sidebar-trust { background: var(--color-cream); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-lg); }
+  .sidebar-trust h4 { font-family: var(--font-heading); color: var(--color-primary); font-size: 1rem; margin-bottom: 4px; }
+  .sidebar-trust p { font-size: 0.8125rem; color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+  @media (max-width: 992px) { .route-grid { grid-template-columns: 1fr; } .pricing-cards-row { grid-template-columns: 1fr; } .pricing-cards-row.two-col { grid-template-columns: 1fr; } }
+</style>

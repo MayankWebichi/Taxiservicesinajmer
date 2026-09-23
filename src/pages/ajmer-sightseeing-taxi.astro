@@ -1,0 +1,183 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateServiceSchema } from "@/utils/seo";
+
+const pageTitle = "Ajmer Sightseeing Taxi | Local Full Day Cab ₹1,200 — Panwar Taxi";
+const pageDescription = "Book an Ajmer full-day sightseeing cab from ₹1,200. Cover Ana Sagar Lake, Taragarh Fort, Dargah Sharif, Nareli Jain Temple, and Adhai Din Ka Jhonpra. AC cab, verified driver, 24/7 available.";
+
+const waFullDay  = createWhatsAppBookingUrl({ tripType: "Full Day Ajmer Sightseeing", customMessage: "Hello Panwar Taxi Ajmer, I want to book a full-day local sightseeing cab in Ajmer. Please share the package details and availability." });
+const waHalfDay  = createWhatsAppBookingUrl({ tripType: "Half Day Ajmer Sightseeing", customMessage: "Hello Panwar Taxi Ajmer, I want to book a half-day sightseeing cab for Ajmer local attractions. Please share rates." });
+
+const serviceSchema = generateServiceSchema(
+  "Ajmer Local Sightseeing Taxi",
+  "Full-day and half-day local sightseeing cab packages covering Ana Sagar Lake, Taragarh Fort, Ajmer Sharif Dargah, Nareli Jain Temple, and Adhai Din Ka Jhonpra.",
+  `${business.website}/ajmer-sightseeing-taxi/`
+);
+
+const attractions = [
+  { name: "Ajmer Sharif Dargah", desc: "The revered shrine of Sufi saint Hazrat Khwaja Moinuddin Chishti. India's most visited pilgrimage site after Varanasi.", time: "1–2 hours", dist: "City Centre" },
+  { name: "Ana Sagar Lake", desc: "A 12th-century artificial lake with the stunning marble Daulat Bagh Gardens on its banks. Perfect for sunrise/sunset views.", time: "45 min", dist: "2 km from Dargah" },
+  { name: "Taragarh Fort", desc: "The 'Star Fort' overlooking all of Ajmer from a hilltop. Ancient Mughal-era fortifications with panoramic city views.", time: "1 hour", dist: "3 km (Hilltop)" },
+  { name: "Adhai Din Ka Jhonpra", desc: "A 12th-century Indo-Islamic mosque built in just 2.5 days. Stunning Quranic calligraphy carved in stone.", time: "30 min", dist: "0.3 km from Dargah" },
+  { name: "Nareli Jain Temple", desc: "A spectacular modern Jain temple complex with 24 smaller shrines carved from pristine white marble.", time: "1 hour", dist: "8 km from City" },
+  { name: "Soniji Ki Nasiyan", desc: "The 'Red Temple' — a Jain temple featuring a stunning golden hall with models of the Jain cosmological universe.", time: "45 min", dist: "City Centre" },
+];
+
+const faqs = [
+  { question: "How much does a full-day sightseeing cab in Ajmer cost?", answer: "A full-day Ajmer sightseeing package (8 hours, 80 km local) costs ₹1,200 for a Sedan (Dzire) and ₹1,800 for an Ertiga. Fuel, driver, and AC are all included. Toll and parking are extra.", category: "Pricing" as const },
+  { question: "Which places are covered in the Ajmer sightseeing tour?", answer: "Our standard full-day tour covers: Ajmer Sharif Dargah, Adhai Din Ka Jhonpra, Ana Sagar Lake & Daulat Bagh, Taragarh Fort, Nareli Jain Temple, and Soniji Ki Nasiyan.", category: "Routes" as const },
+  { question: "Can I customize the Ajmer sightseeing itinerary?", answer: "Yes, our sightseeing packages are fully customizable. You can add or remove attractions, include Pushkar (14 km), or extend to a Pushkar + Ajmer combo tour.", category: "Booking" as const },
+  { question: "Is Ana Sagar Lake included in the sightseeing cab?", answer: "Yes, Ana Sagar Lake is a standard stop in our full-day Ajmer tour. The Daulat Bagh (marble pavilions on the lake) can also be visited during the same stop.", category: "Routes" as const }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/ajmer-sightseeing-taxi/" schemaMarkup={serviceSchema}>
+  <Header />
+  <main id="main-content">
+    <section class="route-hero">
+      <div class="container text-center">
+        <span class="heritage-pill">Local Sightseeing • 6 Major Attractions • Since 2008</span>
+        <h1 class="route-title">Ajmer Sightseeing Taxi Package</h1>
+        <p class="route-subtitle">Full Day Local Cab ₹1,200 onwards • Cover 6+ Attractions • AC Cab • Verified Driver • No Advance</p>
+        <div class="cta-row">
+          <a href={waFullDay} target="_blank" rel="noopener noreferrer" class="btn btn--gold">Book Full Day — ₹1,200</a>
+          <a href={waHalfDay} target="_blank" rel="noopener noreferrer" class="btn btn--outline-white">Half Day Package</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="route-content-section">
+      <div class="container">
+        <div class="route-grid">
+          <div class="route-main">
+            <span class="section-subtitle">Explore Ajmer's Heritage at Your Own Pace</span>
+            <h2 class="section-title">Best Ajmer Local Sightseeing Cab Service</h2>
+            <p>
+              Ajmer is one of Rajasthan's most historically rich cities — home to ancient Mughal-era monuments, a revered Sufi shrine, spectacular Jain temples, and scenic lakes. Panwar Taxi's local sightseeing packages let you explore all of Ajmer's major attractions in a comfortable, air-conditioned private cab — at your own pace, with a knowledgeable local driver.
+            </p>
+
+            <h3 class="tier-heading">Sightseeing Packages</h3>
+            <div class="package-cards two-col">
+              <div class="pkg-card pkg-card--featured">
+                <div class="pkg-badge">Most Popular</div>
+                <div class="pkg-icon">🌅</div>
+                <h4 class="pkg-title">Full Day Ajmer Tour</h4>
+                <div class="pkg-fare">From ₹1,200</div>
+                <ul class="pkg-list">
+                  <li>✓ 8 Hours / 80 km included</li>
+                  <li>✓ All 6 major attractions</li>
+                  <li>✓ AC Sedan (Dzire / Etios)</li>
+                  <li>✓ Experienced local driver</li>
+                  <li>✓ Flexible itinerary</li>
+                </ul>
+                <a href={waFullDay} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm">Book Full Day Tour</a>
+              </div>
+              <div class="pkg-card">
+                <div class="pkg-icon">🕐</div>
+                <h4 class="pkg-title">Half Day Ajmer Tour</h4>
+                <div class="pkg-fare">From ₹700</div>
+                <ul class="pkg-list">
+                  <li>✓ 4 Hours / 40 km included</li>
+                  <li>✓ Top 3 attractions</li>
+                  <li>✓ AC Sedan</li>
+                  <li>✓ Perfect for transit visitors</li>
+                  <li>✓ Railway/Bus station drop available</li>
+                </ul>
+                <a href={waHalfDay} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">Book Half Day Tour</a>
+              </div>
+            </div>
+
+            <h3 class="tier-heading">Top Attractions Covered</h3>
+            <div class="attractions-grid">
+              {attractions.map(a => (
+                <div class="attraction-card">
+                  <div class="attr-header">
+                    <h4 class="attr-name">{a.name}</h4>
+                    <span class="attr-dist">{a.dist}</span>
+                  </div>
+                  <p class="attr-desc">{a.desc}</p>
+                  <span class="attr-time">⏱ {a.time}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <aside class="route-sidebar">
+            <div class="sidebar-box">
+              <h3 class="side-title">Book Your Sightseeing Cab</h3>
+              <div class="side-list">
+                <div class="side-item"><span class="s-label">Full Day Rate:</span><span class="s-val gold-text">From ₹1,200</span></div>
+                <div class="side-item"><span class="s-label">Half Day Rate:</span><span class="s-val gold-text">From ₹700</span></div>
+                <div class="side-item"><span class="s-label">Duration:</span><span class="s-val">4–8 Hours</span></div>
+                <div class="side-item"><span class="s-label">Kms Included:</span><span class="s-val">40–80 km</span></div>
+                <div class="side-item"><span class="s-label">Advance:</span><span class="s-val">₹0 — Pay Later</span></div>
+              </div>
+              <div class="side-actions">
+                <a href={waFullDay} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm full-w">WhatsApp Booking</a>
+                <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn--sm full-w">Call: {business.phoneFormatted}</a>
+              </div>
+            </div>
+            <div class="sidebar-trust">
+              <h4>Local Experts Since 2008</h4>
+              <p>Our drivers know every lane of Ajmer. They'll guide you on the best entry points, prayer timings, and hidden gems.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <FAQ items={faqs} title="Ajmer Sightseeing Taxi FAQs" subtitle="Frequently Asked Questions" />
+  </main>
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .route-hero { background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%); color: #FFF; padding: calc(var(--header-height, 74px) + 38px) 0 36px; border-bottom: 3px solid var(--color-accent); }
+  .heritage-pill { display: inline-block; background: rgba(197,155,39,0.2); border: 1px solid var(--color-accent); color: var(--color-accent-light); font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 14px; border-radius: var(--radius-full); margin-bottom: 12px; }
+  .route-title { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 2.75rem); color: #FFF; margin-bottom: 6px; }
+  .route-subtitle { font-size: 1.125rem; color: rgba(255,255,255,0.9); max-width: 720px; margin: 0 auto var(--space-lg); }
+  .cta-row { display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap; }
+  .btn--outline-white { border: 2px solid rgba(255,255,255,0.5); color: #FFF; background: transparent; padding: 10px 20px; border-radius: var(--radius-full); font-weight: 700; font-size: 0.9375rem; }
+  .route-content-section { padding: var(--space-4xl) 0; background: #FFF; }
+  .route-grid { display: grid; grid-template-columns: 1fr 340px; gap: var(--space-3xl); }
+  .tier-heading { font-family: var(--font-heading); font-size: 1.375rem; color: var(--color-primary); margin: var(--space-xl) 0 var(--space-md); }
+  .package-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-md); margin-bottom: var(--space-xl); }
+  .package-cards.two-col { grid-template-columns: repeat(2,1fr); }
+  .pkg-card { background: #FFF; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-sm); box-shadow: 0 4px 12px rgba(34,24,28,0.05); position: relative; }
+  .pkg-card--featured { border: 2px solid var(--color-accent); background: var(--color-cream); }
+  .pkg-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--color-accent); color: #FFF; font-size: 0.7rem; font-weight: 800; padding: 2px 10px; border-radius: var(--radius-full); white-space: nowrap; }
+  .pkg-icon { font-size: 2rem; }
+  .pkg-title { font-family: var(--font-heading); font-size: 1.2rem; color: var(--color-primary); margin: 0; }
+  .pkg-fare { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: var(--color-primary); }
+  .pkg-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; font-size: 0.8125rem; color: var(--color-text); flex: 1; }
+  .attractions-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: var(--space-md); }
+  .attraction-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-md); }
+  .attr-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 6px; }
+  .attr-name { font-family: var(--font-heading); font-size: 0.9375rem; color: var(--color-primary); margin: 0; }
+  .attr-dist { font-size: 0.7rem; color: var(--color-text-muted); white-space: nowrap; background: rgba(197,155,39,0.1); border: 1px solid rgba(197,155,39,0.25); padding: 1px 6px; border-radius: 4px; }
+  .attr-desc { font-size: 0.8125rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 8px; }
+  .attr-time { font-size: 0.75rem; color: var(--color-text); font-weight: 600; }
+  .route-sidebar { display: flex; flex-direction: column; gap: var(--space-lg); }
+  .sidebar-box { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-xl); }
+  .side-title { font-family: var(--font-heading); font-size: 1.125rem; color: var(--color-primary); margin-bottom: var(--space-md); padding-bottom: 6px; border-bottom: 2px solid var(--color-accent); }
+  .side-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: var(--space-lg); }
+  .side-item { display: flex; justify-content: space-between; font-size: 0.84375rem; padding-bottom: 4px; border-bottom: 1px dashed var(--color-border); }
+  .s-label { color: var(--color-text-muted); }
+  .s-val { font-weight: 600; color: var(--color-text); }
+  .gold-text { color: var(--color-primary); font-weight: 700; }
+  .side-actions { display: flex; flex-direction: column; gap: 8px; }
+  .full-w { width: 100%; justify-content: center; }
+  .sidebar-trust { background: var(--color-cream); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-lg); }
+  .sidebar-trust h4 { font-family: var(--font-heading); color: var(--color-primary); font-size: 1rem; margin-bottom: 4px; }
+  .sidebar-trust p { font-size: 0.8125rem; color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+  @media (max-width: 992px) { .route-grid { grid-template-columns: 1fr; } .package-cards.two-col { grid-template-columns: 1fr; } .attractions-grid { grid-template-columns: 1fr; } }
+</style>

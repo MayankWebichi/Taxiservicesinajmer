@@ -1,0 +1,201 @@
+---
+import { services } from "@/data/services";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+
+export interface Props {
+  limit?: number;
+}
+
+const { limit } = Astro.props;
+const filteredServices = services.filter((s) => s.id !== "wedding-car-rental");
+const displayServices = limit ? filteredServices.slice(0, limit) : filteredServices;
+---
+
+<section class="services-section" id="services-section" aria-label="Our Taxi and Car Rental Services">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-subtitle">Comprehensive Travel Solutions</span>
+      <h2 class="section-title">Taxi Services Offered in Ajmer</h2>
+      <p class="section-desc">
+        Specialized transportation services tailored for pilgrims, tourists, corporate travelers, and families across Rajasthan.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {displayServices.map((s) => {
+        const waUrl = createWhatsAppBookingUrl({
+          tripType: s.title,
+          pickup: "Ajmer"
+        });
+
+        return (
+          <article class="service-card" id={`service-${s.id}`}>
+            <div class="service-header">
+              <span class="service-type-badge">{s.tripType}</span>
+              <span class="service-starting">{s.startingPrice}</span>
+            </div>
+
+            <h3 class="service-title">{s.title}</h3>
+            <p class="service-desc">{s.shortDescription}</p>
+
+            <ul class="service-features" role="list">
+              {s.features.map((feat) => (
+                <li role="listitem">
+                  <svg class="feat-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>{feat}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="service-actions">
+              <a href={`/${s.slug}/`} class="btn btn--outline-primary btn--sm service-btn">
+                Learn More
+              </a>
+              <a 
+                href={waUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="btn btn--primary btn--sm service-btn"
+                aria-label={`Inquire about ${s.title} on WhatsApp`}
+              >
+                Inquire
+              </a>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-section {
+    padding: clamp(36px, 5vw, 56px) 0;
+    background-color: var(--color-surface);
+  }
+
+  @media (max-width: 900px) {
+    .services-section {
+      padding-top: 12px !important;
+    }
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .service-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 16px rgba(34, 24, 28, 0.05);
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(34, 24, 28, 0.12);
+    border-color: var(--color-accent);
+  }
+
+  .service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-sm);
+  }
+
+  .service-type-badge {
+    background: var(--color-cream);
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    white-space: nowrap;
+  }
+
+  .service-starting {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--color-accent-dark);
+    white-space: nowrap;
+  }
+
+  .service-starting {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--color-accent-dark);
+  }
+
+  .service-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
+  }
+
+  .service-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin-bottom: var(--space-md);
+  }
+
+  .service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-lg) 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .service-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.8125rem;
+    color: var(--color-text);
+  }
+
+  .feat-check {
+    width: 14px;
+    height: 14px;
+    color: var(--color-accent);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .service-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+  }
+
+  .service-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  @media (max-width: 1200px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 650px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

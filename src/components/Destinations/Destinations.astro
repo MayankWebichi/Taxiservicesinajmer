@@ -1,0 +1,224 @@
+---
+import { destinations } from "@/data/destinations";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+
+export interface Props {
+  limit?: number;
+}
+
+const { limit } = Astro.props;
+const displayDestinations = limit ? destinations.slice(0, limit) : destinations;
+---
+
+<section class="destinations-section" id="destinations-section" aria-label="Top Sightseeing Attractions in Ajmer and Pushkar">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-subtitle">Local Sightseeing &amp; Pilgrimage</span>
+      <h2 class="section-title">Must-Visit Places in Ajmer &amp; Pushkar</h2>
+      <p class="section-desc">
+        Explore ancient spiritual shrines, scenic mountain forts, royal marble pavilions, and the serene ghats of Pushkar with our knowledgeable local chauffeurs.
+      </p>
+    </div>
+
+    <div class="destinations-grid">
+      {displayDestinations.map((d) => {
+        const waUrl = createWhatsAppBookingUrl({
+          destination: d.name,
+          pickup: "Ajmer Railway Station / Hotel",
+          tripType: "Local Sightseeing"
+        });
+
+        return (
+          <article class="dest-card" id={`destination-${d.id}`}>
+            <div class="dest-media">
+              <span class="dest-badge">{d.category}</span>
+              <img 
+                src={d.image} 
+                alt={d.altText} 
+                class="dest-img" 
+                loading="lazy" 
+                width="360" 
+                height="220" 
+              />
+            </div>
+
+            <div class="dest-body">
+              <div class="dest-meta-bar">
+                <span class="meta-dist">📍 {d.distanceFromAjmerStation}</span>
+                <span class="meta-time">⏱ {d.recommendedDuration}</span>
+              </div>
+
+              <h3 class="dest-title">{d.name}</h3>
+              <p class="dest-desc">{d.description}</p>
+
+              <div class="dest-highlights">
+                <strong>Key Highlights:</strong>
+                <ul>
+                  {d.highlights.map((h) => (
+                    <li>• {h}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="dest-actions">
+                <a 
+                  href={waUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="btn btn--primary btn--sm dest-btn"
+                  aria-label={`Book taxi to ${d.name} on WhatsApp`}
+                >
+                  Book Cab — {d.name.length > 24 ? d.name.slice(0, 22) + "…" : d.name}
+                </a>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .destinations-section {
+    padding: var(--space-4xl) 0;
+    background: #FFFFFF;
+  }
+
+  .destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .dest-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 16px rgba(34, 24, 28, 0.05);
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  }
+
+  .dest-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(34, 24, 28, 0.12);
+    border-color: var(--color-accent);
+  }
+
+  .dest-media {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    background: var(--color-primary-dark);
+  }
+
+  .dest-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .dest-card:hover .dest-img {
+    transform: scale(1.05);
+  }
+
+  .dest-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--color-primary);
+    color: #FFFFFF;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .dest-body {
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .dest-meta-bar {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+    padding-bottom: 6px;
+    border-bottom: 1px dashed var(--color-border);
+  }
+
+  .dest-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin-bottom: 6px;
+  }
+
+  .dest-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin-bottom: var(--space-md);
+  }
+
+  .dest-highlights {
+    background: var(--color-cream);
+    padding: 10px 12px;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-lg);
+    font-size: 0.8125rem;
+  }
+
+  .dest-highlights strong {
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .dest-highlights ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    color: var(--color-text);
+  }
+
+  .dest-actions {
+    margin-top: auto;
+  }
+
+  .dest-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.8125rem;
+  }
+
+  @media (max-width: 992px) {
+    .destinations-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 650px) {
+    .destinations-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

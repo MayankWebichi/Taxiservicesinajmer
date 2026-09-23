@@ -1,0 +1,328 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+
+const pageTitle = "Ajmer Airport Taxi Service | Jaipur, Delhi & Kishangarh (Since 2008)";
+const pageDescription = "Guaranteed on-time airport transfers from Ajmer & Pushkar to Jaipur Airport (₹1,800), Delhi IGI Airport (₹5,500), and Kishangarh Airport. 24/7 flight synchronization.";
+const waJaipur = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jaipur Airport (JAI)", vehicle: "Sedan" });
+const waDelhi = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Delhi IGI Airport (DEL)", vehicle: "Sedan" });
+const waKishan = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Kishangarh Airport (KQH)", vehicle: "Sedan" });
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/airport-transfer/">
+  <Header />
+
+  <main id="main-content">
+    <section class="page-banner">
+      <div class="container text-center">
+        <span class="heritage-pill">Flight Synchronization &amp; Punctuality</span>
+        <h1 class="page-title">Airport Taxi Transfers from Ajmer</h1>
+        <p class="page-subtitle">Doorstep Pickup in Ajmer &amp; Pushkar for Jaipur, Delhi IGI, and Kishangarh Airports</p>
+      </div>
+    </section>
+
+    <!-- Key Airports Grid -->
+    <section class="airports-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-subtitle">Direct Airport Routes</span>
+          <h2 class="section-title">Verified Airport Cab Rates</h2>
+          <p class="section-desc">Fixed one-way fares for hassle-free airport drops and arrivals with zero flight delay worries.</p>
+        </div>
+
+        <div class="airports-grid">
+          <!-- Jaipur Airport -->
+          <div class="airport-card">
+            <div class="card-badge">Most Frequent</div>
+            <h3 class="airport-name">Jaipur International Airport (JAI)</h3>
+            <div class="airport-meta">
+              <span>📍 Distance: 135 km</span>
+              <span>⏱ Time: ~2.5 Hours</span>
+              <span>🛣 Route: NH 48 Expressway</span>
+            </div>
+            <p class="airport-desc">
+              Direct highway transfer from your hotel or residence in Ajmer/Pushkar to Jaipur Airport Terminal 1 &amp; 2. Ideal for domestic flights to Mumbai, Bengaluru, Hyderabad, and Kolkata.
+            </p>
+            <div class="fare-highlight">
+              <span class="fh-label">Fixed Sedan Fare:</span>
+              <strong class="fh-price">₹1,800</strong>
+              <span class="fh-note">(Dzire / Etios AC)</span>
+            </div>
+            <a href={waJaipur} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm airport-cta">
+              Book Jaipur Airport Cab
+            </a>
+          </div>
+
+          <!-- Delhi IGI Airport -->
+          <div class="airport-card featured-airport">
+            <div class="card-badge gold-badge">International Flights</div>
+            <h3 class="airport-name">Delhi IGI Airport (DEL / T3, T2, T1)</h3>
+            <div class="airport-meta">
+              <span>📍 Distance: 390 km</span>
+              <span>⏱ Time: ~6.5 Hours</span>
+              <span>🛣 Route: Delhi-Jaipur Expressway</span>
+            </div>
+            <p class="airport-desc">
+              Comfortable direct cab transfer from Ajmer to Delhi International Airport. Eliminates train luggage transfers and transit hassles for international departures.
+            </p>
+            <div class="fare-highlight">
+              <span class="fh-label">Fixed Sedan Fare:</span>
+              <strong class="fh-price">₹5,500</strong>
+              <span class="fh-note">(Innova Crysta ₹9,500)</span>
+            </div>
+            <a href={waDelhi} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm airport-cta">
+              Book Delhi Airport Cab
+            </a>
+          </div>
+
+          <!-- Kishangarh Airport -->
+          <div class="airport-card">
+            <div class="card-badge">Closest Hub</div>
+            <h3 class="airport-name">Kishangarh Airport (KQH)</h3>
+            <div class="airport-meta">
+              <span>📍 Distance: 30 km</span>
+              <span>⏱ Time: ~45 Minutes</span>
+              <span>🛣 Route: Ajmer-Kishangarh Highway</span>
+            </div>
+            <p class="airport-desc">
+              The closest regional airport to Ajmer and Pushkar. Quick 45-minute transfers connecting to regional flights for Ahmedabad, Surat, and Hyderabad.
+            </p>
+            <div class="fare-highlight">
+              <span class="fh-label">Sedan Transfer:</span>
+              <strong class="fh-price">From ₹800</strong>
+              <span class="fh-note">(Doorstep pickup)</span>
+            </div>
+            <a href={waKishan} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm airport-cta">
+              Book Kishangarh Airport Cab
+            </a>
+          </div>
+        </div>
+
+        <!-- Airport Features Banner -->
+        <div class="airport-features-banner">
+          <div class="af-item">
+            <span class="af-icon">🕒</span>
+            <h4>Flight Tracking</h4>
+            <p>For incoming arrivals, our driver monitors your landing status so we're waiting when you land.</p>
+          </div>
+          <div class="af-item">
+            <span class="af-icon">🧳</span>
+            <h4>Spacious Luggage Boot</h4>
+            <p>Dedicated boot space in our sedans and SUVs for oversized international bags and trolleys.</p>
+          </div>
+          <div class="af-item">
+            <span class="af-icon">🌙</span>
+            <h4>24/7 Night Departures</h4>
+            <p>Safe late-night and 3:00 AM highway pickups so you never miss an early morning takeoff.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <FAQ 
+      title="Airport Taxi FAQs" 
+      subtitle="Punctuality &amp; Booking Information" 
+    />
+  </main>
+
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .page-banner {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #FFFFFF;
+    padding: calc(var(--header-height, 74px) + 38px) 0 36px;
+    border-bottom: 3px solid var(--color-accent);
+  }
+
+  .heritage-pill {
+    display: inline-block;
+    background: rgba(197, 155, 39, 0.2);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-light);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    margin-bottom: 12px;
+  }
+
+  .page-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  .airports-section {
+    padding: var(--space-4xl) 0;
+    background: var(--color-surface);
+  }
+
+  .airports-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+    margin-bottom: var(--space-3xl);
+  }
+
+  .airport-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 16px rgba(34, 24, 28, 0.05);
+    position: relative;
+  }
+
+  .featured-airport {
+    border: 2px solid var(--color-accent);
+    box-shadow: 0 8px 24px rgba(197, 155, 39, 0.15);
+  }
+
+  .card-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: var(--color-cream);
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+  }
+
+  .gold-badge {
+    background: var(--color-accent);
+    color: #FFFFFF;
+    border: none;
+  }
+
+  .airport-name {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-sm);
+  }
+
+  .airport-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px dashed var(--color-border);
+  }
+
+  .airport-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    margin-bottom: var(--space-lg);
+    flex: 1;
+  }
+
+  .fare-highlight {
+    background: var(--color-cream);
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: var(--space-md);
+    border: 1px solid var(--color-border);
+  }
+
+  .fh-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .fh-price {
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    color: var(--color-primary);
+  }
+
+  .fh-note {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .airport-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .airport-features-banner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    padding: var(--space-2xl);
+    border-radius: var(--radius-xl);
+  }
+
+  .af-item {
+    text-align: center;
+  }
+
+  .af-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .af-item h4 {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    margin-bottom: 6px;
+  }
+
+  .af-item p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media (max-width: 992px) {
+    .airports-grid {
+      grid-template-columns: 1fr;
+    }
+    .airport-features-banner {
+      grid-template-columns: 1fr;
+      text-align: left;
+    }
+    .af-item {
+      text-align: left;
+    }
+  }
+</style>

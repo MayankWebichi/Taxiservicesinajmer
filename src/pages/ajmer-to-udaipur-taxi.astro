@@ -1,0 +1,332 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateServiceSchema } from "@/utils/seo";
+
+const pageTitle = "Ajmer to Udaipur Taxi | One-Way & Round Trip (Since 2008)";
+const pageDescription = "Book Ajmer to Udaipur taxi. 265 km scenic highway ride in 4.5 hours. En-route Nathdwara Shrinathji darshan options. AC Sedans, Ertiga & Innova Crysta. 24/7 service.";
+
+const waSedan = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Udaipur", vehicle: "Sedan (Dzire/Etios)" });
+const waInnova = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Udaipur", vehicle: "Toyota Innova Crysta" });
+
+const serviceSchema = generateServiceSchema({
+  name: "Ajmer to Udaipur Taxi Service",
+  description: "One-way and round-trip taxi service from Ajmer to Udaipur City of Lakes with optional Nathdwara temple stops.",
+  providerName: business.name,
+  providerUrl: business.website,
+  price: "3500",
+  priceCurrency: "INR"
+});
+
+const udaipurFaqs = [
+  {
+    question: "What is the distance and travel time from Ajmer to Udaipur?",
+    answer: "The distance is approximately 265 km via NH 58. The smooth highway journey typically takes between 4.5 to 5 hours by private taxi.",
+    category: "Routes" as const
+  },
+  {
+    question: "Can we include a stop at Nathdwara Shrinathji Temple or Eklingji?",
+    answer: "Yes, Nathdwara is conveniently located along the highway ~45 km before Udaipur. We can easily arrange a darshan halt as part of your itinerary.",
+    category: "Routes" as const
+  },
+  {
+    question: "What are the cab rates for an Ajmer to Udaipur one-way trip?",
+    answer: "One-way sedan rates start from ₹3,500 to ₹4,000 depending on exact drop location and season. 6-seater Ertiga starts from ₹5,000, and luxury Innova Crysta starts from ₹6,500.",
+    category: "Pricing" as const
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/ajmer-to-udaipur-taxi/" schemaMarkup={serviceSchema}>
+  <Header />
+
+  <main id="main-content">
+    <section class="route-hero">
+      <div class="container text-center">
+        <span class="heritage-pill">City of Lakes Corridor</span>
+        <h1 class="route-title">Ajmer to Udaipur Taxi Service</h1>
+        <p class="route-subtitle">265 km • 4.5 Hours • Doorstep Pickup in Ajmer &amp; Pushkar • Optional Nathdwara Halt</p>
+      </div>
+    </section>
+
+    <section class="route-content-section">
+      <div class="container">
+        <div class="route-grid">
+          <div class="route-main">
+            <span class="section-subtitle">Comfortable Highway Journey</span>
+            <h2 class="section-title">Scenic Road Trip from Ajmer to the City of Lakes</h2>
+            <p>
+              Travel comfortably from the Sufi city of Ajmer to the romantic, palace-adorned City of Lakes, <strong>Udaipur</strong>. Whether you are traveling for a destination wedding, a family holiday, or a pilgrimage circuit, Panwar Taxi provides modern AC cabs with skilled highway chauffeurs.
+            </p>
+            <p>
+              The 265 km route takes you through the beautiful Aravalli foothills via Bhilwara, Rajsamand, and Nathdwara. You have the total freedom to pause for breakfast or stop for spiritual blessings at the sacred <strong>Shrinathji Temple in Nathdwara</strong> before reaching Lake Pichola in Udaipur.
+            </p>
+
+            <h3 class="tier-heading">Vehicle Options</h3>
+            <div class="pricing-cards-row">
+              <div class="p-card">
+                <span class="p-type">Sedan</span>
+                <h4 class="p-car">Maruti Swift Dzire</h4>
+                <div class="p-fare">From ₹3,500 <small>one-way</small></div>
+                <ul class="p-features">
+                  <li>✓ 4 Passenger Seats</li>
+                  <li>✓ 2 Large Bags</li>
+                  <li>✓ Chilled AC</li>
+                </ul>
+                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">
+                  Book Sedan
+                </a>
+              </div>
+
+              <div class="p-card featured-p-card">
+                <span class="p-type gold">Royal MUV</span>
+                <h4 class="p-car">Innova Crysta</h4>
+                <div class="p-fare">From ₹6,500 <small>one-way</small></div>
+                <ul class="p-features">
+                  <li>✓ 6-7 Seats</li>
+                  <li>✓ 4+ Luggage Bags</li>
+                  <li>✓ Plush Captain Seats</li>
+                </ul>
+                <a href={waInnova} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm p-btn">
+                  Book Crysta
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <aside class="route-sidebar">
+            <div class="sidebar-box">
+              <h3 class="side-title">Route Summary</h3>
+              <div class="side-list">
+                <div class="side-item">
+                  <span class="s-label">Distance:</span>
+                  <span class="s-val">~265 km</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Duration:</span>
+                  <span class="s-val">4.5 - 5 Hours</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Highway:</span>
+                  <span class="s-val">NH 58 / NH 48</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">En-Route:</span>
+                  <span class="s-val">Nathdwara, Rajsamand</span>
+                </div>
+              </div>
+
+              <div class="side-actions">
+                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm full-w">
+                  WhatsApp Instant Quote
+                </a>
+                <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn--sm full-w">
+                  Call: {business.phoneFormatted}
+                </a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <FAQ items={udaipurFaqs} title="Ajmer to Udaipur Taxi FAQs" subtitle="Common Questions" />
+  </main>
+
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .route-hero {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #FFFFFF;
+    padding: calc(var(--header-height, 74px) + 38px) 0 36px;
+    border-bottom: 3px solid var(--color-accent);
+  }
+
+  .heritage-pill {
+    display: inline-block;
+    background: rgba(197, 155, 39, 0.2);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-light);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    margin-bottom: 12px;
+  }
+
+  .route-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+
+  .route-subtitle {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .route-content-section {
+    padding: var(--space-4xl) 0;
+    background: #FFFFFF;
+  }
+
+  .route-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: var(--space-3xl);
+  }
+
+  .tier-heading {
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    color: var(--color-primary);
+    margin: var(--space-xl) 0 var(--space-md);
+  }
+
+  .pricing-cards-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .p-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .featured-p-card {
+    border: 2px solid var(--color-accent);
+    background: var(--color-cream);
+  }
+
+  .p-type {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-transform: uppercase;
+  }
+
+  .p-type.gold {
+    color: var(--color-accent-dark);
+  }
+
+  .p-car {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin: 4px 0;
+  }
+
+  .p-fare {
+    font-family: var(--font-heading);
+    font-size: 1.625rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .p-fare small {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .p-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-lg) 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.84375rem;
+    color: var(--color-text);
+    flex: 1;
+  }
+
+  .p-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: auto;
+  }
+
+  .route-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .sidebar-box {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+  }
+
+  .side-title {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  .side-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: var(--space-lg);
+  }
+
+  .side-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.84375rem;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed var(--color-border);
+  }
+
+  .s-label {
+    color: var(--color-text-muted);
+  }
+
+  .s-val {
+    font-weight: 600;
+  }
+
+  .side-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .full-w {
+    width: 100%;
+    justify-content: center;
+  }
+
+  @media (max-width: 992px) {
+    .route-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

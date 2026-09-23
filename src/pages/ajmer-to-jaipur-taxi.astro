@@ -1,0 +1,469 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateServiceSchema } from "@/utils/seo";
+
+const pageTitle = "Ajmer to Jaipur Taxi ₹1,800 Fixed | Dzire & Innova Cab (Since 2008)";
+const pageDescription = "Book verified Ajmer to Jaipur one-way taxi from ₹1,800. 135 km highway trip in 2.5 hours via NH 48. AC Sedans, Ertiga & Innova Crysta. Doorstep pickup 24/7.";
+
+const waSedan = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jaipur", vehicle: "Maruti Dzire (₹1,800 Fixed)" });
+const waErtiga = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jaipur", vehicle: "Maruti Ertiga (₹2,800 Fixed)" });
+const waInnova = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jaipur", vehicle: "Toyota Innova Crysta (₹4,500 Fixed)" });
+
+const serviceSchema = generateServiceSchema({
+  name: "Ajmer to Jaipur Taxi Service",
+  description: "Direct one-way and round-trip highway cab service connecting Ajmer to Jaipur Pink City and Jaipur International Airport.",
+  providerName: business.name,
+  providerUrl: business.website,
+  price: "1800",
+  priceCurrency: "INR"
+});
+
+const jaipurFaqs = [
+  {
+    question: "What is the fixed fare for an Ajmer to Jaipur taxi?",
+    answer: "Our verified one-way fixed fares are: Maruti Dzire / Toyota Etios Sedan at ₹1,800; Maruti Ertiga at ₹2,800; Toyota Innova at ₹3,500; and Toyota Innova Crysta at ₹4,500. Toll taxes are payable as per actual FASTag receipts.",
+    category: "Pricing" as const
+  },
+  {
+    question: "How long does it take from Ajmer to Jaipur by cab?",
+    answer: "The distance is approximately 135 km via the 6-lane NH 48 expressway, which typically takes between 2 to 2.5 hours depending on city traffic in Jaipur.",
+    category: "Routes" as const
+  },
+  {
+    question: "Can I get picked up from Pushkar instead of Ajmer?",
+    answer: "Yes, we provide direct doorstep pickups in Pushkar as well for a nominal distance differential (Pushkar is ~14 km from Ajmer).",
+    category: "Booking" as const
+  },
+  {
+    question: "Do you drop passengers directly at Jaipur International Airport?",
+    answer: "Yes, we provide direct drops to both Terminal 1 and Terminal 2 of Jaipur International Airport (JAI), as well as Jaipur Junction Railway Station and any hotel.",
+    category: "Routes" as const
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/ajmer-to-jaipur-taxi/" schemaMarkup={serviceSchema}>
+  <Header />
+
+  <main id="main-content">
+    <!-- Hero Banner -->
+    <section class="route-hero">
+      <div class="container text-center">
+        <span class="heritage-pill">Verified Route Rates • NH 48 Expressway</span>
+        <h1 class="route-title">Ajmer to Jaipur Taxi Service</h1>
+        <p class="route-subtitle">Fixed One-Way Sedan Fare ₹1,800 • 135 km • ~2.5 Hours • Doorstep Pickup 24/7</p>
+
+        <div class="hero-fare-pills">
+          <div class="h-pill">Dzire / Etios: <strong>₹1,800</strong></div>
+          <div class="h-pill">Ertiga 6-Seater: <strong>₹2,800</strong></div>
+          <div class="h-pill">Innova Crysta: <strong>₹4,500</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Route Overview & Pricing Table -->
+    <section class="route-content-section">
+      <div class="container">
+        <div class="route-grid">
+          <div class="route-main">
+            <span class="section-subtitle">Comfortable Highway Journey</span>
+            <h2 class="section-title">Reliable Ajmer to Jaipur Cab Rental</h2>
+            <p>
+              Looking for a dependable, private, and comfortable cab from Ajmer to Jaipur? Panwar Taxi has been serving this vital Rajasthan corridor since 2008. Whether you need an early-morning transfer for a flight at Jaipur International Airport (JAI), a train connection at Jaipur Junction, or a business trip to the state capital, we provide guaranteed on-time doorstep service.
+            </p>
+            <p>
+              Travel seamlessly along the smooth 6-lane National Highway 48 (NH 48) without the crowds of state buses or the rigid timetables of trains. Our chauffeurs are experienced highway drivers who prioritize passenger safety and vehicle hygiene.
+            </p>
+
+            <!-- Pricing Tier Cards -->
+            <h3 class="tier-heading">Verified Fare Breakdown (Ajmer ➔ Jaipur)</h3>
+            <div class="pricing-cards-row">
+              <div class="p-card">
+                <span class="p-type">Comfort Sedan</span>
+                <h4 class="p-car">Maruti Swift Dzire</h4>
+                <div class="p-fare">₹1,800 <small>one-way</small></div>
+                <ul class="p-features">
+                  <li>✓ 4 Passenger Seats</li>
+                  <li>✓ 2 Large Bags</li>
+                  <li>✓ 100% Chilled AC</li>
+                  <li>✓ Doorstep Pickup &amp; Drop</li>
+                </ul>
+                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">
+                  Book Sedan @ ₹1,800
+                </a>
+              </div>
+
+              <div class="p-card featured-p-card">
+                <span class="p-type gold">Family MPV</span>
+                <h4 class="p-car">Maruti Ertiga</h4>
+                <div class="p-fare">₹2,800 <small>one-way</small></div>
+                <ul class="p-features">
+                  <li>✓ 6 Passenger Seats</li>
+                  <li>✓ 3-4 Luggage Bags</li>
+                  <li>✓ Dual AC Vents</li>
+                  <li>✓ Extra Legroom</li>
+                </ul>
+                <a href={waErtiga} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm p-btn">
+                  Book Ertiga @ ₹2,800
+                </a>
+              </div>
+
+              <div class="p-card">
+                <span class="p-type">Luxury MUV</span>
+                <h4 class="p-car">Toyota Innova Crysta</h4>
+                <div class="p-fare">₹4,500 <small>one-way</small></div>
+                <ul class="p-features">
+                  <li>✓ 6/7 Captain Seats</li>
+                  <li>✓ 4+ Large Suitcases</li>
+                  <li>✓ Premium Suspension</li>
+                  <li>✓ Executive Travel</li>
+                </ul>
+                <a href={waInnova} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">
+                  Book Crysta @ ₹4,500
+                </a>
+              </div>
+            </div>
+
+            <!-- Route Details & Itinerary Notes -->
+            <div class="route-itinerary-box">
+              <h3>Route Highlights &amp; En-Route Sightseeing</h3>
+              <ul>
+                <li>• <strong>Kishangarh Marble Slurry Dumping Yard:</strong> Located ~30 km from Ajmer, this photogenic white landscape is famous as the "Switzerland of Rajasthan." A quick 30-minute photo stop can be included on request.</li>
+                <li>• <strong>Dudu &amp; Mahla Rest Stops:</strong> Hygienic highway restaurants and family dhabas for fresh tea, pyaaz kachori, and clean washroom facilities.</li>
+                <li>• <strong>Jaipur Drops Available:</strong> C-Scheme, MI Road, Vaishali Nagar, Mansarovar, Malviya Nagar, Jaipur Airport (JAI), and Jaipur Junction Railway Station.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Sticky Sidebar -->
+          <aside class="route-sidebar">
+            <div class="sidebar-box">
+              <h3 class="side-title">Quick Route Summary</h3>
+              <div class="side-list">
+                <div class="side-item">
+                  <span class="s-label">Origin:</span>
+                  <span class="s-val">Ajmer / Pushkar</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Destination:</span>
+                  <span class="s-val">Jaipur (Any Location)</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Highway:</span>
+                  <span class="s-val">NH 48 (6-Lane Expressway)</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Distance:</span>
+                  <span class="s-val">~135 km</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Travel Time:</span>
+                  <span class="s-val">2 to 2.5 Hours</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Starting Price:</span>
+                  <span class="s-val gold-text">₹1,800 (Sedan)</span>
+                </div>
+              </div>
+
+              <div class="side-actions">
+                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm full-w">
+                  WhatsApp Instant Quote
+                </a>
+                <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn--sm full-w">
+                  Call: {business.phoneFormatted}
+                </a>
+              </div>
+            </div>
+
+            <div class="sidebar-trust">
+              <h4>Why Book With Us?</h4>
+              <p>Serving Ajmer Since 2008 with over 18+ years of dedicated service. Zero advance required, pay the driver directly at trip completion.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Route Specific FAQ -->
+    <FAQ items={jaipurFaqs} title="Ajmer to Jaipur Taxi FAQs" subtitle="Frequently Asked Questions" />
+  </main>
+
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .route-hero {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #FFFFFF;
+    padding: calc(var(--header-height, 74px) + 38px) 0 36px;
+    border-bottom: 3px solid var(--color-accent);
+  }
+
+  .heritage-pill {
+    display: inline-block;
+    background: rgba(197, 155, 39, 0.2);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-light);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    margin-bottom: 12px;
+  }
+
+  .route-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+
+  .route-subtitle {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 720px;
+    margin: 0 auto var(--space-lg);
+  }
+
+  .hero-fare-pills {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .h-pill {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(197, 155, 39, 0.4);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    color: #F8E6B8;
+  }
+
+  .h-pill strong {
+    color: #FFFFFF;
+  }
+
+  .route-content-section {
+    padding: var(--space-4xl) 0;
+    background: #FFFFFF;
+  }
+
+  .route-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: var(--space-3xl);
+  }
+
+  .tier-heading {
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    color: var(--color-primary);
+    margin: var(--space-2xl) 0 var(--space-md);
+  }
+
+  .pricing-cards-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .p-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(34, 24, 28, 0.05);
+  }
+
+  .featured-p-card {
+    border: 2px solid var(--color-accent);
+    background: var(--color-cream);
+  }
+
+  .p-type {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .p-type.gold {
+    color: var(--color-accent-dark);
+  }
+
+  .p-car {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    color: var(--color-text);
+    margin-bottom: var(--space-xs);
+  }
+
+  .p-fare {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .p-fare small {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+  }
+
+  .p-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-lg) 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.8125rem;
+    color: var(--color-text);
+    flex: 1;
+  }
+
+  .p-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: auto;
+  }
+
+  .route-itinerary-box {
+    background: var(--color-cream);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent);
+    padding: var(--space-xl);
+    border-radius: var(--radius-md);
+  }
+
+  .route-itinerary-box h3 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .route-itinerary-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: var(--color-text);
+  }
+
+  .route-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .sidebar-box {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+  }
+
+  .side-title {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  .side-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: var(--space-lg);
+  }
+
+  .side-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.84375rem;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed var(--color-border);
+  }
+
+  .s-label {
+    color: var(--color-text-muted);
+  }
+
+  .s-val {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .gold-text {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .side-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .full-w {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .sidebar-trust {
+    background: var(--color-cream);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+  }
+
+  .sidebar-trust h4 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-trust p {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media (max-width: 992px) {
+    .route-grid {
+      grid-template-columns: 1fr;
+    }
+    .pricing-cards-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

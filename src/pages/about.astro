@@ -1,0 +1,284 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import TrustSection from "@/components/Trust/TrustSection.astro";
+import WhyChooseUs from "@/components/WhyUs/WhyChooseUs.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+
+const pageTitle = "About Us | Panwar Taxi Ajmer — Serving Ajmer Since 2008";
+const pageDescription = "Learn about Panwar Taxi Ajmer's 18+ years of heritage since 2008. Dedicated local taxi fleet, transparent pricing, verified chauffeurs, and 24/7 service in Ajmer & Pushkar.";
+const waUrl = createWhatsAppBookingUrl();
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/about/">
+  <Header />
+
+  <main id="main-content">
+    <!-- Page Hero Banner -->
+    <section class="page-banner">
+      <div class="container text-center">
+        <span class="heritage-pill">Established in 2008</span>
+        <h1 class="page-title">About Panwar Taxi Ajmer</h1>
+        <p class="page-subtitle">18+ Years of Reliable Chauffeur Service in the Heart of Rajasthan</p>
+      </div>
+    </section>
+
+    <!-- Company Heritage Story -->
+    <section class="about-story-section">
+      <div class="container">
+        <div class="story-grid">
+          <div class="story-text">
+            <span class="section-subtitle">Our Journey</span>
+            <h2 class="section-title">Serving Ajmer &amp; Pushkar Travelers Since 2008</h2>
+            <p class="lead-p">
+              Founded in 2008 in Vaishali Nagar, Ajmer, Panwar Taxi began with a clear purpose: to deliver dependable, honest, and comfortable road transportation across Rajasthan without surge pricing or unexpected hidden fees.
+            </p>
+            <p>
+              Over the past 18+ years, we have grown into one of Ajmer’s most respected taxi operators. From visiting holy pilgrims heading to the world-renowned <strong>Ajmer Sharif Dargah</strong> and the sacred ghats of <strong>Pushkar Lake</strong>, to business travelers and families taking highway trips to Jaipur, Delhi, and Udaipur, we take personal pride in every journey we undertake.
+            </p>
+            <p>
+              Unlike app-based aggregators that pass bookings to unknown third parties, every trip booked with Panwar Taxi is coordinated directly by our local Ajmer dispatch office.
+            </p>
+
+            <div class="story-highlights-list">
+              <div class="sh-item">
+                <span class="sh-icon">✓</span>
+                <div>
+                  <strong>All-India Commercial Permits:</strong> Every vehicle carries authentic commercial taxi registration (yellow number plates), comprehensive passenger insurance, and regular fitness clearance.
+                </div>
+              </div>
+              <div class="sh-item">
+                <span class="sh-icon">✓</span>
+                <div>
+                  <strong>100% Functional AC Guarantee:</strong> We enforce strict climate control across all hatchbacks, sedans, SUVs, and luxury Tempo Travellers.
+                </div>
+              </div>
+              <div class="sh-item">
+                <span class="sh-icon">✓</span>
+                <div>
+                  <strong>Local Route Knowledge:</strong> Our chauffeurs are lifelong residents of Rajasthan who know local shortcut lanes, peak-hour bottlenecks, and hygienic family restaurants along all major highways.
+                </div>
+              </div>
+            </div>
+
+            <div class="story-actions">
+              <a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--lg">
+                Book a Cab on WhatsApp
+              </a>
+              <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn--lg">
+                Call {business.phoneFormatted}
+              </a>
+            </div>
+          </div>
+
+          <div class="story-visual">
+            <div class="story-card">
+              <img src="/images/logo-seal.png" alt="Panwar Taxi Ajmer Seal Logo" class="about-seal" width="140" height="140" />
+              <h3 class="card-brand">Panwar Taxi Ajmer</h3>
+              <p class="card-tagline">“Serving Ajmer Since 2008”</p>
+              <div class="card-meta-list">
+                <div class="meta-row">
+                  <span class="m-label">Year Founded:</span>
+                  <span class="m-val">2008 (18+ Years Active)</span>
+                </div>
+                <div class="meta-row">
+                  <span class="m-label">Headquarters:</span>
+                  <span class="m-val">Vaishali Nagar, Ajmer</span>
+                </div>
+                <div class="meta-row">
+                  <span class="m-label">Service Reach:</span>
+                  <span class="m-val">Ajmer, Pushkar, All Rajasthan &amp; Delhi NCR</span>
+                </div>
+                <div class="meta-row">
+                  <span class="m-label">Fleet Types:</span>
+                  <span class="m-val">Hatchback, Sedan, SUV, Tempo Traveller</span>
+                </div>
+                <div class="meta-row">
+                  <span class="m-label">Availability:</span>
+                  <span class="m-val">24 Hours / 7 Days a Week</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <TrustSection />
+    <WhyChooseUs />
+  </main>
+
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .page-banner {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #FFFFFF;
+    padding: calc(var(--header-height, 74px) + 38px) 0 36px;
+    border-bottom: 3px solid var(--color-accent);
+  }
+
+  .heritage-pill {
+    display: inline-block;
+    background: rgba(197, 155, 39, 0.2);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-light);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    margin-bottom: 12px;
+  }
+
+  .page-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .about-story-section {
+    padding: var(--space-4xl) 0;
+    background: #FFFFFF;
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--space-3xl);
+    align-items: center;
+  }
+
+  .lead-p {
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+  }
+
+  .story-text p {
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    margin-bottom: var(--space-md);
+  }
+
+  .story-highlights-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin: var(--space-xl) 0;
+  }
+
+  .sh-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.9375rem;
+    color: var(--color-text);
+  }
+
+  .sh-icon {
+    width: 22px;
+    height: 22px;
+    background: var(--color-cream);
+    border: 1px solid var(--color-accent);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .story-actions {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .story-card {
+    background: linear-gradient(145deg, #FFFFFF 0%, var(--color-cream) 100%);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-2xl);
+    text-align: center;
+    box-shadow: 0 12px 32px rgba(34, 24, 28, 0.08);
+  }
+
+  .about-seal {
+    margin: 0 auto var(--space-md);
+  }
+
+  .card-brand {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 2px;
+  }
+
+  .card-tagline {
+    font-size: 0.9375rem;
+    color: var(--color-accent-dark);
+    font-weight: 600;
+    margin-bottom: var(--space-lg);
+  }
+
+  .card-meta-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+    background: #FFFFFF;
+    padding: var(--space-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+  }
+
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.84375rem;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed var(--color-border);
+  }
+
+  .meta-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .m-label {
+    color: var(--color-text-muted);
+    font-weight: 600;
+  }
+
+  .m-val {
+    color: var(--color-primary);
+    font-weight: 700;
+    text-align: right;
+  }
+
+  @media (max-width: 992px) {
+    .story-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

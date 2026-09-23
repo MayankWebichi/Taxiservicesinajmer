@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyTara" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2D060C" />
+      <stop offset="60%" stop-color="#6B1829" />
+      <stop offset="100%" stop-color="#C58547" />
+    </linearGradient>
+    <linearGradient id="fortStone" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4A373" />
+      <stop offset="100%" stop-color="#8B5A2B" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#skyTara)"/>
+  <!-- Mountain Hill Peak -->
+  <polygon points="0,350 220,130 450,220 600,310 600,400 0,400" fill="#381E15"/>
+  <!-- Fort Bastions & Ramparts on ridge -->
+  <polygon points="120,190 280,95 380,150 360,190 120,240" fill="url(#fortStone)"/>
+  <!-- Turrets / Battlements -->
+  <rect x="180" y="105" width="25" height="40" fill="url(#fortStone)"/>
+  <rect x="220" y="85" width="30" height="50" fill="url(#fortStone)"/>
+  <polygon points="215,85 235,65 255,85" fill="#5A0C1A"/>
+  <rect x="270" y="90" width="25" height="45" fill="url(#fortStone)"/>
+  <polygon points="265,90 282,75 300,90" fill="#5A0C1A"/>
+  <!-- Battlements teeth -->
+  <rect x="140" y="165" width="10" height="8" fill="#FFF" opacity="0.3"/>
+  <rect x="160" y="150" width="10" height="8" fill="#FFF" opacity="0.3"/>
+  <rect x="310" y="125" width="10" height="8" fill="#FFF" opacity="0.3"/>
+  <!-- Road winding up mountain -->
+  <path d="M40 380 Q180 320 140 280 T260 220 T210 160" fill="none" stroke="#C59B27" stroke-width="4" stroke-dasharray="6,4"/>
+  <!-- Caption Box -->
+  <rect x="0" y="330" width="600" height="70" fill="#FCF8F0"/>
+  <text x="300" y="365" font-family="'Marcellus', serif" font-size="22" font-weight="bold" fill="#5A0C1A" text-anchor="middle">Taragarh Fort (Star Fort)</text>
+  <text x="300" y="388" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" fill="#66585C" text-anchor="middle">Ancient 8th-Century Hill Fortress • Panoramic View of Ajmer</text>
+</svg>

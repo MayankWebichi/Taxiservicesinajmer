@@ -1,0 +1,313 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateServiceSchema } from "@/utils/seo";
+
+const pageTitle = "Ajmer to Pushkar Taxi | Cab Fare from ₹600 (Since 2008)";
+const pageDescription = "Book Ajmer to Pushkar taxi from ₹600. 14 km scenic hill drive via Pushkar Ghati. Brahma Temple, Holy Lake Ghats, and Desert Safari. 24/7 doorstep pickup.";
+
+const waTransfer = createWhatsAppBookingUrl({ pickup: "Ajmer Railway Station", destination: "Pushkar Hotel/Lake", vehicle: "Sedan (₹800 One-Way)" });
+const waTour = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Pushkar Sightseeing Tour", vehicle: "Sedan (₹1,500 Full Day)" });
+
+const serviceSchema = generateServiceSchema({
+  name: "Ajmer to Pushkar Taxi Service",
+  description: "One-way transfers and full-day sightseeing tour cabs connecting Ajmer to the holy pilgrimage town of Pushkar.",
+  providerName: business.name,
+  providerUrl: business.website,
+  price: "600",
+  priceCurrency: "INR"
+});
+
+const pushkarFaqs = [
+  {
+    question: "What is the taxi fare from Ajmer Railway Station to Pushkar?",
+    answer: "One-way sedan transfer from Ajmer Railway Station to Pushkar hotels or the holy lake starts from ₹800. For complete half-day or full-day sightseeing packages, rates start at ₹1,500 for a sedan.",
+    category: "Pricing" as const
+  },
+  {
+    question: "How long does it take from Ajmer to Pushkar by cab?",
+    answer: "Pushkar is just 14 km away across the scenic Nagpahari hill pass (Pushkar Ghati). The drive takes roughly 30 to 40 minutes.",
+    category: "Routes" as const
+  },
+  {
+    question: "Can the cab wait while we complete Brahma Temple darshan and Lake Pooja?",
+    answer: "Yes, our round-trip and tour packages include driver wait-time so you can comfortably perform your rituals, aarti, and shopping.",
+    category: "General" as const
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/ajmer-to-pushkar-taxi/" schemaMarkup={serviceSchema}>
+  <Header />
+
+  <main id="main-content">
+    <section class="route-hero">
+      <div class="container text-center">
+        <span class="heritage-pill">Sacred Pilgrimage Gateway</span>
+        <h1 class="route-title">Ajmer to Pushkar Taxi Service</h1>
+        <p class="route-subtitle">14 km Scenic Drive via Pushkar Ghati • One-Way Drop ₹800 • Full Day Tour ₹1,500</p>
+      </div>
+    </section>
+
+    <section class="route-content-section">
+      <div class="container">
+        <div class="route-grid">
+          <div class="route-main">
+            <span class="section-subtitle">Spiritual &amp; Scenic Ride</span>
+            <h2 class="section-title">Reliable Cabs for Pushkar Darshan</h2>
+            <p>
+              Pushkar is one of India’s most revered pilgrimage destinations, home to the sacred <strong>Jagatpita Brahma Temple</strong>, the 52 holy bathing ghats of <strong>Pushkar Sarovar</strong>, and the annual world-famous Pushkar Camel Fair.
+            </p>
+            <p>
+              Located just 14 km northwest of Ajmer, traveling by private AC taxi through the picturesque winding roads of <strong>Pushkar Ghati</strong> offers a tranquil and scenic transition from the bustling city of Ajmer to the serene desert oasis of Pushkar.
+            </p>
+
+            <h3 class="tier-heading">Pushkar Cab Options</h3>
+            <div class="pricing-cards-row">
+              <div class="p-card">
+                <span class="p-type">One-Way Transfer</span>
+                <h4 class="p-car">Sedan Drop</h4>
+                <div class="p-fare">₹800 <small>one-way</small></div>
+                <p>Doorstep pickup from Ajmer Station or hotel and direct drop at any Pushkar resort or ghat.</p>
+                <a href={waTransfer} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">
+                  Book Drop @ ₹800
+                </a>
+              </div>
+
+              <div class="p-card featured-p-card">
+                <span class="p-type gold">Complete Day Tour</span>
+                <h4 class="p-car">Pushkar Sightseeing</h4>
+                <div class="p-fare">₹1,500 <small>full day</small></div>
+                <p>Includes Brahma Temple, Lake Ghats, Savitri Ropeway, Varaha Temple &amp; Sunset Desert Point.</p>
+                <a href={waTour} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm p-btn">
+                  Book Tour @ ₹1,500
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <aside class="route-sidebar">
+            <div class="sidebar-box">
+              <h3 class="side-title">Route Summary</h3>
+              <div class="side-list">
+                <div class="side-item">
+                  <span class="s-label">Distance:</span>
+                  <span class="s-val">14 km</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Duration:</span>
+                  <span class="s-val">30 - 40 Mins</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Drop Fare:</span>
+                  <span class="s-val gold-text">₹800 (Sedan)</span>
+                </div>
+              </div>
+
+              <div class="side-actions">
+                <a href={waTransfer} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm full-w">
+                  Book on WhatsApp
+                </a>
+                <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn--sm full-w">
+                  Call: {business.phoneFormatted}
+                </a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <FAQ items={pushkarFaqs} title="Ajmer to Pushkar Taxi FAQs" subtitle="Common Questions" />
+  </main>
+
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .route-hero {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #FFFFFF;
+    padding: calc(var(--header-height, 74px) + 38px) 0 36px;
+    border-bottom: 3px solid var(--color-accent);
+  }
+
+  .heritage-pill {
+    display: inline-block;
+    background: rgba(197, 155, 39, 0.2);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-light);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    margin-bottom: 12px;
+  }
+
+  .route-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+
+  .route-subtitle {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .route-content-section {
+    padding: var(--space-4xl) 0;
+    background: #FFFFFF;
+  }
+
+  .route-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: var(--space-3xl);
+  }
+
+  .tier-heading {
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    color: var(--color-primary);
+    margin: var(--space-xl) 0 var(--space-md);
+  }
+
+  .pricing-cards-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .p-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .featured-p-card {
+    border: 2px solid var(--color-accent);
+    background: var(--color-cream);
+  }
+
+  .p-type {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-transform: uppercase;
+  }
+
+  .p-type.gold {
+    color: var(--color-accent-dark);
+  }
+
+  .p-car {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin: 4px 0;
+  }
+
+  .p-fare {
+    font-family: var(--font-heading);
+    font-size: 1.625rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .p-fare small {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .p-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: auto;
+  }
+
+  .route-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .sidebar-box {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+  }
+
+  .side-title {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  .side-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: var(--space-lg);
+  }
+
+  .side-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.84375rem;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed var(--color-border);
+  }
+
+  .s-label {
+    color: var(--color-text-muted);
+  }
+
+  .s-val {
+    font-weight: 600;
+  }
+
+  .gold-text {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .side-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .full-w {
+    width: 100%;
+    justify-content: center;
+  }
+
+  @media (max-width: 992px) {
+    .route-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

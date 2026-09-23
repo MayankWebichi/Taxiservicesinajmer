@@ -1,0 +1,406 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateServiceSchema } from "@/utils/seo";
+
+const pageTitle = "Ajmer to Delhi Taxi ₹5,500 Fixed | IGI Airport & NCR (Since 2008)";
+const pageDescription = "Verified Ajmer to Delhi one-way cab from ₹5,500. 390 km direct highway transfer to Delhi IGI Airport (T3/T2/T1), Gurgaon, and Delhi NCR. 24/7 night pickups.";
+
+const waSedan = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Delhi IGI Airport", vehicle: "Sedan (₹5,500 Fixed)" });
+const waCrysta = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Delhi IGI Airport", vehicle: "Innova Crysta (₹9,500 Fixed)" });
+
+const serviceSchema = generateServiceSchema({
+  name: "Ajmer to Delhi Taxi Service",
+  description: "Direct one-way and round-trip highway cab service connecting Ajmer and Pushkar to Delhi Indira Gandhi International Airport and Delhi NCR.",
+  providerName: business.name,
+  providerUrl: business.website,
+  price: "5500",
+  priceCurrency: "INR"
+});
+
+const delhiFaqs = [
+  {
+    question: "What is the fixed fare for an Ajmer to Delhi taxi?",
+    answer: "Our verified one-way fixed fares to Delhi / Delhi Airport are: Swift Dzire / Toyota Etios Sedan at ₹5,500; Maruti Ertiga at ₹7,500; and Toyota Innova Crysta at ₹9,500. State border permits and toll taxes are extra as per actual receipts.",
+    category: "Pricing" as const
+  },
+  {
+    question: "How long does it take from Ajmer to Delhi IGI Airport?",
+    answer: "The journey covers approximately 390 km via NH 48 and typically takes between 6.5 to 7.5 hours. We recommend departing at least 8 hours prior to your international flight check-in time.",
+    category: "Routes" as const
+  },
+  {
+    question: "Do you offer night departures from Ajmer to Delhi?",
+    answer: "Yes, our drivers are highly experienced in night highway driving. 24/7 departures at midnight or 2:00 AM are common for catching morning flights at Delhi Airport.",
+    category: "General" as const
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/ajmer-to-delhi-taxi/" schemaMarkup={serviceSchema}>
+  <Header />
+
+  <main id="main-content">
+    <section class="route-hero">
+      <div class="container text-center">
+        <span class="heritage-pill">Delhi Airport &amp; NCR Direct Connect</span>
+        <h1 class="route-title">Ajmer to Delhi Taxi Service</h1>
+        <p class="route-subtitle">Fixed One-Way Sedan Fare ₹5,500 • 390 km • Direct to Delhi IGI Airport (T3/T2/T1) &amp; NCR</p>
+
+        <div class="hero-fare-pills">
+          <div class="h-pill">Sedan (Dzire/Etios): <strong>₹5,500</strong></div>
+          <div class="h-pill">Ertiga MPV: <strong>₹7,500</strong></div>
+          <div class="h-pill">Innova Crysta: <strong>₹9,500</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="route-content-section">
+      <div class="container">
+        <div class="route-grid">
+          <div class="route-main">
+            <span class="section-subtitle">Long Distance Highway Comfort</span>
+            <h2 class="section-title">Private Direct Cabs from Ajmer to Delhi</h2>
+            <p>
+              Avoid crowded trains with uncertain waitlists and heavy luggage transfers across railway platforms. Panwar Taxi offers a private, door-to-door highway taxi service connecting Ajmer and Pushkar directly to <strong>Delhi Indira Gandhi International Airport (DEL)</strong>, Gurgaon (Gurugram), Noida, and New Delhi.
+            </p>
+            <p>
+              Travel in top-condition, fully air-conditioned vehicles with ample trunk space for international luggage, chauffeured by verified drivers trained for long-distance night and day expressway travel.
+            </p>
+
+            <h3 class="tier-heading">Verified Fare Breakdown (Ajmer ➔ Delhi)</h3>
+            <div class="pricing-cards-row">
+              <div class="p-card">
+                <span class="p-type">Budget Sedan</span>
+                <h4 class="p-car">Maruti Swift Dzire</h4>
+                <div class="p-fare">₹5,500 <small>fixed</small></div>
+                <ul class="p-features">
+                  <li>✓ 4 Passengers</li>
+                  <li>✓ 2-3 Suitcases</li>
+                  <li>✓ Doorstep Pickup in Ajmer</li>
+                  <li>✓ Direct Terminal Drop</li>
+                </ul>
+                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">
+                  Book Dzire @ ₹5,500
+                </a>
+              </div>
+
+              <div class="p-card featured-p-card">
+                <span class="p-type gold">Luxury Highway King</span>
+                <h4 class="p-car">Toyota Innova Crysta</h4>
+                <div class="p-fare">₹9,500 <small>fixed</small></div>
+                <ul class="p-features">
+                  <li>✓ 6-7 Captain Seats</li>
+                  <li>✓ 5+ Heavy International Bags</li>
+                  <li>✓ Maximum Highway Comfort</li>
+                  <li>✓ Premium Dual AC</li>
+                </ul>
+                <a href={waCrysta} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm p-btn">
+                  Book Crysta @ ₹9,500
+                </a>
+              </div>
+            </div>
+
+            <div class="route-itinerary-box">
+              <h3>Delhi NCR Drop Locations</h3>
+              <ul>
+                <li>• <strong>Indira Gandhi International Airport (DEL):</strong> Terminal 1, Terminal 2, and Terminal 3.</li>
+                <li>• <strong>Gurugram / Cyber City:</strong> Direct drop at DLF Cyber City, Golf Course Road, Sohna Road.</li>
+                <li>• <strong>New Delhi City:</strong> New Delhi Railway Station, Connaught Place, South Delhi, Karol Bagh.</li>
+                <li>• <strong>Noida &amp; Ghaziabad:</strong> Direct highway connectivity via Delhi bypasses.</li>
+              </ul>
+            </div>
+          </div>
+
+          <aside class="route-sidebar">
+            <div class="sidebar-box">
+              <h3 class="side-title">Route Summary</h3>
+              <div class="side-list">
+                <div class="side-item">
+                  <span class="s-label">Distance:</span>
+                  <span class="s-val">~390 km</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Time:</span>
+                  <span class="s-val">6.5 - 7.5 Hours</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Highway:</span>
+                  <span class="s-val">NH 48 / Delhi Expressway</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Sedan Fare:</span>
+                  <span class="s-val gold-text">₹5,500 (Fixed)</span>
+                </div>
+              </div>
+
+              <div class="side-actions">
+                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm full-w">
+                  WhatsApp Instant Quote
+                </a>
+                <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn--sm full-w">
+                  Call: {business.phoneFormatted}
+                </a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <FAQ items={delhiFaqs} title="Ajmer to Delhi Taxi FAQs" subtitle="Frequently Asked Questions" />
+  </main>
+
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .route-hero {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #FFFFFF;
+    padding: calc(var(--header-height, 74px) + 38px) 0 36px;
+    border-bottom: 3px solid var(--color-accent);
+  }
+
+  .heritage-pill {
+    display: inline-block;
+    background: rgba(197, 155, 39, 0.2);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-light);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    margin-bottom: 12px;
+  }
+
+  .route-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+
+  .route-subtitle {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 720px;
+    margin: 0 auto var(--space-lg);
+  }
+
+  .hero-fare-pills {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .h-pill {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(197, 155, 39, 0.4);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    color: #F8E6B8;
+  }
+
+  .h-pill strong {
+    color: #FFFFFF;
+  }
+
+  .route-content-section {
+    padding: var(--space-4xl) 0;
+    background: #FFFFFF;
+  }
+
+  .route-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: var(--space-3xl);
+  }
+
+  .tier-heading {
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    color: var(--color-primary);
+    margin: var(--space-2xl) 0 var(--space-md);
+  }
+
+  .pricing-cards-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .p-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(34, 24, 28, 0.05);
+  }
+
+  .featured-p-card {
+    border: 2px solid var(--color-accent);
+    background: var(--color-cream);
+  }
+
+  .p-type {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .p-type.gold {
+    color: var(--color-accent-dark);
+  }
+
+  .p-car {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin-bottom: var(--space-xs);
+  }
+
+  .p-fare {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .p-fare small {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+  }
+
+  .p-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-lg) 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.84375rem;
+    color: var(--color-text);
+    flex: 1;
+  }
+
+  .p-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: auto;
+  }
+
+  .route-itinerary-box {
+    background: var(--color-cream);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent);
+    padding: var(--space-xl);
+    border-radius: var(--radius-md);
+  }
+
+  .route-itinerary-box h3 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .route-itinerary-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: var(--color-text);
+  }
+
+  .route-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .sidebar-box {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+  }
+
+  .side-title {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  .side-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: var(--space-lg);
+  }
+
+  .side-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.84375rem;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed var(--color-border);
+  }
+
+  .s-label {
+    color: var(--color-text-muted);
+  }
+
+  .s-val {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .gold-text {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .side-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .full-w {
+    width: 100%;
+    justify-content: center;
+  }
+
+  @media (max-width: 992px) {
+    .route-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

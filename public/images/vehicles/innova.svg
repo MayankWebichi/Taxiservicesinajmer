@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="innovaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#550D19" />
+      <stop offset="100%" stop-color="#24040A" />
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCF8F0" />
+      <stop offset="100%" stop-color="#F4ECE1" />
+    </linearGradient>
+    <filter id="carShadow" x="-10%" y="-10%" width="120%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#22181C" flood-opacity="0.25" />
+    </filter>
+  </defs>
+  <rect width="600" height="360" rx="16" fill="url(#bgGrad)"/>
+  <circle cx="300" cy="180" r="140" fill="#E8DDCF" opacity="0.4"/>
+  <g filter="url(#carShadow)">
+    <!-- Sturdy Innova SUV/MUV body -->
+    <path d="M100 230 L125 150 Q160 115 240 115 L430 115 Q475 120 500 168 L535 210 Q545 225 525 240 L105 240 Q90 238 100 230 Z" fill="url(#innovaGrad)"/>
+    <path d="M135 150 L230 122 L430 122 L465 165 Z" fill="#22181C" opacity="0.85"/>
+    <path d="M240 128 L330 128 L330 162 L240 162 Z" fill="#D6E4EE" opacity="0.9"/>
+    <path d="M338 128 L425 128 L425 162 L338 162 Z" fill="#D6E4EE" opacity="0.9"/>
+    <path d="M433 128 L460 162 L433 162 Z" fill="#B0C8DA" opacity="0.85"/>
+    <path d="M232 128 L150 150 L232 150 Z" fill="#B0C8DA" opacity="0.85"/>
+    <!-- Roof Rails -->
+    <line x1="200" y1="110" x2="430" y2="110" stroke="#C59B27" stroke-width="4" stroke-linecap="round"/>
+    <!-- Wheels (Bigger SUV wheels) -->
+    <circle cx="180" cy="240" r="35" fill="#1C1819"/>
+    <circle cx="180" cy="240" r="20" fill="#C59B27"/>
+    <circle cx="180" cy="240" r="8" fill="#FFF"/>
+    <circle cx="455" cy="240" r="35" fill="#1C1819"/>
+    <circle cx="455" cy="240" r="20" fill="#C59B27"/>
+    <circle cx="455" cy="240" r="8" fill="#FFF"/>
+    <!-- Details -->
+    <path d="M525 205 L545 215 L520 220 Z" fill="#FFDD80"/>
+    <path d="M98 220 L108 228 L95 228 Z" fill="#E53935"/>
+  </g>
+  <text x="300" y="315" font-family="'Marcellus', serif" font-size="20" font-weight="bold" fill="#5A0C1A" text-anchor="middle">Toyota Innova (Classic 7-Seater)</text>
+  <text x="300" y="338" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" fill="#66585C" text-anchor="middle">6+1 Seats • 4 Luggage • High Comfort • Starting @ ₹16/km</text>
+</svg>

@@ -1,0 +1,252 @@
+---
+// Mobile-only interactive scroll transition
+// Car drives from left into screen center as user scrolls past
+// At the end, doors open with message: "We are waiting for you to sit in our luxury taxies"
+---
+
+<div class="mobile-car-scroll-track" id="mobile-mid-car-track" aria-hidden="true">
+  <div class="mobile-car-sticky-frame" id="mobile-mid-car-frame">
+    <div class="mobile-car-road-container">
+      <!-- Car Mover -->
+      <div class="mobile-car-mover" id="mobile-mid-car-mover">
+        <div class="mobile-car-stack">
+          <!-- Default closed-doors car -->
+          <img
+            src="/images/hero-top-car-2.jpg"
+            alt="Panwar Taxi Chauffeur Cab"
+            class="mobile-mid-car-img car-img-closed"
+            id="mobile-mid-car-closed"
+            width="754"
+            height="331"
+            loading="eager"
+          />
+          <!-- Open-doors car revealed on completion -->
+          <img
+            src="/images/hero-car-open-doors.png"
+            alt="Panwar Taxi Chauffeur Cab Doors Open"
+            class="mobile-mid-car-img car-img-open"
+            id="mobile-mid-car-open"
+            width="754"
+            height="331"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Waiting invitation message -->
+        <div class="mobile-car-invitation" id="mobile-car-invitation">
+          <span class="invitation-icon">✨</span>
+          <span class="invitation-text">We are waiting for you to sit in our luxury taxies</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Hidden on Desktop & Tablet (> 900px) */
+  .mobile-car-scroll-track {
+    display: none;
+  }
+
+  /* Mobile only (<= 900px) */
+  @media (max-width: 900px) {
+    .mobile-car-scroll-track {
+      display: block;
+      position: relative;
+      height: 205px;
+      max-height: 215px;
+      background: transparent;
+      overflow-x: clip;
+      overflow-y: hidden;
+      padding: 0 !important;
+      margin: 10px 0 !important;
+    }
+
+    .mobile-car-sticky-frame {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: transparent;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    .mobile-car-road-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    .mobile-car-mover {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      will-change: transform;
+      /* Starts off-screen to the left */
+      transform: translateX(-120vw);
+      padding: 0 !important;
+      margin: 0 !important;
+      gap: 8px;
+    }
+
+    .mobile-car-stack {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 155px;
+    }
+
+    .mobile-mid-car-img {
+      width: auto;
+      max-width: 92vw;
+      height: 155px;
+      max-height: 155px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.18));
+      display: block;
+      margin: 0 auto;
+      padding: 0 !important;
+    }
+
+    .car-img-closed {
+      position: relative;
+      opacity: 1;
+      transition: opacity 0.35s ease;
+    }
+
+    .car-img-open {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+
+    /* Open State */
+    .mobile-car-mover.is-open .car-img-closed {
+      opacity: 0;
+    }
+
+    .mobile-car-mover.is-open .car-img-open {
+      opacity: 1;
+    }
+
+    /* Waiting Text Badge */
+    .mobile-car-invitation {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 16px;
+      background: linear-gradient(135deg, rgba(90, 12, 26, 0.96) 0%, rgba(45, 5, 13, 0.96) 100%);
+      border: 1.5px solid rgba(250, 214, 109, 0.6);
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgba(45, 5, 13, 0.3);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+
+    .mobile-car-mover.is-open .mobile-car-invitation {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .invitation-icon {
+      font-size: 0.9rem;
+      color: #FAD66D;
+    }
+
+    .invitation-text {
+      font-size: 0.775rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+  }
+</style>
+
+<script>
+  function initMobileMidCarScroll() {
+    const track = document.getElementById("mobile-mid-car-track");
+    const mover = document.getElementById("mobile-mid-car-mover");
+    if (!track || !mover) return;
+
+    let ticking = false;
+
+    function onScroll() {
+      if (window.innerWidth > 900) {
+        mover.style.transform = "";
+        mover.classList.remove("is-open");
+        ticking = false;
+        return;
+      }
+
+      const rect = track.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Start driving in gently as soon as track approaches viewport bottom
+      // Extended travelRange slows down the car movement significantly over longer scroll distance
+      const startTrigger = windowHeight * 1.05;
+      const endTrigger = windowHeight * 0.25;
+      const travelRange = startTrigger - endTrigger;
+
+      if (travelRange <= 0) {
+        ticking = false;
+        return;
+      }
+
+      const rawProgress = (startTrigger - rect.top) / travelRange;
+      const progress = Math.min(1, Math.max(0, rawProgress));
+
+      // Ease-out curve to decelerate smoothly as it enters center
+      const easedProgress = Math.sin((progress * Math.PI) / 2);
+      const currentX = -(1 - easedProgress) * 120;
+      mover.style.transform = `translateX(${currentX}vw)`;
+
+      // When settled near center (progress >= 0.88), reveal open doors and message
+      if (progress >= 0.88) {
+        mover.classList.add("is-open");
+      } else {
+        mover.classList.remove("is-open");
+      }
+
+      ticking = false;
+    }
+
+    function requestTick() {
+      if (!ticking) {
+        requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener("scroll", requestTick, { passive: true });
+    window.addEventListener("resize", requestTick, { passive: true });
+    onScroll();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initMobileMidCarScroll);
+  } else {
+    initMobileMidCarScroll();
+  }
+  document.addEventListener("astro:page-load", initMobileMidCarScroll);
+</script>

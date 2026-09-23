@@ -1,0 +1,97 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+
+const pageTitle = "Page Not Found | Panwar Taxi Ajmer (Since 2008)";
+const pageDescription = "The page you are looking for doesn't exist. Let Panwar Taxi Ajmer get you back on route. Call +91 77373 14538.";
+const waUrl = createWhatsAppBookingUrl();
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/404" noIndex={true}>
+  <Header />
+
+  <main id="main-content">
+    <section class="notfound-section">
+      <div class="container text-center">
+        <div class="notfound-card">
+          <div class="notfound-code">404</div>
+          <h1 class="notfound-title">Lost on the Road?</h1>
+          <p class="notfound-desc">
+            The page or route you are looking for has taken a detour or does not exist. Don't worry—our drivers know every road in Ajmer and Rajasthan!
+          </p>
+
+          <div class="notfound-actions">
+            <a href="/" class="btn btn--primary btn--lg">
+              Return to Homepage
+            </a>
+            <a href="/#booking-widget" class="btn btn--gold btn--lg">
+              Book a Taxi
+            </a>
+            <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn--lg">
+              Call Helpline: {business.phoneFormatted}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .notfound-section {
+    padding: var(--space-4xl) 0;
+    min-height: 65vh;
+    display: flex;
+    align-items: center;
+    background: var(--color-surface);
+  }
+
+  .notfound-card {
+    background: #FFFFFF;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-3xl) var(--space-2xl);
+    max-width: 680px;
+    margin: 0 auto;
+    box-shadow: 0 12px 32px rgba(34, 24, 28, 0.08);
+  }
+
+  .notfound-code {
+    font-family: var(--font-heading);
+    font-size: 5rem;
+    font-weight: 800;
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: var(--space-xs);
+  }
+
+  .notfound-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .notfound-desc {
+    color: var(--color-text-muted);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .notfound-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+</style>

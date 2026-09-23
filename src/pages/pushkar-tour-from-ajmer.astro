@@ -1,0 +1,180 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateServiceSchema } from "@/utils/seo";
+
+const pageTitle = "Pushkar Tour from Ajmer | Day Trip Cab ₹700 — Panwar Taxi (2026)";
+const pageDescription = "Book an Ajmer to Pushkar day trip cab from ₹700. 14 km holy lake pilgrimage. Brahma Temple, Pushkar Lake Ghats & Pushkar Fair. AC cab, experienced local driver, 24/7 booking.";
+
+const waDay    = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Pushkar", tripType: "Day Tour", customMessage: "Hello Panwar Taxi Ajmer, I want to book a day trip cab from Ajmer to Pushkar. Please share availability and fare." });
+const waReturn = createWhatsAppBookingUrl({ pickup: "Pushkar", destination: "Ajmer", customMessage: "Hello Panwar Taxi Ajmer, I need a return cab from Pushkar to Ajmer. Please share rate and availability." });
+
+const serviceSchema = generateServiceSchema(
+  "Pushkar Day Tour from Ajmer",
+  "Day trip cab service from Ajmer to Pushkar covering Brahma Temple, Pushkar Lake Ghats, and the famous Pushkar Fair (Camel Fair). 14 km scenic Aravalli mountain road.",
+  `${business.website}/pushkar-tour-from-ajmer/`
+);
+
+const faqs = [
+  { question: "How much does a cab from Ajmer to Pushkar cost?", answer: "A one-way cab from Ajmer to Pushkar costs ₹350–₹500 depending on the vehicle. A full-day round trip (Ajmer → Pushkar → Ajmer with waiting) costs ₹700–₹1,200 for a Sedan.", category: "Pricing" as const },
+  { question: "How far is Pushkar from Ajmer?", answer: "Pushkar is approximately 14 km from Ajmer city centre. The route goes via the scenic Nag Pahar (Snake Mountain) road through the Aravalli hills, taking about 25–35 minutes.", category: "Routes" as const },
+  { question: "Is taxi available from Ajmer to Pushkar during the Pushkar Camel Fair?", answer: "Yes, we operate round the clock during the Pushkar Camel Fair (Kartik Purnima, usually November). However, we strongly recommend advance booking as demand surges during the fair week.", category: "Booking" as const },
+  { question: "Can I book a return cab from Pushkar to Ajmer?", answer: "Yes, we provide return cabs from Pushkar to Ajmer Railway Station, Bus Stand, and all hotels at any time. Call or WhatsApp for immediate pickup in Pushkar.", category: "Booking" as const },
+  { question: "What is the best time to visit Pushkar from Ajmer?", answer: "Pushkar is best visited in the morning (temple darshan before 11 AM) or evening (sunset aarti at the Pushkar Lake ghats is magical). The Pushkar Camel Fair in November is the most iconic time.", category: "Routes" as const }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/pushkar-tour-from-ajmer/" schemaMarkup={serviceSchema}>
+  <Header />
+  <main id="main-content">
+    <section class="route-hero pushkar-hero">
+      <div class="container text-center">
+        <span class="heritage-pill">Ajmer ↔ Pushkar • 14 km Scenic Route • Since 2008</span>
+        <h1 class="route-title">Pushkar Day Trip from Ajmer</h1>
+        <p class="route-subtitle">Brahma Temple • Pushkar Lake Ghats • Camel Fair • One-Way from ₹350 | Full Day from ₹700</p>
+        <div class="cta-row">
+          <a href={waDay} target="_blank" rel="noopener noreferrer" class="btn btn--gold">Book Day Trip</a>
+          <a href={waReturn} target="_blank" rel="noopener noreferrer" class="btn btn--outline-white">Pushkar → Ajmer Return</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="route-content-section">
+      <div class="container">
+        <div class="route-grid">
+          <div class="route-main">
+            <span class="section-subtitle">World's Only Brahma Temple — 14 km from Ajmer</span>
+            <h2 class="section-title">Trusted Ajmer to Pushkar Cab Service</h2>
+            <p>
+              Pushkar — the holy city of Lord Brahma — lies just 14 km from Ajmer over the scenic Aravalli mountain road. Home to the world's only Brahma Temple, the serene Pushkar Lake (Sarovar) with its 52 bathing ghats, and the internationally famous Pushkar Camel Fair — this sacred city is an essential part of any Ajmer visit.
+            </p>
+            <p>
+              Panwar Taxi has been running Ajmer–Pushkar cabs since 2008. Our drivers navigate the winding Nag Pahar (Snake Mountain) road confidently and know the best parking spots near the Brahma Temple and the ghats.
+            </p>
+
+            <h3 class="tier-heading">Pushkar Cab Packages</h3>
+            <div class="package-cards">
+              <div class="pkg-card">
+                <div class="pkg-icon">➡️</div>
+                <h4 class="pkg-title">One-Way Drop</h4>
+                <div class="pkg-fare">From ₹350</div>
+                <ul class="pkg-list">
+                  <li>✓ Doorstep to Pushkar</li>
+                  <li>✓ Direct drop at Brahma Temple / Ghats</li>
+                  <li>✓ Any time of day</li>
+                </ul>
+                <a href={waDay} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">Book One-Way</a>
+              </div>
+              <div class="pkg-card pkg-card--featured">
+                <div class="pkg-badge">Best Value</div>
+                <div class="pkg-icon">🔄</div>
+                <h4 class="pkg-title">Full Day Round Trip</h4>
+                <div class="pkg-fare">From ₹700</div>
+                <ul class="pkg-list">
+                  <li>✓ Ajmer → Pushkar → Ajmer</li>
+                  <li>✓ 4 Hours driver waiting included</li>
+                  <li>✓ Visit Brahma Temple + Lake Ghats</li>
+                  <li>✓ Flexible timing</li>
+                </ul>
+                <a href={waDay} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm">Book Full Day</a>
+              </div>
+              <div class="pkg-card">
+                <div class="pkg-icon">🐪</div>
+                <h4 class="pkg-title">Pushkar Fair Special</h4>
+                <div class="pkg-fare">Call for Rate</div>
+                <ul class="pkg-list">
+                  <li>✓ During Kartik Purnima Fair</li>
+                  <li>✓ Multiple pickups/drops available</li>
+                  <li>✓ Book 48 hours in advance</li>
+                </ul>
+                <a href={waDay} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">Enquire Now</a>
+              </div>
+            </div>
+
+            <div class="route-itinerary-box">
+              <h3>Must-Visit Places in Pushkar</h3>
+              <ul>
+                <li>• <strong>Brahma Temple:</strong> One of very few temples dedicated to Lord Brahma in the world. Open 6:30 AM – 1:30 PM and 3 PM – 8:30 PM.</li>
+                <li>• <strong>Pushkar Lake (Sarovar):</strong> The sacred lake with 52 ghats where pilgrims take holy dips. The evening Aarti at Varaha Ghat is especially beautiful.</li>
+                <li>• <strong>Savitri Temple (Hilltop):</strong> A ropeway ride (or trek) to the hilltop temple dedicated to Goddess Savitri offers panoramic views of Pushkar.</li>
+                <li>• <strong>Pushkar Bazaar:</strong> Famous for silver jewellery, tie-dye fabrics, camel leather goods, and Rajasthani handicrafts.</li>
+                <li>• <strong>Pushkar Camel Fair Ground:</strong> The site of the annual Pushkar Mela — even outside fair season, it's an iconic open ground worth visiting.</li>
+              </ul>
+            </div>
+          </div>
+
+          <aside class="route-sidebar">
+            <div class="sidebar-box">
+              <h3 class="side-title">Quick Summary</h3>
+              <div class="side-list">
+                <div class="side-item"><span class="s-label">From:</span><span class="s-val">Ajmer (Any Location)</span></div>
+                <div class="side-item"><span class="s-label">To:</span><span class="s-val">Pushkar</span></div>
+                <div class="side-item"><span class="s-label">Distance:</span><span class="s-val">~14 km</span></div>
+                <div class="side-item"><span class="s-label">Travel Time:</span><span class="s-val">25–35 Minutes</span></div>
+                <div class="side-item"><span class="s-label">One-Way Fare:</span><span class="s-val gold-text">From ₹350</span></div>
+                <div class="side-item"><span class="s-label">Full Day:</span><span class="s-val gold-text">From ₹700</span></div>
+              </div>
+              <div class="side-actions">
+                <a href={waDay} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm full-w">WhatsApp Booking</a>
+                <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn--sm full-w">Call: {business.phoneFormatted}</a>
+              </div>
+            </div>
+            <div class="sidebar-trust">
+              <h4>Local Route Experts</h4>
+              <p>We've driven this route thousands of times since 2008. Our drivers know every temple, parking spot, and dhaba along the way.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <FAQ items={faqs} title="Pushkar Taxi FAQs" subtitle="Frequently Asked Questions" />
+  </main>
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .route-hero { background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%); color: #FFF; padding: calc(var(--header-height, 74px) + 38px) 0 36px; border-bottom: 3px solid var(--color-accent); }
+  .pushkar-hero { background: linear-gradient(135deg, #1A2E0A 0%, #2C5016 50%, #3D6B1F 100%); }
+  .heritage-pill { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4); color: rgba(255,255,255,0.95); font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 14px; border-radius: var(--radius-full); margin-bottom: 12px; }
+  .route-title { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 2.75rem); color: #FFF; margin-bottom: 6px; }
+  .route-subtitle { font-size: 1.125rem; color: rgba(255,255,255,0.9); max-width: 720px; margin: 0 auto var(--space-lg); }
+  .cta-row { display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap; }
+  .btn--outline-white { border: 2px solid rgba(255,255,255,0.5); color: #FFF; background: transparent; padding: 10px 20px; border-radius: var(--radius-full); font-weight: 700; font-size: 0.9375rem; }
+  .route-content-section { padding: var(--space-4xl) 0; background: #FFF; }
+  .route-grid { display: grid; grid-template-columns: 1fr 340px; gap: var(--space-3xl); }
+  .tier-heading { font-family: var(--font-heading); font-size: 1.375rem; color: var(--color-primary); margin: var(--space-xl) 0 var(--space-md); }
+  .package-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-md); margin-bottom: var(--space-xl); }
+  .pkg-card { background: #FFF; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-sm); box-shadow: 0 4px 12px rgba(34,24,28,0.05); position: relative; }
+  .pkg-card--featured { border: 2px solid var(--color-accent); background: var(--color-cream); }
+  .pkg-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--color-accent); color: #FFF; font-size: 0.7rem; font-weight: 800; padding: 2px 10px; border-radius: var(--radius-full); white-space: nowrap; }
+  .pkg-icon { font-size: 2rem; }
+  .pkg-title { font-family: var(--font-heading); font-size: 1.1rem; color: var(--color-primary); margin: 0; }
+  .pkg-fare { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: var(--color-primary); }
+  .pkg-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; font-size: 0.8125rem; color: var(--color-text); flex: 1; }
+  .route-itinerary-box { background: var(--color-cream); border: 1px solid var(--color-border); border-left: 4px solid var(--color-accent); padding: var(--space-xl); border-radius: var(--radius-md); }
+  .route-itinerary-box h3 { font-family: var(--font-heading); color: var(--color-primary); font-size: 1.25rem; margin-bottom: var(--space-sm); }
+  .route-itinerary-box ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.875rem; color: var(--color-text); }
+  .route-sidebar { display: flex; flex-direction: column; gap: var(--space-lg); }
+  .sidebar-box { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-xl); }
+  .side-title { font-family: var(--font-heading); font-size: 1.125rem; color: var(--color-primary); margin-bottom: var(--space-md); padding-bottom: 6px; border-bottom: 2px solid var(--color-accent); }
+  .side-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: var(--space-lg); }
+  .side-item { display: flex; justify-content: space-between; font-size: 0.84375rem; padding-bottom: 4px; border-bottom: 1px dashed var(--color-border); }
+  .s-label { color: var(--color-text-muted); }
+  .s-val { font-weight: 600; color: var(--color-text); }
+  .gold-text { color: var(--color-primary); font-weight: 700; }
+  .side-actions { display: flex; flex-direction: column; gap: 8px; }
+  .full-w { width: 100%; justify-content: center; }
+  .sidebar-trust { background: var(--color-cream); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-lg); }
+  .sidebar-trust h4 { font-family: var(--font-heading); color: var(--color-primary); font-size: 1rem; margin-bottom: 4px; }
+  .sidebar-trust p { font-size: 0.8125rem; color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+  @media (max-width: 992px) { .route-grid { grid-template-columns: 1fr; } .package-cards { grid-template-columns: 1fr; } }
+</style>

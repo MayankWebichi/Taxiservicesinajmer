@@ -1,0 +1,440 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { generateServiceSchema } from "@/utils/seo";
+
+const pageTitle = "Ajmer Taxi Fare Calculator — Instant Cab Price Estimate (2026)";
+const pageDescription = "Calculate your Ajmer taxi fare instantly. Get real-time cab price estimates for Ajmer to Jaipur, Pushkar, Delhi, Jodhpur, Udaipur, Jaisalmer, Agra, and 30+ routes. Free, no registration.";
+
+const serviceSchema = generateServiceSchema(
+  "Ajmer Taxi Fare Calculator",
+  "Free online tool to calculate taxi fare from Ajmer to any destination. Instant price estimates for Sedan, Ertiga, Innova Crysta, and Tempo Traveller.",
+  `${business.website}/fare-calculator/`
+);
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/fare-calculator/" schemaMarkup={serviceSchema}>
+  <Header />
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="calc-hero">
+      <div class="container text-center">
+        <span class="calc-pill">FREE · No Registration · Instant Results</span>
+        <h1 class="calc-title">Ajmer Taxi Fare Calculator</h1>
+        <p class="calc-sub">Get an instant cab price estimate for any route from Ajmer. Choose your vehicle and trip type to see transparent, all-inclusive fares.</p>
+      </div>
+    </section>
+
+    <!-- Calculator Tool -->
+    <section class="calc-section">
+      <div class="container">
+        <div class="calc-layout">
+
+          <!-- Calculator Card -->
+          <div class="calc-card">
+            <h2 class="calc-heading">Calculate Your Cab Fare</h2>
+
+            <div class="calc-form">
+              <div class="form-group">
+                <label for="calc-from">Pickup City / Location</label>
+                <select id="calc-from">
+                  <option value="Ajmer">Ajmer</option>
+                  <option value="Pushkar">Pushkar</option>
+                  <option value="Kishangarh">Kishangarh</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="calc-to">Destination</label>
+                <select id="calc-to">
+                  <option value="">— Select Destination —</option>
+                  <option value="jaipur">Jaipur</option>
+                  <option value="pushkar">Pushkar</option>
+                  <option value="jodhpur">Jodhpur</option>
+                  <option value="udaipur">Udaipur</option>
+                  <option value="jaisalmer">Jaisalmer</option>
+                  <option value="delhi">Delhi (IGI Airport / NCR)</option>
+                  <option value="agra">Agra (Taj Mahal)</option>
+                  <option value="ahmedabad">Ahmedabad</option>
+                  <option value="mathura">Mathura – Vrindavan</option>
+                  <option value="kishangarh">Kishangarh Airport (VIKG)</option>
+                  <option value="bikaner">Bikaner</option>
+                  <option value="mount-abu">Mount Abu</option>
+                  <option value="chittorgarh">Chittorgarh</option>
+                  <option value="ranthambore">Ranthambore</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="calc-trip">Trip Type</label>
+                <div class="trip-toggle" role="radiogroup">
+                  <button class="trip-btn active" data-trip="one-way" id="trip-one-way">One Way</button>
+                  <button class="trip-btn" data-trip="round-trip" id="trip-round">Round Trip</button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Select Vehicle</label>
+                <div class="vehicle-grid">
+                  <button class="veh-btn active" data-veh="sedan" id="veh-sedan">
+                    <span class="veh-icon">🚗</span>
+                    <span class="veh-name">Sedan</span>
+                    <span class="veh-detail">Dzire / Etios</span>
+                    <span class="veh-cap">4 seats</span>
+                  </button>
+                  <button class="veh-btn" data-veh="ertiga" id="veh-ertiga">
+                    <span class="veh-icon">🚐</span>
+                    <span class="veh-name">Ertiga</span>
+                    <span class="veh-detail">6-Seater MPV</span>
+                    <span class="veh-cap">6 seats</span>
+                  </button>
+                  <button class="veh-btn" data-veh="innova" id="veh-innova">
+                    <span class="veh-icon">🛻</span>
+                    <span class="veh-name">Innova</span>
+                    <span class="veh-detail">Crysta MUV</span>
+                    <span class="veh-cap">7 seats</span>
+                  </button>
+                  <button class="veh-btn" data-veh="tempo" id="veh-tempo">
+                    <span class="veh-icon">🚌</span>
+                    <span class="veh-name">Tempo</span>
+                    <span class="veh-detail">Traveller</span>
+                    <span class="veh-cap">12–17 seats</span>
+                  </button>
+                </div>
+              </div>
+
+              <button class="calc-btn" id="calc-btn">Calculate Fare</button>
+            </div>
+
+            <!-- Result Box -->
+            <div class="result-box" id="result-box" aria-live="polite">
+              <div class="result-empty" id="result-empty">
+                <span>👆 Select route & vehicle above, then click Calculate</span>
+              </div>
+              <div class="result-content" id="result-content" style="display:none">
+                <div class="result-header">
+                  <span class="result-route" id="result-route"></span>
+                  <span class="result-badge" id="result-badge"></span>
+                </div>
+                <div class="result-fare-row">
+                  <div class="result-fare-item">
+                    <span class="rf-label">Estimated Fare</span>
+                    <span class="rf-val" id="result-fare"></span>
+                  </div>
+                  <div class="result-fare-item">
+                    <span class="rf-label">Distance</span>
+                    <span class="rf-val" id="result-dist"></span>
+                  </div>
+                  <div class="result-fare-item">
+                    <span class="rf-label">Travel Time</span>
+                    <span class="rf-val" id="result-time"></span>
+                  </div>
+                </div>
+                <p class="result-note" id="result-note"></p>
+                <a class="btn btn--gold result-cta" id="result-wa" target="_blank" rel="noopener noreferrer">
+                  Book This Cab on WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar Info -->
+          <div class="calc-info">
+            <div class="info-card">
+              <h3>Rate Card</h3>
+              <div class="rate-list">
+                <div class="rate-row"><span>Sedan (Dzire/Etios)</span><strong>₹10/km</strong></div>
+                <div class="rate-row"><span>Ertiga (6-Seater)</span><strong>₹14/km</strong></div>
+                <div class="rate-row"><span>Innova Crysta</span><strong>₹18/km</strong></div>
+                <div class="rate-row"><span>Tempo Traveller</span><strong>₹25/km</strong></div>
+              </div>
+              <p class="rate-note">Toll charges extra. Driver allowance included for outstation routes &gt;300 km.</p>
+            </div>
+
+            <div class="info-card">
+              <h3>Quick Route Fares</h3>
+              <div class="quick-fares">
+                <div class="qf-row"><span>→ Jaipur</span><span class="qf-price">₹1,800 Sedan</span></div>
+                <div class="qf-row"><span>→ Pushkar</span><span class="qf-price">₹350 Sedan</span></div>
+                <div class="qf-row"><span>→ Jodhpur</span><span class="qf-price">₹2,800 Sedan</span></div>
+                <div class="qf-row"><span>→ Udaipur</span><span class="qf-price">₹3,500 Sedan</span></div>
+                <div class="qf-row"><span>→ Delhi</span><span class="qf-price">₹5,500 Sedan</span></div>
+                <div class="qf-row"><span>→ Jaisalmer</span><span class="qf-price">₹7,500 Sedan</span></div>
+              </div>
+            </div>
+
+            <div class="info-card trust-card">
+              <div class="trust-icon">📞</div>
+              <h3>Get Exact Quote</h3>
+              <p>For precise fares, custom routes, or group bookings — call or WhatsApp us directly.</p>
+              <a href={`tel:${business.phone}`} class="btn btn--primary btn--sm full-w">Call {business.phoneFormatted}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<script>
+  const WA_NUM = "917737314538";
+
+  const routes: Record<string, { dist: number; time: string; name: string }> = {
+    jaipur:       { dist: 135, time: "2.5 hrs", name: "Jaipur" },
+    pushkar:      { dist: 14,  time: "30 min",  name: "Pushkar" },
+    jodhpur:      { dist: 200, time: "3.5 hrs", name: "Jodhpur" },
+    udaipur:      { dist: 265, time: "4.5 hrs", name: "Udaipur" },
+    jaisalmer:    { dist: 530, time: "9 hrs",   name: "Jaisalmer" },
+    delhi:        { dist: 395, time: "6.5 hrs", name: "Delhi (NCR)" },
+    agra:         { dist: 390, time: "6.5 hrs", name: "Agra" },
+    ahmedabad:    { dist: 360, time: "6 hrs",   name: "Ahmedabad" },
+    mathura:      { dist: 330, time: "5.5 hrs", name: "Mathura–Vrindavan" },
+    kishangarh:   { dist: 28,  time: "45 min",  name: "Kishangarh Airport" },
+    bikaner:      { dist: 295, time: "5 hrs",   name: "Bikaner" },
+    "mount-abu":  { dist: 340, time: "6 hrs",   name: "Mount Abu" },
+    chittorgarh:  { dist: 185, time: "3.5 hrs", name: "Chittorgarh" },
+    ranthambore:  { dist: 260, time: "4.5 hrs", name: "Ranthambore" },
+  };
+
+  const rates: Record<string, { kmRate: number; name: string; seats: string }> = {
+    sedan:  { kmRate: 10, name: "Maruti Dzire / Etios Sedan", seats: "4 seats" },
+    ertiga: { kmRate: 14, name: "Maruti Ertiga (6-Seater)",   seats: "6 seats" },
+    innova: { kmRate: 18, name: "Toyota Innova Crysta",        seats: "7 seats" },
+    tempo:  { kmRate: 25, name: "Tempo Traveller (12–17)",     seats: "12–17 seats" },
+  };
+
+  let selectedTrip = "one-way";
+  let selectedVeh  = "sedan";
+
+  // Trip toggle
+  document.querySelectorAll<HTMLButtonElement>(".trip-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".trip-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      selectedTrip = btn.dataset.trip!;
+    });
+  });
+
+  // Vehicle toggle
+  document.querySelectorAll<HTMLButtonElement>(".veh-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".veh-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      selectedVeh = btn.dataset.veh!;
+    });
+  });
+
+  // Calculate
+  document.getElementById("calc-btn")!.addEventListener("click", () => {
+    const destKey = (document.getElementById("calc-to") as HTMLSelectElement).value;
+    const fromVal = (document.getElementById("calc-from") as HTMLSelectElement).value;
+
+    if (!destKey) {
+      alert("Please select a destination.");
+      return;
+    }
+
+    const route = routes[destKey];
+    const veh   = rates[selectedVeh];
+    const isRound = selectedTrip === "round-trip";
+
+    let km = route.dist;
+    if (isRound) km = km * 2;
+
+    // Apply minimum for very short routes
+    const rawFare = Math.max(km * veh.kmRate, 300);
+    // Round to nearest 100
+    const fare = Math.round(rawFare / 100) * 100;
+
+    // Populate result
+    document.getElementById("result-route")!.textContent = `${fromVal} → ${route.name}${isRound ? " (Round Trip)" : " (One Way)"}`;
+    document.getElementById("result-badge")!.textContent = veh.seats;
+    document.getElementById("result-fare")!.textContent = `₹${fare.toLocaleString("en-IN")}`;
+    document.getElementById("result-dist")!.textContent = isRound ? `~${route.dist * 2} km` : `~${route.dist} km`;
+    document.getElementById("result-time")!.textContent = isRound ? `${route.time} each way` : route.time;
+    document.getElementById("result-note")!.textContent = `Estimated fare for ${veh.name}. Toll charges are extra. No advance required — pay at destination.`;
+
+    // WhatsApp link
+    const waMsg = encodeURIComponent(`Hello Panwar Taxi Ajmer, I want to book a ${selectedTrip === "round-trip" ? "round-trip" : "one-way"} cab from ${fromVal} to ${route.name} in a ${veh.name}. The calculator shows ₹${fare.toLocaleString("en-IN")}. Please confirm availability.`);
+    (document.getElementById("result-wa") as HTMLAnchorElement).href = `https://wa.me/${WA_NUM}?text=${waMsg}`;
+
+    document.getElementById("result-empty")!.style.display = "none";
+    document.getElementById("result-content")!.style.display = "block";
+
+    // Scroll to result
+    document.getElementById("result-box")!.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  });
+</script>
+
+<style>
+  .calc-hero {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    padding: calc(var(--header-height, 72px) + 38px) 0 36px;
+    border-bottom: 3px solid var(--color-accent);
+    color: #FFF;
+  }
+  .calc-pill {
+    display: inline-block;
+    background: rgba(197,155,39,0.2);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-light);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 3px 14px;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-sm);
+  }
+  .calc-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: #FFF;
+    margin-bottom: 8px;
+  }
+  .calc-sub {
+    font-size: 1.0625rem;
+    color: rgba(255,255,255,0.88);
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .calc-section { padding: var(--space-4xl) 0; background: var(--color-surface); }
+  .calc-layout { display: grid; grid-template-columns: 1fr 320px; gap: var(--space-2xl); align-items: start; }
+
+  /* ─── Calculator Card ─── */
+  .calc-card {
+    background: #FFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-2xl);
+    box-shadow: 0 8px 32px rgba(34,24,28,0.08);
+  }
+  .calc-heading {
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-xl);
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-accent);
+  }
+  .calc-form { display: flex; flex-direction: column; gap: var(--space-lg); }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group label { font-size: 0.875rem; font-weight: 700; color: var(--color-text); letter-spacing: 0.02em; }
+  .form-group select {
+    padding: 10px 14px;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: 0.9375rem;
+    color: var(--color-text);
+    background: #FFF;
+    outline: none;
+    transition: border-color 0.2s;
+    cursor: pointer;
+  }
+  .form-group select:focus { border-color: var(--color-primary); }
+
+  /* Trip Toggle */
+  .trip-toggle { display: flex; gap: 0; border: 1.5px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; width: fit-content; }
+  .trip-btn { padding: 9px 24px; font-size: 0.875rem; font-weight: 700; background: transparent; border: none; cursor: pointer; color: var(--color-text-muted); transition: all 0.2s; }
+  .trip-btn.active { background: var(--color-primary); color: #FFF; }
+  .trip-btn:not(.active):hover { background: var(--color-surface); }
+
+  /* Vehicle Grid */
+  .vehicle-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+  .veh-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 12px 8px;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: #FFF;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .veh-btn.active { border-color: var(--color-primary); background: rgba(90,12,26,0.05); }
+  .veh-btn:hover:not(.active) { border-color: var(--color-accent); background: var(--color-cream); }
+  .veh-icon { font-size: 1.5rem; }
+  .veh-name { font-weight: 800; font-size: 0.8125rem; color: var(--color-primary); }
+  .veh-detail { font-size: 0.7rem; color: var(--color-text-muted); }
+  .veh-cap { font-size: 0.6875rem; color: var(--color-text-muted); background: var(--color-surface); border-radius: 4px; padding: 1px 5px; }
+  .veh-btn.active .veh-cap { background: var(--color-primary); color: #FFF; }
+
+  /* Calculate Button */
+  .calc-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: #FFF;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1.0625rem;
+    font-weight: 800;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: all 0.2s;
+    border-bottom: 3px solid var(--color-accent);
+  }
+  .calc-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+  /* Result Box */
+  .result-box {
+    margin-top: var(--space-xl);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .result-empty {
+    padding: var(--space-xl);
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.9375rem;
+    background: var(--color-surface);
+  }
+  .result-content { padding: var(--space-xl); background: var(--color-cream); }
+  .result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md); flex-wrap: wrap; gap: 8px; }
+  .result-route { font-family: var(--font-heading); font-size: 1.125rem; color: var(--color-primary); font-weight: 700; }
+  .result-badge { background: var(--color-primary); color: #FFF; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: var(--radius-full); }
+  .result-fare-row { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-md); margin-bottom: var(--space-md); }
+  .result-fare-item { text-align: center; background: #FFF; border-radius: var(--radius-md); padding: 12px; border: 1px solid var(--color-border); }
+  .rf-label { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-muted); margin-bottom: 4px; }
+  .rf-val { display: block; font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-primary); }
+  .result-note { font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: var(--space-md); line-height: 1.5; }
+  .result-cta { display: block; text-align: center; width: 100%; }
+
+  /* ─── Info Sidebar ─── */
+  .calc-info { display: flex; flex-direction: column; gap: var(--space-lg); }
+  .info-card { background: #FFF; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-lg); }
+  .info-card h3 { font-family: var(--font-heading); color: var(--color-primary); font-size: 1rem; margin-bottom: var(--space-md); padding-bottom: 6px; border-bottom: 2px solid var(--color-accent); }
+  .rate-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: var(--space-sm); }
+  .rate-row { display: flex; justify-content: space-between; font-size: 0.875rem; color: var(--color-text); padding-bottom: 6px; border-bottom: 1px dashed var(--color-border); }
+  .rate-row strong { color: var(--color-primary); }
+  .rate-note { font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+  .quick-fares { display: flex; flex-direction: column; gap: 6px; }
+  .qf-row { display: flex; justify-content: space-between; font-size: 0.8125rem; color: var(--color-text); padding: 4px 0; border-bottom: 1px dashed var(--color-border); }
+  .qf-price { font-weight: 700; color: var(--color-primary); }
+  .trust-card { text-align: center; background: var(--color-cream); }
+  .trust-icon { font-size: 2rem; margin-bottom: 8px; }
+  .trust-card p { font-size: 0.8125rem; color: var(--color-text-muted); margin-bottom: var(--space-md); line-height: 1.5; }
+  .full-w { width: 100%; justify-content: center; }
+
+  @media (max-width: 1024px) { .calc-layout { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) {
+    .vehicle-grid { grid-template-columns: repeat(2,1fr); }
+    .result-fare-row { grid-template-columns: 1fr; }
+    .calc-card { padding: var(--space-lg); }
+  }
+</style>

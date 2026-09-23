@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="dzireGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5A0C1A" />
+      <stop offset="100%" stop-color="#2D060C" />
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCF8F0" />
+      <stop offset="100%" stop-color="#F4ECE1" />
+    </linearGradient>
+    <filter id="carShadow" x="-10%" y="-10%" width="120%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#22181C" flood-opacity="0.25" />
+    </filter>
+  </defs>
+  <rect width="600" height="360" rx="16" fill="url(#bgGrad)"/>
+  <circle cx="300" cy="180" r="140" fill="#E8DDCF" opacity="0.4"/>
+  <g filter="url(#carShadow)">
+    <!-- Sedan Body with Boot -->
+    <path d="M100 225 L145 220 L185 165 Q230 135 305 135 L390 135 Q445 138 480 185 L525 210 Q535 225 515 238 L105 238 Q90 235 100 225 Z" fill="url(#dzireGrad)"/>
+    <!-- Windows -->
+    <path d="M195 165 L270 142 L375 142 L430 178 Z" fill="#22181C" opacity="0.85"/>
+    <path d="M280 148 L360 148 L360 175 L280 175 Z" fill="#D6E4EE" opacity="0.9"/>
+    <path d="M368 148 L420 175 L368 175 Z" fill="#B0C8DA" opacity="0.85"/>
+    <path d="M272 148 L205 172 L272 172 Z" fill="#B0C8DA" opacity="0.85"/>
+    <!-- Wheels -->
+    <circle cx="180" cy="238" r="32" fill="#1C1819"/>
+    <circle cx="180" cy="238" r="18" fill="#C59B27"/>
+    <circle cx="180" cy="238" r="8" fill="#FFF"/>
+    <circle cx="440" cy="238" r="32" fill="#1C1819"/>
+    <circle cx="440" cy="238" r="18" fill="#C59B27"/>
+    <circle cx="440" cy="238" r="8" fill="#FFF"/>
+    <!-- Details -->
+    <path d="M510 205 L530 215 L505 220 Z" fill="#FFDD80"/>
+    <path d="M98 220 L108 228 L95 228 Z" fill="#E53935"/>
+    <!-- Chrome Trim -->
+    <line x1="200" y1="210" x2="420" y2="210" stroke="#C59B27" stroke-width="2.5"/>
+  </g>
+  <text x="300" y="315" font-family="'Marcellus', serif" font-size="20" font-weight="bold" fill="#5A0C1A" text-anchor="middle">Maruti Swift Dzire (Sedan)</text>
+  <text x="300" y="338" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" fill="#66585C" text-anchor="middle">4 Seats • 2 Luggage • AC • Starting @ ₹11/km</text>
+</svg>

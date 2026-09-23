@@ -1,0 +1,337 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateServiceSchema } from "@/utils/seo";
+
+const pageTitle = "Ajmer to Kishangarh Airport Taxi | Cab Fare from ₹800 (Since 2008)";
+const pageDescription = "Reliable taxi service from Ajmer & Pushkar to Kishangarh Airport (KQH). 30 km in 45 minutes. Fixed fares from ₹800. Guaranteed flight synchronization 24/7.";
+
+const waSedan = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Kishangarh Airport (KQH)", vehicle: "Sedan (₹800)" });
+const waErtiga = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Kishangarh Airport (KQH)", vehicle: "Ertiga (₹1,400)" });
+
+const serviceSchema = generateServiceSchema({
+  name: "Ajmer to Kishangarh Airport Taxi Service",
+  description: "24/7 airport pickup and drop taxi service between Ajmer/Pushkar and Kishangarh Airport (KQH).",
+  providerName: business.name,
+  providerUrl: business.website,
+  price: "800",
+  priceCurrency: "INR"
+});
+
+const kishangarhFaqs = [
+  {
+    question: "What is the distance from Ajmer to Kishangarh Airport?",
+    answer: "Kishangarh Airport (KQH) is located approximately 30 km northeast of Ajmer. The smooth highway drive takes about 40 to 45 minutes.",
+    category: "Routes" as const
+  },
+  {
+    question: "What is the taxi fare for an Ajmer to Kishangarh Airport cab?",
+    answer: "One-way AC sedan transfer starts from ₹800. A 6-seater Maruti Ertiga is ₹1,400, and an Innova Crysta is ₹2,200.",
+    category: "Pricing" as const
+  },
+  {
+    question: "Can I book a cab from Kishangarh Airport to Pushkar?",
+    answer: "Yes, we provide direct airport pickups for incoming flights at Kishangarh Airport with drops to any hotel or resort in Pushkar (~45 km, ~1 hour).",
+    category: "Booking" as const
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/ajmer-to-kishangarh-airport-taxi/" schemaMarkup={serviceSchema}>
+  <Header />
+
+  <main id="main-content">
+    <section class="route-hero">
+      <div class="container text-center">
+        <span class="heritage-pill">Closest Regional Airport Hub</span>
+        <h1 class="route-title">Ajmer to Kishangarh Airport Taxi</h1>
+        <p class="route-subtitle">30 km • 45 Minutes • Fares from ₹800 • 24/7 Doorstep Pickup Across Ajmer &amp; Pushkar</p>
+      </div>
+    </section>
+
+    <section class="route-content-section">
+      <div class="container">
+        <div class="route-grid">
+          <div class="route-main">
+            <span class="section-subtitle">Punctual Airport Transfers</span>
+            <h2 class="section-title">The Fastest Route to Kishangarh Airport (KQH)</h2>
+            <p>
+              <strong>Kishangarh Airport (KQH)</strong> is the closest commercial airport serving both Ajmer and Pushkar. With increasing daily flights connecting to major industrial and pilgrimage hubs like Ahmedabad, Surat, and Hyderabad, having a dependable cab that arrives on time is essential.
+            </p>
+            <p>
+              Panwar Taxi provides 24/7 dedicated transfers. Our drivers arrive 15 minutes before your requested pickup time in Ajmer, assist with your luggage, and navigate directly to the airport departures terminal.
+            </p>
+
+            <h3 class="tier-heading">Vehicle Options</h3>
+            <div class="pricing-cards-row">
+              <div class="p-card">
+                <span class="p-type">Comfort Sedan</span>
+                <h4 class="p-car">Maruti Swift Dzire</h4>
+                <div class="p-fare">From ₹800 <small>one-way</small></div>
+                <ul class="p-features">
+                  <li>✓ 4 Passenger Seats</li>
+                  <li>✓ 2-3 Suitcases</li>
+                  <li>✓ Chilled AC</li>
+                </ul>
+                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">
+                  Book Sedan @ ₹800
+                </a>
+              </div>
+
+              <div class="p-card featured-p-card">
+                <span class="p-type gold">Family MPV</span>
+                <h4 class="p-car">Maruti Ertiga</h4>
+                <div class="p-fare">From ₹1,400 <small>one-way</small></div>
+                <ul class="p-features">
+                  <li>✓ 6 Passenger Seats</li>
+                  <li>✓ 4+ Suitcases</li>
+                  <li>✓ Dual AC</li>
+                </ul>
+                <a href={waErtiga} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm p-btn">
+                  Book Ertiga @ ₹1,400
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <aside class="route-sidebar">
+            <div class="sidebar-box">
+              <h3 class="side-title">Route Summary</h3>
+              <div class="side-list">
+                <div class="side-item">
+                  <span class="s-label">Distance:</span>
+                  <span class="s-val">~30 km</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Time:</span>
+                  <span class="s-val">40 - 45 Mins</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Airport Code:</span>
+                  <span class="s-val">KQH</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Starting Fare:</span>
+                  <span class="s-val gold-text">₹800 (Sedan)</span>
+                </div>
+              </div>
+
+              <div class="side-actions">
+                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm full-w">
+                  WhatsApp Instant Quote
+                </a>
+                <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn--sm full-w">
+                  Call: {business.phoneFormatted}
+                </a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <FAQ items={kishangarhFaqs} title="Kishangarh Airport Taxi FAQs" subtitle="Common Inquiries" />
+  </main>
+
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .route-hero {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #FFFFFF;
+    padding: calc(var(--header-height, 74px) + 38px) 0 36px;
+    border-bottom: 3px solid var(--color-accent);
+  }
+
+  .heritage-pill {
+    display: inline-block;
+    background: rgba(197, 155, 39, 0.2);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-light);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    margin-bottom: 12px;
+  }
+
+  .route-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+
+  .route-subtitle {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .route-content-section {
+    padding: var(--space-4xl) 0;
+    background: #FFFFFF;
+  }
+
+  .route-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: var(--space-3xl);
+  }
+
+  .tier-heading {
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    color: var(--color-primary);
+    margin: var(--space-xl) 0 var(--space-md);
+  }
+
+  .pricing-cards-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .p-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .featured-p-card {
+    border: 2px solid var(--color-accent);
+    background: var(--color-cream);
+  }
+
+  .p-type {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-transform: uppercase;
+  }
+
+  .p-type.gold {
+    color: var(--color-accent-dark);
+  }
+
+  .p-car {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin: 4px 0;
+  }
+
+  .p-fare {
+    font-family: var(--font-heading);
+    font-size: 1.625rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .p-fare small {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .p-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-lg) 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.84375rem;
+    color: var(--color-text);
+    flex: 1;
+  }
+
+  .p-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: auto;
+  }
+
+  .route-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .sidebar-box {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+  }
+
+  .side-title {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  .side-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: var(--space-lg);
+  }
+
+  .side-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.84375rem;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed var(--color-border);
+  }
+
+  .s-label {
+    color: var(--color-text-muted);
+  }
+
+  .s-val {
+    font-weight: 600;
+  }
+
+  .gold-text {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .side-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .full-w {
+    width: 100%;
+    justify-content: center;
+  }
+
+  @media (max-width: 992px) {
+    .route-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

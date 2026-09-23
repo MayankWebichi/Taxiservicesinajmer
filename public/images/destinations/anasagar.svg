@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyAna" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4C111E" />
+      <stop offset="60%" stop-color="#8A3442" />
+      <stop offset="100%" stop-color="#DCA06B" />
+    </linearGradient>
+    <linearGradient id="waterAna" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#284B63" />
+      <stop offset="100%" stop-color="#153243" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="230" fill="url(#skyAna)"/>
+  <!-- Sunset Sun -->
+  <circle cx="480" cy="140" r="35" fill="#FFEAA7" opacity="0.85"/>
+  <!-- Hills surrounding Ana Sagar -->
+  <path d="M0 200 Q150 140 280 190 T600 170 L600 230 L0 230 Z" fill="#3D1822" opacity="0.7"/>
+  <!-- Water -->
+  <rect x="0" y="230" width="600" height="170" fill="url(#waterAna)"/>
+  <!-- White Marble Baradari Pavilion -->
+  <!-- Base platform -->
+  <rect x="140" y="190" width="320" height="40" fill="#FCF8F0"/>
+  <!-- Columns -->
+  <rect x="160" y="140" width="14" height="50" fill="#FCF8F0"/>
+  <rect x="220" y="140" width="14" height="50" fill="#FCF8F0"/>
+  <rect x="280" y="140" width="14" height="50" fill="#FCF8F0"/>
+  <rect x="340" y="140" width="14" height="50" fill="#FCF8F0"/>
+  <rect x="400" y="140" width="14" height="50" fill="#FCF8F0"/>
+  <!-- Mughal Arches -->
+  <path d="M160 140 Q197 125 234 140" fill="none" stroke="#FCF8F0" stroke-width="8"/>
+  <path d="M220 140 Q257 125 294 140" fill="none" stroke="#FCF8F0" stroke-width="8"/>
+  <path d="M280 140 Q317 125 354 140" fill="none" stroke="#FCF8F0" stroke-width="8"/>
+  <path d="M340 140 Q377 125 414 140" fill="none" stroke="#FCF8F0" stroke-width="8"/>
+  <!-- Roof Canopy -->
+  <polygon points="130,135 470,135 440,115 160,115" fill="#FCF8F0"/>
+  <polygon points="270,115 330,115 315,95 285,95" fill="#C59B27"/>
+  <!-- Water Reflection -->
+  <rect x="160" y="235" width="280" height="30" fill="#FCF8F0" opacity="0.2"/>
+  <!-- Boat -->
+  <path d="M70 270 Q95 285 120 270 Z" fill="#5A0C1A"/>
+  <line x1="95" y1="270" x2="95" y2="250" stroke="#FFF" stroke-width="2"/>
+  <polygon points="95,250 115,260 95,265" fill="#FFEAA7"/>
+  <!-- Caption -->
+  <rect x="0" y="330" width="600" height="70" fill="#FCF8F0"/>
+  <text x="300" y="365" font-family="'Marcellus', serif" font-size="22" font-weight="bold" fill="#5A0C1A" text-anchor="middle">Ana Sagar Lake &amp; Daulat Bagh</text>
+  <text x="300" y="388" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" fill="#66585C" text-anchor="middle">Historic Marble Baradari &amp; Sunset Boating • 4 km from Station</text>
+</svg>

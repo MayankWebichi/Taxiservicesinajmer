@@ -1,0 +1,368 @@
+---
+import { business } from "@/data/business";
+---
+
+<section class="trust-strip" aria-label="Why Trust Panwar Taxi — Ajmer's #1 Cab Service Since 2008">
+  <div class="trust-inner">
+
+    <!-- Heritage Badge -->
+    <div class="heritage-badge">
+      <div class="hb-ring">
+        <div class="hb-core">
+          <span class="hb-year">2008</span>
+          <span class="hb-label">ESTD</span>
+        </div>
+      </div>
+      <div class="hb-text">
+        <span class="hb-eyebrow">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Rajasthan Tourism Registered
+        </span>
+        <h2 class="hb-title">Ajmer's Most Trusted Cab</h2>
+        <p class="hb-sub">Licensed &bull; Verified &bull; 18+ Years Strong</p>
+      </div>
+    </div>
+
+    <!-- Vertical Divider -->
+    <div class="trust-divider" aria-hidden="true"></div>
+
+    <!-- Stats Row -->
+    <div class="stats-row">
+
+      <div class="stat-item">
+        <div class="stat-icon stat-icon--gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="stat-body">
+          <span class="stat-val">18+</span>
+          <span class="stat-key">Years Active</span>
+          <span class="stat-note">Since 2008, Ajmer</span>
+        </div>
+      </div>
+
+      <div class="stat-sep" aria-hidden="true"></div>
+
+      <div class="stat-item">
+        <div class="stat-icon stat-icon--green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="stat-body">
+          <span class="stat-val">50,000+</span>
+          <span class="stat-key">Happy Rides</span>
+          <span class="stat-note">Locally Verified</span>
+        </div>
+      </div>
+
+      <div class="stat-sep" aria-hidden="true"></div>
+
+      <div class="stat-item">
+        <div class="stat-icon stat-icon--gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h5l2 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="stat-body">
+          <span class="stat-val">14</span>
+          <span class="stat-key">AC Cabs</span>
+          <span class="stat-note">All Permit Verified</span>
+        </div>
+      </div>
+
+      <div class="stat-sep" aria-hidden="true"></div>
+
+      <div class="stat-item">
+        <div class="stat-icon stat-icon--green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 015.11 12 19.79 19.79 0 012.04 3.37 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div class="stat-body">
+          <span class="stat-val">24/7</span>
+          <span class="stat-key">Dispatch</span>
+          <span class="stat-note">Call &amp; WhatsApp</span>
+        </div>
+      </div>
+
+      <div class="stat-sep" aria-hidden="true"></div>
+
+      <div class="stat-item">
+        <div class="stat-icon stat-icon--gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="stat-body">
+          <span class="stat-val">&#8377;0</span>
+          <span class="stat-key">Advance</span>
+          <span class="stat-note">Pay After Ride</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .trust-strip {
+    background: linear-gradient(135deg, #2A040D 0%, #5A0C1A 55%, #3B0A12 100%);
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(197,155,39,0.3);
+    border-bottom: 3px solid #C59B27;
+  }
+
+  .trust-strip::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(197,155,39,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .trust-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 4vw, 40px);
+    display: flex;
+    align-items: center;
+    gap: clamp(20px, 3vw, 40px);
+    flex-wrap: wrap;
+  }
+
+  /* ─── Heritage Badge ─── */
+  .heritage-badge {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 0;
+    flex-shrink: 0;
+  }
+
+  .hb-ring {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: conic-gradient(#C59B27 0deg, #F5D278 90deg, #C59B27 180deg, #785307 270deg, #C59B27 360deg);
+    padding: 3px;
+    box-shadow: 0 0 0 1px rgba(197,155,39,0.4), 0 6px 24px rgba(0,0,0,0.5);
+    animation: spin-slow 20s linear infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  .hb-core {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #1A0408;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(197,155,39,0.2);
+  }
+
+  .hb-year {
+    font-family: var(--font-heading, serif);
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: #F5D278;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  .hb-label {
+    font-size: 0.475rem;
+    letter-spacing: 0.2em;
+    font-weight: 800;
+    color: rgba(245,210,120,0.7);
+    margin-top: 2px;
+  }
+
+  .hb-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .hb-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #F5D278;
+    opacity: 0.85;
+  }
+
+  .hb-title {
+    font-family: var(--font-heading, serif);
+    font-size: clamp(1rem, 1.8vw, 1.3rem);
+    font-weight: 900;
+    color: #FFFFFF;
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .hb-sub {
+    font-size: 0.72rem;
+    color: rgba(245,210,120,0.75);
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+
+  /* ─── Vertical Divider ─── */
+  .trust-divider {
+    width: 1px;
+    height: 56px;
+    background: linear-gradient(to bottom, transparent, rgba(197,155,39,0.4), transparent);
+    flex-shrink: 0;
+  }
+
+  /* ─── Stats Row ─── */
+  .stats-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex: 1;
+    flex-wrap: wrap;
+  }
+
+  .stat-sep {
+    width: 1px;
+    height: 40px;
+    background: rgba(197,155,39,0.2);
+    flex-shrink: 0;
+    margin: 0 clamp(8px, 1.5vw, 20px);
+  }
+
+  .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 0;
+    flex-shrink: 0;
+  }
+
+  .stat-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .stat-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .stat-icon--green {
+    background: rgba(16,185,129,0.15);
+    border: 1px solid rgba(16,185,129,0.3);
+    color: #34D399;
+  }
+
+  .stat-icon--gold {
+    background: rgba(197,155,39,0.15);
+    border: 1px solid rgba(197,155,39,0.3);
+    color: #F5D278;
+  }
+
+  .stat-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .stat-val {
+    font-family: var(--font-heading, serif);
+    font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+    font-weight: 900;
+    color: #FFFFFF;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+
+  .stat-key {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #F5D278;
+    line-height: 1;
+  }
+
+  .stat-note {
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.4);
+    font-weight: 400;
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 900px) {
+    .trust-inner {
+      flex-direction: column;
+      align-items: stretch;
+      padding-top: 16px;
+      padding-bottom: 16px;
+      gap: 0;
+    }
+
+    .heritage-badge {
+      padding: 4px 0 12px;
+      justify-content: flex-start;
+    }
+
+    .trust-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(197,155,39,0.35), transparent);
+      margin-bottom: 12px;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      flex: unset;
+    }
+
+    .stat-sep {
+      display: none;
+    }
+
+    .stat-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(197,155,39,0.15);
+      border-radius: 10px;
+      padding: 10px 12px;
+      gap: 8px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stats-row {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+
+    .hb-ring {
+      width: 56px;
+      height: 56px;
+    }
+
+    .hb-year {
+      font-size: 0.95rem;
+    }
+
+    .stat-val {
+      font-size: 1.05rem;
+    }
+  }
+</style>
+

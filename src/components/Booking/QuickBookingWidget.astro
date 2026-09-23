@@ -1,0 +1,498 @@
+---
+import { routes } from "@/data/routes";
+import { vehicles } from "@/data/vehicles";
+import { business } from "@/data/business";
+---
+
+<section class="booking-widget-section" id="booking-widget" aria-label="Quick Taxi Booking Widget">
+  <div class="container">
+    <div class="booking-card">
+      <div class="booking-header">
+        <h2 class="booking-title">Get an Instant Fare Quote</h2>
+        <p class="booking-subtitle">Verified transparent rates • Instant WhatsApp confirmation • Serving Since 2008</p>
+      </div>
+
+      <!-- Trip Type Selector -->
+      <div class="trip-tabs" role="tablist" aria-label="Trip Types">
+        <button type="button" class="trip-tab active" data-type="One-Way" role="tab" aria-selected="true">
+          One-Way Cab
+        </button>
+        <button type="button" class="trip-tab" data-type="Round Trip" role="tab" aria-selected="false">
+          Round Trip
+        </button>
+        <button type="button" class="trip-tab" data-type="Airport Transfer" role="tab" aria-selected="false">
+          Airport Transfer
+        </button>
+        <button type="button" class="trip-tab" data-type="Local Sightseeing" role="tab" aria-selected="false">
+          Local Sightseeing
+        </button>
+      </div>
+
+      <!-- Booking Form -->
+      <form class="booking-form" id="taxi-quick-form" onsubmit="return false;">
+        <div class="form-grid">
+          <!-- Preset Popular Route or Custom -->
+          <div class="form-group route-select-group">
+            <label for="booking-route" class="form-label">Select Verified Route (or Custom)</label>
+            <div class="input-wrapper">
+              <select id="booking-route" class="form-control" name="route">
+                <option value="custom">Custom Pickup &amp; Drop</option>
+                {routes.map((r) => (
+                  <option 
+                    value={r.id}
+                    data-origin={r.from}
+                    data-dest={r.to}
+                    data-dist={r.distanceKm}
+                    data-time={r.estimatedTime}
+                    data-fixed={r.pricing.startingPrice || 0}
+                  >
+                    {r.from} ➔ {r.to} ({r.distanceKm} km {r.pricing.startingPrice ? `• ₹${r.pricing.startingPrice}` : ""})
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <!-- Pickup Location -->
+          <div class="form-group">
+            <label for="pickup-loc" class="form-label">Pickup Location</label>
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <input 
+                type="text" 
+                id="pickup-loc" 
+                class="form-control" 
+                placeholder="e.g. Ajmer Railway Station / Hotel" 
+                value="Ajmer" 
+                required 
+              />
+            </div>
+          </div>
+
+          <!-- Drop Location -->
+          <div class="form-group">
+            <label for="drop-loc" class="form-label">Drop Location</label>
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <input 
+                type="text" 
+                id="drop-loc" 
+                class="form-control" 
+                placeholder="e.g. Jaipur / Pushkar / Delhi Airport" 
+                value="Jaipur" 
+                required 
+              />
+            </div>
+          </div>
+
+          <!-- Preferred Vehicle -->
+          <div class="form-group">
+            <label for="vehicle-select" class="form-label">Vehicle Category</label>
+            <div class="input-wrapper">
+              <select id="vehicle-select" class="form-control" name="vehicle">
+                {vehicles.map((v) => (
+                  <option value={v.name} data-rate={v.ratePerKm} data-seats={v.seats}>
+                    {v.name} ({v.categoryLabel} • {v.seats} Seats) — ₹{v.ratePerKm}/km
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <!-- Pickup Date -->
+          <div class="form-group">
+            <label for="travel-date" class="form-label">Pickup Date</label>
+            <div class="input-wrapper">
+              <input type="date" id="travel-date" class="form-control" required />
+            </div>
+          </div>
+
+          <!-- Passengers Count -->
+          <div class="form-group">
+            <label for="passengers-count" class="form-label">Passengers</label>
+            <div class="input-wrapper">
+              <select id="passengers-count" class="form-control">
+                <option value="1">1 Passenger</option>
+                <option value="2">2 Passengers</option>
+                <option value="3">3 Passengers</option>
+                <option value="4" selected>4 Passengers</option>
+                <option value="5">5 Passengers</option>
+                <option value="6">6 Passengers</option>
+                <option value="7">7 Passengers</option>
+                <option value="8+">8+ Passengers (Tempo)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Estimated Summary Box -->
+        <div class="fare-preview-box" id="fare-preview-box">
+          <div class="fare-details">
+            <span class="fare-label">Estimated Route Fare:</span>
+            <div class="fare-amount-wrapper">
+              <span class="fare-currency">₹</span>
+              <span class="fare-value" id="preview-fare">1,800</span>
+              <span class="fare-note" id="preview-note">Fixed one-way rate for Ajmer ➔ Jaipur (Dzire/Etios)</span>
+            </div>
+          </div>
+          <div class="fare-badges">
+            <span class="badge-item">✓ AC Included</span>
+            <span class="badge-item">✓ Toll &amp; Tax Extra</span>
+            <span class="badge-item">✓ No Advance</span>
+          </div>
+        </div>
+
+        <!-- Submit CTAs -->
+        <div class="form-actions">
+          <button type="button" class="btn btn--gold btn--lg btn--submit" id="btn-submit-whatsapp">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.288.043.088.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.2.662.589 1.221.77 1.394.856.173.086.275.073.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.043.072.043.419-.101.824z"/></svg>
+            Confirm via WhatsApp
+          </button>
+          <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn--lg">
+            Call Direct: {business.phoneFormatted}
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ phone: business.phone }}>
+  // Set default pickup date to today
+  const dateInput = document.getElementById("travel-date");
+  if (dateInput) {
+    const today = new Date().toISOString().split("T")[0];
+    dateInput.value = today;
+    dateInput.min = today;
+  }
+
+  let selectedTripType = "One-Way";
+  const routeSelect = document.getElementById("booking-route");
+  const pickupInput = document.getElementById("pickup-loc");
+  const dropInput = document.getElementById("drop-loc");
+  const vehicleSelect = document.getElementById("vehicle-select");
+  const fareValue = document.getElementById("preview-fare");
+  const fareNote = document.getElementById("preview-note");
+  const tripTabs = document.querySelectorAll(".trip-tab");
+
+  // Handle Tab Switch
+  tripTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      tripTabs.forEach((t) => {
+        t.classList.remove("active");
+        t.setAttribute("aria-selected", "false");
+      });
+      tab.classList.add("active");
+      tab.setAttribute("aria-selected", "true");
+      selectedTripType = tab.getAttribute("data-type") || "One-Way";
+      updateCalculation();
+    });
+  });
+
+  // Handle Route Dropdown change
+  if (routeSelect) {
+    routeSelect.addEventListener("change", (e) => {
+      const selected = routeSelect.options[routeSelect.selectedIndex];
+      if (selected.value !== "custom") {
+        pickupInput.value = selected.getAttribute("data-origin") || "Ajmer";
+        dropInput.value = selected.getAttribute("data-dest") || "";
+      }
+      updateCalculation();
+    });
+  }
+
+  // Handle Vehicle and Input changes
+  if (vehicleSelect) vehicleSelect.addEventListener("change", updateCalculation);
+  if (pickupInput) pickupInput.addEventListener("input", updateCalculation);
+  if (dropInput) dropInput.addEventListener("input", updateCalculation);
+
+  function updateCalculation() {
+    const selectedRoute = routeSelect.options[routeSelect.selectedIndex];
+    const fixed = parseFloat(selectedRoute.getAttribute("data-fixed") || "0");
+    const dist = parseFloat(selectedRoute.getAttribute("data-dist") || "0");
+    const selectedVeh = vehicleSelect.options[vehicleSelect.selectedIndex];
+    const rate = parseFloat(selectedVeh.getAttribute("data-rate") || "11");
+
+    if (fixed > 0 && selectedTripType === "One-Way" && selectedRoute.value.includes("jaipur")) {
+      fareValue.textContent = fixed.toLocaleString("en-IN");
+      fareNote.textContent = `Fixed verified rate for ${selectedRoute.getAttribute("data-origin")} ➔ ${selectedRoute.getAttribute("data-dest")}`;
+    } else if (dist > 0) {
+      const multiplier = selectedTripType === "Round Trip" ? 2 : 1;
+      const totalKm = dist * multiplier;
+      const estimated = Math.round(totalKm * rate);
+      fareValue.textContent = estimated.toLocaleString("en-IN");
+      fareNote.textContent = `Est. based on ~${totalKm} km @ ₹${rate}/km (${selectedVeh.text.split(" (")[0]})`;
+    } else {
+      fareValue.textContent = (rate * 100).toLocaleString("en-IN") + "*";
+      fareNote.textContent = `Minimum starting outstation rate @ ₹${rate}/km`;
+    }
+  }
+
+  // Handle WhatsApp Submit
+  const submitBtn = document.getElementById("btn-submit-whatsapp");
+  if (submitBtn) {
+    submitBtn.addEventListener("click", () => {
+      const pickup = pickupInput.value.trim() || "Ajmer";
+      const drop = dropInput.value.trim() || "Not specified";
+      const vehicle = vehicleSelect.value;
+      const date = dateInput.value || "Today";
+      const passengers = document.getElementById("passengers-count").value;
+      const estimatedFare = fareValue.textContent;
+
+      const message = 
+`*New Taxi Inquiry — Panwar Taxi Ajmer*
+--------------------------------
+• *Trip Type:* ${selectedTripType}
+• *Pickup:* ${pickup}
+• *Destination:* ${drop}
+• *Vehicle:* ${vehicle}
+• *Date:* ${date}
+• *Passengers:* ${passengers}
+• *Estimated Fare:* ₹${estimatedFare}
+--------------------------------
+Please confirm taxi availability and final quote. Thank you!`;
+
+      const cleanPhone = phone.replace(/[^0-9]/g, "");
+      const waUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
+      window.open(waUrl, "_blank");
+    });
+  }
+
+  // Initial calculation
+  updateCalculation();
+</script>
+
+<style>
+  .booking-widget-section {
+    position: relative;
+    margin-top: -40px;
+    z-index: 10;
+    padding-bottom: var(--space-3xl);
+  }
+
+  .booking-card {
+    background: #FFFFFF;
+    border-radius: var(--radius-xl);
+    box-shadow: 0 16px 40px rgba(34, 24, 28, 0.12);
+    border: 1px solid var(--color-border);
+    padding: var(--space-xl) var(--space-2xl);
+  }
+
+  .booking-header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .booking-title {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    color: var(--color-primary);
+    margin-bottom: 4px;
+  }
+
+  .booking-subtitle {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+  }
+
+  .trip-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: var(--space-xl);
+    flex-wrap: wrap;
+  }
+
+  .trip-tab {
+    background: var(--color-cream);
+    border: 1px solid var(--color-border);
+    padding: 10px 20px;
+    border-radius: var(--radius-full);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .trip-tab:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .trip-tab.active {
+    background: var(--color-primary);
+    color: #FFFFFF;
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(90, 12, 26, 0.25);
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+
+  .route-select-group {
+    grid-column: 1 / -1;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .input-icon {
+    position: absolute;
+    left: 12px;
+    width: 18px;
+    height: 18px;
+    color: var(--color-primary);
+    pointer-events: none;
+  }
+
+  .input-wrapper input {
+    padding-left: 38px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 0.9375rem;
+    color: var(--color-text);
+    background-color: var(--color-cream);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .form-control:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(90, 12, 26, 0.15);
+    background-color: #FFFFFF;
+  }
+
+  .fare-preview-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, var(--color-cream) 0%, #F5ECE0 100%);
+    border: 1px solid var(--color-border);
+    border-left: 5px solid var(--color-accent);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-lg);
+    margin-bottom: var(--space-lg);
+  }
+
+  .fare-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .fare-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .fare-amount-wrapper {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .fare-currency {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .fare-value {
+    font-size: 1.875rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+  }
+
+  .fare-note {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-left: 8px;
+  }
+
+  .fare-badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .badge-item {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    background: rgba(90, 12, 26, 0.08);
+    color: var(--color-primary);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+  }
+
+  .form-actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+  }
+
+  .btn--submit {
+    flex: 1;
+    max-width: 380px;
+  }
+
+  @media (max-width: 992px) {
+    .form-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .booking-widget-section {
+      margin-top: -24px;
+      padding-bottom: var(--space-xl);
+    }
+    .booking-card {
+      padding: var(--space-lg) var(--space-md);
+    }
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+    .fare-preview-box {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-sm);
+    }
+    .form-actions {
+      flex-direction: column;
+    }
+    .btn--submit {
+      max-width: 100%;
+    }
+  }
+</style>

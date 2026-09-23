@@ -1,0 +1,301 @@
+---
+import { vehicles } from "@/data/vehicles";
+import VehicleCard from "./VehicleCard.astro";
+
+export interface Props {
+  limit?: number;
+  showFilters?: boolean;
+}
+
+const { limit, showFilters = true } = Astro.props;
+const displayVehicles = limit ? vehicles.slice(0, limit) : vehicles;
+---
+
+<section class="fleet-section" id="fleet-section" aria-label="Our Taxi Fleet in Ajmer">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-subtitle">Verified Comfort &amp; Safety</span>
+      <h2 class="section-title">Our Premium Fleet in Ajmer</h2>
+      <p class="section-desc">
+        Every vehicle is 100% air-conditioned, commercially insured, regularly serviced, and driven by courteous local chauffeurs. Clear per-km pricing with zero hidden surcharges.
+      </p>
+
+      {showFilters && (
+        <div class="fleet-filters-wrapper">
+          <div class="fleet-filters" role="group" aria-label="Filter fleet by category">
+            <button type="button" class="filter-btn active" data-filter="all">
+              <span class="filter-label">All Cabs</span>
+              <span class="filter-badge">{vehicles.length}</span>
+            </button>
+            <button type="button" class="filter-btn" data-filter="Sedan">
+              <span class="filter-label">Sedan</span>
+              <span class="filter-sub">(Dzire / Etios)</span>
+            </button>
+            <button type="button" class="filter-btn" data-filter="SUV">
+              <span class="filter-label">SUV</span>
+              <span class="filter-sub">(Innova / Ertiga)</span>
+            </button>
+            <button type="button" class="filter-btn" data-filter="Hatchback">
+              <span class="filter-label">Hatchback</span>
+              <span class="filter-sub">(Glanza)</span>
+            </button>
+            <button type="button" class="filter-btn" data-filter="Tempo Traveller">
+              <span class="filter-label">Tempo</span>
+              <span class="filter-sub">(12-27 Seater)</span>
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+
+    <div class="vehicles-grid" id="vehicles-container">
+      {displayVehicles.map((v) => (
+        <div class="grid-item" data-category={v.category}>
+          <VehicleCard vehicle={v} />
+        </div>
+      ))}
+    </div>
+
+    <div class="fleet-cta-banner">
+      <div class="banner-text">
+        <h3>Looking for Outstation or Multi-City Tour Packages?</h3>
+        <p>Custom multi-day itineraries for Jaipur, Udaipur, Jodhpur, and Jaisalmer with dedicated chauffeur.</p>
+      </div>
+      <a href="/taxi-rental/#fleet-comparison" class="btn btn--secondary">
+        Compare All Vehicles
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const items = document.querySelectorAll(".grid-item");
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filterBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const filter = btn.getAttribute("data-filter");
+      items.forEach((item) => {
+        const cat = item.getAttribute("data-category");
+        if (filter === "all" || cat === filter) {
+          (item as HTMLElement).style.display = "block";
+        } else {
+          (item as HTMLElement).style.display = "none";
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .fleet-section {
+    padding: clamp(36px, 5vw, 56px) 0;
+    background-color: var(--color-surface);
+  }
+
+  .section-subtitle {
+    display: inline-block;
+    color: var(--color-accent);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-xs);
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .section-desc {
+    max-width: 680px;
+    margin: 0 auto var(--space-xl);
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .fleet-filters-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto var(--space-2xl);
+    width: 100%;
+    overflow-x: auto;
+    padding: 6px 4px 12px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .fleet-filters-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .fleet-filters {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #FFFFFF;
+    border: 1.5px solid rgba(197, 155, 39, 0.35);
+    padding: 6px 8px;
+    border-radius: var(--radius-full);
+    box-shadow: 0 4px 18px rgba(90, 12, 26, 0.07);
+    max-width: 100%;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    .fleet-filters-wrapper {
+      justify-content: flex-start;
+      padding: 4px 14px 12px;
+      margin-bottom: 20px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .fleet-filters {
+      gap: 6px;
+      padding: 4px 6px;
+      border-radius: 9999px;
+    }
+
+    .filter-btn {
+      padding: 6px 12px;
+      gap: 5px;
+      scroll-snap-align: start;
+      flex-shrink: 0;
+    }
+
+    .filter-label {
+      font-size: 0.8125rem;
+    }
+
+    .filter-sub {
+      font-size: 0.68rem;
+    }
+
+    .filter-badge {
+      font-size: 0.68rem;
+      padding: 1px 6px;
+    }
+  }
+
+  .filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: transparent;
+    border: 1px solid transparent;
+    padding: 8px 18px;
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #374151;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .filter-label {
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+
+  .filter-sub {
+    font-size: 0.75rem;
+    opacity: 0.75;
+    font-weight: 500;
+  }
+
+  .filter-badge {
+    background: rgba(90, 12, 26, 0.08);
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    transition: all 0.2s ease;
+  }
+
+  .filter-btn:hover {
+    color: var(--color-primary);
+    background: rgba(197, 155, 39, 0.12);
+    transform: translateY(-1px);
+  }
+
+  .filter-btn.active {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: #FFFFFF;
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 16px rgba(90, 12, 26, 0.28);
+  }
+
+  .filter-btn.active .filter-sub {
+    color: #FAD66D;
+    opacity: 1;
+    font-weight: 600;
+  }
+
+  .filter-btn.active .filter-badge {
+    background: #FAD66D;
+    color: #3E0611;
+  }
+
+  .vehicles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-3xl);
+  }
+
+  .fleet-cta-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: #FFFFFF;
+    padding: var(--space-xl) var(--space-2xl);
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--color-accent);
+    gap: var(--space-lg);
+  }
+
+  .banner-text h3 {
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+
+  .banner-text p {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.9375rem;
+    margin: 0;
+  }
+
+  @media (max-width: 992px) {
+    .vehicles-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .fleet-cta-banner {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .vehicles-grid {
+      grid-template-columns: 1fr;
+    }
+    .fleet-cta-banner {
+      padding: var(--space-lg) var(--space-md);
+    }
+  }
+</style>

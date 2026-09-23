@@ -1,0 +1,371 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+
+const pageTitle = "Contact Panwar Taxi Ajmer | 24/7 Cab Booking Office";
+const pageDescription = "Contact Panwar Taxi in Vaishali Nagar, Ajmer. Call +91 77373 14538 or WhatsApp for instant taxi booking, airport transfers, and outstation cab inquiries. Open 24/7.";
+const waUrl = createWhatsAppBookingUrl();
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/contact/">
+  <Header />
+
+  <main id="main-content">
+    <section class="page-banner">
+      <div class="container text-center">
+        <span class="heritage-pill">24/7 Dispatch Office</span>
+        <h1 class="page-title">Contact Panwar Taxi Ajmer</h1>
+        <p class="page-subtitle">Serving Ajmer Since 2008 • Prompt Support &amp; Instant WhatsApp Bookings</p>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Office Info Column -->
+          <div class="contact-info-col">
+            <span class="section-subtitle">Get in Touch</span>
+            <h2 class="contact-heading">Visit Our Dispatch Office or Call Anytime</h2>
+            <p class="contact-lead">
+              Whether you need an immediate cab at the Ajmer Railway Station or want to schedule an airport transfer for next week, our team is available round the clock.
+            </p>
+
+            <div class="contact-cards-list">
+              <div class="c-card">
+                <div class="c-icon">📍</div>
+                <div class="c-details">
+                  <h4>Head Office Address</h4>
+                  <address>
+                    {business.address.street}, {business.address.landmark},<br />
+                    {business.address.city}, {business.address.state} - {business.address.postalCode}
+                  </address>
+                  <span class="c-subtext">~4.5 km from Ajmer Junction Railway Station</span>
+                </div>
+              </div>
+
+              <div class="c-card">
+                <div class="c-icon">📞</div>
+                <div class="c-details">
+                  <h4>Phone &amp; Hotline (24/7)</h4>
+                  <p>
+                    <a href={`tel:${business.phone}`} class="highlight-link">{business.phoneFormatted}</a>
+                  </p>
+                  <span class="c-subtext">Instant dispatch &amp; immediate response</span>
+                </div>
+              </div>
+
+              <div class="c-card">
+                <div class="c-icon">💬</div>
+                <div class="c-details">
+                  <h4>WhatsApp Business</h4>
+                  <p>
+                    <a href={waUrl} target="_blank" rel="noopener noreferrer" class="highlight-link">+91 77373 14538</a>
+                  </p>
+                  <span class="c-subtext">Fast quotes, vehicle pictures &amp; booking receipts</span>
+                </div>
+              </div>
+
+              <div class="c-card">
+                <div class="c-icon">✉</div>
+                <div class="c-details">
+                  <h4>Email Support</h4>
+                  <p>
+                    <a href={`mailto:${business.email}`} class="highlight-link">{business.email}</a>
+                  </p>
+                  <span class="c-subtext">For corporate billing and tour partnerships</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick WhatsApp Inquiry Box -->
+          <div class="contact-form-col">
+            <div class="inquiry-form-card">
+              <h3 class="form-title">Send a Quick Cab Inquiry</h3>
+              <p class="form-sub">Fill this quick form to connect with our dispatch team on WhatsApp.</p>
+
+              <form id="contact-inquiry-form" class="inquiry-form" onsubmit="return false;">
+                <div class="form-field">
+                  <label for="c-name">Your Full Name</label>
+                  <input type="text" id="c-name" class="form-control" placeholder="e.g. Rajesh Kumar" required />
+                </div>
+
+                <div class="form-field">
+                  <label for="c-phone">Your Mobile Number</label>
+                  <input type="tel" id="c-phone" class="form-control" placeholder="e.g. 9876543210" required />
+                </div>
+
+                <div class="form-field">
+                  <label for="c-service">Service Needed</label>
+                  <select id="c-service" class="form-control">
+                    <option value="Outstation One-Way">Outstation One-Way Taxi</option>
+                    <option value="Round Trip Tour">Round Trip Tour</option>
+                    <option value="Airport Transfer">Airport Transfer (Jaipur / Delhi)</option>
+                    <option value="Ajmer Sightseeing">Ajmer Sharif &amp; Local Sightseeing</option>
+                    <option value="Pushkar Darshan">Pushkar Lake &amp; Brahma Temple</option>
+                  </select>
+                </div>
+
+                <div class="form-field">
+                  <label for="c-details-text">Pickup &amp; Destination Details</label>
+                  <textarea id="c-details-text" class="form-control" rows="3" placeholder="e.g. Pickup from Ajmer Station at 10 AM, drop to Jaipur"></textarea>
+                </div>
+
+                <button type="button" id="btn-contact-wa" class="btn btn--gold btn--lg btn-full">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.288.043.088.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.2.662.589 1.221.77 1.394.856.173.086.275.073.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.043.072.043.419-.101.824z"/></svg>
+                  Inquire on WhatsApp
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Google Map Section -->
+        <div class="map-container">
+          <h3 class="map-title">Find Our Office in Ajmer</h3>
+          <div class="map-responsive">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14285.877028169286!2d74.622434!3d26.471676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be71e21b8bbf7%3A0x2a9e32a67e163d08!2sVaishali%20Nagar%2C%20Ajmer%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+              width="100%" 
+              height="380" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Panwar Taxi Ajmer Office Location on Google Maps"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<script define:vars={{ phone: business.phone }}>
+  const contactBtn = document.getElementById("btn-contact-wa");
+  if (contactBtn) {
+    contactBtn.addEventListener("click", () => {
+      const name = (document.getElementById("c-name") as HTMLInputElement)?.value.trim() || "Customer";
+      const userPhone = (document.getElementById("c-phone") as HTMLInputElement)?.value.trim() || "Not provided";
+      const service = (document.getElementById("c-service") as HTMLSelectElement)?.value;
+      const details = (document.getElementById("c-details-text") as HTMLTextAreaElement)?.value.trim() || "None";
+
+      const message = 
+`*New Website Contact Inquiry — Panwar Taxi Ajmer*
+--------------------------------
+• *Name:* ${name}
+• *Phone:* ${userPhone}
+• *Service:* ${service}
+• *Requirements:* ${details}
+--------------------------------
+Please reply with availability and quote.`;
+
+      const cleanPhone = phone.replace(/[^0-9]/g, "");
+      const waUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
+      window.open(waUrl, "_blank");
+    });
+  }
+</script>
+
+<style>
+  .page-banner {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #FFFFFF;
+    padding: calc(var(--header-height, 74px) + 38px) 0 36px;
+    border-bottom: 3px solid var(--color-accent);
+  }
+
+  .heritage-pill {
+    display: inline-block;
+    background: rgba(197, 155, 39, 0.2);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-light);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    margin-bottom: 12px;
+  }
+
+  .page-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  .contact-section {
+    padding: var(--space-4xl) 0;
+    background: #FFFFFF;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--space-3xl);
+    margin-bottom: var(--space-3xl);
+  }
+
+  .contact-heading {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .contact-lead {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-xl);
+  }
+
+  .contact-cards-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .c-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    background: var(--color-cream);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .c-icon {
+    font-size: 1.5rem;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .c-details h4 {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    margin-bottom: 2px;
+  }
+
+  .c-details address {
+    font-style: normal;
+    color: var(--color-text);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .c-details p {
+    margin: 0;
+  }
+
+  .c-subtext {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    display: block;
+    margin-top: 2px;
+  }
+
+  .highlight-link {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 1.125rem;
+    text-decoration: underline;
+  }
+
+  .inquiry-form-card {
+    background: #FFFFFF;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-2xl);
+    box-shadow: 0 8px 24px rgba(34, 24, 28, 0.08);
+  }
+
+  .form-title {
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    color: var(--color-primary);
+    margin-bottom: 4px;
+  }
+
+  .form-sub {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-lg);
+  }
+
+  .inquiry-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .form-field label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .btn-full {
+    width: 100%;
+    margin-top: var(--space-xs);
+  }
+
+  .map-container {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: var(--space-xl);
+    border-radius: var(--radius-xl);
+  }
+
+  .map-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .map-responsive {
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+  }
+
+  @media (max-width: 992px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

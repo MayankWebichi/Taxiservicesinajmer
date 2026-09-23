@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyDargah" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3E0611" />
+      <stop offset="50%" stop-color="#5A0C1A" />
+      <stop offset="100%" stop-color="#7A1426" />
+    </linearGradient>
+    <linearGradient id="goldDome" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3E5AB" />
+      <stop offset="40%" stop-color="#C59B27" />
+      <stop offset="100%" stop-color="#8C6D15" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#skyDargah)"/>
+  <!-- Stars / Floral pattern -->
+  <circle cx="120" cy="70" r="2" fill="#FFF" opacity="0.8"/>
+  <circle cx="280" cy="50" r="1.5" fill="#FFF" opacity="0.6"/>
+  <circle cx="480" cy="80" r="2" fill="#FFF" opacity="0.8"/>
+  <circle cx="530" cy="40" r="1.5" fill="#FFF" opacity="0.7"/>
+  <!-- Crescent Moon -->
+  <path d="M490 60 A 24 24 0 0 0 514 84 A 20 20 0 0 1 490 60 Z" fill="url(#goldDome)"/>
+  <!-- Background Mosque Silhouette -->
+  <path d="M0 320 L70 320 L70 200 Q100 170 130 200 L130 320 L470 320 L470 200 Q500 170 530 200 L530 320 L600 320 L600 400 L0 400 Z" fill="#240409" opacity="0.8"/>
+  <!-- Grand Dome Structure -->
+  <path d="M220 270 L220 220 Q300 130 380 220 L380 270 Z" fill="url(#goldDome)"/>
+  <!-- Pinnacle / Kalash -->
+  <line x1="300" y1="130" x2="300" y2="90" stroke="url(#goldDome)" stroke-width="4"/>
+  <circle cx="300" cy="85" r="7" fill="url(#goldDome)"/>
+  <!-- Grand Arches -->
+  <path d="M250 270 Q300 210 350 270 Z" fill="#240409"/>
+  <!-- Minarets -->
+  <rect x="170" y="160" width="28" height="150" fill="#E8DDCF" rx="2"/>
+  <path d="M165 160 Q184 135 203 160 Z" fill="url(#goldDome)"/>
+  <rect x="402" y="160" width="28" height="150" fill="#E8DDCF" rx="2"/>
+  <path d="M397 160 Q416 135 435 160 Z" fill="url(#goldDome)"/>
+  <!-- Foreground Courtyard -->
+  <rect x="0" y="320" width="600" height="80" fill="#FCF8F0"/>
+  <text x="300" y="360" font-family="'Marcellus', serif" font-size="24" font-weight="bold" fill="#5A0C1A" text-anchor="middle">Ajmer Sharif Dargah</text>
+  <text x="300" y="382" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" fill="#66585C" text-anchor="middle">Spiritual Sufi Shrine • 2.5 km from Railway Station</text>
+</svg>

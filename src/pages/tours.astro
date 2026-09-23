@@ -1,0 +1,250 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import Destinations from "@/components/Destinations/Destinations.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+
+const pageTitle = "Ajmer & Pushkar Tour Packages | Sightseeing Cabs (Since 2008)";
+const pageDescription = "Explore Ajmer Sharif Dargah, Pushkar Lake, Brahma Temple & Rajasthan circuits with Panwar Taxi's guided chauffeur tour packages. Flexible itineraries & clean AC cabs.";
+
+const waAjmerTour = createWhatsAppBookingUrl({ tripType: "Ajmer Local Sightseeing Tour", pickup: "Ajmer" });
+const waPushkarTour = createWhatsAppBookingUrl({ tripType: "Pushkar Pilgrimage Tour", pickup: "Ajmer" });
+const waCombinedTour = createWhatsAppBookingUrl({ tripType: "Same-Day Ajmer & Pushkar Combined Tour", pickup: "Ajmer" });
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/tours/">
+  <Header />
+
+  <main id="main-content">
+    <section class="page-banner">
+      <div class="container text-center">
+        <span class="heritage-pill">Guided Pilgrimage &amp; Sightseeing</span>
+        <h1 class="page-title">Ajmer &amp; Pushkar Tour Packages</h1>
+        <p class="page-subtitle">Curated Day Tours, Spiritual Pilgrimages, and Multi-Day Rajasthan Road Trips</p>
+      </div>
+    </section>
+
+    <!-- Popular Tour Packages -->
+    <section class="tours-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-subtitle">Handcrafted Itineraries</span>
+          <h2 class="section-title">Featured Sightseeing Packages</h2>
+          <p class="section-desc">Doorstep hotel and railway station pickup in Ajmer with experienced local chauffeurs.</p>
+        </div>
+
+        <div class="tours-grid">
+          <!-- Tour 1: Ajmer Local -->
+          <div class="tour-card">
+            <div class="tour-badge">Full Day / 8 Hours</div>
+            <h3 class="tour-title">Ajmer City &amp; Dargah Sharif Heritage Tour</h3>
+            <p class="tour-desc">A spiritual and historical immersion through the ancient capital of the Chauhan kings and the renowned Sufi sanctuary.</p>
+            <ul class="tour-stops">
+              <li>📍 Hazrat Khwaja Moinuddin Chishti Dargah</li>
+              <li>📍 Adhai Din Ka Jhopra 12th-century monument</li>
+              <li>📍 Ana Sagar Lake &amp; Shah Jahan Marble Pavilions</li>
+              <li>📍 Daulat Bagh Gardens &amp; Local Bazaar</li>
+              <li>📍 Taragarh Hill Fort panoramic viewpoint</li>
+            </ul>
+            <div class="tour-footer">
+              <span class="tour-price">Sedan: From ₹1,600</span>
+              <a href={waAjmerTour} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">
+                Book Tour
+              </a>
+            </div>
+          </div>
+
+          <!-- Tour 2: Pushkar Pilgrimage -->
+          <div class="tour-card">
+            <div class="tour-badge">Half / Full Day</div>
+            <h3 class="tour-title">Pushkar Sacred Lake &amp; Brahma Temple Tour</h3>
+            <p class="tour-desc">Journey through the scenic Nagpahari pass to one of the world's holiest pilgrimage towns nestled beside the sacred lake.</p>
+            <ul class="tour-stops">
+              <li>📍 14th-Century Jagatpita Brahma Temple</li>
+              <li>📍 52 Sacred Bathing Ghats of Pushkar Lake</li>
+              <li>📍 Savitri Devi Temple hill cable car / ropeway</li>
+              <li>📍 Varaha Temple &amp; Old Rangji Temple</li>
+              <li>📍 Pushkar Camel desert grounds &amp; Sunset point</li>
+            </ul>
+            <div class="tour-footer">
+              <span class="tour-price">Sedan: From ₹1,500</span>
+              <a href={waPushkarTour} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">
+                Book Tour
+              </a>
+            </div>
+          </div>
+
+          <!-- Tour 3: Combined Ajmer-Pushkar -->
+          <div class="tour-card featured-tour">
+            <div class="tour-badge gold-badge">Most Popular • Same Day</div>
+            <h3 class="tour-title">Ajmer &amp; Pushkar Same-Day Grand Tour</h3>
+            <p class="tour-desc">The complete 10-hour itinerary designed for weekend travelers, pilgrims, and tourists arriving by Shatabdi or Vande Bharat trains.</p>
+            <ul class="tour-stops">
+              <li>📍 Morning arrival pickup at Ajmer Railway Station</li>
+              <li>📍 Ajmer Sharif Dargah Ziyarat &amp; Nizam Gate</li>
+              <li>📍 Ana Sagar Lake breeze &amp; photo stop</li>
+              <li>📍 Drive to Pushkar via scenic Aravalli hill pass</li>
+              <li>📍 Brahma Temple darshan &amp; Lake Ghat evening aarti</li>
+              <li>📍 Evening drop at Ajmer Hotel or Station</li>
+            </ul>
+            <div class="tour-footer">
+              <span class="tour-price">Sedan: ₹2,400 (Fixed)</span>
+              <a href={waCombinedTour} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm">
+                Book Grand Tour
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Destinations Visual Grid -->
+    <Destinations limit={6} />
+
+    <!-- FAQ -->
+    <FAQ 
+      title="Sightseeing &amp; Tour FAQs" 
+      subtitle="Planning Your Ajmer Trip" 
+    />
+  </main>
+
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .page-banner {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #FFFFFF;
+    padding: calc(var(--header-height, 74px) + 38px) 0 36px;
+    border-bottom: 3px solid var(--color-accent);
+  }
+
+  .heritage-pill {
+    display: inline-block;
+    background: rgba(197, 155, 39, 0.2);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-light);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    margin-bottom: 12px;
+  }
+
+  .page-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  .tours-section {
+    padding: var(--space-4xl) 0;
+    background: var(--color-surface);
+  }
+
+  .tours-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .tour-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 16px rgba(34, 24, 28, 0.05);
+    position: relative;
+  }
+
+  .featured-tour {
+    border: 2px solid var(--color-accent);
+    box-shadow: 0 8px 24px rgba(197, 155, 39, 0.15);
+  }
+
+  .tour-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: var(--color-cream);
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+  }
+
+  .gold-badge {
+    background: var(--color-accent);
+    color: #FFFFFF;
+    border: none;
+  }
+
+  .tour-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-xs);
+  }
+
+  .tour-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin-bottom: var(--space-md);
+  }
+
+  .tour-stops {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-xl) 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.8125rem;
+    color: var(--color-text);
+    flex: 1;
+  }
+
+  .tour-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+    margin-top: auto;
+  }
+
+  .tour-price {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 992px) {
+    .tours-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

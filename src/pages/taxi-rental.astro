@@ -1,0 +1,82 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import VehicleGrid from "@/components/Vehicles/VehicleGrid.astro";
+import FleetComparison from "@/components/Vehicles/FleetComparison.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+
+const pageTitle = "Taxi Rental in Ajmer | Fleet & Per-KM Rates (Since 2008)";
+const pageDescription = "Explore Panwar Taxi Ajmer's AC car rental fleet: Dzire, Etios, Ertiga, Innova Crysta, and Tempo Travellers. Verified per-km rates from ₹10/km. Zero advance booking.";
+const waUrl = createWhatsAppBookingUrl();
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/taxi-rental/">
+  <Header />
+
+  <main id="main-content">
+    <section class="page-banner">
+      <div class="container text-center">
+        <span class="heritage-pill">Fleet &amp; Pricing Directory</span>
+        <h1 class="page-title">Taxi Rental in Ajmer</h1>
+        <p class="page-subtitle">Fully Air-Conditioned Hatchbacks, Sedans, SUVs, and Tempo Travellers</p>
+      </div>
+    </section>
+
+    <!-- Vehicle Grid with interactive filters -->
+    <VehicleGrid showFilters={true} />
+
+    <!-- Detailed side-by-side comparison table -->
+    <FleetComparison />
+
+    <!-- FAQ Section -->
+    <FAQ 
+      title="Taxi Rental &amp; Rate FAQs" 
+      subtitle="Transparent Fleet Policies" 
+    />
+  </main>
+
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .page-banner {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #FFFFFF;
+    padding: calc(var(--header-height, 74px) + 38px) 0 36px;
+    border-bottom: 3px solid var(--color-accent);
+  }
+
+  .heritage-pill {
+    display: inline-block;
+    background: rgba(197, 155, 39, 0.2);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-light);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    margin-bottom: 12px;
+  }
+
+  .page-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 650px;
+    margin: 0 auto;
+  }
+</style>

@@ -1,0 +1,193 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateServiceSchema } from "@/utils/seo";
+
+const pageTitle = "Dargah Taxi Ajmer | Ajmer Sharif Cab Service ₹200 Onwards (2026)";
+const pageDescription = "Book a taxi to Ajmer Sharif Dargah from anywhere in Ajmer. Local cab service from ₹200. Pickup from hotels, railway station, and bus stand. 24/7 availability, AC cabs, verified drivers.";
+
+const waBook = createWhatsAppBookingUrl({ destination: "Ajmer Sharif Dargah", tripType: "Local Tour", customMessage: "Hello Panwar Taxi Ajmer, I need a cab to Ajmer Sharif Dargah. Please share availability and fare." });
+const waFullDay = createWhatsAppBookingUrl({ tripType: "Full Day Ajmer Sightseeing", customMessage: "Hello Panwar Taxi Ajmer, I want to book a full-day sightseeing cab covering Ajmer Sharif Dargah, Ana Sagar Lake, and other attractions. Please share fare and availability." });
+
+const serviceSchema = generateServiceSchema(
+  "Ajmer Sharif Dargah Taxi Service",
+  "Local taxi service for Ajmer Sharif Dargah pilgrimage. Pickup from hotels, railway station, and bus stand. Available 24/7 including Urs and festival days.",
+  `${business.website}/dargah-taxi-ajmer/`
+);
+
+const faqs = [
+  { question: "How much does a taxi to Ajmer Sharif Dargah cost?", answer: "Local taxi fares within Ajmer start from ₹200 for a one-way drop to the Dargah. A full day local sightseeing package covering the Dargah and surrounding attractions costs ₹1,200–₹2,000 depending on the vehicle.", category: "Pricing" as const },
+  { question: "Can I get a cab from Ajmer Railway Station to Dargah Sharif?", answer: "Yes, we provide 24/7 cab service from Ajmer Junction Railway Station to Ajmer Sharif Dargah. The distance is approximately 2 km and the fare is ₹200 for a local ride.", category: "Routes" as const },
+  { question: "Is taxi service available during the Urs festival at Ajmer Sharif?", answer: "Yes, we operate during all major festivals including Urs of Hazrat Khwaja Moinuddin Chishti. We recommend booking 24–48 hours in advance during festival seasons as demand is very high.", category: "Booking" as const },
+  { question: "Can I book a cab from my hotel to Ajmer Sharif Dargah?", answer: "Absolutely. We provide doorstep hotel pickup from all hotels in Ajmer — including Pushkar Road, Vaishali Nagar, Nasirabad Road, and the city center area.", category: "Booking" as const },
+  { question: "What other places can I visit near Ajmer Sharif Dargah?", answer: "Within the same local sightseeing tour, we cover: Adhai Din Ka Jhonpra (a 12th-century mosque), Ana Sagar Lake, Taragarh Fort, Nareli Jain Temple, and the Ajmer Museum.", category: "Routes" as const }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/dargah-taxi-ajmer/" schemaMarkup={serviceSchema}>
+  <Header />
+  <main id="main-content">
+
+    <section class="route-hero dargah-hero">
+      <div class="container text-center">
+        <span class="heritage-pill">Ajmer's Most Sacred Pilgrimage • Local Cab Service</span>
+        <h1 class="route-title">Dargah Taxi Service — Ajmer Sharif</h1>
+        <p class="route-subtitle">Respectful & Reliable Cab Service to the Shrine of Hazrat Khwaja Moinuddin Chishti · ₹200 Onwards · 24/7 Available</p>
+        <div class="cta-row">
+          <a href={waBook} target="_blank" rel="noopener noreferrer" class="btn btn--gold">Book Dargah Cab Now</a>
+          <a href={`tel:${business.phone}`} class="btn btn--outline-white">Call: {business.phoneFormatted}</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="route-content-section">
+      <div class="container">
+        <div class="route-grid">
+          <div class="route-main">
+            <span class="section-subtitle">Serving Ajmer Pilgrims Since 2008</span>
+            <h2 class="section-title">Trusted Taxi to Ajmer Sharif Dargah</h2>
+            <p>
+              Ajmer Sharif — the revered dargah of Sufi saint Hazrat Khwaja Moinuddin Chishti — attracts millions of pilgrims every year from across India and the world. Whether you're arriving at Ajmer Railway Station, the Bus Stand, or from a hotel — Panwar Taxi provides respectful, comfortable, and punctual cab service to the Dargah.
+            </p>
+            <p>
+              We understand the significance of this sacred journey. Our drivers are courteous, familiar with the Dargah entry routes and parking restrictions, and always on time — especially during busy festival days and the annual Urs celebration.
+            </p>
+
+            <h3 class="tier-heading">Our Dargah Taxi Packages</h3>
+            <div class="package-cards">
+              <div class="pkg-card">
+                <div class="pkg-icon">🕌</div>
+                <h4 class="pkg-title">One-Way Dargah Drop</h4>
+                <div class="pkg-fare">From ₹200</div>
+                <p class="pkg-desc">Single drop from your hotel, railway station, or bus stand to Ajmer Sharif Dargah gate.</p>
+                <a href={waBook} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">Book Drop</a>
+              </div>
+
+              <div class="pkg-card pkg-card--featured">
+                <div class="pkg-badge">Most Booked</div>
+                <div class="pkg-icon">🗺️</div>
+                <h4 class="pkg-title">Full Day Ajmer Sightseeing</h4>
+                <div class="pkg-fare">From ₹1,200</div>
+                <p class="pkg-desc">Cover Dargah + Ana Sagar Lake + Taragarh Fort + Adhai Din Ka Jhonpra + Nareli Jain Temple in one cab, one day.</p>
+                <a href={waFullDay} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm">Book Full Day</a>
+              </div>
+
+              <div class="pkg-card">
+                <div class="pkg-icon">🔄</div>
+                <h4 class="pkg-title">Dargah Return Cab</h4>
+                <div class="pkg-fare">From ₹350</div>
+                <p class="pkg-desc">Return cab from Dargah back to your hotel, station, or any Ajmer address. Driver waits during your darshan.</p>
+                <a href={waBook} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">Book Return</a>
+              </div>
+            </div>
+
+            <h3 class="tier-heading" style="margin-top: var(--space-2xl)">Pickup Locations We Cover</h3>
+            <div class="pickup-grid">
+              <div class="pickup-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18M3 10l9-7 9 7M3 10v10a1 1 0 001 1h5v-5h4v5h5a1 1 0 001-1V10"/></svg>
+                <span>All Ajmer Hotels</span>
+              </div>
+              <div class="pickup-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h5l2 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                <span>Ajmer Railway Station</span>
+              </div>
+              <div class="pickup-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                <span>Ajmer Bus Stand</span>
+              </div>
+              <div class="pickup-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Pushkar (14 km away)</span>
+              </div>
+            </div>
+
+            <div class="route-itinerary-box" style="margin-top: var(--space-xl)">
+              <h3>Places to Visit Near Ajmer Sharif Dargah</h3>
+              <ul>
+                <li>• <strong>Adhai Din Ka Jhonpra (0.3 km):</strong> A stunning 12th-century mosque known for its intricate Quranic inscriptions and Indo-Islamic architecture. Walking distance from Dargah.</li>
+                <li>• <strong>Taragarh Fort (3 km uphill):</strong> The "Star Fort" perched on a hilltop overlooking all of Ajmer. Panoramic views of the city.</li>
+                <li>• <strong>Ana Sagar Lake (2 km):</strong> A historic artificial lake built in the 12th century, with the marble-inlaid Daulat Bagh Gardens on its banks.</li>
+                <li>• <strong>Nareli Jain Temple (8 km):</strong> A spectacular modern Jain temple complex with intricate marble carvings on the outskirts of Ajmer.</li>
+              </ul>
+            </div>
+          </div>
+
+          <aside class="route-sidebar">
+            <div class="sidebar-box">
+              <h3 class="side-title">Book Your Dargah Cab</h3>
+              <p style="font-size:0.875rem; color: var(--color-text-muted); margin-bottom: var(--space-md);">Call or WhatsApp us for instant booking. No advance payment needed.</p>
+              <div class="side-actions">
+                <a href={waBook} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm full-w">WhatsApp Booking</a>
+                <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn--sm full-w">Call: {business.phoneFormatted}</a>
+              </div>
+              <div class="dargah-hours">
+                <h4>Dargah Darshan Timings</h4>
+                <div class="hours-list">
+                  <div class="hour-item"><span>Summer (Apr–Sep):</span><span>5:00 AM – 10:00 PM</span></div>
+                  <div class="hour-item"><span>Winter (Oct–Mar):</span><span>5:30 AM – 9:30 PM</span></div>
+                  <div class="hour-item"><span>Urs Season:</span><span>24 Hours Open</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="sidebar-trust">
+              <h4>Why Choose Us?</h4>
+              <p>Serving Ajmer Sharif pilgrims since 2008. Respectful drivers who understand the sanctity of your visit. Zero advance, pay after the trip.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <FAQ items={faqs} title="Ajmer Dargah Taxi FAQs" subtitle="Frequently Asked Questions" />
+  </main>
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .route-hero { background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%); color: #FFF; padding: calc(var(--header-height, 74px) + 38px) 0 36px; border-bottom: 3px solid var(--color-accent); }
+  .dargah-hero { background: linear-gradient(135deg, #1A0408 0%, #3D0910 50%, #5A0C1A 100%); }
+  .heritage-pill { display: inline-block; background: rgba(197,155,39,0.2); border: 1px solid var(--color-accent); color: var(--color-accent-light); font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 14px; border-radius: var(--radius-full); margin-bottom: 12px; }
+  .route-title { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 2.75rem); color: #FFF; margin-bottom: 6px; }
+  .route-subtitle { font-size: 1.125rem; color: rgba(255,255,255,0.9); max-width: 720px; margin: 0 auto var(--space-lg); }
+  .cta-row { display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap; }
+  .btn--outline-white { border: 2px solid rgba(255,255,255,0.5); color: #FFF; background: transparent; }
+  .btn--outline-white:hover { background: rgba(255,255,255,0.1); }
+  .route-content-section { padding: var(--space-4xl) 0; background: #FFF; }
+  .route-grid { display: grid; grid-template-columns: 1fr 340px; gap: var(--space-3xl); }
+  .tier-heading { font-family: var(--font-heading); font-size: 1.375rem; color: var(--color-primary); margin: var(--space-xl) 0 var(--space-md); }
+  .package-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-md); margin-bottom: var(--space-xl); }
+  .pkg-card { background: #FFF; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-sm); box-shadow: 0 4px 12px rgba(34,24,28,0.05); position: relative; }
+  .pkg-card--featured { border: 2px solid var(--color-accent); background: var(--color-cream); }
+  .pkg-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--color-accent); color: #FFF; font-size: 0.7rem; font-weight: 800; padding: 2px 10px; border-radius: var(--radius-full); white-space: nowrap; }
+  .pkg-icon { font-size: 2rem; }
+  .pkg-title { font-family: var(--font-heading); font-size: 1.1rem; color: var(--color-primary); margin: 0; }
+  .pkg-fare { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: var(--color-primary); }
+  .pkg-desc { font-size: 0.8125rem; color: var(--color-text-muted); line-height: 1.5; flex: 1; margin: 0; }
+  .pickup-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: var(--space-sm); }
+  .pickup-item { display: flex; align-items: center; gap: 10px; background: var(--color-cream); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 10px 14px; font-size: 0.875rem; color: var(--color-text); font-weight: 500; }
+  .pickup-item svg { width: 18px; height: 18px; color: var(--color-primary); flex-shrink: 0; }
+  .route-itinerary-box { background: var(--color-cream); border: 1px solid var(--color-border); border-left: 4px solid var(--color-accent); padding: var(--space-xl); border-radius: var(--radius-md); }
+  .route-itinerary-box h3 { font-family: var(--font-heading); color: var(--color-primary); font-size: 1.25rem; margin-bottom: var(--space-sm); }
+  .route-itinerary-box ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.875rem; color: var(--color-text); }
+  .route-sidebar { display: flex; flex-direction: column; gap: var(--space-lg); }
+  .sidebar-box { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-xl); }
+  .side-title { font-family: var(--font-heading); font-size: 1.125rem; color: var(--color-primary); margin-bottom: var(--space-sm); padding-bottom: 6px; border-bottom: 2px solid var(--color-accent); }
+  .side-actions { display: flex; flex-direction: column; gap: 8px; margin-bottom: var(--space-lg); }
+  .full-w { width: 100%; justify-content: center; }
+  .dargah-hours { background: var(--color-cream); border-radius: var(--radius-md); padding: var(--space-md); }
+  .dargah-hours h4 { font-family: var(--font-heading); color: var(--color-primary); font-size: 0.9375rem; margin-bottom: 8px; }
+  .hours-list { display: flex; flex-direction: column; gap: 6px; }
+  .hour-item { display: flex; justify-content: space-between; font-size: 0.8125rem; color: var(--color-text); border-bottom: 1px dashed var(--color-border); padding-bottom: 4px; }
+  .sidebar-trust { background: var(--color-cream); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-lg); }
+  .sidebar-trust h4 { font-family: var(--font-heading); color: var(--color-primary); font-size: 1rem; margin-bottom: 4px; }
+  .sidebar-trust p { font-size: 0.8125rem; color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+  @media (max-width: 992px) { .route-grid { grid-template-columns: 1fr; } .package-cards { grid-template-columns: 1fr; } .pickup-grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,162 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateServiceSchema } from "@/utils/seo";
+
+const pageTitle = "Ajmer to Ahmedabad Taxi ₹5,200 Fixed | AC Cab Booking (2026)";
+const pageDescription = "Book Ajmer to Ahmedabad one-way taxi from ₹5,200. 360 km journey via NH 48 in ~5.5 hours. AC Sedans, Ertiga & Innova Crysta. Doorstep pickup 24/7, no advance needed.";
+
+const waSedan  = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Ahmedabad", vehicle: "Maruti Dzire Sedan (₹5,200 Fixed)" });
+const waErtiga = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Ahmedabad", vehicle: "Maruti Ertiga (₹7,800 Fixed)" });
+const waInnova = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Ahmedabad", vehicle: "Toyota Innova Crysta (₹11,500 Fixed)" });
+
+const serviceSchema = generateServiceSchema(
+  "Ajmer to Ahmedabad Taxi Service",
+  "One-way cab from Ajmer to Ahmedabad via NH 48. Comfortable AC vehicles with experienced drivers. 24/7 booking, no advance required.",
+  `${business.website}/ajmer-to-ahmedabad-taxi/`
+);
+
+const faqs = [
+  { question: "What is the taxi fare from Ajmer to Ahmedabad?", answer: "Fixed one-way fares: Maruti Dzire Sedan ₹5,200; Ertiga (6-seater) ₹7,800; Toyota Innova Crysta ₹11,500. Toll taxes are charged as per actual FASTag receipts.", category: "Pricing" as const },
+  { question: "How long does Ajmer to Ahmedabad take by cab?", answer: "The distance is approximately 355–365 km via NH 48 (Beawar–Sirohi–Palanpur–Ahmedabad). The journey takes approximately 5.5 to 6.5 hours.", category: "Routes" as const },
+  { question: "Which road is taken from Ajmer to Ahmedabad?", answer: "The route is Ajmer → Beawar → Pali → Sirohi → Palanpur → Mahesana → Ahmedabad via National Highway 48. It's well-maintained with minimal traffic.", category: "Routes" as const },
+  { question: "Can I get picked up from Pushkar for the Ahmedabad trip?", answer: "Yes, we provide doorstep pickups from Pushkar (14 km from Ajmer) for a small differential charge.", category: "Booking" as const }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/ajmer-to-ahmedabad-taxi/" schemaMarkup={serviceSchema}>
+  <Header />
+  <main id="main-content">
+    <section class="route-hero">
+      <div class="container text-center">
+        <span class="heritage-pill">Verified Route • NH 48 • Since 2008</span>
+        <h1 class="route-title">Ajmer to Ahmedabad Taxi Service</h1>
+        <p class="route-subtitle">Fixed One-Way Sedan Fare ₹5,200 • 360 km • ~5.5 Hours • Doorstep Pickup 24/7</p>
+        <div class="hero-fare-pills">
+          <div class="h-pill">Dzire / Etios: <strong>₹5,200</strong></div>
+          <div class="h-pill">Ertiga 6-Seater: <strong>₹7,800</strong></div>
+          <div class="h-pill">Innova Crysta: <strong>₹11,500</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="route-content-section">
+      <div class="container">
+        <div class="route-grid">
+          <div class="route-main">
+            <span class="section-subtitle">Smooth Rajasthan–Gujarat Highway Journey</span>
+            <h2 class="section-title">Reliable Ajmer to Ahmedabad Cab Rental</h2>
+            <p>Heading to Ahmedabad for business or tourism? Panwar Taxi offers smooth, comfortable door-to-door cab service from Ajmer to Ahmedabad at fixed, transparent fares. The NH 48 highway connecting Rajasthan to Gujarat is in excellent condition, making this one of our most popular outstation routes.</p>
+            <p>Our experienced drivers handle this Rajasthan–Gujarat interstate corridor regularly, knowing all rest stops, fuel stations, and the best times to travel to avoid any delays.</p>
+
+            <h3 class="tier-heading">Verified Fare Breakdown (Ajmer ➔ Ahmedabad)</h3>
+            <div class="pricing-cards-row">
+              <div class="p-card">
+                <span class="p-type">Comfort Sedan</span>
+                <h4 class="p-car">Maruti Swift Dzire</h4>
+                <div class="p-fare">₹5,200 <small>one-way</small></div>
+                <ul class="p-features"><li>✓ 4 Passenger Seats</li><li>✓ 2 Large Bags</li><li>✓ Full AC</li><li>✓ Doorstep Pickup</li></ul>
+                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">Book Sedan @ ₹5,200</a>
+              </div>
+              <div class="p-card featured-p-card">
+                <span class="p-type gold">Family MPV — Best Value</span>
+                <h4 class="p-car">Maruti Ertiga</h4>
+                <div class="p-fare">₹7,800 <small>one-way</small></div>
+                <ul class="p-features"><li>✓ 6 Passenger Seats</li><li>✓ 3–4 Luggage Bags</li><li>✓ Dual AC Vents</li><li>✓ Extra Legroom</li></ul>
+                <a href={waErtiga} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm p-btn">Book Ertiga @ ₹7,800</a>
+              </div>
+              <div class="p-card">
+                <span class="p-type">Luxury MUV</span>
+                <h4 class="p-car">Toyota Innova Crysta</h4>
+                <div class="p-fare">₹11,500 <small>one-way</small></div>
+                <ul class="p-features"><li>✓ 6/7 Captain Seats</li><li>✓ 4+ Suitcases</li><li>✓ Premium Suspension</li><li>✓ Executive Travel</li></ul>
+                <a href={waInnova} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">Book Crysta @ ₹11,500</a>
+              </div>
+            </div>
+
+            <div class="route-itinerary-box">
+              <h3>Route Highlights</h3>
+              <ul>
+                <li>• <strong>Pali & Sirohi:</strong> Major rest stops with clean highway restaurants, roughly 2–3 hours into the journey.</li>
+                <li>• <strong>Palanpur (Gujarat Border):</strong> Last major Rajasthan stop before entering Gujarat. Famous for its diamond polishing trade.</li>
+                <li>• <strong>Ahmedabad Drops Available:</strong> Navrangpura, Maninagar, Satellite, Prahlad Nagar, SG Highway, Ahmedabad Airport, and all localities.</li>
+              </ul>
+            </div>
+          </div>
+
+          <aside class="route-sidebar">
+            <div class="sidebar-box">
+              <h3 class="side-title">Quick Route Summary</h3>
+              <div class="side-list">
+                <div class="side-item"><span class="s-label">Origin:</span><span class="s-val">Ajmer / Pushkar</span></div>
+                <div class="side-item"><span class="s-label">Destination:</span><span class="s-val">Ahmedabad (Any Location)</span></div>
+                <div class="side-item"><span class="s-label">Highway:</span><span class="s-val">NH 48 via Sirohi</span></div>
+                <div class="side-item"><span class="s-label">Distance:</span><span class="s-val">~360 km</span></div>
+                <div class="side-item"><span class="s-label">Travel Time:</span><span class="s-val">5.5 to 6.5 Hours</span></div>
+                <div class="side-item"><span class="s-label">Starting Price:</span><span class="s-val gold-text">₹5,200 (Sedan)</span></div>
+              </div>
+              <div class="side-actions">
+                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm full-w">WhatsApp Instant Quote</a>
+                <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn--sm full-w">Call: {business.phoneFormatted}</a>
+              </div>
+            </div>
+            <div class="sidebar-trust">
+              <h4>Why Book With Us?</h4>
+              <p>18+ years operating Rajasthan–Gujarat intercity routes. Zero advance payment, no hidden charges, all cabs commercially insured.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+    <FAQ items={faqs} title="Ajmer to Ahmedabad Taxi FAQs" subtitle="Frequently Asked Questions" />
+  </main>
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .route-hero { background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%); color: #FFF; padding: calc(var(--header-height, 74px) + 38px) 0 36px; border-bottom: 3px solid var(--color-accent); }
+  .heritage-pill { display: inline-block; background: rgba(197,155,39,0.2); border: 1px solid var(--color-accent); color: var(--color-accent-light); font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 14px; border-radius: var(--radius-full); margin-bottom: 12px; }
+  .route-title { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 2.75rem); color: #FFF; margin-bottom: 6px; }
+  .route-subtitle { font-size: 1.125rem; color: rgba(255,255,255,0.9); max-width: 720px; margin: 0 auto var(--space-lg); }
+  .hero-fare-pills { display: flex; justify-content: center; gap: var(--space-sm); flex-wrap: wrap; }
+  .h-pill { background: rgba(0,0,0,0.3); border: 1px solid rgba(197,155,39,0.4); padding: 6px 14px; border-radius: var(--radius-full); font-size: 0.875rem; color: #F8E6B8; }
+  .h-pill strong { color: #FFF; }
+  .route-content-section { padding: var(--space-4xl) 0; background: #FFF; }
+  .route-grid { display: grid; grid-template-columns: 1fr 340px; gap: var(--space-3xl); }
+  .tier-heading { font-family: var(--font-heading); font-size: 1.375rem; color: var(--color-primary); margin: var(--space-2xl) 0 var(--space-md); }
+  .pricing-cards-row { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-md); margin-bottom: var(--space-2xl); }
+  .p-card { background: #FFF; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-lg); display: flex; flex-direction: column; box-shadow: 0 4px 12px rgba(34,24,28,0.05); }
+  .featured-p-card { border: 2px solid var(--color-accent); background: var(--color-cream); }
+  .p-type { font-size: 0.75rem; font-weight: 700; color: var(--color-primary); text-transform: uppercase; display: block; margin-bottom: 2px; }
+  .p-type.gold { color: var(--color-accent-dark); }
+  .p-car { font-family: var(--font-heading); font-size: 1.125rem; color: var(--color-text); margin-bottom: var(--space-xs); }
+  .p-fare { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: var(--color-primary); margin-bottom: var(--space-md); }
+  .p-fare small { font-size: 0.75rem; font-weight: 500; color: var(--color-text-muted); }
+  .p-features { list-style: none; padding: 0; margin: 0 0 var(--space-lg); display: flex; flex-direction: column; gap: 6px; font-size: 0.8125rem; color: var(--color-text); flex: 1; }
+  .p-btn { width: 100%; justify-content: center; margin-top: auto; }
+  .route-itinerary-box { background: var(--color-cream); border: 1px solid var(--color-border); border-left: 4px solid var(--color-accent); padding: var(--space-xl); border-radius: var(--radius-md); }
+  .route-itinerary-box h3 { font-family: var(--font-heading); color: var(--color-primary); font-size: 1.25rem; margin-bottom: var(--space-sm); }
+  .route-itinerary-box ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.875rem; color: var(--color-text); }
+  .route-sidebar { display: flex; flex-direction: column; gap: var(--space-lg); }
+  .sidebar-box { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-xl); }
+  .side-title { font-family: var(--font-heading); font-size: 1.125rem; color: var(--color-primary); margin-bottom: var(--space-md); padding-bottom: 6px; border-bottom: 2px solid var(--color-accent); }
+  .side-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: var(--space-lg); }
+  .side-item { display: flex; justify-content: space-between; font-size: 0.84375rem; padding-bottom: 4px; border-bottom: 1px dashed var(--color-border); }
+  .s-label { color: var(--color-text-muted); }
+  .s-val { font-weight: 600; color: var(--color-text); }
+  .gold-text { color: var(--color-primary); font-weight: 700; }
+  .side-actions { display: flex; flex-direction: column; gap: 8px; }
+  .full-w { width: 100%; justify-content: center; }
+  .sidebar-trust { background: var(--color-cream); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-lg); }
+  .sidebar-trust h4 { font-family: var(--font-heading); color: var(--color-primary); font-size: 1rem; margin-bottom: 4px; }
+  .sidebar-trust p { font-size: 0.8125rem; color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+  @media (max-width: 992px) { .route-grid { grid-template-columns: 1fr; } .pricing-cards-row { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,208 @@
+---
+import { vehicles } from "@/data/vehicles";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+---
+
+<section class="comparison-section" id="fleet-comparison" aria-label="Fleet Pricing & Specifications Comparison">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-subtitle">Complete Transparency</span>
+      <h2 class="section-title">Fleet Specifications &amp; Pricing Table</h2>
+      <p class="section-desc">
+        Compare seating, luggage space, and starting outstation per-kilometer rates across our verified Ajmer taxi fleet.
+      </p>
+    </div>
+
+    <div class="table-container">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th scope="col">Vehicle</th>
+            <th scope="col">Category</th>
+            <th scope="col">Seats</th>
+            <th scope="col">Luggage</th>
+            <th scope="col">Rate / km</th>
+            <th scope="col">Ajmer ➔ Jaipur</th>
+            <th scope="col">AC</th>
+            <th scope="col">Best Suited For</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {vehicles.map((v) => {
+            const waUrl = createWhatsAppBookingUrl({ vehicle: v.name });
+            return (
+              <tr class={v.popular ? "highlight-row" : ""}>
+                <td class="cell-vehicle">
+                  <div class="vehicle-mini">
+                    <img src={v.image} alt={v.name} width="50" height="30" loading="lazy" />
+                    <strong>{v.name}</strong>
+                  </div>
+                </td>
+                <td><span class="badge-cat">{v.category}</span></td>
+                <td><strong>{v.seats}</strong> Pax</td>
+                <td>{v.luggage} Bags</td>
+                <td class="cell-rate">₹{v.ratePerKm}/km</td>
+                <td class="cell-fixed">
+                  {v.fixedFares?.ajmerToJaipur ? (
+                    <strong>₹{v.fixedFares.ajmerToJaipur.toLocaleString("en-IN")}</strong>
+                  ) : (
+                    <span class="text-muted">Per-km</span>
+                  )}
+                </td>
+                <td><span class="badge-ac">100% AC</span></td>
+                <td class="cell-best-for">{v.bestFor}</td>
+                <td>
+                  <a 
+                    href={waUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="btn btn--primary btn--sm table-btn"
+                  >
+                    Book
+                  </a>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pricing-notes">
+      <h4>Transparent Pricing Guidelines</h4>
+      <ul>
+        <li>• <strong>No Hidden Platform Fees:</strong> Rates quoted are direct operator prices.</li>
+        <li>• <strong>Outstation Minimums:</strong> Standard outstation trips have a minimum distance guideline of 250 km / day as per Rajasthan tourism regulations.</li>
+        <li>• <strong>Driver Allowance, Toll &amp; State Taxes:</strong> Toll taxes, state border permits, and parking are payable as per actual receipts.</li>
+        <li>• <strong>Payment Flexibility:</strong> Zero advance booking available; pay the driver directly at trip completion.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .comparison-section {
+    padding: var(--space-4xl) 0;
+    background: #FFFFFF;
+  }
+
+  .table-container {
+    overflow-x: auto;
+    background: #FFFFFF;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 20px rgba(34, 24, 28, 0.06);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    text-align: left;
+    min-width: 900px;
+  }
+
+  .comparison-table thead {
+    background: var(--color-primary);
+    color: #FFFFFF;
+  }
+
+  .comparison-table th {
+    padding: 14px 16px;
+    font-weight: 600;
+    font-family: var(--font-body);
+    letter-spacing: 0.02em;
+  }
+
+  .comparison-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: middle;
+  }
+
+  .comparison-table tr:hover {
+    background-color: var(--color-cream);
+  }
+
+  .highlight-row {
+    background-color: rgba(197, 155, 39, 0.05);
+  }
+
+  .cell-vehicle .vehicle-mini {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cell-rate {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 0.9375rem;
+  }
+
+  .cell-fixed {
+    color: var(--color-accent-dark);
+  }
+
+  .cell-best-for {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    max-width: 200px;
+  }
+
+  .badge-cat {
+    background: var(--color-cream);
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    border: 1px solid var(--color-border);
+  }
+
+  .badge-ac {
+    background: rgba(40, 167, 69, 0.12);
+    color: #1e7e34;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .table-btn {
+    padding: 6px 14px;
+    font-size: 0.8125rem;
+  }
+
+  .pricing-notes {
+    background: var(--color-cream);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent);
+    padding: var(--space-lg);
+    border-radius: var(--radius-md);
+  }
+
+  .pricing-notes h4 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
+    font-size: 1.125rem;
+  }
+
+  .pricing-notes ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .pricing-notes strong {
+    color: var(--color-text);
+  }
+</style>

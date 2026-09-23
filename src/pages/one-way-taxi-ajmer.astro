@@ -1,0 +1,179 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateServiceSchema } from "@/utils/seo";
+
+const pageTitle = "One-Way Taxi Ajmer | Book One Side Cab ₹10/km — Panwar Taxi (2026)";
+const pageDescription = "Book one-way taxi from Ajmer to any destination in Rajasthan or India. Starting ₹10/km. No return charge. Transparent fare, AC cabs, verified drivers. Instant WhatsApp booking 24/7.";
+
+const waJaipur  = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jaipur", vehicle: "Sedan (One-Way)", tripType: "One Way" });
+const waGeneral = createWhatsAppBookingUrl({ pickup: "Ajmer", tripType: "One Way", customMessage: "Hello Panwar Taxi Ajmer, I need a one-way taxi from Ajmer. Please share fare and availability for my route." });
+
+const serviceSchema = generateServiceSchema(
+  "One Way Taxi Ajmer",
+  "Affordable one-way taxi service from Ajmer to all major destinations. No return fare. Starting ₹10/km for Sedan. Transparent pricing, AC cabs, 24/7 available.",
+  `${business.website}/one-way-taxi-ajmer/`
+);
+
+const routes = [
+  { to: "Jaipur", km: "135 km", time: "2.5 hrs", sedan: "₹1,800", ertiga: "₹2,800" },
+  { to: "Pushkar", km: "14 km", time: "30 min", sedan: "₹350", ertiga: "₹500" },
+  { to: "Jodhpur", km: "200 km", time: "3.5 hrs", sedan: "₹2,800", ertiga: "₹4,200" },
+  { to: "Udaipur", km: "265 km", time: "4.5 hrs", sedan: "₹3,500", ertiga: "₹5,200" },
+  { to: "Delhi", km: "395 km", time: "6.5 hrs", sedan: "₹5,500", ertiga: "₹8,000" },
+  { to: "Agra", km: "390 km", time: "6.5 hrs", sedan: "₹5,800", ertiga: "₹8,500" },
+  { to: "Ahmedabad", km: "360 km", time: "6 hrs", sedan: "₹5,200", ertiga: "₹7,800" },
+  { to: "Jaisalmer", km: "530 km", time: "9 hrs", sedan: "₹7,500", ertiga: "₹10,500" },
+];
+
+const faqs = [
+  { question: "What is the one-way taxi rate from Ajmer?", answer: "Our one-way outstation taxi rates start at ₹10/km for a Maruti Dzire or Toyota Etios Sedan. For popular routes like Ajmer to Jaipur, we offer fixed one-way fares from ₹1,800.", category: "Pricing" as const },
+  { question: "Do I need to pay a return fare for a one-way cab from Ajmer?", answer: "No. Our one-way taxi pricing does not include any return charges. You only pay for the one-way journey to your destination. This makes us significantly more affordable than operators who charge round-trip rates.", category: "Pricing" as const },
+  { question: "Can I book a one-way cab from Ajmer to Delhi?", answer: "Yes, we offer one-way cabs from Ajmer to Delhi at fixed prices. The Ajmer to Delhi Sedan fare is ₹5,500 one-way for ~395 km via NH 48.", category: "Routes" as const },
+  { question: "Is advance booking required for one-way taxi from Ajmer?", answer: "For most routes, we can arrange a cab within 2–4 hours notice. For early morning pickups (before 6 AM) and long-distance routes (500+ km), we recommend booking 12–24 hours in advance.", category: "Booking" as const }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/one-way-taxi-ajmer/" schemaMarkup={serviceSchema}>
+  <Header />
+  <main id="main-content">
+    <section class="route-hero">
+      <div class="container text-center">
+        <span class="heritage-pill">One-Way Cab Service • No Return Fare • Since 2008</span>
+        <h1 class="route-title">One-Way Taxi from Ajmer</h1>
+        <p class="route-subtitle">Pay Only for Your Journey — No Return Charges · Starting ₹10/km · AC Cabs · 24/7 Booking</p>
+        <div class="hero-fare-pills">
+          <div class="h-pill">Sedan: <strong>₹10/km</strong></div>
+          <div class="h-pill">Ertiga: <strong>₹14/km</strong></div>
+          <div class="h-pill">Innova: <strong>₹18/km</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="route-content-section">
+      <div class="container">
+        <div class="route-grid">
+          <div class="route-main">
+            <span class="section-subtitle">Transparent One-Way Pricing — No Hidden Charges</span>
+            <h2 class="section-title">Affordable One-Way Cab from Ajmer</h2>
+            <p>
+              Many taxi operators in Ajmer charge you a round-trip fare even when you only need a one-way cab. At Panwar Taxi, we believe in fair, transparent pricing. Our one-way cabs are priced only for the distance to your destination — with no return charges, no night allowance surprises, and no hidden fees.
+            </p>
+            <p>
+              Whether you're heading to Jaipur for a meeting, Delhi for a flight, or Pushkar for a day visit — our one-way taxis are the most cost-effective choice for solo travelers, couples, and families.
+            </p>
+
+            <h3 class="tier-heading">One-Way Fare Table — Popular Ajmer Routes</h3>
+            <div class="fare-table-wrap">
+              <table class="fare-table">
+                <thead>
+                  <tr>
+                    <th>Destination</th>
+                    <th>Distance</th>
+                    <th>Time</th>
+                    <th>Sedan Fare</th>
+                    <th>Ertiga Fare</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {routes.map(r => (
+                    <tr>
+                      <td><strong>Ajmer → {r.to}</strong></td>
+                      <td>{r.km}</td>
+                      <td>{r.time}</td>
+                      <td class="fare-cell">{r.sedan}</td>
+                      <td class="fare-cell">{r.ertiga}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p class="table-note">* Toll charges are extra as per actual FASTag receipts. Innova Crysta rates on request.</p>
+
+            <div class="route-itinerary-box" style="margin-top: var(--space-xl)">
+              <h3>Why Choose Our One-Way Taxis?</h3>
+              <ul>
+                <li>• <strong>No Return Fare:</strong> Pay only for your one-way journey — the most honest pricing model in Ajmer.</li>
+                <li>• <strong>No Advance Required:</strong> Zero upfront payment. Pay the driver directly at the end of your journey.</li>
+                <li>• <strong>24/7 Availability:</strong> Early morning or late night — our cabs are available round the clock.</li>
+                <li>• <strong>AC Cabs Only:</strong> All our vehicles are 100% air-conditioned and regularly maintained.</li>
+                <li>• <strong>Verified Drivers:</strong> Commercial permit, police verification, and 18+ years of safe driving on Rajasthan routes.</li>
+              </ul>
+            </div>
+          </div>
+
+          <aside class="route-sidebar">
+            <div class="sidebar-box">
+              <h3 class="side-title">Book One-Way Cab</h3>
+              <p style="font-size:0.875rem; color:var(--color-text-muted); margin-bottom:var(--space-md);">Share your pickup point and destination for an instant quote.</p>
+              <div class="side-actions">
+                <a href={waGeneral} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm full-w">WhatsApp for Quote</a>
+                <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn--sm full-w">Call: {business.phoneFormatted}</a>
+              </div>
+            </div>
+            <div class="sidebar-box">
+              <h3 class="side-title" style="font-size:1rem">Popular One-Way Cabs</h3>
+              <div class="quick-routes">
+                <a href={waJaipur} target="_blank" rel="noopener noreferrer" class="quick-route-btn">Ajmer → Jaipur ₹1,800</a>
+                <a href={createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jodhpur", tripType: "One Way" })} target="_blank" rel="noopener noreferrer" class="quick-route-btn">Ajmer → Jodhpur ₹2,800</a>
+                <a href={createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Delhi", tripType: "One Way" })} target="_blank" rel="noopener noreferrer" class="quick-route-btn">Ajmer → Delhi ₹5,500</a>
+                <a href={createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Udaipur", tripType: "One Way" })} target="_blank" rel="noopener noreferrer" class="quick-route-btn">Ajmer → Udaipur ₹3,500</a>
+              </div>
+            </div>
+            <div class="sidebar-trust">
+              <h4>Honest Pricing Since 2008</h4>
+              <p>We have never charged a hidden return fare. What you see is what you pay — always.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <FAQ items={faqs} title="One-Way Taxi Ajmer FAQs" subtitle="Frequently Asked Questions" />
+  </main>
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .route-hero { background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%); color: #FFF; padding: calc(var(--header-height, 74px) + 38px) 0 36px; border-bottom: 3px solid var(--color-accent); }
+  .heritage-pill { display: inline-block; background: rgba(197,155,39,0.2); border: 1px solid var(--color-accent); color: var(--color-accent-light); font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 14px; border-radius: var(--radius-full); margin-bottom: 12px; }
+  .route-title { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 2.75rem); color: #FFF; margin-bottom: 6px; }
+  .route-subtitle { font-size: 1.125rem; color: rgba(255,255,255,0.9); max-width: 720px; margin: 0 auto var(--space-lg); }
+  .hero-fare-pills { display: flex; justify-content: center; gap: var(--space-sm); flex-wrap: wrap; }
+  .h-pill { background: rgba(0,0,0,0.3); border: 1px solid rgba(197,155,39,0.4); padding: 6px 14px; border-radius: var(--radius-full); font-size: 0.875rem; color: #F8E6B8; }
+  .h-pill strong { color: #FFF; }
+  .route-content-section { padding: var(--space-4xl) 0; background: #FFF; }
+  .route-grid { display: grid; grid-template-columns: 1fr 340px; gap: var(--space-3xl); }
+  .tier-heading { font-family: var(--font-heading); font-size: 1.375rem; color: var(--color-primary); margin: var(--space-xl) 0 var(--space-md); }
+  .fare-table-wrap { overflow-x: auto; border-radius: var(--radius-lg); border: 1px solid var(--color-border); margin-bottom: var(--space-sm); }
+  .fare-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  .fare-table th { background: var(--color-primary); color: #FFF; padding: 10px 14px; text-align: left; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .fare-table td { padding: 10px 14px; border-bottom: 1px solid var(--color-border); color: var(--color-text); }
+  .fare-table tbody tr:last-child td { border-bottom: none; }
+  .fare-table tbody tr:nth-child(even) { background: var(--color-surface); }
+  .fare-cell { font-weight: 700; color: var(--color-primary); }
+  .table-note { font-size: 0.78rem; color: var(--color-text-muted); margin-bottom: 0; }
+  .route-itinerary-box { background: var(--color-cream); border: 1px solid var(--color-border); border-left: 4px solid var(--color-accent); padding: var(--space-xl); border-radius: var(--radius-md); }
+  .route-itinerary-box h3 { font-family: var(--font-heading); color: var(--color-primary); font-size: 1.25rem; margin-bottom: var(--space-sm); }
+  .route-itinerary-box ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.875rem; color: var(--color-text); }
+  .route-sidebar { display: flex; flex-direction: column; gap: var(--space-lg); }
+  .sidebar-box { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-xl); }
+  .side-title { font-family: var(--font-heading); font-size: 1.125rem; color: var(--color-primary); margin-bottom: var(--space-md); padding-bottom: 6px; border-bottom: 2px solid var(--color-accent); }
+  .side-actions { display: flex; flex-direction: column; gap: 8px; }
+  .full-w { width: 100%; justify-content: center; }
+  .quick-routes { display: flex; flex-direction: column; gap: 8px; }
+  .quick-route-btn { display: block; background: var(--color-cream); border: 1px solid var(--color-border); color: var(--color-primary); font-size: 0.8125rem; font-weight: 600; padding: 8px 12px; border-radius: var(--radius-md); text-decoration: none; transition: all 0.2s; }
+  .quick-route-btn:hover { background: var(--color-primary); color: #FFF; border-color: var(--color-primary); }
+  .sidebar-trust { background: var(--color-cream); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-lg); }
+  .sidebar-trust h4 { font-family: var(--font-heading); color: var(--color-primary); font-size: 1rem; margin-bottom: 4px; }
+  .sidebar-trust p { font-size: 0.8125rem; color: var(--color-text-muted); line-height: 1.5; margin: 0; }
+  @media (max-width: 992px) { .route-grid { grid-template-columns: 1fr; } }
+</style>

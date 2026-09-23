@@ -1,0 +1,356 @@
+---
+import { business } from "@/data/business";
+---
+
+<footer class="site-footer" role="contentinfo">
+  <!-- Pre-footer CTA banner -->
+  <div class="pre-footer">
+    <div class="container">
+      <div class="pre-footer-content">
+        <div class="pre-footer-text">
+          <span class="heritage-tag">Serving Ajmer Since 2008</span>
+          <h2 class="pre-footer-title">Need an Immediate Cab or Customized Tour?</h2>
+          <p class="pre-footer-desc">Call our 24/7 Ajmer helpline for instant cab booking, airport drops, and transparent route rates.</p>
+        </div>
+        <div class="pre-footer-actions">
+          <a href={`tel:${business.phone}`} class="btn btn--gold btn--lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            {business.phoneFormatted}
+          </a>
+          <a href="/contact/" class="btn btn--outline-light btn--lg">
+            Visit Our Office
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main multi-column footer -->
+  <div class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand & Trust -->
+        <div class="footer-col footer-col--brand">
+          <a href="/" class="footer-logo">
+            <img 
+              src="/images/logo-horizontal.png" 
+              alt="Panwar Taxi Ajmer Logo — Taxi Services in Ajmer Since 2008" 
+              width="220" 
+              height="80" 
+              class="footer-logo-img"
+              loading="lazy" 
+            />
+          </a>
+          <p class="footer-about">
+            Panwar Taxi is Ajmer’s premier taxi rental and chauffeur service, serving domestic and international pilgrims, tourists, and business travelers since 2008. Dedicated to safety, transparency, and authentic Rajasthani hospitality.
+          </p>
+          <div class="heritage-label">
+            <span class="hl-badge">★ ESTD. 2008</span>
+            <span class="hl-text">18+ Years of Service in Rajasthan</span>
+          </div>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div class="footer-col">
+          <h3 class="footer-col-title">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About Our Company</a></li>
+            <li><a href="/taxi-rental/">Taxi Rental &amp; Fleet</a></li>
+            <li><a href="/outstation/">Outstation Cabs</a></li>
+            <li><a href="/airport-transfer/">Airport Transfers</a></li>
+            <li><a href="/tours/">Rajasthan Tour Packages</a></li>
+            <li><a href="/contact/">Contact &amp; Location</a></li>
+          </ul>
+        </div>
+
+        <!-- Top Route Pages -->
+        <div class="footer-col">
+          <h3 class="footer-col-title">Popular Routes</h3>
+          <ul class="footer-links">
+            <li><a href="/ajmer-to-jaipur-taxi/">Ajmer to Jaipur Taxi (₹1,800)</a></li>
+            <li><a href="/ajmer-to-delhi-taxi/">Ajmer to Delhi Airport (₹5,500)</a></li>
+            <li><a href="/ajmer-to-pushkar-taxi/">Ajmer to Pushkar Sightseeing</a></li>
+            <li><a href="/ajmer-to-udaipur-taxi/">Ajmer to Udaipur Taxi</a></li>
+            <li><a href="/ajmer-to-jodhpur-taxi/">Ajmer to Jodhpur Taxi</a></li>
+            <li><a href="/ajmer-to-kishangarh-airport-taxi/">Ajmer to Kishangarh Airport</a></li>
+          </ul>
+        </div>
+
+        <!-- Verified Contact & Address -->
+        <div class="footer-col footer-col--contact">
+          <h3 class="footer-col-title">Contact &amp; Dispatch</h3>
+          <address class="footer-address">
+            <div class="contact-entry">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>
+                {business.address.line1}, Near {business.address.landmark},<br />
+                {business.address.city}, {business.address.state} - {business.address.pincode}
+              </span>
+            </div>
+
+            <div class="contact-entry">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href={`tel:${business.phone}`}>{business.phoneFormatted}</a>
+            </div>
+
+            <div class="contact-entry">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href={`mailto:${business.email}`}>{business.email}</a>
+            </div>
+
+            <div class="contact-entry">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>Open 24 Hours • 7 Days a Week</span>
+            </div>
+          </address>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright sub-bar -->
+  <div class="sub-footer">
+    <div class="container sub-footer-content">
+      <p class="copyright">
+        © 2008–2026 {business.name}. Serving Ajmer Since 2008. All rights reserved.
+      </p>
+      <div class="footer-legal">
+        <span>Authorized Tour &amp; Taxi Operator • Ajmer, Rajasthan</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--color-primary-dark);
+    color: #FFFFFF;
+    position: relative;
+    border-top: 4px solid var(--color-accent);
+  }
+
+  .pre-footer {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    padding: var(--space-3xl) 0;
+    border-bottom: 1px solid rgba(197, 155, 39, 0.25);
+  }
+
+  .pre-footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-2xl);
+    flex-wrap: wrap;
+  }
+
+  .heritage-tag {
+    color: var(--color-accent-light);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .pre-footer-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    color: #FFFFFF;
+    margin-bottom: var(--space-xs);
+  }
+
+  .pre-footer-desc {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0;
+  }
+
+  .pre-footer-actions {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .main-footer {
+    padding: var(--space-4xl) 0 var(--space-3xl);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 0.9fr 1.1fr 1.2fr;
+    gap: var(--space-2xl);
+  }
+
+  .footer-logo {
+    display: inline-block;
+    margin-bottom: var(--space-md);
+    background: #FFFFFF;
+    padding: 6px 14px;
+    border-radius: var(--radius-md);
+  }
+
+  .footer-logo-img {
+    display: block;
+    height: auto;
+    max-width: 190px;
+  }
+
+  .footer-about {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+  }
+
+  .heritage-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(197, 155, 39, 0.15);
+    border: 1px solid var(--color-accent);
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+  }
+
+  .hl-badge {
+    color: var(--color-accent-light);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .hl-text {
+    color: #FFFFFF;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .footer-col-title {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    color: var(--color-accent-light);
+    margin-bottom: var(--space-lg);
+    letter-spacing: 0.03em;
+    position: relative;
+    padding-bottom: 8px;
+  }
+
+  .footer-col-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 32px;
+    height: 2px;
+    background: var(--color-accent);
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: color var(--transition-fast), transform var(--transition-fast);
+    display: inline-block;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-accent-light);
+    transform: translateX(4px);
+  }
+
+  .footer-address {
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .contact-entry {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .contact-entry svg {
+    width: 18px;
+    height: 18px;
+    color: var(--color-accent-light);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .contact-entry a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .contact-entry a:hover {
+    color: var(--color-accent-light);
+  }
+
+  .sub-footer {
+    background-color: #1a0206;
+    padding: var(--space-lg) 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .sub-footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .copyright {
+    margin: 0;
+  }
+
+  .footer-legal {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  @media (max-width: 992px) {
+    .footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-xl);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .footer-logo {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-bottom: var(--space-xl);
+    }
+    .footer-logo-img {
+      max-width: 280px;
+      width: 80vw;
+      height: auto;
+    }
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+    .sub-footer-content {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

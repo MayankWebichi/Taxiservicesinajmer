@@ -1,0 +1,41 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Hero from "@/components/Hero/Hero.astro";
+import TrustSection from "@/components/Trust/TrustSection.astro";
+import VehicleGrid from "@/components/Vehicles/VehicleGrid.astro";
+import PopularRoutes from "@/components/Routes/PopularRoutes.astro";
+import MobileCarScrollTransition from "@/components/Transitions/MobileCarScrollTransition.astro";
+import Services from "@/components/Services/Services.astro";
+import Destinations from "@/components/Destinations/Destinations.astro";
+import WhyChooseUs from "@/components/WhyUs/WhyChooseUs.astro";
+import Reviews from "@/components/Reviews/Reviews.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+
+const pageTitle = "Taxi Services in Ajmer | Panwar Taxi (Serving Since 2008)";
+const pageDescription = "Ajmer's trusted taxi service since 2008. Verified AC cabs, direct operator rates from ₹10/km, one-way transfers to Jaipur, Delhi, Pushkar, and Kishangarh Airport. 24/7 call & WhatsApp.";
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/">
+  <Header />
+  
+  <main id="main-content">
+    <Hero />
+    <TrustSection />
+    <VehicleGrid limit={6} />
+    <PopularRoutes limit={6} />
+    <MobileCarScrollTransition />
+    <Services />
+    <Destinations limit={6} />
+    <WhyChooseUs />
+    <Reviews />
+    <FAQ />
+  </main>
+
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
