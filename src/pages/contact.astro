@@ -7,8 +7,8 @@ import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro"
 import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
 
-const pageTitle = "Contact Panwar Taxi Ajmer | 24/7 Cab Booking Office";
-const pageDescription = "Contact Panwar Taxi in Vaishali Nagar, Ajmer. Call +91 77373 14538 or WhatsApp for instant taxi booking, airport transfers, and outstation cab inquiries. Open 24/7.";
+const pageTitle = "Contact Us | Taxi Services in Ajmer — 24/7 Cab Booking";
+const pageDescription = "Contact our 24/7 taxi booking helpline in Ajmer. Call +91 77373 14538 or WhatsApp for instant cab bookings, airport transfers, and outstation inquiries.";
 const waUrl = createWhatsAppBookingUrl();
 ---
 
@@ -18,8 +18,8 @@ const waUrl = createWhatsAppBookingUrl();
   <main id="main-content">
     <section class="page-banner">
       <div class="container text-center">
-        <span class="heritage-pill">24/7 Dispatch Office</span>
-        <h1 class="page-title">Contact Panwar Taxi Ajmer</h1>
+        <span class="heritage-pill">24/7 Dispatch Support</span>
+        <h1 class="page-title">Contact Taxi Services in Ajmer</h1>
         <p class="page-subtitle">Serving Ajmer Since 2008 • Prompt Support &amp; Instant WhatsApp Bookings</p>
       </div>
     </section>
@@ -30,7 +30,7 @@ const waUrl = createWhatsAppBookingUrl();
           <!-- Office Info Column -->
           <div class="contact-info-col">
             <span class="section-subtitle">Get in Touch</span>
-            <h2 class="contact-heading">Visit Our Dispatch Office or Call Anytime</h2>
+            <h2 class="contact-heading">Call or WhatsApp Our 24/7 Dispatch Team Anytime</h2>
             <p class="contact-lead">
               Whether you need an immediate cab at the Ajmer Railway Station or want to schedule an airport transfer for next week, our team is available round the clock.
             </p>
@@ -39,12 +39,12 @@ const waUrl = createWhatsAppBookingUrl();
               <div class="c-card">
                 <div class="c-icon">📍</div>
                 <div class="c-details">
-                  <h4>Head Office Address</h4>
+                  <h4>Service Coverage</h4>
                   <address>
-                    {business.address.street}, {business.address.landmark},<br />
-                    {business.address.city}, {business.address.state} - {business.address.postalCode}
+                    24/7 Doorstep Pickup Across Ajmer &amp; Pushkar,<br />
+                    Rajasthan, India - 305001
                   </address>
-                  <span class="c-subtext">~4.5 km from Ajmer Junction Railway Station</span>
+                  <span class="c-subtext">Direct pickup at railway station, hotels &amp; all localities</span>
                 </div>
               </div>
 
@@ -127,17 +127,17 @@ const waUrl = createWhatsAppBookingUrl();
 
         <!-- Google Map Section -->
         <div class="map-container">
-          <h3 class="map-title">Find Our Office in Ajmer</h3>
+          <h3 class="map-title">Our Service Area — Ajmer &amp; Pushkar</h3>
           <div class="map-responsive">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14285.877028169286!2d74.622434!3d26.471676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be71e21b8bbf7%3A0x2a9e32a67e163d08!2sVaishali%20Nagar%2C%20Ajmer%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57134.99042296497!2d74.597645!3d26.449895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be6d8fcb7cd01%3A0xc3b8606416f5cffc!2sAjmer%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
               width="100%" 
               height="380" 
               style="border:0;" 
               allowfullscreen="" 
               loading="lazy" 
               referrerpolicy="no-referrer-when-downgrade"
-              title="Panwar Taxi Ajmer Office Location on Google Maps"
+              title="Taxi Services in Ajmer Service Area on Google Maps"
             ></iframe>
           </div>
         </div>
@@ -150,17 +150,19 @@ const waUrl = createWhatsAppBookingUrl();
   <MobileBottomBar />
 </Layout>
 
-<script define:vars={{ phone: business.phone }}>
+<script>
+  import { business } from "@/data/business";
+
   const contactBtn = document.getElementById("btn-contact-wa");
   if (contactBtn) {
     contactBtn.addEventListener("click", () => {
       const name = (document.getElementById("c-name") as HTMLInputElement)?.value.trim() || "Customer";
       const userPhone = (document.getElementById("c-phone") as HTMLInputElement)?.value.trim() || "Not provided";
-      const service = (document.getElementById("c-service") as HTMLSelectElement)?.value;
+      const service = (document.getElementById("c-service") as HTMLSelectElement)?.value || "General Inquiry";
       const details = (document.getElementById("c-details-text") as HTMLTextAreaElement)?.value.trim() || "None";
 
       const message = 
-`*New Website Contact Inquiry — Panwar Taxi Ajmer*
+`*New Website Contact Inquiry — Taxi Services in Ajmer*
 --------------------------------
 • *Name:* ${name}
 • *Phone:* ${userPhone}
@@ -169,7 +171,7 @@ const waUrl = createWhatsAppBookingUrl();
 --------------------------------
 Please reply with availability and quote.`;
 
-      const cleanPhone = phone.replace(/[^0-9]/g, "");
+      const cleanPhone = business.phone.replace(/[^0-9]/g, "");
       const waUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
       window.open(waUrl, "_blank");
     });

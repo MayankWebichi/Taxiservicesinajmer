@@ -264,7 +264,7 @@ const serviceSchema = generateServiceSchema(
     document.getElementById("result-note")!.textContent = `Estimated fare for ${veh.name}. Toll charges are extra. No advance required — pay at destination.`;
 
     // WhatsApp link
-    const waMsg = encodeURIComponent(`Hello Panwar Taxi Ajmer, I want to book a ${selectedTrip === "round-trip" ? "round-trip" : "one-way"} cab from ${fromVal} to ${route.name} in a ${veh.name}. The calculator shows ₹${fare.toLocaleString("en-IN")}. Please confirm availability.`);
+    const waMsg = encodeURIComponent(`Hello, I want to book a ${selectedTrip === "round-trip" ? "round-trip" : "one-way"} cab from ${fromVal} to ${route.name} in a ${veh.name}. The calculator shows ₹${fare.toLocaleString("en-IN")}. Please confirm availability.`);
     (document.getElementById("result-wa") as HTMLAnchorElement).href = `https://wa.me/${WA_NUM}?text=${waMsg}`;
 
     document.getElementById("result-empty")!.style.display = "none";

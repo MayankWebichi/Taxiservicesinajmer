@@ -18,7 +18,7 @@ export function createWhatsAppBookingUrl(details?: BookingDetails): string {
   const phone = business.whatsapp;
   
   if (!details || Object.keys(details).length === 0) {
-    const text = `Hello Panwar Taxi Ajmer, I would like to enquire about taxi rental services in Ajmer.`;
+    const text = `Hello, I would like to enquire about taxi rental services in Ajmer.`;
     return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
   }
 
@@ -26,7 +26,7 @@ export function createWhatsAppBookingUrl(details?: BookingDetails): string {
     return `https://wa.me/${phone}?text=${encodeURIComponent(details.customMessage)}`;
   }
 
-  const parts: string[] = ["Hello Panwar Taxi Ajmer,"];
+  const parts: string[] = ["Hello,"];
   
   const vehicleText = details.vehicle ? ` a ${details.vehicle}` : " a taxi";
   const pickupText = details.pickup ? ` from ${details.pickup}` : " from Ajmer";
@@ -55,6 +55,6 @@ export function createWhatsAppBookingUrl(details?: BookingDetails): string {
  */
 export function createRouteWhatsAppUrl(routeName: string, vehicleName?: string): string {
   const vehicleStr = vehicleName ? ` for a ${vehicleName}` : "";
-  const text = `Hello Panwar Taxi Ajmer, I want to check availability and book a cab for ${routeName}${vehicleStr}. Please share fare details.`;
+  const text = `Hello, I want to check availability and book a cab for ${routeName}${vehicleStr}. Please share fare details.`;
   return `https://wa.me/${business.whatsapp}?text=${encodeURIComponent(text)}`;
 }

@@ -13,7 +13,7 @@
           <!-- Default closed-doors car -->
           <img
             src="/images/hero-top-car-2.jpg"
-            alt="Panwar Taxi Chauffeur Cab"
+            alt="Ajmer Chauffeur Cab"
             class="mobile-mid-car-img car-img-closed"
             id="mobile-mid-car-closed"
             width="754"
@@ -23,7 +23,7 @@
           <!-- Open-doors car revealed on completion -->
           <img
             src="/images/hero-car-open-doors.png"
-            alt="Panwar Taxi Chauffeur Cab Doors Open"
+            alt="Ajmer Chauffeur Cab Doors Open"
             class="mobile-mid-car-img car-img-open"
             id="mobile-mid-car-open"
             width="754"
@@ -189,17 +189,22 @@
     const mover = document.getElementById("mobile-mid-car-mover");
     if (!track || !mover) return;
 
+    const trackEl: HTMLElement = track;
+    const moverEl: HTMLElement = mover;
+
     let ticking = false;
 
     function onScroll() {
+      if (!trackEl || !moverEl) return;
+
       if (window.innerWidth > 900) {
-        mover.style.transform = "";
-        mover.classList.remove("is-open");
+        moverEl.style.transform = "";
+        moverEl.classList.remove("is-open");
         ticking = false;
         return;
       }
 
-      const rect = track.getBoundingClientRect();
+      const rect = trackEl.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
       // Start driving in gently as soon as track approaches viewport bottom
@@ -219,13 +224,13 @@
       // Ease-out curve to decelerate smoothly as it enters center
       const easedProgress = Math.sin((progress * Math.PI) / 2);
       const currentX = -(1 - easedProgress) * 120;
-      mover.style.transform = `translateX(${currentX}vw)`;
+      moverEl.style.transform = `translateX(${currentX}vw)`;
 
       // When settled near center (progress >= 0.88), reveal open doors and message
       if (progress >= 0.88) {
-        mover.classList.add("is-open");
+        moverEl.classList.add("is-open");
       } else {
-        mover.classList.remove("is-open");
+        moverEl.classList.remove("is-open");
       }
 
       ticking = false;

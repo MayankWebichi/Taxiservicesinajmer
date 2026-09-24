@@ -9,11 +9,11 @@ import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
 import { generateServiceSchema } from "@/utils/seo";
 
-const pageTitle = "Pushkar Tour from Ajmer | Day Trip Cab ₹700 — Panwar Taxi (2026)";
-const pageDescription = "Book an Ajmer to Pushkar day trip cab from ₹700. 14 km holy lake pilgrimage. Brahma Temple, Pushkar Lake Ghats & Pushkar Fair. AC cab, experienced local driver, 24/7 booking.";
+const pageTitle = "Pushkar Tour from Ajmer | Day Trip Cab ₹1,800 — Taxi Services in Ajmer (2026)";
+const pageDescription = "Book an Ajmer to Pushkar pilgrimage cab from ₹500 (one-way) or full-day package from ₹1,800. Brahma Temple, Pushkar Lake Ghats & desert sunset. AC cab, verified local chauffeur.";
 
-const waDay    = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Pushkar", tripType: "Day Tour", customMessage: "Hello Panwar Taxi Ajmer, I want to book a day trip cab from Ajmer to Pushkar. Please share availability and fare." });
-const waReturn = createWhatsAppBookingUrl({ pickup: "Pushkar", destination: "Ajmer", customMessage: "Hello Panwar Taxi Ajmer, I need a return cab from Pushkar to Ajmer. Please share rate and availability." });
+const waDay    = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Pushkar", tripType: "Day Tour", customMessage: "Hello, I want to book a day trip cab from Ajmer to Pushkar. Please share availability and fare." });
+const waReturn = createWhatsAppBookingUrl({ pickup: "Pushkar", destination: "Ajmer", customMessage: "Hello, I need a return cab from Pushkar to Ajmer. Please share rate and availability." });
 
 const serviceSchema = generateServiceSchema(
   "Pushkar Day Tour from Ajmer",
@@ -22,7 +22,7 @@ const serviceSchema = generateServiceSchema(
 );
 
 const faqs = [
-  { question: "How much does a cab from Ajmer to Pushkar cost?", answer: "A one-way cab from Ajmer to Pushkar costs ₹350–₹500 depending on the vehicle. A full-day round trip (Ajmer → Pushkar → Ajmer with waiting) costs ₹700–₹1,200 for a Sedan.", category: "Pricing" as const },
+  { question: "How much does a cab from Ajmer to Pushkar cost?", answer: "A one-way cab from Ajmer to Pushkar costs ₹500 for a Sedan. A full-day pilgrimage round trip (Ajmer → Pushkar → Ajmer with flexible waiting at temples and ghats) costs ₹1,800 for a Sedan.", category: "Pricing" as const },
   { question: "How far is Pushkar from Ajmer?", answer: "Pushkar is approximately 14 km from Ajmer city centre. The route goes via the scenic Nag Pahar (Snake Mountain) road through the Aravalli hills, taking about 25–35 minutes.", category: "Routes" as const },
   { question: "Is taxi available from Ajmer to Pushkar during the Pushkar Camel Fair?", answer: "Yes, we operate round the clock during the Pushkar Camel Fair (Kartik Purnima, usually November). However, we strongly recommend advance booking as demand surges during the fair week.", category: "Booking" as const },
   { question: "Can I book a return cab from Pushkar to Ajmer?", answer: "Yes, we provide return cabs from Pushkar to Ajmer Railway Station, Bus Stand, and all hotels at any time. Call or WhatsApp for immediate pickup in Pushkar.", category: "Booking" as const },
@@ -37,9 +37,9 @@ const faqs = [
       <div class="container text-center">
         <span class="heritage-pill">Ajmer ↔ Pushkar • 14 km Scenic Route • Since 2008</span>
         <h1 class="route-title">Pushkar Day Trip from Ajmer</h1>
-        <p class="route-subtitle">Brahma Temple • Pushkar Lake Ghats • Camel Fair • One-Way from ₹350 | Full Day from ₹700</p>
+        <p class="route-subtitle">Brahma Temple • Pushkar Lake Ghats • Camel Grounds • One-Way from ₹500 | Full Day Package ₹1,800</p>
         <div class="cta-row">
-          <a href={waDay} target="_blank" rel="noopener noreferrer" class="btn btn--gold">Book Day Trip</a>
+          <a href={waDay} target="_blank" rel="noopener noreferrer" class="btn btn--gold">Book Day Trip — ₹1,800</a>
           <a href={waReturn} target="_blank" rel="noopener noreferrer" class="btn btn--outline-white">Pushkar → Ajmer Return</a>
         </div>
       </div>
@@ -55,7 +55,7 @@ const faqs = [
               Pushkar — the holy city of Lord Brahma — lies just 14 km from Ajmer over the scenic Aravalli mountain road. Home to the world's only Brahma Temple, the serene Pushkar Lake (Sarovar) with its 52 bathing ghats, and the internationally famous Pushkar Camel Fair — this sacred city is an essential part of any Ajmer visit.
             </p>
             <p>
-              Panwar Taxi has been running Ajmer–Pushkar cabs since 2008. Our drivers navigate the winding Nag Pahar (Snake Mountain) road confidently and know the best parking spots near the Brahma Temple and the ghats.
+              Our taxi service has been running Ajmer–Pushkar cabs since 2008. Our drivers navigate the winding Nag Pahar (Snake Mountain) road confidently and know the best parking spots near the Brahma Temple and the ghats.
             </p>
 
             <h3 class="tier-heading">Pushkar Cab Packages</h3>
@@ -63,7 +63,7 @@ const faqs = [
               <div class="pkg-card">
                 <div class="pkg-icon">➡️</div>
                 <h4 class="pkg-title">One-Way Drop</h4>
-                <div class="pkg-fare">From ₹350</div>
+                <div class="pkg-fare">From ₹500</div>
                 <ul class="pkg-list">
                   <li>✓ Doorstep to Pushkar</li>
                   <li>✓ Direct drop at Brahma Temple / Ghats</li>
@@ -74,13 +74,13 @@ const faqs = [
               <div class="pkg-card pkg-card--featured">
                 <div class="pkg-badge">Best Value</div>
                 <div class="pkg-icon">🔄</div>
-                <h4 class="pkg-title">Full Day Round Trip</h4>
-                <div class="pkg-fare">From ₹700</div>
+                <h4 class="pkg-title">Full Day Pilgrimage Tour</h4>
+                <div class="pkg-fare">₹1,800</div>
                 <ul class="pkg-list">
                   <li>✓ Ajmer → Pushkar → Ajmer</li>
-                  <li>✓ 4 Hours driver waiting included</li>
-                  <li>✓ Visit Brahma Temple + Lake Ghats</li>
-                  <li>✓ Flexible timing</li>
+                  <li>✓ Flexible driver waiting included</li>
+                  <li>✓ Brahma Temple + Lake Ghats + Savitri Temple</li>
+                  <li>✓ AC Sedan with local chauffeur</li>
                 </ul>
                 <a href={waDay} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm">Book Full Day</a>
               </div>
@@ -117,8 +117,8 @@ const faqs = [
                 <div class="side-item"><span class="s-label">To:</span><span class="s-val">Pushkar</span></div>
                 <div class="side-item"><span class="s-label">Distance:</span><span class="s-val">~14 km</span></div>
                 <div class="side-item"><span class="s-label">Travel Time:</span><span class="s-val">25–35 Minutes</span></div>
-                <div class="side-item"><span class="s-label">One-Way Fare:</span><span class="s-val gold-text">From ₹350</span></div>
-                <div class="side-item"><span class="s-label">Full Day:</span><span class="s-val gold-text">From ₹700</span></div>
+                <div class="side-item"><span class="s-label">One-Way Fare:</span><span class="s-val gold-text">From ₹500</span></div>
+                <div class="side-item"><span class="s-label">Full Day Tour:</span><span class="s-val gold-text">₹1,800</span></div>
               </div>
               <div class="side-actions">
                 <a href={waDay} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm full-w">WhatsApp Booking</a>

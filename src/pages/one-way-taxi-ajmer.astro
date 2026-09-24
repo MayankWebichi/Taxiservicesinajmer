@@ -9,11 +9,11 @@ import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
 import { generateServiceSchema } from "@/utils/seo";
 
-const pageTitle = "One-Way Taxi Ajmer | Book One Side Cab ₹10/km — Panwar Taxi (2026)";
+const pageTitle = "One-Way Taxi Ajmer | Book One Side Cab ₹10/km — Taxi Services in Ajmer (2026)";
 const pageDescription = "Book one-way taxi from Ajmer to any destination in Rajasthan or India. Starting ₹10/km. No return charge. Transparent fare, AC cabs, verified drivers. Instant WhatsApp booking 24/7.";
 
 const waJaipur  = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jaipur", vehicle: "Sedan (One-Way)", tripType: "One Way" });
-const waGeneral = createWhatsAppBookingUrl({ pickup: "Ajmer", tripType: "One Way", customMessage: "Hello Panwar Taxi Ajmer, I need a one-way taxi from Ajmer. Please share fare and availability for my route." });
+const waGeneral = createWhatsAppBookingUrl({ pickup: "Ajmer", tripType: "One Way", customMessage: "Hello, I need a one-way taxi from Ajmer. Please share fare and availability for my route." });
 
 const serviceSchema = generateServiceSchema(
   "One Way Taxi Ajmer",
@@ -23,7 +23,7 @@ const serviceSchema = generateServiceSchema(
 
 const routes = [
   { to: "Jaipur", km: "135 km", time: "2.5 hrs", sedan: "₹1,800", ertiga: "₹2,800" },
-  { to: "Pushkar", km: "14 km", time: "30 min", sedan: "₹350", ertiga: "₹500" },
+  { to: "Pushkar", km: "14 km", time: "30 min", sedan: "₹500", ertiga: "₹800" },
   { to: "Jodhpur", km: "200 km", time: "3.5 hrs", sedan: "₹2,800", ertiga: "₹4,200" },
   { to: "Udaipur", km: "265 km", time: "4.5 hrs", sedan: "₹3,500", ertiga: "₹5,200" },
   { to: "Delhi", km: "395 km", time: "6.5 hrs", sedan: "₹5,500", ertiga: "₹8,000" },
@@ -63,7 +63,7 @@ const faqs = [
             <span class="section-subtitle">Transparent One-Way Pricing — No Hidden Charges</span>
             <h2 class="section-title">Affordable One-Way Cab from Ajmer</h2>
             <p>
-              Many taxi operators in Ajmer charge you a round-trip fare even when you only need a one-way cab. At Panwar Taxi, we believe in fair, transparent pricing. Our one-way cabs are priced only for the distance to your destination — with no return charges, no night allowance surprises, and no hidden fees.
+              Many taxi operators in Ajmer charge you a round-trip fare even when you only need a one-way cab. At our taxi service, we believe in fair, transparent pricing. Our one-way cabs are priced only for the distance to your destination — with no return charges, no night allowance surprises, and no hidden fees.
             </p>
             <p>
               Whether you're heading to Jaipur for a meeting, Delhi for a flight, or Pushkar for a day visit — our one-way taxis are the most cost-effective choice for solo travelers, couples, and families.

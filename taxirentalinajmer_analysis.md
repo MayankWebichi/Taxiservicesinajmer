@@ -1,4 +1,4 @@
-# 🚕 Panwar Taxi Ajmer — Complete Website Analysis
+# 🚕 Taxi Services in Ajmer — Complete Website Analysis
 > **Website:** https://www.taxirentalinajmer.com  
 > **Analysis Date:** September 17, 2026  
 > **Purpose:** Detailed research for building a new, improved website for the same owner

@@ -9,12 +9,12 @@ import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
 import { generateServiceSchema } from "@/utils/seo";
 
-const pageTitle = "Corporate Taxi Ajmer | Office Cab Service — Panwar Taxi (2026)";
+const pageTitle = "Corporate Taxi Ajmer | Office Cab Service — Taxi Services in Ajmer (2026)";
 const pageDescription = "Book corporate cab service in Ajmer for employee transfers, client pickups, and airport drops. Monthly contracts available. AC vehicles, uniformed drivers, billing support. 24/7 available.";
 
-const waMonthly  = createWhatsAppBookingUrl({ tripType: "Corporate Monthly Contract", customMessage: "Hello Panwar Taxi Ajmer, I am interested in a corporate monthly cab contract for office employee transfers. Please share rate card and terms." });
-const waAirport  = createWhatsAppBookingUrl({ tripType: "Corporate Airport Transfer", customMessage: "Hello Panwar Taxi Ajmer, I need a corporate cab for airport transfer. Please share availability and rate." });
-const waGeneral  = createWhatsAppBookingUrl({ tripType: "Corporate Cab Ajmer", customMessage: "Hello Panwar Taxi Ajmer, I need corporate cab service for my office/business. Please share rate card." });
+const waMonthly  = createWhatsAppBookingUrl({ tripType: "Corporate Monthly Contract", customMessage: "Hello, I am interested in a corporate monthly cab contract for office employee transfers. Please share rate card and terms." });
+const waAirport  = createWhatsAppBookingUrl({ tripType: "Corporate Airport Transfer", customMessage: "Hello, I need a corporate cab for airport transfer. Please share availability and rate." });
+const waGeneral  = createWhatsAppBookingUrl({ tripType: "Corporate Cab Ajmer", customMessage: "Hello, I need corporate cab service for my office/business. Please share rate card." });
 
 const serviceSchema = generateServiceSchema(
   "Corporate Taxi Service Ajmer",
@@ -52,7 +52,7 @@ const faqs = [
             <span class="section-subtitle">Trusted by Ajmer's Business Community Since 2008</span>
             <h2 class="section-title">Professional Corporate Cab Service — Ajmer</h2>
             <p>
-              Panwar Taxi provides reliable, professional corporate cab and employee transportation services for businesses, government offices, hospitals, hotels, and industrial units across Ajmer. From daily employee pickup and drop to one-time executive airport transfers — we handle all corporate mobility requirements with the professionalism your business demands.
+              We provide reliable, professional corporate cab and employee transportation services for businesses, government offices, hospitals, hotels, and industrial units across Ajmer. From daily employee pickup and drop to one-time executive airport transfers — we handle all corporate mobility requirements with the professionalism your business demands.
             </p>
 
             <h3 class="tier-heading">Corporate Services We Offer</h3>
@@ -101,7 +101,7 @@ const faqs = [
               <div class="side-actions">
                 <a href={waMonthly} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm full-w">WhatsApp Enquiry</a>
                 <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn--sm full-w">Call: {business.phoneFormatted}</a>
-                <a href="https://wa.me/917737314538?text=Hello%20Panwar%20Taxi%2C%20I%20want%20to%20enquire%20about%20corporate%20cab%20contracts." class="btn btn--outline-primary btn--sm full-w" style="font-size:0.8125rem">or WhatsApp Enquiry</a>
+                <a href={waGeneral} target="_blank" rel="noopener noreferrer" class="btn btn--outline-primary btn--sm full-w" style="font-size:0.8125rem">or Custom WhatsApp Enquiry</a>
               </div>
             </div>
             <div class="sidebar-trust">

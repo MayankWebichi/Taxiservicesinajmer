@@ -9,11 +9,14 @@ import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro"
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
 
 const pageTitle = "Ajmer & Pushkar Tour Packages | Sightseeing Cabs (Since 2008)";
-const pageDescription = "Explore Ajmer Sharif Dargah, Pushkar Lake, Brahma Temple & Rajasthan circuits with Panwar Taxi's guided chauffeur tour packages. Flexible itineraries & clean AC cabs.";
+const pageDescription = "Explore Ajmer Sharif Dargah, Pushkar Lake, Brahma Temple & Rajasthan circuits with our guided chauffeur tour packages. Flexible itineraries, clean AC cabs & transparent rates.";
 
-const waAjmerTour = createWhatsAppBookingUrl({ tripType: "Ajmer Local Sightseeing Tour", pickup: "Ajmer" });
-const waPushkarTour = createWhatsAppBookingUrl({ tripType: "Pushkar Pilgrimage Tour", pickup: "Ajmer" });
-const waCombinedTour = createWhatsAppBookingUrl({ tripType: "Same-Day Ajmer & Pushkar Combined Tour", pickup: "Ajmer" });
+const waAjmerTour = createWhatsAppBookingUrl({ tripType: "1 Day Ajmer Dargah Darshan", pickup: "Ajmer" });
+const waPushkarTour = createWhatsAppBookingUrl({ tripType: "1 Day Pushkar Pilgrimage Tour", pickup: "Ajmer" });
+const waCombinedTour = createWhatsAppBookingUrl({ tripType: "2 Days Ajmer + Pushkar Combo Tour", pickup: "Ajmer" });
+const waUrsTour = createWhatsAppBookingUrl({ tripType: "3 Days Ajmer Urs Special Package", pickup: "Ajmer" });
+const waGoldenTriangle = createWhatsAppBookingUrl({ tripType: "5 Days Golden Triangle + Pushkar Tour", pickup: "Ajmer" });
+const waRajasthanTour = createWhatsAppBookingUrl({ tripType: "7 Days Rajasthan Heritage Tour", pickup: "Ajmer" });
 ---
 
 <Layout title={pageTitle} description={pageDescription} canonicalPath="/tours/">
@@ -33,67 +36,126 @@ const waCombinedTour = createWhatsAppBookingUrl({ tripType: "Same-Day Ajmer & Pu
       <div class="container">
         <div class="section-header text-center">
           <span class="section-subtitle">Handcrafted Itineraries</span>
-          <h2 class="section-title">Featured Sightseeing Packages</h2>
+          <h2 class="section-title">Featured Sightseeing &amp; Tour Packages</h2>
           <p class="section-desc">Doorstep hotel and railway station pickup in Ajmer with experienced local chauffeurs.</p>
         </div>
 
         <div class="tours-grid">
-          <!-- Tour 1: Ajmer Local -->
+          <!-- Tour 1: 1 Day Ajmer Dargah Darshan -->
           <div class="tour-card">
             <div class="tour-badge">Full Day / 8 Hours</div>
-            <h3 class="tour-title">Ajmer City &amp; Dargah Sharif Heritage Tour</h3>
-            <p class="tour-desc">A spiritual and historical immersion through the ancient capital of the Chauhan kings and the renowned Sufi sanctuary.</p>
+            <h3 class="tour-title">1 Day Ajmer Dargah Darshan &amp; City Heritage</h3>
+            <p class="tour-desc">A spiritual and historical immersion covering the ancient Chauhan capital and the revered Sufi sanctuary.</p>
             <ul class="tour-stops">
               <li>📍 Hazrat Khwaja Moinuddin Chishti Dargah</li>
               <li>📍 Adhai Din Ka Jhopra 12th-century monument</li>
-              <li>📍 Ana Sagar Lake &amp; Shah Jahan Marble Pavilions</li>
-              <li>📍 Daulat Bagh Gardens &amp; Local Bazaar</li>
+              <li>📍 Ana Sagar Lake &amp; Daulat Bagh marble pavilions</li>
               <li>📍 Taragarh Hill Fort panoramic viewpoint</li>
+              <li>📍 Nareli Jain Temple &amp; local bazaars</li>
             </ul>
             <div class="tour-footer">
-              <span class="tour-price">Sedan: From ₹1,600</span>
+              <span class="tour-price">Starts at ₹1,500</span>
               <a href={waAjmerTour} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">
                 Book Tour
               </a>
             </div>
           </div>
 
-          <!-- Tour 2: Pushkar Pilgrimage -->
+          <!-- Tour 2: 1 Day Pushkar Pilgrimage -->
           <div class="tour-card">
-            <div class="tour-badge">Half / Full Day</div>
-            <h3 class="tour-title">Pushkar Sacred Lake &amp; Brahma Temple Tour</h3>
+            <div class="tour-badge">Full Day Tour</div>
+            <h3 class="tour-title">1 Day Pushkar Pilgrimage &amp; Ghats Tour</h3>
             <p class="tour-desc">Journey through the scenic Nagpahari pass to one of the world's holiest pilgrimage towns nestled beside the sacred lake.</p>
             <ul class="tour-stops">
               <li>📍 14th-Century Jagatpita Brahma Temple</li>
               <li>📍 52 Sacred Bathing Ghats of Pushkar Lake</li>
-              <li>📍 Savitri Devi Temple hill cable car / ropeway</li>
+              <li>📍 Savitri Devi Temple hill ropeway</li>
               <li>📍 Varaha Temple &amp; Old Rangji Temple</li>
-              <li>📍 Pushkar Camel desert grounds &amp; Sunset point</li>
+              <li>📍 Pushkar Camel grounds &amp; Sunset aarti</li>
             </ul>
             <div class="tour-footer">
-              <span class="tour-price">Sedan: From ₹1,500</span>
+              <span class="tour-price">Starts at ₹1,800</span>
               <a href={waPushkarTour} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">
                 Book Tour
               </a>
             </div>
           </div>
 
-          <!-- Tour 3: Combined Ajmer-Pushkar -->
+          <!-- Tour 3: 2 Days Ajmer + Pushkar Combo -->
           <div class="tour-card featured-tour">
-            <div class="tour-badge gold-badge">Most Popular • Same Day</div>
-            <h3 class="tour-title">Ajmer &amp; Pushkar Same-Day Grand Tour</h3>
-            <p class="tour-desc">The complete 10-hour itinerary designed for weekend travelers, pilgrims, and tourists arriving by Shatabdi or Vande Bharat trains.</p>
+            <div class="tour-badge gold-badge">Most Popular • 2 Days</div>
+            <h3 class="tour-title">2 Days Ajmer + Pushkar Combo Tour</h3>
+            <p class="tour-desc">Both sacred cities in one comprehensive package for pilgrims, families, and weekend travelers.</p>
             <ul class="tour-stops">
-              <li>📍 Morning arrival pickup at Ajmer Railway Station</li>
-              <li>📍 Ajmer Sharif Dargah Ziyarat &amp; Nizam Gate</li>
-              <li>📍 Ana Sagar Lake breeze &amp; photo stop</li>
-              <li>📍 Drive to Pushkar via scenic Aravalli hill pass</li>
-              <li>📍 Brahma Temple darshan &amp; Lake Ghat evening aarti</li>
-              <li>📍 Evening drop at Ajmer Hotel or Station</li>
+              <li>📍 Day 1: Ajmer Sharif Dargah Ziyarat, Ana Sagar, Taragarh</li>
+              <li>📍 Day 2: Pushkar Brahma Temple, 52 Ghats, Desert Sunset</li>
+              <li>📍 Station/hotel pickup &amp; drops included</li>
+              <li>📍 Dedicated AC cab for entire itinerary</li>
+              <li>📍 Chauffeur with deep local route expertise</li>
             </ul>
             <div class="tour-footer">
-              <span class="tour-price">Sedan: ₹2,400 (Fixed)</span>
+              <span class="tour-price">Starts at ₹3,500</span>
               <a href={waCombinedTour} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm">
+                Book Combo Tour
+              </a>
+            </div>
+          </div>
+
+          <!-- Tour 4: 3 Days Ajmer Urs Special -->
+          <div class="tour-card">
+            <div class="tour-badge">3 Days / Festival Special</div>
+            <h3 class="tour-title">3 Days Ajmer Urs &amp; Sufi Pilgrimage</h3>
+            <p class="tour-desc">Special spiritual Urs festival package with dedicated cab and driver on standby for prayer schedules.</p>
+            <ul class="tour-stops">
+              <li>📍 Multiple visits to Dargah Sharif during festival timings</li>
+              <li>📍 Ziyarat support and verified local parking assistance</li>
+              <li>📍 Pushkar Brahma Temple excursion included</li>
+              <li>📍 Full 3 days dedicated chauffeur &amp; AC vehicle</li>
+              <li>📍 24/7 on-call dispatch support</li>
+            </ul>
+            <div class="tour-footer">
+              <span class="tour-price">Starts at ₹5,999</span>
+              <a href={waUrsTour} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">
+                Book Urs Package
+              </a>
+            </div>
+          </div>
+
+          <!-- Tour 5: 5 Days Golden Triangle + Pushkar -->
+          <div class="tour-card">
+            <div class="tour-badge">5 Days Circuit</div>
+            <h3 class="tour-title">5 Days Golden Triangle + Pushkar Tour</h3>
+            <p class="tour-desc">Delhi – Agra – Jaipur – Ajmer – Pushkar world-famous heritage circuit in a private luxury cab.</p>
+            <ul class="tour-stops">
+              <li>📍 Taj Mahal &amp; Agra Fort in Agra</li>
+              <li>📍 Amer Fort, Hawa Mahal &amp; City Palace in Jaipur</li>
+              <li>📍 Ajmer Sharif Dargah &amp; Pushkar Holy Lake</li>
+              <li>📍 Intercity toll, state permits &amp; fuel included</li>
+              <li>📍 Airport or railway station pickup / drop</li>
+            </ul>
+            <div class="tour-footer">
+              <span class="tour-price">Starts at ₹12,999</span>
+              <a href={waGoldenTriangle} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">
+                Book 5-Day Circuit
+              </a>
+            </div>
+          </div>
+
+          <!-- Tour 6: 7 Days Rajasthan Heritage Tour -->
+          <div class="tour-card">
+            <div class="tour-badge">7 Days Grand Tour</div>
+            <h3 class="tour-title">7 Days Complete Rajasthan Heritage Tour</h3>
+            <p class="tour-desc">Comprehensive road trip covering Jaipur, Ajmer, Pushkar, Jodhpur, and Udaipur with verified private chauffeur.</p>
+            <ul class="tour-stops">
+              <li>📍 Pink City Jaipur (Amer, Nahargarh, City Palace)</li>
+              <li>📍 Ajmer Sharif &amp; Sacred Pushkar Ghats</li>
+              <li>📍 Blue City Jodhpur (Mehrangarh &amp; Umaid Bhawan)</li>
+              <li>📍 City of Lakes Udaipur (Lake Pichola &amp; City Palace)</li>
+              <li>📍 Dedicated AC car with seasoned highway chauffeur</li>
+            </ul>
+            <div class="tour-footer">
+              <span class="tour-price">Starts at ₹19,999</span>
+              <a href={waRajasthanTour} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">
                 Book Grand Tour
               </a>
             </div>

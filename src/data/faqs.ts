@@ -6,7 +6,7 @@ export interface FAQItem {
 
 export const faqs: FAQItem[] = [
   {
-    question: "How can I book a taxi with Panwar Taxi Ajmer?",
+    question: "How can I book a cab with your taxi service in Ajmer?",
     answer: "You can book instantly by calling our 24/7 hotline at +91 77373 14538 or sending a message on WhatsApp. You can also select your pickup, destination, travel date, and preferred vehicle on our website booking widget to generate an instant quote and booking request.",
     category: "Booking"
   },
@@ -41,8 +41,8 @@ export const faqs: FAQItem[] = [
     category: "Booking"
   },
   {
-    question: "Where is your office located in Ajmer?",
-    answer: "Our main office is located at 1027/54, Ward No 53, Vaishali Nagar, Near Man Singh Stop, Ajmer (Rajasthan) 305001. We operate 24 hours a day, 7 days a week.",
+    question: "Which areas do you serve in Ajmer and Pushkar?",
+    answer: "We provide 24/7 doorstep taxi pickup across all localities of Ajmer, Pushkar, Kishangarh, and nearby areas — including Ajmer Junction Railway Station, Dargah Sharif, bus stands, and hotels.",
     category: "General"
   }
 ];

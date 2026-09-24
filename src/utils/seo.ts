@@ -92,22 +92,65 @@ export function generateFAQSchema(faqList: FAQItem[]) {
   };
 }
 
-export function generateServiceSchema(serviceName: string, serviceDescription: string, url: string) {
-  return {
+export interface ServiceSchemaOptions {
+  name?: string;
+  serviceType?: string;
+  description?: string;
+  url?: string;
+  providerName?: string;
+  providerUrl?: string;
+  price?: string | number;
+  priceCurrency?: string;
+}
+
+export function generateServiceSchema(
+  serviceNameOrOptions: string | ServiceSchemaOptions,
+  serviceDescription?: string,
+  url?: string
+) {
+  let name = "";
+  let description = "";
+  let serviceUrl = business.website;
+  let offers = undefined;
+
+  if (typeof serviceNameOrOptions === "object" && serviceNameOrOptions !== null) {
+    name = serviceNameOrOptions.name || serviceNameOrOptions.serviceType || "";
+    description = serviceNameOrOptions.description || "";
+    serviceUrl = serviceNameOrOptions.url || business.website;
+    if (serviceNameOrOptions.price) {
+      offers = {
+        "@type": "Offer",
+        "price": serviceNameOrOptions.price,
+        "priceCurrency": serviceNameOrOptions.priceCurrency || "INR"
+      };
+    }
+  } else {
+    name = serviceNameOrOptions || "";
+    description = serviceDescription || "";
+    serviceUrl = url || business.website;
+  }
+
+  const schema: Record<string, any> = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "serviceType": serviceName,
+    "serviceType": name,
     "provider": {
       "@type": "TaxiService",
       "name": business.name,
       "telephone": business.phone,
       "url": business.website
     },
-    "description": serviceDescription,
-    "url": url,
+    "description": description,
+    "url": serviceUrl,
     "areaServed": {
       "@type": "State",
       "name": "Rajasthan"
     }
   };
+
+  if (offers) {
+    schema["offers"] = offers;
+  }
+
+  return schema;
 }
