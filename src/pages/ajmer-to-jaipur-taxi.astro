@@ -9,11 +9,11 @@ import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
 import { generateServiceSchema } from "@/utils/seo";
 
-const pageTitle = "Ajmer to Jaipur Taxi ₹1,800 Fixed | Dzire & Innova Cab (Since 2008)";
-const pageDescription = "Book verified Ajmer to Jaipur one-way taxi from ₹1,800. 135 km highway trip in 2.5 hours via NH 48. AC Sedans, Ertiga & Innova Crysta. Doorstep pickup 24/7.";
+const pageTitle = "Ajmer to Jaipur Taxi ₹1,999 Fixed | Dzire, Ertiga & Crysta Cab (Since 2008)";
+const pageDescription = "Book verified Ajmer to Jaipur one-way taxi from ₹1,999. 135 km highway trip in 2.5 hours via NH 48. AC Sedans (₹1,999), Ertiga (₹3,000) & Innova Crysta (₹4,500). Doorstep pickup 24/7.";
 
-const waSedan = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jaipur", vehicle: "Maruti Dzire (₹1,800 Fixed)" });
-const waErtiga = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jaipur", vehicle: "Maruti Ertiga (₹2,800 Fixed)" });
+const waSedan = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jaipur", vehicle: "Maruti Dzire / Toyota Etios (₹1,999 Fixed)" });
+const waErtiga = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jaipur", vehicle: "Maruti Ertiga (₹3,000 Fixed)" });
 const waInnova = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jaipur", vehicle: "Toyota Innova Crysta (₹4,500 Fixed)" });
 
 const serviceSchema = generateServiceSchema({
@@ -21,14 +21,14 @@ const serviceSchema = generateServiceSchema({
   description: "Direct one-way and round-trip highway cab service connecting Ajmer to Jaipur Pink City and Jaipur International Airport.",
   providerName: business.name,
   providerUrl: business.website,
-  price: "1800",
+  price: "1999",
   priceCurrency: "INR"
 });
 
 const jaipurFaqs = [
   {
     question: "What is the fixed fare for an Ajmer to Jaipur taxi?",
-    answer: "Our verified one-way fixed fares are: Maruti Dzire / Toyota Etios Sedan at ₹1,800; Maruti Ertiga at ₹2,800; Toyota Innova at ₹3,500; and Toyota Innova Crysta at ₹4,500. Toll taxes are payable as per actual FASTag receipts.",
+    answer: "Our verified one-way fixed fares are: Maruti Dzire / Toyota Etios Sedan at ₹1,999; Maruti Ertiga at ₹3,000; and Toyota Innova Crysta at ₹4,500. Toll taxes are payable as per actual FASTag receipts.",
     category: "Pricing" as const
   },
   {
@@ -58,11 +58,11 @@ const jaipurFaqs = [
       <div class="container text-center">
         <span class="heritage-pill">Verified Route Rates • NH 48 Expressway</span>
         <h1 class="route-title">Ajmer to Jaipur Taxi Service</h1>
-        <p class="route-subtitle">Fixed One-Way Sedan Fare ₹1,800 • 135 km • ~2.5 Hours • Doorstep Pickup 24/7</p>
+        <p class="route-subtitle">Fixed One-Way Sedan Fare ₹1,999 • 135 km • ~2.5 Hours • Doorstep Pickup 24/7</p>
 
         <div class="hero-fare-pills">
-          <div class="h-pill">Dzire / Etios: <strong>₹1,800</strong></div>
-          <div class="h-pill">Ertiga 6-Seater: <strong>₹2,800</strong></div>
+          <div class="h-pill">Dzire / Etios: <strong>₹1,999</strong></div>
+          <div class="h-pill">Ertiga 6-Seater: <strong>₹3,000</strong></div>
           <div class="h-pill">Innova Crysta: <strong>₹4,500</strong></div>
         </div>
       </div>
@@ -87,8 +87,8 @@ const jaipurFaqs = [
             <div class="pricing-cards-row">
               <div class="p-card">
                 <span class="p-type">Comfort Sedan</span>
-                <h4 class="p-car">Maruti Swift Dzire</h4>
-                <div class="p-fare">₹1,800 <small>one-way</small></div>
+                <h4 class="p-car">Maruti Swift Dzire / Toyota Etios</h4>
+                <div class="p-fare">₹1,999 <small>one-way</small></div>
                 <ul class="p-features">
                   <li>✓ 4 Passenger Seats</li>
                   <li>✓ 2 Large Bags</li>
@@ -96,14 +96,14 @@ const jaipurFaqs = [
                   <li>✓ Doorstep Pickup &amp; Drop</li>
                 </ul>
                 <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">
-                  Book Sedan @ ₹1,800
+                  Book Sedan @ ₹1,999
                 </a>
               </div>
 
               <div class="p-card featured-p-card">
                 <span class="p-type gold">Family MPV</span>
                 <h4 class="p-car">Maruti Ertiga</h4>
-                <div class="p-fare">₹2,800 <small>one-way</small></div>
+                <div class="p-fare">₹3,000 <small>one-way</small></div>
                 <ul class="p-features">
                   <li>✓ 6 Passenger Seats</li>
                   <li>✓ 3-4 Luggage Bags</li>
@@ -111,7 +111,7 @@ const jaipurFaqs = [
                   <li>✓ Extra Legroom</li>
                 </ul>
                 <a href={waErtiga} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm p-btn">
-                  Book Ertiga @ ₹2,800
+                  Book Ertiga @ ₹3,000
                 </a>
               </div>
 
@@ -169,7 +169,7 @@ const jaipurFaqs = [
                 </div>
                 <div class="side-item">
                   <span class="s-label">Starting Price:</span>
-                  <span class="s-val gold-text">₹1,800 (Sedan)</span>
+                  <span class="s-val gold-text">₹1,999 (Sedan)</span>
                 </div>
               </div>
 

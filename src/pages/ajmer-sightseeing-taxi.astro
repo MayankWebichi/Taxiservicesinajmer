@@ -9,15 +9,15 @@ import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
 import { generateServiceSchema } from "@/utils/seo";
 
-const pageTitle = "Ajmer Sightseeing Taxi | Local Full Day Cab ₹1,500 — Taxi Services in Ajmer";
-const pageDescription = "Book an Ajmer full-day sightseeing cab from ₹1,500. Cover Ana Sagar Lake, Taragarh Fort, Dargah Sharif, Nareli Jain Temple, and Adhai Din Ka Jhonpra. AC cab, verified driver, 24/7 available.";
+const pageTitle = "Ajmer Sightseeing Taxi | Full Day ₹2,500 & Half Day ₹1,500 — Taxi Services in Ajmer";
+const pageDescription = "Book Ajmer sightseeing cab: Full Day tour at ₹2,500 and Half Day tour at ₹1,500. Cover Ana Sagar Lake, Taragarh Fort, Dargah Sharif, Nareli Jain Temple, and Adhai Din Ka Jhonpra. AC cab, verified driver, 24/7 available.";
 
-const waFullDay  = createWhatsAppBookingUrl({ tripType: "Full Day Ajmer Sightseeing", customMessage: "Hello, I want to book a full-day local sightseeing cab in Ajmer. Please share the package details and availability." });
-const waHalfDay  = createWhatsAppBookingUrl({ tripType: "Half Day Ajmer Sightseeing", customMessage: "Hello, I want to book a half-day sightseeing cab for Ajmer local attractions. Please share rates." });
+const waFullDay  = createWhatsAppBookingUrl({ tripType: "Full Day Ajmer Sightseeing (₹2,500)", customMessage: "Hello, I want to book a full-day local sightseeing cab in Ajmer (₹2,500). Please share the package details and availability." });
+const waHalfDay  = createWhatsAppBookingUrl({ tripType: "Half Day Ajmer Sightseeing (₹1,500)", customMessage: "Hello, I want to book a half-day sightseeing cab for Ajmer local attractions (₹1,500). Please share rates." });
 
 const serviceSchema = generateServiceSchema(
   "Ajmer Local Sightseeing Taxi",
-  "Full-day and half-day local sightseeing cab packages covering Ana Sagar Lake, Taragarh Fort, Ajmer Sharif Dargah, Nareli Jain Temple, and Adhai Din Ka Jhonpra.",
+  "Full-day (₹2,500) and half-day (₹1,500) local sightseeing cab packages covering Ana Sagar Lake, Taragarh Fort, Ajmer Sharif Dargah, Nareli Jain Temple, and Adhai Din Ka Jhonpra.",
   `${business.website}/ajmer-sightseeing-taxi/`
 );
 
@@ -31,7 +31,7 @@ const attractions = [
 ];
 
 const faqs = [
-  { question: "How much does a full-day sightseeing cab in Ajmer cost?", answer: "A full-day Ajmer sightseeing package (8 hours, 80 km local) costs ₹1,500 for a Sedan (Dzire / Etios) and ₹2,200 for an Ertiga SUV. Fuel, driver, and AC are all included. Toll and parking are extra.", category: "Pricing" as const },
+  { question: "How much does a full-day sightseeing cab in Ajmer cost?", answer: "A full-day Ajmer sightseeing package (8 hours, 80 km local) costs ₹2,500 for a Sedan (Dzire / Etios) and ₹3,500 for an Ertiga SUV. A half-day tour (4 hours, 40 km) is available at ₹1,500 for a Sedan. Fuel, driver, and AC are all included. Toll and parking are extra.", category: "Pricing" as const },
   { question: "Which places are covered in the Ajmer sightseeing tour?", answer: "Our standard full-day tour covers: Ajmer Sharif Dargah, Adhai Din Ka Jhonpra, Ana Sagar Lake & Daulat Bagh, Taragarh Fort, Nareli Jain Temple, and Soniji Ki Nasiyan.", category: "Routes" as const },
   { question: "Can I customize the Ajmer sightseeing itinerary?", answer: "Yes, our sightseeing packages are fully customizable. You can add or remove attractions, include Pushkar (14 km), or extend to a Pushkar + Ajmer combo tour.", category: "Booking" as const },
   { question: "Is Ana Sagar Lake included in the sightseeing cab?", answer: "Yes, Ana Sagar Lake is a standard stop in our full-day Ajmer tour. The Daulat Bagh (marble pavilions on the lake) can also be visited during the same stop.", category: "Routes" as const }
@@ -45,10 +45,10 @@ const faqs = [
       <div class="container text-center">
         <span class="heritage-pill">Local Sightseeing • 6 Major Attractions • Since 2008</span>
         <h1 class="route-title">Ajmer Sightseeing Taxi Package</h1>
-        <p class="route-subtitle">Full Day Local Cab ₹1,500 onwards • Cover 6+ Attractions • AC Cab • Verified Driver • No Advance</p>
+        <p class="route-subtitle">Full Day Local Cab ₹2,500 • Half Day ₹1,500 • Cover 6+ Attractions • AC Cab • Verified Driver • No Advance</p>
         <div class="cta-row">
-          <a href={waFullDay} target="_blank" rel="noopener noreferrer" class="btn btn--gold">Book Full Day — ₹1,500</a>
-          <a href={waHalfDay} target="_blank" rel="noopener noreferrer" class="btn btn--outline-white">Half Day Package</a>
+          <a href={waFullDay} target="_blank" rel="noopener noreferrer" class="btn btn--gold">Book Full Day — ₹2,500</a>
+          <a href={waHalfDay} target="_blank" rel="noopener noreferrer" class="btn btn--outline-white">Book Half Day — ₹1,500</a>
         </div>
       </div>
     </section>
@@ -69,7 +69,7 @@ const faqs = [
                 <div class="pkg-badge">Most Popular</div>
                 <div class="pkg-icon">🌅</div>
                 <h4 class="pkg-title">Full Day Ajmer Tour</h4>
-                <div class="pkg-fare">From ₹1,500</div>
+                <div class="pkg-fare">₹2,500 <small>all-inclusive</small></div>
                 <ul class="pkg-list">
                   <li>✓ 8 Hours / 80 km included</li>
                   <li>✓ All 6 major attractions</li>
@@ -82,11 +82,11 @@ const faqs = [
               <div class="pkg-card">
                 <div class="pkg-icon">🕐</div>
                 <h4 class="pkg-title">Half Day Ajmer Tour</h4>
-                <div class="pkg-fare">From ₹1,000</div>
+                <div class="pkg-fare">₹1,500 <small>all-inclusive</small></div>
                 <ul class="pkg-list">
                   <li>✓ 4 Hours / 40 km included</li>
                   <li>✓ Top 3 attractions</li>
-                  <li>✓ AC Sedan</li>
+                  <li>✓ AC Sedan (Dzire / Etios)</li>
                   <li>✓ Perfect for transit visitors</li>
                   <li>✓ Railway/Bus station drop available</li>
                 </ul>
@@ -113,8 +113,8 @@ const faqs = [
             <div class="sidebar-box">
               <h3 class="side-title">Book Your Sightseeing Cab</h3>
               <div class="side-list">
-                <div class="side-item"><span class="s-label">Full Day Rate:</span><span class="s-val gold-text">From ₹1,500</span></div>
-                <div class="side-item"><span class="s-label">Half Day Rate:</span><span class="s-val gold-text">From ₹1,000</span></div>
+                <div class="side-item"><span class="s-label">Full Day Rate:</span><span class="s-val gold-text">₹2,500</span></div>
+                <div class="side-item"><span class="s-label">Half Day Rate:</span><span class="s-val gold-text">₹1,500</span></div>
                 <div class="side-item"><span class="s-label">Duration:</span><span class="s-val">4–8 Hours</span></div>
                 <div class="side-item"><span class="s-label">Kms Included:</span><span class="s-val">40–80 km</span></div>
                 <div class="side-item"><span class="s-label">Advance:</span><span class="s-val">₹0 — Pay Later</span></div>

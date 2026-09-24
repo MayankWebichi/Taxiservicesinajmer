@@ -15,7 +15,10 @@ export interface Vehicle {
   fixedFares?: {
     ajmerToPushkar?: number;
     ajmerToJaipur?: number;
+    ajmerToUdaipur?: number;
+    ajmerToJodhpur?: number;
     ajmerToDelhiAirport?: number;
+    [key: string]: number | undefined;
   };
 }
 
@@ -36,7 +39,9 @@ export const vehicles: Vehicle[] = [
     altText: "Maruti Swift Dzire AC sedan taxi available for rental in Ajmer",
     fixedFares: {
       ajmerToPushkar: 700,
-      ajmerToJaipur: 1800,
+      ajmerToJaipur: 1999,
+      ajmerToUdaipur: 4500,
+      ajmerToJodhpur: 3500,
       ajmerToDelhiAirport: 5500
     }
   },
@@ -56,7 +61,9 @@ export const vehicles: Vehicle[] = [
     altText: "Toyota Etios sedan cab for outstation and airport pickup from Ajmer",
     fixedFares: {
       ajmerToPushkar: 700,
-      ajmerToJaipur: 1800,
+      ajmerToJaipur: 1999,
+      ajmerToUdaipur: 4500,
+      ajmerToJodhpur: 3500,
       ajmerToDelhiAirport: 5500
     }
   },
@@ -76,7 +83,9 @@ export const vehicles: Vehicle[] = [
     altText: "Maruti Ertiga 6-seater AC SUV taxi rental in Ajmer",
     fixedFares: {
       ajmerToPushkar: 1200,
-      ajmerToJaipur: 2800,
+      ajmerToJaipur: 3000,
+      ajmerToUdaipur: 6500,
+      ajmerToJodhpur: 4500,
       ajmerToDelhiAirport: 7500
     }
   },
@@ -92,11 +101,13 @@ export const vehicles: Vehicle[] = [
     freeCancellation: true,
     bestFor: "VIP travel, airport transfers & premium comfort tours",
     popular: true,
-    image: "/images/vehicles/crysta.svg",
+    image: "/images/vehicles/inova%20cresta.png",
     altText: "Toyota Innova Crysta luxury taxi rental in Ajmer",
     fixedFares: {
       ajmerToPushkar: 1500,
       ajmerToJaipur: 4500,
+      ajmerToUdaipur: 8500,
+      ajmerToJodhpur: 6000,
       ajmerToDelhiAirport: 9500
     }
   },
@@ -131,7 +142,7 @@ export const vehicles: Vehicle[] = [
     freeCancellation: true,
     bestFor: "Luxury group tours, recliner seats, outstation trips & wedding guest escort",
     popular: true,
-    image: "/images/vehicles/Force%20Tempo%20Traveller.png",
+    image: "/images/vehicles/13%20Seater%20Maharaja%20Urbania.png",
     altText: "13 Seater Maharaja Urbania luxury tempo traveller in Ajmer"
   },
   {
@@ -161,7 +172,7 @@ export const vehicles: Vehicle[] = [
     freeCancellation: true,
     bestFor: "High-comfort group journeys & outstation trips across Rajasthan",
     popular: false,
-    image: "/images/vehicles/Force%20Tempo%20Traveller.png",
+    image: "/images/vehicles/17%20Seater%20Urbania%20Traveller.png",
     altText: "17 Seater Urbania luxury traveller in Ajmer"
   },
   {

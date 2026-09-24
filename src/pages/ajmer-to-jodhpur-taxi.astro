@@ -10,18 +10,19 @@ import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
 import { generateServiceSchema } from "@/utils/seo";
 
-const pageTitle = "Ajmer to Jodhpur Taxi | Cab Fare from ₹3,000 (Since 2008)";
-const pageDescription = "Book verified Ajmer to Jodhpur taxi from ₹3,000. 205 km highway trip in 4 hours via NH 25. Clean AC Sedans, Ertiga & Innova Crysta to the Blue City. 24/7 service.";
+const pageTitle = "Ajmer to Jodhpur Taxi ₹3,500 Fixed | Dzire, Ertiga & Crysta Cab (Since 2008)";
+const pageDescription = "Book verified Ajmer to Jodhpur taxi from ₹3,500. 205 km highway trip in 4 hours via NH 25. Clean AC Sedans (₹3,500), Ertiga (₹4,500) & Innova Crysta (₹6,000) to the Blue City. 24/7 service.";
 
-const waSedan = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jodhpur", vehicle: "Sedan (Dzire/Etios)" });
-const waCrysta = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jodhpur", vehicle: "Toyota Innova Crysta" });
+const waSedan = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jodhpur", vehicle: "Swift Dzire / Toyota Etios (₹3,500)" });
+const waErtiga = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jodhpur", vehicle: "Maruti Ertiga (₹4,500)" });
+const waCrysta = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jodhpur", vehicle: "Toyota Innova Crysta (₹6,000)" });
 
 const serviceSchema = generateServiceSchema({
   name: "Ajmer to Jodhpur Taxi Service",
   description: "One-way and round-trip highway cab service connecting Ajmer to the Sun City and Blue City of Jodhpur.",
   providerName: business.name,
   providerUrl: business.website,
-  price: "3000",
+  price: "3500",
   priceCurrency: "INR"
 });
 
@@ -33,7 +34,7 @@ const jodhpurFaqs = [
   },
   {
     question: "What is the one-way taxi fare from Ajmer to Jodhpur?",
-    answer: "Our one-way fares start from ₹3,000 for a 4-seater AC sedan (Dzire/Etios), ₹4,200 for a 6-seater Ertiga, and ₹5,500 for an Innova Crysta. Toll taxes are payable as per actuals.",
+    answer: "Our verified one-way fixed fares are: Swift Dzire / Toyota Etios Sedan at ₹3,500; 6-seater Maruti Ertiga at ₹4,500; and luxury Toyota Innova Crysta at ₹6,000. Toll taxes are payable as per actuals.",
     category: "Pricing" as const
   },
   {
@@ -56,7 +57,7 @@ const jodhpurFaqs = [
           <span class="live-beacon"><span class="live-beacon__dot"></span> 24/7 Direct Dispatch</span>
         </div>
         <h1 class="route-title">Ajmer to Jodhpur Taxi Service</h1>
-        <p class="route-subtitle">205 km • ~4 Hours • Doorstep Pickup in Ajmer &amp; Pushkar • Starting from ₹3,000</p>
+        <p class="route-subtitle">205 km • ~4 Hours • Doorstep Pickup • Dzire ₹3,500 | Ertiga ₹4,500 | Crysta ₹6,000</p>
         
         <div class="route-hero__cta-group">
           <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn-pressable btn--sm">
@@ -87,30 +88,47 @@ const jodhpurFaqs = [
             <h3 class="tier-heading">Vehicle Options</h3>
             <div class="pricing-cards-row">
               <SmoothMotion animation="fadeUp" class="p-card" delay={0}>
-                <span class="p-type">Sedan</span>
-                <h4 class="p-car">Maruti Swift Dzire</h4>
-                <div class="p-fare">From ₹3,000 <small>one-way</small></div>
+                <span class="p-type">Comfort Sedan</span>
+                <h4 class="p-car">Swift Dzire / Etios</h4>
+                <div class="p-fare">₹3,500 <small>one-way</small></div>
                 <ul class="p-features">
                   <li>✓ 4 Passenger Seats</li>
                   <li>✓ 2 Large Bags</li>
                   <li>✓ Chilled AC</li>
+                  <li>✓ Doorstep Pickup &amp; Drop</li>
                 </ul>
                 <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn-pressable btn--sm p-btn">
-                  Book Sedan
+                  Book Sedan @ ₹3,500
+                </a>
+              </SmoothMotion>
+
+              <SmoothMotion animation="fadeUp" class="p-card" delay={60}>
+                <span class="p-type">Family MPV</span>
+                <h4 class="p-car">Maruti Ertiga</h4>
+                <div class="p-fare">₹4,500 <small>one-way</small></div>
+                <ul class="p-features">
+                  <li>✓ 6 Passenger Seats</li>
+                  <li>✓ 3-4 Luggage Bags</li>
+                  <li>✓ Dual AC Vents</li>
+                  <li>✓ Smooth Highway Ride</li>
+                </ul>
+                <a href={waErtiga} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn-pressable btn--sm p-btn">
+                  Book Ertiga @ ₹4,500
                 </a>
               </SmoothMotion>
 
               <SmoothMotion animation="fadeUp" class="p-card featured-p-card" delay={120}>
                 <span class="p-type gold">Royal MUV</span>
                 <h4 class="p-car">Innova Crysta</h4>
-                <div class="p-fare">From ₹5,500 <small>one-way</small></div>
+                <div class="p-fare">₹6,000 <small>one-way</small></div>
                 <ul class="p-features">
                   <li>✓ 6-7 Seats</li>
                   <li>✓ 4+ Luggage Bags</li>
                   <li>✓ Plush Captain Seats</li>
+                  <li>✓ Executive Comfort</li>
                 </ul>
                 <a href={waCrysta} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn-pressable btn--sm p-btn">
-                  Book Crysta
+                  Book Crysta @ ₹6,000
                 </a>
               </SmoothMotion>
             </div>
@@ -134,7 +152,7 @@ const jodhpurFaqs = [
                 </div>
                 <div class="side-item">
                   <span class="s-label">Starting Fare:</span>
-                  <span class="s-val gold-text">₹3,000 (Sedan)</span>
+                  <span class="s-val gold-text">₹3,500 (Sedan)</span>
                 </div>
               </div>
 

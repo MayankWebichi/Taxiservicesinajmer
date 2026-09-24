@@ -1,0 +1,668 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateServiceSchema } from "@/utils/seo";
+
+const pageTitle = "Wedding Logistics & Car Rental Ajmer & Pushkar | Destination Wedding Fleet (2026)";
+const pageDescription = "Premier destination wedding taxi & fleet logistics in Ajmer & Pushkar. Luxury Force Urbania, Innova Crysta, decorated baraat cars, and 13–27 seater Tempo Travellers for guest shuttles & airport transfers.";
+
+const waGeneral = createWhatsAppBookingUrl({
+  tripType: "Wedding Logistics Inquiry",
+  customMessage: "Hello! I am planning a wedding in Ajmer/Pushkar and would like to inquire about wedding cab logistics, fleet packages, and vehicle availability."
+});
+
+const waCrysta = createWhatsAppBookingUrl({
+  vehicle: "Toyota Innova Crysta (Baraat / VIP)",
+  tripType: "Wedding VIP Car",
+  customMessage: "Hello, I want to book Toyota Innova Crysta for wedding baraat / VIP family movements in Ajmer/Pushkar. Please share quotes."
+});
+
+const waUrbania = createWhatsAppBookingUrl({
+  vehicle: "Force Urbania Luxury Van",
+  tripType: "Wedding VIP Group Transport",
+  customMessage: "Hello, I am interested in booking Force Urbania luxury van (13/17 seater) for our wedding guests. Please share rates and availability."
+});
+
+const waTempo = createWhatsAppBookingUrl({
+  vehicle: "Tempo Traveller Fleet",
+  tripType: "Wedding Guest Shuttles",
+  customMessage: "Hello, I need Tempo Travellers (13–27 seater) for hotel-to-venue wedding guest shuttles in Ajmer & Pushkar. Please send a quotation."
+});
+
+const serviceSchema = generateServiceSchema({
+  name: "Wedding Transportation & Logistics Service Ajmer",
+  description: "Complete fleet coordination for destination weddings in Ajmer and Pushkar. Luxury Force Urbania, Toyota Innova Crysta, flower-decorated baraat sedans, and Tempo Travellers for hotel shuttles and airport drops.",
+  providerName: business.name,
+  providerUrl: `${business.website}/wedding-logistics/`,
+  price: "2500",
+  priceCurrency: "INR"
+});
+
+const weddingFaqs = [
+  {
+    question: "What wedding transport and logistics services do you provide in Ajmer & Pushkar?",
+    answer: "We offer end-to-end wedding transport: 24/7 guest pickups from Jaipur Airport (JAI), Kishangarh Airport (KQH), and Ajmer Railway Station; scheduled shuttles between guest hotels and wedding venues; flower-decorated luxury cars for Baraat and Vidai; and luxury Force Urbania and Tempo Travellers for large family movements.",
+    category: "Booking" as const
+  },
+  {
+    question: "Do you provide Force Urbania vans for destination weddings?",
+    answer: "Yes! We operate premium 13-seater and 17-seater Maharaja Force Urbania vans. Equipped with luxury recliner captain seats, individual AC vents, ambient lighting, and panoramic windows, they are the #1 choice for VIP wedding guests and close family.",
+    category: "Booking" as const
+  },
+  {
+    question: "Can you handle multi-vehicle coordination for large destination weddings?",
+    answer: "Absolutely. We routinely manage 5 to 25+ vehicles simultaneously for destination weddings in Pushkar and Ajmer. We assign a dedicated on-site Fleet Manager who coordinates with your wedding planner, tracks guest flight arrivals, and ensures zero delays.",
+    category: "Booking" as const
+  },
+  {
+    question: "Which wedding resorts and venues in Pushkar and Ajmer do you serve?",
+    answer: "We serve all major destination wedding venues including The Westin Pushkar Resort & Spa, Ananta Spa & Resort, Pratap Mahal (Taj), Brahma Horizon, Bhanwar Singh Palace, Pushkar Fort, Clarks Safari, and premier luxury heritage palaces across Ajmer and Pushkar.",
+    category: "Routes" as const
+  },
+  {
+    question: "Do you arrange fresh flower decorations for the Baraat cab?",
+    answer: "Yes, customized fresh floral decorations (roses, orchids, carnations) and traditional satin ribbons can be arranged on Toyota Innova Crysta, Maruti Dzire, or luxury sedans upon request.",
+    category: "Booking" as const
+  },
+  {
+    question: "How much in advance should we reserve our wedding fleet?",
+    answer: "Because Rajasthan wedding season (October to March and April to May) sees heavy demand for luxury vans like Force Urbania and Innova Crysta, we advise reserving your vehicles at least 15 to 30 days in advance to guarantee vehicle allocation.",
+    category: "Pricing" as const
+  }
+];
+
+const fleetOptions = [
+  {
+    title: "Groom & Baraat VIP",
+    vehicle: "Toyota Innova Crysta",
+    image: "/images/vehicles/inova%20cresta.png",
+    seats: "6–7 Captain Seats",
+    bestFor: "Groom Baraat entry, bride VIP escort, parents & elders",
+    features: ["Flower decoration available", "Plush leather captain seats", "Dual AC climate zones", "Chauffeur in formal uniform"],
+    ctaLink: waCrysta,
+    ctaText: "Book Crysta for Baraat",
+    featured: true
+  },
+  {
+    title: "Luxury VIP Van",
+    vehicle: "13 & 17 Seater Maharaja Urbania",
+    image: "/images/vehicles/13%20Seater%20Maharaja%20Urbania.png",
+    seats: "13 & 17 Recliner Seats",
+    bestFor: "VIP family delegations, in-laws & royal guest convoys",
+    features: ["Individual AC vents & USB ports", "Plush luxury recliner seating", "Ambient royal cabin lighting", "Massive luggage compartment"],
+    ctaLink: waUrbania,
+    ctaText: "Book Force Urbania",
+    featured: false
+  },
+  {
+    title: "Guest Shuttle Coach",
+    vehicle: "Tempo Traveller (13 to 27 Seater)",
+    image: "/images/vehicles/Force%20Tempo%20Traveller.png",
+    seats: "13, 17, 21 & 27 Seats",
+    bestFor: "Hotel-to-resort mass guest shuttles & airport bulk arrivals",
+    features: ["Pushback comfortable seats", "Powerful ducted high-roof AC", "High luggage capacity for gift boxes", "Experienced highway drivers"],
+    ctaLink: waTempo,
+    ctaText: "Book Tempo Shuttles",
+    featured: false
+  },
+  {
+    title: "Individual Guest Cabs",
+    vehicle: "Swift Dzire & Toyota Etios",
+    image: "/images/vehicles/Maruti%20Swift%20Dzire.png",
+    seats: "4 Passenger Seats",
+    bestFor: "Point-to-point station drops, errands, shopping & airport runs",
+    features: ["Dedicated on-call availability", "Clean sanitized AC interiors", "Punctual railway & hotel drops", "Bulk fleet discounts"],
+    ctaLink: waGeneral,
+    ctaText: "Inquire Sedan Fleet",
+    featured: false
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/wedding-logistics/" schemaMarkup={serviceSchema}>
+  <Header />
+
+  <main id="main-content">
+    <!-- Hero Banner -->
+    <section class="wedding-hero">
+      <div class="hero-overlay"></div>
+      <div class="container hero-container text-center">
+        <span class="wedding-badge">Royal Rajasthan Destination Weddings • Serving Ajmer &amp; Pushkar</span>
+        <h1 class="wedding-hero-title">Wedding Transportation &amp; Fleet Logistics</h1>
+        <p class="wedding-hero-sub">
+          Flawless transportation for your dream wedding in Ajmer &amp; Pushkar. Luxury Force Urbania vans, Toyota Innova Crysta, flower-decorated Baraat cars, and comfortable guest shuttles with a dedicated fleet supervisor.
+        </p>
+        <div class="hero-cta-group">
+          <a href={waGeneral} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--lg shadow-glow">
+            Get Custom Wedding Quote
+          </a>
+          <a href={`tel:${business.phone}`} class="btn btn--outline-white btn--lg">
+            Call Wedding Desk: {business.phoneFormatted}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us / Trust Badges -->
+    <section class="trust-strip">
+      <div class="container">
+        <div class="trust-grid">
+          <div class="trust-card">
+            <span class="t-icon">👑</span>
+            <div class="t-info">
+              <strong>Premium Fleet</strong>
+              <span>Urbania, Crysta &amp; Tempos</span>
+            </div>
+          </div>
+          <div class="trust-card">
+            <span class="t-icon">📋</span>
+            <div class="t-info">
+              <strong>Fleet Coordinator</strong>
+              <span>Dedicated on-site manager</span>
+            </div>
+          </div>
+          <div class="trust-card">
+            <span class="t-icon">✈️</span>
+            <div class="t-info">
+              <strong>Airport Flight Tracking</strong>
+              <span>Jaipur &amp; Kishangarh pickups</span>
+            </div>
+          </div>
+          <div class="trust-card">
+            <span class="t-icon">🕰️</span>
+            <div class="t-info">
+              <strong>Zero-Delay Guarantee</strong>
+              <span>Punctual baraat &amp; shuttles</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fleet Showcase -->
+    <section class="fleet-section">
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="sub-pill">Our Wedding Fleet</span>
+          <h2 class="section-title">Vehicles Curated for Royal Celebrations</h2>
+          <p class="section-desc">From the groom's majestic entry to bulk guest transfers between hotels and heritage resorts in Pushkar, we provide pristine, temperature-controlled vehicles.</p>
+        </div>
+
+        <div class="wedding-fleet-grid">
+          {fleetOptions.map((f) => (
+            <div class={`fleet-card ${f.featured ? "featured-card" : ""}`}>
+              {f.featured && <span class="card-ribbon">Most Popular for Baraat</span>}
+              <div class="fleet-img-wrap">
+                <img src={f.image} alt={f.vehicle} class="fleet-img" loading="lazy" />
+              </div>
+              <div class="fleet-content">
+                <span class="fleet-category">{f.title}</span>
+                <h3 class="fleet-name">{f.vehicle}</h3>
+                <span class="fleet-seats">👥 {f.seats}</span>
+                <p class="fleet-best">{f.bestFor}</p>
+                <ul class="fleet-features-list">
+                  {f.features.map(feat => (
+                    <li>✓ {feat}</li>
+                  ))}
+                </ul>
+                <a href={f.ctaLink} target="_blank" rel="noopener noreferrer" class={`btn ${f.featured ? "btn--gold" : "btn--primary"} full-w`}>
+                  {f.ctaText}
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- How We Coordinate Destination Weddings -->
+    <section class="workflow-section">
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="sub-pill">Stress-Free Logistics</span>
+          <h2 class="section-title">How We Manage Your Wedding Logistics</h2>
+          <p class="section-desc">You celebrate, we navigate. Here is how our comprehensive fleet management works from first arrival to grand farewell.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <h4>Flight &amp; Train Sync</h4>
+            <p>Share your guest arrival sheets. We track live flights at Jaipur (JAI) and Kishangarh (KQH) airports and trains at Ajmer Junction with personalized placard greetings.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">02</div>
+            <h4>Hotel-to-Resort Shuttles</h4>
+            <p>Seamless scheduled rotations between Pushkar desert resorts (The Westin, Ananta, Pratap Mahal) and guest accommodations in Ajmer with continuous tempo and sedan runs.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">03</div>
+            <h4>Baraat &amp; Varmala Entry</h4>
+            <p>Immaculately washed, polished, and flower-decorated Toyota Innova Crysta positioned at the exact minute for the groom’s royal procession.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">04</div>
+            <h4>Vidai &amp; Guest Departures</h4>
+            <p>Post-celebration airport drops, return outstation drops to Delhi, Jaipur, or Udaipur, and safe luggage transport for all your wedding hampers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Venues Served in Ajmer & Pushkar -->
+    <section class="venues-section">
+      <div class="container">
+        <div class="venues-box">
+          <div class="venues-content">
+            <span class="sub-pill">Destinations We Know Inside Out</span>
+            <h2 class="venues-title">Trusted Partner for Leading Wedding Venues</h2>
+            <p>Our chauffeurs navigate the roads connecting Ajmer, the Nag Pahar ghats, and Pushkar valley effortlessly, guaranteeing punctual arrivals even during busy auspicious dates.</p>
+            <div class="venue-tags">
+              <span class="v-tag">The Westin Pushkar Resort &amp; Spa</span>
+              <span class="v-tag">Ananta Spa &amp; Resorts Pushkar</span>
+              <span class="v-tag">Pratap Mahal — IHCL SeleQtions</span>
+              <span class="v-tag">Brahma Horizon Pushkar</span>
+              <span class="v-tag">Bhanwar Singh Palace</span>
+              <span class="v-tag">Pushkar Fort Resort</span>
+              <span class="v-tag">Clarks Safari Pushkar</span>
+              <span class="v-tag">Rawai Luxury Tents</span>
+              <span class="v-tag">Ajmer Club &amp; Heritage Havelis</span>
+            </div>
+          </div>
+          <div class="venues-cta-box">
+            <h3>Planning a Wedding?</h3>
+            <p>Talk directly with our wedding transportation manager for customized itinerary pricing, multi-vehicle package discounts, and vehicle blocking.</p>
+            <a href={waGeneral} target="_blank" rel="noopener noreferrer" class="btn btn--gold full-w">
+              WhatsApp Wedding Desk
+            </a>
+            <a href={`tel:${business.phone}`} class="btn btn--outline-light full-w">
+              Call {business.phoneFormatted}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <FAQ items={weddingFaqs} title="Wedding Fleet &amp; Logistics FAQs" subtitle="Common Questions by Brides, Grooms &amp; Planners" />
+  </main>
+
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .wedding-hero {
+    position: relative;
+    background: linear-gradient(135deg, #1f040b 0%, #460817 50%, #680e22 100%);
+    color: #FFF;
+    padding: calc(var(--header-height, 74px) + 54px) 0 64px;
+    border-bottom: 3px solid var(--color-accent);
+    overflow: hidden;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 30%, rgba(197, 155, 39, 0.15), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-container {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .wedding-badge {
+    display: inline-block;
+    background: rgba(197, 155, 39, 0.2);
+    border: 1px solid #C59B27;
+    color: #F5D278;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 6px 18px;
+    border-radius: var(--radius-full);
+    margin-bottom: 16px;
+  }
+  .wedding-hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.1rem, 4.5vw, 3.25rem);
+    color: #FFFFFF;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
+  .wedding-hero-sub {
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+  .hero-cta-group {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn--outline-white {
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    color: #FFF;
+    background: transparent;
+    padding: 12px 24px;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .btn--outline-white:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: #FFF;
+    color: #FFF;
+  }
+  .shadow-glow {
+    box-shadow: 0 4px 20px rgba(197, 155, 39, 0.4);
+  }
+
+  /* Trust Strip */
+  .trust-strip {
+    background: #FAF6ED;
+    border-bottom: 1px solid rgba(197, 155, 39, 0.25);
+    padding: 24px 0;
+  }
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .trust-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #FFF;
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(197, 155, 39, 0.2);
+    box-shadow: 0 2px 8px rgba(90, 12, 26, 0.04);
+  }
+  .t-icon {
+    font-size: 1.8rem;
+  }
+  .t-info strong {
+    display: block;
+    font-size: 0.9375rem;
+    color: var(--color-primary);
+  }
+  .t-info span {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Fleet Section */
+  .fleet-section {
+    padding: var(--space-4xl) 0;
+    background: #FFF;
+  }
+  .section-heading {
+    max-width: 760px;
+    margin: 0 auto var(--space-3xl);
+  }
+  .sub-pill {
+    display: inline-block;
+    background: rgba(90, 12, 26, 0.08);
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    color: var(--color-primary-dark);
+    margin-bottom: 10px;
+  }
+  .section-desc {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .wedding-fleet-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+  .fleet-card {
+    position: relative;
+    background: #FFF;
+    border: 1px solid var(--color-border);
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 6px 20px rgba(34, 24, 28, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .fleet-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(90, 12, 26, 0.12);
+  }
+  .featured-card {
+    border: 2px solid var(--color-accent);
+    background: linear-gradient(180deg, #FAF6ED 0%, #FFFFFF 30%);
+  }
+  .card-ribbon {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: #C59B27;
+    color: #1A0307;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    z-index: 5;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+  .fleet-img-wrap {
+    background: #F9FAFB;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--color-border);
+    min-height: 200px;
+  }
+  .fleet-img {
+    max-height: 160px;
+    max-width: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+  .fleet-card:hover .fleet-img {
+    transform: scale(1.05);
+  }
+  .fleet-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .fleet-category {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-accent-dark);
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+  .fleet-name {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 6px;
+  }
+  .fleet-seats {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: #4B5563;
+    display: inline-block;
+    background: rgba(0,0,0,0.05);
+    padding: 2px 10px;
+    border-radius: 6px;
+    width: fit-content;
+    margin-bottom: 10px;
+  }
+  .fleet-best {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: 16px;
+    line-height: 1.45;
+  }
+  .fleet-features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--color-text);
+    flex: 1;
+  }
+  .full-w {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Workflow */
+  .workflow-section {
+    padding: var(--space-4xl) 0;
+    background: var(--color-cream);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .step-card {
+    background: #FFF;
+    border-radius: 16px;
+    padding: 26px 20px;
+    border: 1px solid var(--color-border);
+    position: relative;
+    box-shadow: 0 4px 12px rgba(34,24,28,0.04);
+  }
+  .step-num {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: rgba(197, 155, 39, 0.4);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .step-card h4 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+  .step-card p {
+    font-size: 0.825rem;
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Venues section */
+  .venues-section {
+    padding: var(--space-4xl) 0;
+    background: #FFF;
+  }
+  .venues-box {
+    background: linear-gradient(135deg, #2E050D 0%, #5A0C1A 100%);
+    border-radius: 24px;
+    padding: clamp(28px, 4vw, 56px);
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 40px;
+    align-items: center;
+    color: #FFF;
+    border: 2px solid var(--color-accent);
+    box-shadow: 0 16px 40px rgba(90, 12, 26, 0.2);
+  }
+  .venues-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    color: #FFF;
+    margin: 10px 0 14px;
+  }
+  .venues-content p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .venue-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .v-tag {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(197, 155, 39, 0.4);
+    color: #F5D278;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 9999px;
+  }
+  .venues-cta-box {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .venues-cta-box h3 {
+    font-family: var(--font-heading);
+    color: #FFF;
+    font-size: 1.3rem;
+    margin: 0;
+  }
+  .venues-cta-box p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.8);
+    margin: 0 0 8px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 992px) {
+    .trust-grid { grid-template-columns: repeat(2, 1fr); }
+    .wedding-fleet-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    .venues-box { grid-template-columns: 1fr; gap: 24px; }
+  }
+  @media (max-width: 600px) {
+    .trust-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr; }
+  }
+</style>

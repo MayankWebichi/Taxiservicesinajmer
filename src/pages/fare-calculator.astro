@@ -167,9 +167,9 @@ const serviceSchema = generateServiceSchema(
               <h3>Quick Route Fares</h3>
               <div class="quick-fares">
                 <div class="qf-row"><span>→ Pushkar</span><span class="qf-price">₹700 Sedan</span></div>
-                <div class="qf-row"><span>→ Jaipur</span><span class="qf-price">₹1,800 Sedan</span></div>
-                <div class="qf-row"><span>→ Jodhpur</span><span class="qf-price">₹2,800 Sedan</span></div>
-                <div class="qf-row"><span>→ Udaipur</span><span class="qf-price">₹3,500 Sedan</span></div>
+                <div class="qf-row"><span>→ Jaipur</span><span class="qf-price">₹1,999 Sedan</span></div>
+                <div class="qf-row"><span>→ Jodhpur</span><span class="qf-price">₹3,500 Sedan</span></div>
+                <div class="qf-row"><span>→ Udaipur</span><span class="qf-price">₹4,500 Sedan</span></div>
                 <div class="qf-row"><span>→ Delhi</span><span class="qf-price">₹5,500 Sedan</span></div>
                 <div class="qf-row"><span>→ Jaisalmer</span><span class="qf-price">₹7,500 Sedan</span></div>
               </div>
@@ -267,11 +267,19 @@ const serviceSchema = generateServiceSchema(
       else if (selectedVeh === "tempo") fare = 2500;
       else if (selectedVeh === "urbania") fare = 3500;
     } else if (destKey === "jaipur" && !isRound) {
-      if (selectedVeh === "sedan") fare = 1800;
-      else if (selectedVeh === "ertiga") fare = 2800;
+      if (selectedVeh === "sedan") fare = 1999;
+      else if (selectedVeh === "ertiga") fare = 3000;
       else if (selectedVeh === "innova") fare = 4500;
       else if (selectedVeh === "tempo") fare = 6000;
       else if (selectedVeh === "urbania") fare = 8500;
+    } else if (destKey === "udaipur" && !isRound) {
+      if (selectedVeh === "sedan") fare = 4500;
+      else if (selectedVeh === "ertiga") fare = 6500;
+      else if (selectedVeh === "innova") fare = 8500;
+    } else if (destKey === "jodhpur" && !isRound) {
+      if (selectedVeh === "sedan") fare = 3500;
+      else if (selectedVeh === "ertiga") fare = 4500;
+      else if (selectedVeh === "innova") fare = 6000;
     } else if (destKey === "delhi" && !isRound) {
       if (selectedVeh === "sedan") fare = 5500;
       else if (selectedVeh === "ertiga") fare = 7500;

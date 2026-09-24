@@ -772,35 +772,47 @@ const whatsappUrl = createWhatsAppBookingUrl();
     const dest = destSelect?.value || "";
     const veh = vehicleSelect?.value || "";
 
-    let baseFare = 1800; // default Ajmer-Jaipur sedan
+    let baseFare = 1999; // default Ajmer-Jaipur sedan
     let note = "Fixed rate for Ajmer ➔ Jaipur";
 
     if (dest.includes("Pushkar")) {
-      baseFare = 700;
+      if (veh.includes("SUV") || veh.includes("Ertiga")) baseFare = 1200;
+      else if (veh.includes("Innova")) baseFare = 1500;
+      else if (veh.includes("Tempo")) baseFare = 2500;
+      else baseFare = 700;
       note = "Local transfer to Pushkar";
+    } else if (dest.includes("Jaipur")) {
+      if (veh.includes("SUV") || veh.includes("Ertiga")) baseFare = 3000;
+      else if (veh.includes("Innova")) baseFare = 4500;
+      else if (veh.includes("Tempo")) baseFare = 6000;
+      else baseFare = 1999;
+      note = "Fixed rate for Ajmer ➔ Jaipur";
+    } else if (dest.includes("Udaipur")) {
+      if (veh.includes("SUV") || veh.includes("Ertiga")) baseFare = 6500;
+      else if (veh.includes("Innova")) baseFare = 8500;
+      else baseFare = 4500;
+      note = "Direct highway transfer to Udaipur";
+    } else if (dest.includes("Jodhpur")) {
+      if (veh.includes("SUV") || veh.includes("Ertiga")) baseFare = 4500;
+      else if (veh.includes("Innova")) baseFare = 6000;
+      else baseFare = 3500;
+      note = "Direct transfer to Jodhpur";
+    } else if (dest.includes("Delhi")) {
+      if (veh.includes("SUV") || veh.includes("Ertiga")) baseFare = 7500;
+      else if (veh.includes("Innova")) baseFare = 9500;
+      else baseFare = 5500;
+      note = "Highway one-way to Delhi Airport";
     } else if (dest.includes("Kishangarh")) {
       baseFare = 1100;
       note = "Airport drop to Kishangarh (KQH)";
-    } else if (dest.includes("Delhi")) {
-      baseFare = 5500;
-      note = "Highway one-way to Delhi Airport";
-    } else if (dest.includes("Udaipur")) {
-      baseFare = 4500;
-      note = "Direct highway transfer to Udaipur";
-    } else if (dest.includes("Jodhpur")) {
-      baseFare = 3800;
-      note = "Direct transfer to Jodhpur";
     } else if (dest.includes("Khatu") || dest.includes("Salasar")) {
       baseFare = 3200;
       note = "Darshan transfer with waiting";
-    }
-
-    if (veh.includes("SUV") || veh.includes("Ertiga")) {
-      baseFare = Math.round(baseFare * 1.4);
-    } else if (veh.includes("Innova")) {
-      baseFare = Math.round(baseFare * 1.7);
-    } else if (veh.includes("Tempo")) {
-      baseFare = Math.round(baseFare * 2.5);
+    } else {
+      if (veh.includes("SUV") || veh.includes("Ertiga")) baseFare = 3000;
+      else if (veh.includes("Innova")) baseFare = 4500;
+      else if (veh.includes("Tempo")) baseFare = 6000;
+      else baseFare = 1999;
     }
 
     if (isRound) {

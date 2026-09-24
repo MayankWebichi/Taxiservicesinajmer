@@ -32,7 +32,7 @@ export const business: BusinessInfo = {
   phoneFormatted: "+91 77373 14538",
   whatsapp: "917737314538",
   whatsappFormatted: "+91 77373 14538",
-  email: "info@taxirentalinajmer.com",
+  email: "taxiservicesiinajmer@gmail.com",
   address: {
     line1: "Doorstep Pickup Across Ajmer & Pushkar",
     landmark: "24/7 Citywide Cab Dispatch",

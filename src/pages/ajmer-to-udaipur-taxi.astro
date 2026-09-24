@@ -9,18 +9,19 @@ import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
 import { generateServiceSchema } from "@/utils/seo";
 
-const pageTitle = "Ajmer to Udaipur Taxi | One-Way & Round Trip (Since 2008)";
-const pageDescription = "Book Ajmer to Udaipur taxi. 265 km scenic highway ride in 4.5 hours. En-route Nathdwara Shrinathji darshan options. AC Sedans, Ertiga & Innova Crysta. 24/7 service.";
+const pageTitle = "Ajmer to Udaipur Taxi ₹4,500 Fixed | Dzire, Ertiga & Crysta Cab (Since 2008)";
+const pageDescription = "Book verified Ajmer to Udaipur taxi. 265 km scenic highway ride in 4.5 hours. Swift Dzire/Etios (₹4,500), Ertiga (₹6,500), Innova Crysta (₹8,500). En-route Nathdwara Shrinathji halt.";
 
-const waSedan = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Udaipur", vehicle: "Sedan (Dzire/Etios)" });
-const waInnova = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Udaipur", vehicle: "Toyota Innova Crysta" });
+const waSedan = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Udaipur", vehicle: "Swift Dzire / Toyota Etios (₹4,500)" });
+const waErtiga = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Udaipur", vehicle: "Maruti Ertiga (₹6,500)" });
+const waInnova = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Udaipur", vehicle: "Toyota Innova Crysta (₹8,500)" });
 
 const serviceSchema = generateServiceSchema({
   name: "Ajmer to Udaipur Taxi Service",
   description: "One-way and round-trip taxi service from Ajmer to Udaipur City of Lakes with optional Nathdwara temple stops.",
   providerName: business.name,
   providerUrl: business.website,
-  price: "3500",
+  price: "4500",
   priceCurrency: "INR"
 });
 
@@ -37,7 +38,7 @@ const udaipurFaqs = [
   },
   {
     question: "What are the cab rates for an Ajmer to Udaipur one-way trip?",
-    answer: "One-way sedan rates start from ₹3,500 to ₹4,000 depending on exact drop location and season. 6-seater Ertiga starts from ₹5,000, and luxury Innova Crysta starts from ₹6,500.",
+    answer: "Our verified one-way fixed fares are: Swift Dzire / Toyota Etios Sedan at ₹4,500; 6-seater Maruti Ertiga at ₹6,500; and luxury Toyota Innova Crysta at ₹8,500. Toll taxes are payable as per actuals.",
     category: "Pricing" as const
   }
 ];
@@ -51,7 +52,7 @@ const udaipurFaqs = [
       <div class="container text-center">
         <span class="heritage-pill">City of Lakes Corridor</span>
         <h1 class="route-title">Ajmer to Udaipur Taxi Service</h1>
-        <p class="route-subtitle">265 km • 4.5 Hours • Doorstep Pickup in Ajmer &amp; Pushkar • Optional Nathdwara Halt</p>
+        <p class="route-subtitle">265 km • 4.5 Hours • Doorstep Pickup • Dzire ₹4,500 | Ertiga ₹6,500 | Crysta ₹8,500</p>
       </div>
     </section>
 
@@ -71,30 +72,47 @@ const udaipurFaqs = [
             <h3 class="tier-heading">Vehicle Options</h3>
             <div class="pricing-cards-row">
               <div class="p-card">
-                <span class="p-type">Sedan</span>
-                <h4 class="p-car">Maruti Swift Dzire</h4>
-                <div class="p-fare">From ₹3,500 <small>one-way</small></div>
+                <span class="p-type">Comfort Sedan</span>
+                <h4 class="p-car">Swift Dzire / Etios</h4>
+                <div class="p-fare">₹4,500 <small>one-way</small></div>
                 <ul class="p-features">
                   <li>✓ 4 Passenger Seats</li>
                   <li>✓ 2 Large Bags</li>
                   <li>✓ Chilled AC</li>
+                  <li>✓ Doorstep Pickup &amp; Drop</li>
                 </ul>
                 <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">
-                  Book Sedan
+                  Book Sedan @ ₹4,500
+                </a>
+              </div>
+
+              <div class="p-card">
+                <span class="p-type">Family MPV</span>
+                <h4 class="p-car">Maruti Ertiga</h4>
+                <div class="p-fare">₹6,500 <small>one-way</small></div>
+                <ul class="p-features">
+                  <li>✓ 6 Passenger Seats</li>
+                  <li>✓ 3-4 Luggage Bags</li>
+                  <li>✓ Dual AC Vents</li>
+                  <li>✓ Smooth Highway Ride</li>
+                </ul>
+                <a href={waErtiga} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">
+                  Book Ertiga @ ₹6,500
                 </a>
               </div>
 
               <div class="p-card featured-p-card">
                 <span class="p-type gold">Royal MUV</span>
                 <h4 class="p-car">Innova Crysta</h4>
-                <div class="p-fare">From ₹6,500 <small>one-way</small></div>
+                <div class="p-fare">₹8,500 <small>one-way</small></div>
                 <ul class="p-features">
                   <li>✓ 6-7 Seats</li>
                   <li>✓ 4+ Luggage Bags</li>
                   <li>✓ Plush Captain Seats</li>
+                  <li>✓ Supreme Comfort</li>
                 </ul>
                 <a href={waInnova} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm p-btn">
-                  Book Crysta
+                  Book Crysta @ ₹8,500
                 </a>
               </div>
             </div>
@@ -115,6 +133,10 @@ const udaipurFaqs = [
                 <div class="side-item">
                   <span class="s-label">Highway:</span>
                   <span class="s-val">NH 58 / NH 48</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Starting Price:</span>
+                  <span class="s-val gold-text">₹4,500 (Sedan)</span>
                 </div>
                 <div class="side-item">
                   <span class="s-label">En-Route:</span>

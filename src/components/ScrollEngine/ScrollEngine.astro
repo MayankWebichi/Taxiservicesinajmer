@@ -53,7 +53,7 @@ const {
       });
 
       if (tracker) {
-        engine.onProgress((progress) => {
+        engine.onProgress((progress: number) => {
           if (progress > 0.05 && progress < 0.95) {
             tracker.classList.add("is-visible");
           } else {

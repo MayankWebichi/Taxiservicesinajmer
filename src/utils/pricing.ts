@@ -54,11 +54,11 @@ export function calculateRouteFare(
     (normalizedFrom.includes("jaipur") && normalizedTo.includes("ajmer"));
 
   if (isAjmerJaipur && tripType === "One Way") {
-    let fixed = 1800; // default sedan
-    if (vehicle.category === "Hatchback") fixed = 1800;
-    else if (vehicle.id === "swift-dzire" || vehicle.id === "toyota-etios") fixed = 1800;
-    else if (vehicle.id === "maruti-ertiga" || vehicle.id === "toyota-rumion") fixed = 2800;
-    else if (vehicle.id === "toyota-innova") fixed = 3500;
+    let fixed = 1999; // default sedan
+    if (vehicle.category === "Hatchback") fixed = 1999;
+    else if (vehicle.id === "swift-dzire" || vehicle.id === "toyota-etios") fixed = 1999;
+    else if (vehicle.id === "maruti-ertiga" || vehicle.id === "toyota-rumion") fixed = 3000;
+    else if (vehicle.id === "toyota-innova") fixed = 3800;
     else if (vehicle.id === "toyota-innova-crysta") fixed = 4500;
     else fixed = 135 * vehicle.ratePerKm;
 
@@ -69,7 +69,53 @@ export function calculateRouteFare(
       distanceKm: 135,
       vehicleName: vehicle.name,
       tripType,
-      notes: "Fixed verified fare for Ajmer–Jaipur route. Toll/parking extra if applicable."
+      notes: "Fixed verified fare for Ajmer–Jaipur route (Dzire/Etios ₹1,999, Ertiga ₹3,000, Crysta ₹4,500). Toll/parking extra."
+    };
+  }
+
+  // Check for verified fixed fares (Ajmer to Udaipur)
+  const isAjmerUdaipur =
+    (normalizedFrom.includes("ajmer") && normalizedTo.includes("udaipur")) ||
+    (normalizedFrom.includes("udaipur") && normalizedTo.includes("ajmer"));
+
+  if (isAjmerUdaipur && tripType === "One Way") {
+    let fixed = 4500; // default sedan
+    if (vehicle.category === "Hatchback" || vehicle.category === "Sedan" || vehicle.id === "swift-dzire" || vehicle.id === "toyota-etios") fixed = 4500;
+    else if (vehicle.id === "maruti-ertiga" || vehicle.id === "toyota-rumion") fixed = 6500;
+    else if (vehicle.id === "toyota-innova-crysta") fixed = 8500;
+    else fixed = 265 * vehicle.ratePerKm;
+
+    return {
+      hasFixedFare: true,
+      estimatedFare: fixed,
+      ratePerKm: vehicle.ratePerKm,
+      distanceKm: 265,
+      vehicleName: vehicle.name,
+      tripType,
+      notes: "Fixed verified one-way fare for Ajmer–Udaipur (Dzire/Etios ₹4,500, Ertiga ₹6,500, Crysta ₹8,500)."
+    };
+  }
+
+  // Check for verified fixed fares (Ajmer to Jodhpur)
+  const isAjmerJodhpur =
+    (normalizedFrom.includes("ajmer") && normalizedTo.includes("jodhpur")) ||
+    (normalizedFrom.includes("jodhpur") && normalizedTo.includes("ajmer"));
+
+  if (isAjmerJodhpur && tripType === "One Way") {
+    let fixed = 3500; // default sedan
+    if (vehicle.category === "Hatchback" || vehicle.category === "Sedan" || vehicle.id === "swift-dzire" || vehicle.id === "toyota-etios") fixed = 3500;
+    else if (vehicle.id === "maruti-ertiga" || vehicle.id === "toyota-rumion") fixed = 4500;
+    else if (vehicle.id === "toyota-innova-crysta") fixed = 6000;
+    else fixed = 205 * vehicle.ratePerKm;
+
+    return {
+      hasFixedFare: true,
+      estimatedFare: fixed,
+      ratePerKm: vehicle.ratePerKm,
+      distanceKm: 205,
+      vehicleName: vehicle.name,
+      tripType,
+      notes: "Fixed verified one-way fare for Ajmer–Jodhpur (Dzire/Etios ₹3,500, Ertiga ₹4,500, Crysta ₹6,000)."
     };
   }
 

@@ -36,12 +36,12 @@ export const routes: RouteItem[] = [
     featuredOnHome: true,
     hasDedicatedPage: true,
     pricing: {
-      sedanFare: 1800,
-      suvFare: 2800,
-      innovaFare: 3500,
+      sedanFare: 1999,
+      suvFare: 3000,
+      innovaFare: 3800,
       crystaFare: 4500,
-      startingPrice: 1800,
-      priceNote: "Fixed all-inclusive fare (Toll extra if applicable)"
+      startingPrice: 1999,
+      priceNote: "Fixed all-inclusive fare: Dzire/Etios ₹1,999, Ertiga ₹3,000, Crysta ₹4,500"
     },
     description: "Daily direct one-way and round-trip taxi service connecting Ajmer and the Pink City. Punctual doorstep pickup across Ajmer and Pushkar.",
     highlights: ["NH 48 expressway route", "Doorstep pickup & drop", "Clean AC cabs", "Verified fixed fares"]
@@ -118,8 +118,11 @@ export const routes: RouteItem[] = [
     featuredOnHome: true,
     hasDedicatedPage: true,
     pricing: {
-      startingPrice: 2900,
-      priceNote: "Calculated from ₹11/km (toll extra)"
+      sedanFare: 4500,
+      suvFare: 6500,
+      crystaFare: 8500,
+      startingPrice: 4500,
+      priceNote: "Fixed one-way: Dzire/Etios ₹4,500, Ertiga ₹6,500, Crysta ₹8,500"
     },
     description: "Travel from Ajmer to the City of Lakes via smooth 4-lane highway with optional stops at Nathdwara Shrinathji or Chittorgarh.",
     highlights: ["Nathdwara darshan stop on request", "Lake City doorstep drop", "One-way and multi-day round trips"]
@@ -136,8 +139,11 @@ export const routes: RouteItem[] = [
     featuredOnHome: true,
     hasDedicatedPage: true,
     pricing: {
-      startingPrice: 2250,
-      priceNote: "Calculated from ₹11/km (toll extra)"
+      sedanFare: 3500,
+      suvFare: 4500,
+      crystaFare: 6000,
+      startingPrice: 3500,
+      priceNote: "Fixed one-way: Dzire/Etios ₹3,500, Ertiga ₹4,500, Crysta ₹6,000"
     },
     description: "Intercity cab service to the Sun City, covering Mehrangarh Fort, Umaid Bhawan, and city center with professional highway chauffeurs.",
     highlights: ["Smooth highway travel", "City center and railway drop", "Reliable one-way and return cabs"]
@@ -217,12 +223,12 @@ export const routes: RouteItem[] = [
 ];
 
 export const popularCityDropList = [
-  { name: "Jaipur", distanceKm: 135, hasFixedFare: true, fixedSedan: 1800 },
+  { name: "Jaipur", distanceKm: 135, hasFixedFare: true, fixedSedan: 1999 },
   { name: "Delhi IGI Airport", distanceKm: 390, hasFixedFare: true, fixedSedan: 5500 },
   { name: "Pushkar", distanceKm: 15, hasFixedFare: true, fixedSedan: 700 },
+  { name: "Udaipur", distanceKm: 265, hasFixedFare: true, fixedSedan: 4500 },
+  { name: "Jodhpur", distanceKm: 205, hasFixedFare: true, fixedSedan: 3500 },
   { name: "Kishangarh Airport", distanceKm: 30, hasFixedFare: false },
-  { name: "Udaipur", distanceKm: 265, hasFixedFare: false },
-  { name: "Jodhpur", distanceKm: 205, hasFixedFare: false },
   { name: "Bikaner", distanceKm: 270, hasFixedFare: false },
   { name: "Kota", distanceKm: 215, hasFixedFare: false },
   { name: "Jaisalmer", distanceKm: 490, hasFixedFare: false },

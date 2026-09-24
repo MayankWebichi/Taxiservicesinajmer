@@ -98,7 +98,7 @@ export const services: ServiceItem[] = [
     shortDescription: "Curated heritage tours covering Dargah Sharif, Pushkar Lake, Brahma Temple & Ana Sagar.",
     fullDescription: "Explore the cultural and spiritual essence of Ajmer and Pushkar with customizable sightseeing tours. Perfect for families, spiritual seekers, and international travelers.",
     tripType: "Full / Half Day Tour",
-    startingPrice: "Custom Tour Packages",
+    startingPrice: "₹1,500 Half Day / ₹2,500 Full Day",
     icon: "sun",
     features: [
       "Cover all 7 major heritage landmarks",
@@ -125,18 +125,18 @@ export const services: ServiceItem[] = [
   },
   {
     id: "wedding-car-rental",
-    slug: "contact",
-    title: "Wedding Car Rental",
-    shortDescription: "Dedicated fleet of cars, SUVs, and luxury coaches for wedding guest movements and baraat.",
-    fullDescription: "Seamless logistics for destination weddings in Ajmer and Pushkar. Ensure your guests travel with elegance and comfort from railway stations, airports, and heritage resorts.",
-    tripType: "Event Transportation",
-    startingPrice: "Custom Event Quotation",
+    slug: "wedding-logistics",
+    title: "Wedding Transportation & Logistics",
+    shortDescription: "Complete wedding fleet: Force Urbania, Innova Crysta, Tempo Travellers & decorated baraat cars.",
+    fullDescription: "Seamless logistics for destination weddings across Ajmer and Pushkar. We provide synchronized guest airport pickups, hotel-to-resort shuttles, and decorated luxury vehicles with a dedicated coordinator.",
+    tripType: "Wedding & Event Logistics",
+    startingPrice: "Custom Fleet Packages",
     icon: "award",
     features: [
-      "Fleet of coordinated sedans & SUVs",
-      "Airport & station guest pickups",
-      "Pushkar destination wedding logistics",
-      "Single point of contact manager"
+      "Luxury Force Urbania & Crysta fleet",
+      "Kishangarh & Jaipur airport guest pickups",
+      "Hotel-to-resort scheduled shuttles",
+      "Dedicated on-site logistics manager"
     ]
   }
 ];
