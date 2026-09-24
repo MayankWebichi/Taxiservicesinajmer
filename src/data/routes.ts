@@ -79,8 +79,11 @@ export const routes: RouteItem[] = [
     featuredOnHome: true,
     hasDedicatedPage: true,
     pricing: {
-      startingPrice: 500,
-      priceNote: "Local transfer or full-day darshan package"
+      sedanFare: 700,
+      suvFare: 1200,
+      crystaFare: 1500,
+      startingPrice: 700,
+      priceNote: "Fixed one-way drop: ₹700 (Swift Dzire / Toyota Etios)"
     },
     description: "Scenic drive through the Nag Pahar hills connecting Ajmer Dargah with the holy town of Pushkar, Brahma Temple, and Pushkar Lake.",
     highlights: ["Brahma Temple & 52 Ghats", "Flexible wait time for darshan", "Desert safari drop options", "Same-day return available"]
@@ -216,7 +219,7 @@ export const routes: RouteItem[] = [
 export const popularCityDropList = [
   { name: "Jaipur", distanceKm: 135, hasFixedFare: true, fixedSedan: 1800 },
   { name: "Delhi IGI Airport", distanceKm: 390, hasFixedFare: true, fixedSedan: 5500 },
-  { name: "Pushkar", distanceKm: 15, hasFixedFare: false },
+  { name: "Pushkar", distanceKm: 15, hasFixedFare: true, fixedSedan: 700 },
   { name: "Kishangarh Airport", distanceKm: 30, hasFixedFare: false },
   { name: "Udaipur", distanceKm: 265, hasFixedFare: false },
   { name: "Jodhpur", distanceKm: 205, hasFixedFare: false },

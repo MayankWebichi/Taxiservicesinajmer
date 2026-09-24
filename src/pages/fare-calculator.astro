@@ -105,6 +105,12 @@ const serviceSchema = generateServiceSchema(
                     <span class="veh-detail">Traveller</span>
                     <span class="veh-cap">12–17 seats</span>
                   </button>
+                  <button class="veh-btn" data-veh="urbania" id="veh-urbania">
+                    <span class="veh-icon">👑</span>
+                    <span class="veh-name">Urbania</span>
+                    <span class="veh-detail">Maharaja Van</span>
+                    <span class="veh-cap">13–17 seats</span>
+                  </button>
                 </div>
               </div>
 
@@ -148,10 +154,11 @@ const serviceSchema = generateServiceSchema(
             <div class="info-card">
               <h3>Rate Card</h3>
               <div class="rate-list">
-                <div class="rate-row"><span>Sedan (Dzire/Etios)</span><strong>₹10/km</strong></div>
-                <div class="rate-row"><span>Ertiga (6-Seater)</span><strong>₹14/km</strong></div>
+                <div class="rate-row"><span>Sedan (Dzire/Etios)</span><strong>₹11/km</strong></div>
+                <div class="rate-row"><span>Ertiga (6-Seater)</span><strong>₹13/km</strong></div>
                 <div class="rate-row"><span>Innova Crysta</span><strong>₹18/km</strong></div>
                 <div class="rate-row"><span>Tempo Traveller</span><strong>₹25/km</strong></div>
+                <div class="rate-row"><span>Force Urbania (Outstation)</span><strong>₹35/km</strong></div>
               </div>
               <p class="rate-note">Toll charges extra. Driver allowance included for outstation routes &gt;300 km.</p>
             </div>
@@ -159,8 +166,8 @@ const serviceSchema = generateServiceSchema(
             <div class="info-card">
               <h3>Quick Route Fares</h3>
               <div class="quick-fares">
+                <div class="qf-row"><span>→ Pushkar</span><span class="qf-price">₹700 Sedan</span></div>
                 <div class="qf-row"><span>→ Jaipur</span><span class="qf-price">₹1,800 Sedan</span></div>
-                <div class="qf-row"><span>→ Pushkar</span><span class="qf-price">₹350 Sedan</span></div>
                 <div class="qf-row"><span>→ Jodhpur</span><span class="qf-price">₹2,800 Sedan</span></div>
                 <div class="qf-row"><span>→ Udaipur</span><span class="qf-price">₹3,500 Sedan</span></div>
                 <div class="qf-row"><span>→ Delhi</span><span class="qf-price">₹5,500 Sedan</span></div>
@@ -206,10 +213,11 @@ const serviceSchema = generateServiceSchema(
   };
 
   const rates: Record<string, { kmRate: number; name: string; seats: string }> = {
-    sedan:  { kmRate: 10, name: "Maruti Dzire / Etios Sedan", seats: "4 seats" },
-    ertiga: { kmRate: 14, name: "Maruti Ertiga (6-Seater)",   seats: "6 seats" },
-    innova: { kmRate: 18, name: "Toyota Innova Crysta",        seats: "7 seats" },
-    tempo:  { kmRate: 25, name: "Tempo Traveller (12–17)",     seats: "12–17 seats" },
+    sedan:   { kmRate: 11, name: "Maruti Dzire / Etios Sedan", seats: "4 seats" },
+    ertiga:  { kmRate: 13, name: "Maruti Ertiga (6-Seater)",   seats: "6 seats" },
+    innova:  { kmRate: 18, name: "Toyota Innova Crysta",        seats: "7 seats" },
+    tempo:   { kmRate: 25, name: "Tempo Traveller (12–17)",     seats: "12–17 seats" },
+    urbania: { kmRate: 35, name: "Force Urbania Luxury Van",   seats: "13–17 seats" },
   };
 
   let selectedTrip = "one-way";
@@ -250,10 +258,32 @@ const serviceSchema = generateServiceSchema(
     let km = route.dist;
     if (isRound) km = km * 2;
 
-    // Apply minimum for very short routes
-    const rawFare = Math.max(km * veh.kmRate, 300);
-    // Round to nearest 100
-    const fare = Math.round(rawFare / 100) * 100;
+    let fare = 0;
+    // Check known verified fixed fares
+    if (destKey === "pushkar" && !isRound) {
+      if (selectedVeh === "sedan") fare = 700;
+      else if (selectedVeh === "ertiga") fare = 1200;
+      else if (selectedVeh === "innova") fare = 1500;
+      else if (selectedVeh === "tempo") fare = 2500;
+      else if (selectedVeh === "urbania") fare = 3500;
+    } else if (destKey === "jaipur" && !isRound) {
+      if (selectedVeh === "sedan") fare = 1800;
+      else if (selectedVeh === "ertiga") fare = 2800;
+      else if (selectedVeh === "innova") fare = 4500;
+      else if (selectedVeh === "tempo") fare = 6000;
+      else if (selectedVeh === "urbania") fare = 8500;
+    } else if (destKey === "delhi" && !isRound) {
+      if (selectedVeh === "sedan") fare = 5500;
+      else if (selectedVeh === "ertiga") fare = 7500;
+      else if (selectedVeh === "innova") fare = 9500;
+    }
+
+    if (!fare) {
+      // Apply minimum for very short routes
+      const rawFare = Math.max(km * veh.kmRate, 700);
+      // Round to nearest 50
+      fare = Math.round(rawFare / 50) * 50;
+    }
 
     // Populate result
     document.getElementById("result-route")!.textContent = `${fromVal} → ${route.name}${isRound ? " (Round Trip)" : " (One Way)"}`;
@@ -350,7 +380,7 @@ const serviceSchema = generateServiceSchema(
   .trip-btn:not(.active):hover { background: var(--color-surface); }
 
   /* Vehicle Grid */
-  .vehicle-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+  .vehicle-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 8px; }
   .veh-btn {
     display: flex;
     flex-direction: column;

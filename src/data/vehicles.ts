@@ -13,27 +13,13 @@ export interface Vehicle {
   image: string;
   altText: string;
   fixedFares?: {
+    ajmerToPushkar?: number;
     ajmerToJaipur?: number;
     ajmerToDelhiAirport?: number;
   };
 }
 
 export const vehicles: Vehicle[] = [
-  {
-    id: "toyota-glanza",
-    name: "Toyota Glanza",
-    category: "Hatchback",
-    categoryLabel: "Budget Hatchback",
-    seats: 4,
-    luggage: 2,
-    ratePerKm: 10,
-    hasAC: true,
-    freeCancellation: true,
-    bestFor: "Budget city travel, local Ajmer darshan & solo/couple trips",
-    popular: true,
-    image: "/images/vehicles/Toyota%20Glanza.png",
-    altText: "Toyota Glanza AC hatchback taxi available for hire in Ajmer",
-  },
   {
     id: "swift-dzire",
     name: "Maruti Swift Dzire",
@@ -49,6 +35,7 @@ export const vehicles: Vehicle[] = [
     image: "/images/vehicles/Maruti%20Swift%20Dzire.png",
     altText: "Maruti Swift Dzire AC sedan taxi available for rental in Ajmer",
     fixedFares: {
+      ajmerToPushkar: 700,
       ajmerToJaipur: 1800,
       ajmerToDelhiAirport: 5500
     }
@@ -64,11 +51,13 @@ export const vehicles: Vehicle[] = [
     hasAC: true,
     freeCancellation: true,
     bestFor: "Comfortable highway rides with large boot space",
-    popular: false,
+    popular: true,
     image: "/images/vehicles/Toyota%20Etios.png",
     altText: "Toyota Etios sedan cab for outstation and airport pickup from Ajmer",
     fixedFares: {
-      ajmerToJaipur: 1800
+      ajmerToPushkar: 700,
+      ajmerToJaipur: 1800,
+      ajmerToDelhiAirport: 5500
     }
   },
   {
@@ -86,9 +75,109 @@ export const vehicles: Vehicle[] = [
     image: "/images/vehicles/Maruti%20Suzuki%20Ertiga.png",
     altText: "Maruti Ertiga 6-seater AC SUV taxi rental in Ajmer",
     fixedFares: {
+      ajmerToPushkar: 1200,
       ajmerToJaipur: 2800,
       ajmerToDelhiAirport: 7500
     }
+  },
+  {
+    id: "toyota-innova-crysta",
+    name: "Toyota Innova Crysta",
+    category: "SUV",
+    categoryLabel: "Luxury Premium SUV",
+    seats: 7,
+    luggage: 5,
+    ratePerKm: 18,
+    hasAC: true,
+    freeCancellation: true,
+    bestFor: "VIP travel, airport transfers & premium comfort tours",
+    popular: true,
+    image: "/images/vehicles/crysta.svg",
+    altText: "Toyota Innova Crysta luxury taxi rental in Ajmer",
+    fixedFares: {
+      ajmerToPushkar: 1500,
+      ajmerToJaipur: 4500,
+      ajmerToDelhiAirport: 9500
+    }
+  },
+  {
+    id: "toyota-innova",
+    name: "Toyota Innova",
+    category: "SUV",
+    categoryLabel: "Trusted Family Cab",
+    seats: 6,
+    luggage: 5,
+    ratePerKm: 16,
+    hasAC: true,
+    freeCancellation: true,
+    bestFor: "Multi-day Rajasthan tours & extra luggage comfort",
+    popular: true,
+    image: "/images/vehicles/innova.svg",
+    altText: "Toyota Innova family taxi hire in Ajmer for Rajasthan tours",
+    fixedFares: {
+      ajmerToPushkar: 1500,
+      ajmerToJaipur: 3500
+    }
+  },
+  {
+    id: "urbania-13-seater",
+    name: "13 Seater Maharaja Urbania",
+    category: "Tempo Traveller",
+    categoryLabel: "Luxury Maharaja Van (₹35/km Outstation)",
+    seats: 13,
+    luggage: 10,
+    ratePerKm: 35,
+    hasAC: true,
+    freeCancellation: true,
+    bestFor: "Luxury group tours, recliner seats, outstation trips & wedding guest escort",
+    popular: true,
+    image: "/images/vehicles/Force%20Tempo%20Traveller.png",
+    altText: "13 Seater Maharaja Urbania luxury tempo traveller in Ajmer"
+  },
+  {
+    id: "tempo-13-seater",
+    name: "13 Seater Tempo Traveller",
+    category: "Tempo Traveller",
+    categoryLabel: "Small Group Traveller",
+    seats: 13,
+    luggage: 10,
+    ratePerKm: 22,
+    hasAC: true,
+    freeCancellation: true,
+    bestFor: "Family pilgrimages, Pushkar fair & corporate outings",
+    popular: true,
+    image: "/images/vehicles/Force%20Tempo%20Traveller.png",
+    altText: "13 Seater AC Tempo Traveller rental service in Ajmer"
+  },
+  {
+    id: "urbania-17-seater",
+    name: "17 Seater Urbania Traveller",
+    category: "Tempo Traveller",
+    categoryLabel: "Luxury 17-Seater Van (₹35/km Outstation)",
+    seats: 17,
+    luggage: 12,
+    ratePerKm: 35,
+    hasAC: true,
+    freeCancellation: true,
+    bestFor: "High-comfort group journeys & outstation trips across Rajasthan",
+    popular: false,
+    image: "/images/vehicles/Force%20Tempo%20Traveller.png",
+    altText: "17 Seater Urbania luxury traveller in Ajmer"
+  },
+  {
+    id: "toyota-glanza",
+    name: "Toyota Glanza",
+    category: "Hatchback",
+    categoryLabel: "Budget Hatchback",
+    seats: 4,
+    luggage: 2,
+    ratePerKm: 10,
+    hasAC: true,
+    freeCancellation: true,
+    bestFor: "Budget city travel, local Ajmer darshan & solo/couple trips",
+    popular: false,
+    image: "/images/vehicles/Toyota%20Glanza.png",
+    altText: "Toyota Glanza AC hatchback taxi available for hire in Ajmer"
   },
   {
     id: "toyota-rumion",
@@ -125,73 +214,6 @@ export const vehicles: Vehicle[] = [
     altText: "Kia Carens premium cab service in Ajmer and Pushkar"
   },
   {
-    id: "toyota-innova",
-    name: "Toyota Innova",
-    category: "SUV",
-    categoryLabel: "Trusted Family Cab",
-    seats: 6,
-    luggage: 5,
-    ratePerKm: 16,
-    hasAC: true,
-    freeCancellation: true,
-    bestFor: "Multi-day Rajasthan tours & extra luggage comfort",
-    popular: true,
-    image: "/images/vehicles/innova.svg",
-    altText: "Toyota Innova family taxi hire in Ajmer for Rajasthan tours",
-    fixedFares: {
-      ajmerToJaipur: 3500
-    }
-  },
-  {
-    id: "toyota-innova-crysta",
-    name: "Toyota Innova Crysta",
-    category: "SUV",
-    categoryLabel: "Luxury Premium SUV",
-    seats: 6,
-    luggage: 5,
-    ratePerKm: 16,
-    hasAC: true,
-    freeCancellation: true,
-    bestFor: "VIP travel, airport transfers & premium comfort tours",
-    popular: true,
-    image: "/images/vehicles/crysta.svg",
-    altText: "Toyota Innova Crysta luxury taxi rental in Ajmer",
-    fixedFares: {
-      ajmerToJaipur: 4500,
-      ajmerToDelhiAirport: 9500
-    }
-  },
-  {
-    id: "tempo-13-seater",
-    name: "13 Seater Tempo Traveller",
-    category: "Tempo Traveller",
-    categoryLabel: "Small Group Traveller",
-    seats: 13,
-    luggage: 10,
-    ratePerKm: 22,
-    hasAC: true,
-    freeCancellation: true,
-    bestFor: "Family pilgrimages, Pushkar fair & corporate outings",
-    popular: true,
-    image: "/images/vehicles/Force%20Tempo%20Traveller.png",
-    altText: "13 Seater AC Tempo Traveller rental service in Ajmer"
-  },
-  {
-    id: "urbania-13-seater",
-    name: "13 Seater Maharaja Urbania",
-    category: "Tempo Traveller",
-    categoryLabel: "Luxury Maharaja Van",
-    seats: 13,
-    luggage: 10,
-    ratePerKm: 24,
-    hasAC: true,
-    freeCancellation: true,
-    bestFor: "Luxury group tours, recliner seats & wedding guest escort",
-    popular: false,
-    image: "/images/vehicles/Force%20Tempo%20Traveller.png",
-    altText: "13 Seater Maharaja Urbania luxury tempo traveller in Ajmer"
-  },
-  {
     id: "tempo-17-seater",
     name: "17 Seater Tempo Traveller",
     category: "Tempo Traveller",
@@ -202,24 +224,9 @@ export const vehicles: Vehicle[] = [
     hasAC: true,
     freeCancellation: true,
     bestFor: "Extended family tours & outstation pilgrimage trips",
-    popular: true,
-    image: "/images/vehicles/Force%20Tempo%20Traveller.png",
-    altText: "17 Seater Tempo Traveller on rent in Ajmer"
-  },
-  {
-    id: "urbania-17-seater",
-    name: "17 Seater Urbania Traveller",
-    category: "Tempo Traveller",
-    categoryLabel: "Luxury 17-Seater Van",
-    seats: 17,
-    luggage: 12,
-    ratePerKm: 25,
-    hasAC: true,
-    freeCancellation: true,
-    bestFor: "High-comfort group journeys across Rajasthan",
     popular: false,
     image: "/images/vehicles/Force%20Tempo%20Traveller.png",
-    altText: "17 Seater Urbania luxury traveller in Ajmer"
+    altText: "17 Seater Tempo Traveller on rent in Ajmer"
   },
   {
     id: "tempo-21-seater",

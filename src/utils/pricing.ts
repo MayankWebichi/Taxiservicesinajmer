@@ -20,9 +20,33 @@ export function calculateRouteFare(
   vehicleId: string,
   tripType: "One Way" | "Round Trip" = "One Way"
 ): FareCalculationResult {
-  const vehicle = vehicles.find((v) => v.id === vehicleId) || vehicles[1]; // Default to Dzire
+  const vehicle = vehicles.find((v) => v.id === vehicleId) || vehicles[0]; // Default to Dzire
   const normalizedFrom = fromCity.toLowerCase().trim();
   const normalizedTo = toCity.toLowerCase().trim();
+
+  // Check for verified fixed fares (Ajmer to Pushkar)
+  const isAjmerPushkar =
+    (normalizedFrom.includes("ajmer") && normalizedTo.includes("pushkar")) ||
+    (normalizedFrom.includes("pushkar") && normalizedTo.includes("ajmer"));
+
+  if (isAjmerPushkar && tripType === "One Way") {
+    let fixed = 700; // Swift Dzire / Toyota Etios Sedan
+    if (vehicle.id === "swift-dzire" || vehicle.id === "toyota-etios" || vehicle.category === "Sedan" || vehicle.category === "Hatchback") fixed = 700;
+    else if (vehicle.id === "maruti-ertiga" || vehicle.id === "toyota-rumion") fixed = 1200;
+    else if (vehicle.id === "toyota-innova" || vehicle.id === "toyota-innova-crysta") fixed = 1500;
+    else if (vehicle.category === "Tempo Traveller") fixed = 2500;
+    else fixed = 700;
+
+    return {
+      hasFixedFare: true,
+      estimatedFare: fixed,
+      ratePerKm: vehicle.ratePerKm,
+      distanceKm: 15,
+      vehicleName: vehicle.name,
+      tripType,
+      notes: "Fixed verified one-way drop fare for Ajmer–Pushkar route (Swift Dzire / Toyota Etios ₹700)."
+    };
+  }
 
   // Check for verified fixed fares (Ajmer to Jaipur)
   const isAjmerJaipur =

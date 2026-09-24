@@ -58,6 +58,13 @@ const whatsappUrl = createWhatsAppBookingUrl({ vehicle: vehicle.name });
     </div>
 
     <!-- Fixed Route Highlight if Available -->
+    {vehicle.fixedFares?.ajmerToPushkar && (
+      <div class="fixed-route-banner">
+        <span class="route-point">Ajmer ➔ Pushkar:</span>
+        <strong class="route-price">₹{vehicle.fixedFares.ajmerToPushkar.toLocaleString("en-IN")}</strong>
+        <span class="route-toll">(One-Way drop)</span>
+      </div>
+    )}
     {vehicle.fixedFares?.ajmerToJaipur && (
       <div class="fixed-route-banner">
         <span class="route-point">Ajmer ➔ Jaipur:</span>

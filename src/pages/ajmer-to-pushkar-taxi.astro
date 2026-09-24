@@ -9,10 +9,10 @@ import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
 import { generateServiceSchema } from "@/utils/seo";
 
-const pageTitle = "Ajmer to Pushkar Taxi | Cab Fare from ₹600 (Since 2008)";
-const pageDescription = "Book Ajmer to Pushkar taxi from ₹600. 14 km scenic hill drive via Pushkar Ghati. Brahma Temple, Holy Lake Ghats, and Desert Safari. 24/7 doorstep pickup.";
+const pageTitle = "Ajmer to Pushkar Taxi | Cab Fare ₹700 (Since 2008)";
+const pageDescription = "Book Ajmer to Pushkar taxi from ₹700 (Maruti Swift Dzire & Toyota Etios). 14 km scenic hill drive via Pushkar Ghati. Brahma Temple, Holy Lake Ghats, and Desert Safari. 24/7 doorstep pickup.";
 
-const waTransfer = createWhatsAppBookingUrl({ pickup: "Ajmer Railway Station", destination: "Pushkar Hotel/Lake", vehicle: "Sedan (₹800 One-Way)" });
+const waTransfer = createWhatsAppBookingUrl({ pickup: "Ajmer Railway Station", destination: "Pushkar Hotel/Lake", vehicle: "Sedan Dzire/Etios (₹700 One-Way)" });
 const waTour = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Pushkar Sightseeing Tour", vehicle: "Sedan (₹1,500 Full Day)" });
 
 const serviceSchema = generateServiceSchema({
@@ -20,14 +20,14 @@ const serviceSchema = generateServiceSchema({
   description: "One-way transfers and full-day sightseeing tour cabs connecting Ajmer to the holy pilgrimage town of Pushkar.",
   providerName: business.name,
   providerUrl: business.website,
-  price: "600",
+  price: "700",
   priceCurrency: "INR"
 });
 
 const pushkarFaqs = [
   {
     question: "What is the taxi fare from Ajmer Railway Station to Pushkar?",
-    answer: "One-way sedan transfer from Ajmer Railway Station to Pushkar hotels or the holy lake starts from ₹800. For complete half-day or full-day sightseeing packages, rates start at ₹1,500 for a sedan.",
+    answer: "One-way sedan transfer (Maruti Swift Dzire / Toyota Etios) from Ajmer Railway Station or any hotel to Pushkar starts at ₹700. For complete half-day or full-day sightseeing packages, rates start at ₹1,500 for a sedan.",
     category: "Pricing" as const
   },
   {
@@ -51,7 +51,7 @@ const pushkarFaqs = [
       <div class="container text-center">
         <span class="heritage-pill">Sacred Pilgrimage Gateway</span>
         <h1 class="route-title">Ajmer to Pushkar Taxi Service</h1>
-        <p class="route-subtitle">14 km Scenic Drive via Pushkar Ghati • One-Way Drop ₹800 • Full Day Tour ₹1,500</p>
+        <p class="route-subtitle">14 km Scenic Drive via Pushkar Ghati • One-Way Drop ₹700 (Dzire / Etios) • Full Day Tour ₹1,500</p>
       </div>
     </section>
 
@@ -72,11 +72,11 @@ const pushkarFaqs = [
             <div class="pricing-cards-row">
               <div class="p-card">
                 <span class="p-type">One-Way Transfer</span>
-                <h4 class="p-car">Sedan Drop</h4>
-                <div class="p-fare">₹800 <small>one-way</small></div>
-                <p>Doorstep pickup from Ajmer Station or hotel and direct drop at any Pushkar resort or ghat.</p>
+                <h4 class="p-car">Sedan Drop (Dzire / Etios)</h4>
+                <div class="p-fare">₹700 <small>one-way</small></div>
+                <p>Doorstep pickup from Ajmer Station or hotel and direct drop at any Pushkar resort or ghat in Swift Dzire or Toyota Etios.</p>
                 <a href={waTransfer} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">
-                  Book Drop @ ₹800
+                  Book Drop @ ₹700
                 </a>
               </div>
 
@@ -106,7 +106,7 @@ const pushkarFaqs = [
                 </div>
                 <div class="side-item">
                   <span class="s-label">Drop Fare:</span>
-                  <span class="s-val gold-text">₹800 (Sedan)</span>
+                  <span class="s-val gold-text">₹700 (Dzire / Etios)</span>
                 </div>
               </div>
 

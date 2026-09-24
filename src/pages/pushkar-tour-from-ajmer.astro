@@ -9,8 +9,8 @@ import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
 import { generateServiceSchema } from "@/utils/seo";
 
-const pageTitle = "Pushkar Tour from Ajmer | Day Trip Cab ₹1,800 — Taxi Services in Ajmer (2026)";
-const pageDescription = "Book an Ajmer to Pushkar pilgrimage cab from ₹500 (one-way) or full-day package from ₹1,800. Brahma Temple, Pushkar Lake Ghats & desert sunset. AC cab, verified local chauffeur.";
+const pageTitle = "Pushkar Tour from Ajmer | Day Trip Cab ₹1,800 & One-Way Drop ₹700 (2026)";
+const pageDescription = "Book an Ajmer to Pushkar cab: one-way drop from ₹700 (Swift Dzire / Toyota Etios) or full-day package from ₹1,800. Brahma Temple, Pushkar Lake Ghats & desert sunset. AC cab, verified local chauffeur.";
 
 const waDay    = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Pushkar", tripType: "Day Tour", customMessage: "Hello, I want to book a day trip cab from Ajmer to Pushkar. Please share availability and fare." });
 const waReturn = createWhatsAppBookingUrl({ pickup: "Pushkar", destination: "Ajmer", customMessage: "Hello, I need a return cab from Pushkar to Ajmer. Please share rate and availability." });
@@ -22,7 +22,7 @@ const serviceSchema = generateServiceSchema(
 );
 
 const faqs = [
-  { question: "How much does a cab from Ajmer to Pushkar cost?", answer: "A one-way cab from Ajmer to Pushkar costs ₹500 for a Sedan. A full-day pilgrimage round trip (Ajmer → Pushkar → Ajmer with flexible waiting at temples and ghats) costs ₹1,800 for a Sedan.", category: "Pricing" as const },
+  { question: "How much does a cab from Ajmer to Pushkar cost?", answer: "A one-way cab from Ajmer to Pushkar costs ₹700 for a Sedan (Maruti Swift Dzire / Toyota Etios). A full-day pilgrimage round trip (Ajmer → Pushkar → Ajmer with flexible waiting at temples and ghats) costs ₹1,800 for a Sedan.", category: "Pricing" as const },
   { question: "How far is Pushkar from Ajmer?", answer: "Pushkar is approximately 14 km from Ajmer city centre. The route goes via the scenic Nag Pahar (Snake Mountain) road through the Aravalli hills, taking about 25–35 minutes.", category: "Routes" as const },
   { question: "Is taxi available from Ajmer to Pushkar during the Pushkar Camel Fair?", answer: "Yes, we operate round the clock during the Pushkar Camel Fair (Kartik Purnima, usually November). However, we strongly recommend advance booking as demand surges during the fair week.", category: "Booking" as const },
   { question: "Can I book a return cab from Pushkar to Ajmer?", answer: "Yes, we provide return cabs from Pushkar to Ajmer Railway Station, Bus Stand, and all hotels at any time. Call or WhatsApp for immediate pickup in Pushkar.", category: "Booking" as const },
@@ -37,7 +37,7 @@ const faqs = [
       <div class="container text-center">
         <span class="heritage-pill">Ajmer ↔ Pushkar • 14 km Scenic Route • Since 2008</span>
         <h1 class="route-title">Pushkar Day Trip from Ajmer</h1>
-        <p class="route-subtitle">Brahma Temple • Pushkar Lake Ghats • Camel Grounds • One-Way from ₹500 | Full Day Package ₹1,800</p>
+        <p class="route-subtitle">Brahma Temple • Pushkar Lake Ghats • Camel Grounds • One-Way Drop ₹700 (Dzire / Etios) | Full Day Package ₹1,800</p>
         <div class="cta-row">
           <a href={waDay} target="_blank" rel="noopener noreferrer" class="btn btn--gold">Book Day Trip — ₹1,800</a>
           <a href={waReturn} target="_blank" rel="noopener noreferrer" class="btn btn--outline-white">Pushkar → Ajmer Return</a>
@@ -63,11 +63,11 @@ const faqs = [
               <div class="pkg-card">
                 <div class="pkg-icon">➡️</div>
                 <h4 class="pkg-title">One-Way Drop</h4>
-                <div class="pkg-fare">From ₹500</div>
+                <div class="pkg-fare">₹700 <small>(Dzire / Etios)</small></div>
                 <ul class="pkg-list">
                   <li>✓ Doorstep to Pushkar</li>
                   <li>✓ Direct drop at Brahma Temple / Ghats</li>
-                  <li>✓ Any time of day</li>
+                  <li>✓ Clean AC Swift Dzire / Toyota Etios</li>
                 </ul>
                 <a href={waDay} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">Book One-Way</a>
               </div>
@@ -117,7 +117,7 @@ const faqs = [
                 <div class="side-item"><span class="s-label">To:</span><span class="s-val">Pushkar</span></div>
                 <div class="side-item"><span class="s-label">Distance:</span><span class="s-val">~14 km</span></div>
                 <div class="side-item"><span class="s-label">Travel Time:</span><span class="s-val">25–35 Minutes</span></div>
-                <div class="side-item"><span class="s-label">One-Way Fare:</span><span class="s-val gold-text">From ₹500</span></div>
+                <div class="side-item"><span class="s-label">One-Way Fare:</span><span class="s-val gold-text">₹700 (Dzire / Etios)</span></div>
                 <div class="side-item"><span class="s-label">Full Day Tour:</span><span class="s-val gold-text">₹1,800</span></div>
               </div>
               <div class="side-actions">

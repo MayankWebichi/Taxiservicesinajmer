@@ -22,20 +22,20 @@ const serviceSchema = generateServiceSchema(
 );
 
 const routes = [
-  { to: "Jaipur", km: "135 km", time: "2.5 hrs", sedan: "₹1,800", ertiga: "₹2,800" },
-  { to: "Pushkar", km: "14 km", time: "30 min", sedan: "₹500", ertiga: "₹800" },
-  { to: "Jodhpur", km: "200 km", time: "3.5 hrs", sedan: "₹2,800", ertiga: "₹4,200" },
-  { to: "Udaipur", km: "265 km", time: "4.5 hrs", sedan: "₹3,500", ertiga: "₹5,200" },
-  { to: "Delhi", km: "395 km", time: "6.5 hrs", sedan: "₹5,500", ertiga: "₹8,000" },
-  { to: "Agra", km: "390 km", time: "6.5 hrs", sedan: "₹5,800", ertiga: "₹8,500" },
-  { to: "Ahmedabad", km: "360 km", time: "6 hrs", sedan: "₹5,200", ertiga: "₹7,800" },
-  { to: "Jaisalmer", km: "530 km", time: "9 hrs", sedan: "₹7,500", ertiga: "₹10,500" },
+  { to: "Jaipur", km: "135 km", time: "2.5 hrs", sedan: "₹1,800", ertiga: "₹2,800", crysta: "₹4,500" },
+  { to: "Pushkar", km: "14 km", time: "30 min", sedan: "₹700", ertiga: "₹1,200", crysta: "₹1,500" },
+  { to: "Jodhpur", km: "200 km", time: "3.5 hrs", sedan: "₹2,800", ertiga: "₹4,200", crysta: "₹5,500" },
+  { to: "Udaipur", km: "265 km", time: "4.5 hrs", sedan: "₹3,500", ertiga: "₹5,200", crysta: "₹6,500" },
+  { to: "Delhi", km: "395 km", time: "6.5 hrs", sedan: "₹5,500", ertiga: "₹8,000", crysta: "₹9,500" },
+  { to: "Agra", km: "390 km", time: "6.5 hrs", sedan: "₹5,800", ertiga: "₹8,500", crysta: "₹12,000" },
+  { to: "Ahmedabad", km: "360 km", time: "6 hrs", sedan: "₹5,200", ertiga: "₹7,800", crysta: "₹11,500" },
+  { to: "Jaisalmer", km: "530 km", time: "9 hrs", sedan: "₹7,500", ertiga: "₹10,500", crysta: "₹14,500" },
 ];
 
 const faqs = [
-  { question: "What is the one-way taxi rate from Ajmer?", answer: "Our one-way outstation taxi rates start at ₹10/km for a Maruti Dzire or Toyota Etios Sedan. For popular routes like Ajmer to Jaipur, we offer fixed one-way fares from ₹1,800.", category: "Pricing" as const },
+  { question: "What is the one-way taxi rate from Ajmer?", answer: "Our one-way outstation taxi rates start at ₹11/km for a Maruti Dzire or Toyota Etios Sedan, ₹13/km for Ertiga, ₹18/km for Innova Crysta, and ₹35/km for Force Urbania. For popular routes like Ajmer to Jaipur, we offer fixed one-way fares from ₹1,800, and Ajmer to Pushkar drop at ₹700.", category: "Pricing" as const },
   { question: "Do I need to pay a return fare for a one-way cab from Ajmer?", answer: "No. Our one-way taxi pricing does not include any return charges. You only pay for the one-way journey to your destination. This makes us significantly more affordable than operators who charge round-trip rates.", category: "Pricing" as const },
-  { question: "Can I book a one-way cab from Ajmer to Delhi?", answer: "Yes, we offer one-way cabs from Ajmer to Delhi at fixed prices. The Ajmer to Delhi Sedan fare is ₹5,500 one-way for ~395 km via NH 48.", category: "Routes" as const },
+  { question: "Can I book a one-way cab from Ajmer to Delhi?", answer: "Yes, we offer one-way cabs from Ajmer to Delhi at fixed prices. The Ajmer to Delhi Sedan fare is ₹5,500 one-way for ~395 km via NH 48, Ertiga is ₹8,000, and Innova Crysta is ₹9,500.", category: "Routes" as const },
   { question: "Is advance booking required for one-way taxi from Ajmer?", answer: "For most routes, we can arrange a cab within 2–4 hours notice. For early morning pickups (before 6 AM) and long-distance routes (500+ km), we recommend booking 12–24 hours in advance.", category: "Booking" as const }
 ];
 ---
@@ -47,11 +47,12 @@ const faqs = [
       <div class="container text-center">
         <span class="heritage-pill">One-Way Cab Service • No Return Fare • Since 2008</span>
         <h1 class="route-title">One-Way Taxi from Ajmer</h1>
-        <p class="route-subtitle">Pay Only for Your Journey — No Return Charges · Starting ₹10/km · AC Cabs · 24/7 Booking</p>
+        <p class="route-subtitle">Pay Only for Your Journey — No Return Charges · Starting ₹11/km · AC Cabs · 24/7 Booking</p>
         <div class="hero-fare-pills">
-          <div class="h-pill">Sedan: <strong>₹10/km</strong></div>
-          <div class="h-pill">Ertiga: <strong>₹14/km</strong></div>
-          <div class="h-pill">Innova: <strong>₹18/km</strong></div>
+          <div class="h-pill">Sedan (Dzire/Etios): <strong>₹11/km</strong></div>
+          <div class="h-pill">Ertiga: <strong>₹13/km</strong></div>
+          <div class="h-pill">Innova Crysta: <strong>₹18/km</strong></div>
+          <div class="h-pill">Urbania Outstation: <strong>₹35/km</strong></div>
         </div>
       </div>
     </section>
@@ -77,8 +78,9 @@ const faqs = [
                     <th>Destination</th>
                     <th>Distance</th>
                     <th>Time</th>
-                    <th>Sedan Fare</th>
-                    <th>Ertiga Fare</th>
+                    <th>Sedan (Dzire/Etios)</th>
+                    <th>Ertiga (6-Seater)</th>
+                    <th>Innova Crysta</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -89,12 +91,13 @@ const faqs = [
                       <td>{r.time}</td>
                       <td class="fare-cell">{r.sedan}</td>
                       <td class="fare-cell">{r.ertiga}</td>
+                      <td class="fare-cell">{r.crysta}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            <p class="table-note">* Toll charges are extra as per actual FASTag receipts. Innova Crysta rates on request.</p>
+            <p class="table-note">* Toll charges are extra as per actual FASTag receipts. Zero advance payment required.</p>
 
             <div class="route-itinerary-box" style="margin-top: var(--space-xl)">
               <h3>Why Choose Our One-Way Taxis?</h3>

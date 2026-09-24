@@ -27,7 +27,7 @@ export const faqs: FAQItem[] = [
   },
   {
     question: "Which vehicles are available in your fleet?",
-    answer: "Our fully air-conditioned fleet includes budget hatchbacks (Toyota Glanza @ ₹10/km), sedans (Swift Dzire, Toyota Etios @ ₹11/km), 6-seater SUVs (Maruti Ertiga, Toyota Rumion @ ₹13/km, Kia Carens @ ₹14/km, Toyota Innova & Innova Crysta @ ₹16/km), and 13 to 27-seater luxury Tempo Travellers and Urbania vans (from ₹22/km).",
+    answer: "Our fully air-conditioned fleet includes budget hatchbacks (Toyota Glanza @ ₹10/km), sedans (Swift Dzire, Toyota Etios @ ₹11/km, with Ajmer–Pushkar drop at ₹700 and Ajmer–Jaipur at ₹1,800), 6-seater SUVs (Maruti Ertiga, Toyota Rumion @ ₹13/km, Kia Carens @ ₹14/km, Toyota Innova @ ₹16/km), luxury SUVs (Toyota Innova Crysta @ ₹18/km), luxury Force Urbania vans (outstation @ ₹35/km), and 13 to 27-seater Tempo Travellers (from ₹22/km).",
     category: "General"
   },
   {

@@ -22,6 +22,7 @@ import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
             <th scope="col">Seats</th>
             <th scope="col">Luggage</th>
             <th scope="col">Rate / km</th>
+            <th scope="col">Ajmer ➔ Pushkar</th>
             <th scope="col">Ajmer ➔ Jaipur</th>
             <th scope="col">AC</th>
             <th scope="col">Best Suited For</th>
@@ -43,6 +44,13 @@ import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
                 <td><strong>{v.seats}</strong> Pax</td>
                 <td>{v.luggage} Bags</td>
                 <td class="cell-rate">₹{v.ratePerKm}/km</td>
+                <td class="cell-fixed">
+                  {v.fixedFares?.ajmerToPushkar ? (
+                    <strong>₹{v.fixedFares.ajmerToPushkar.toLocaleString("en-IN")}</strong>
+                  ) : (
+                    <span class="text-muted">—</span>
+                  )}
+                </td>
                 <td class="cell-fixed">
                   {v.fixedFares?.ajmerToJaipur ? (
                     <strong>₹{v.fixedFares.ajmerToJaipur.toLocaleString("en-IN")}</strong>
