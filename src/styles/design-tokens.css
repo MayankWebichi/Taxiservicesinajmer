@@ -1,0 +1,172 @@
+/* ═══════════════════════════════════════════════════════════════
+   UI-UX Pro Max Design System Tokens — Taxi Services in Ajmer
+   Modern, Mobile-First, Accessible & High-Conversion Design System
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ─── Core Brand Hues ─── */
+  --color-primary: #5A0C1A;
+  --color-primary-dark: #3E0611;
+  --color-primary-light: #7A1426;
+  --color-primary-rgb: 90, 12, 26;
+
+  /* Royal Gold Accents */
+  --color-accent: #C59B27;
+  --color-accent-dark: #A47E18;
+  --color-accent-light: #D4AF37;
+  --color-accent-gold: #FAD66D;
+  --color-accent-rgb: 197, 155, 39;
+
+  /* Surfaces & Warm Neutrals */
+  --color-cream: #FCF8F0;
+  --color-cream-dark: #F6EFE2;
+  --color-cream-darker: #EDE3D0;
+  --color-surface: #FFFFFF;
+  --color-surface-warm: #FBF7F0;
+  --color-border: #E8DDCF;
+  --color-border-light: #F0E8DC;
+
+  /* Text & Contrast */
+  --color-text: #22181C;
+  --color-text-secondary: #4A3A3F;
+  --color-text-muted: #7A6A6F;
+  --color-text-light: #A09096;
+  --color-text-on-primary: #FCF8F0;
+  --color-text-on-accent: #22181C;
+  --color-white: #FFFFFF;
+
+  /* ─── Glassmorphism System ─── */
+  --glass-bg: rgba(255, 255, 255, 0.76);
+  --glass-bg-dark: rgba(62, 6, 17, 0.82);
+  --glass-bg-card: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(255, 255, 255, 0.35);
+  --glass-border-gold: rgba(212, 175, 55, 0.45);
+  --glass-blur: blur(14px);
+  --glass-blur-lg: blur(24px);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.16);
+
+  /* ─── Border Radii ─── */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-pill: 9999px;
+
+  /* ─── Shadows & Elevation ─── */
+  --shadow-xs: 0 1px 3px rgba(34, 24, 28, 0.05);
+  --shadow-sm: 0 2px 8px rgba(34, 24, 28, 0.07);
+  --shadow-md: 0 6px 20px rgba(34, 24, 28, 0.09);
+  --shadow-lg: 0 12px 36px rgba(34, 24, 28, 0.13);
+  --shadow-xl: 0 20px 52px rgba(34, 24, 28, 0.18);
+  --shadow-glow-gold: 0 0 24px rgba(197, 155, 39, 0.4);
+  --shadow-glow-primary: 0 0 24px rgba(90, 12, 26, 0.35);
+
+  /* ─── Motion & Timing (SmoothMotion curves) ─── */
+  --motion-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --motion-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-fast: 180ms var(--motion-smooth);
+  --motion-base: 280ms var(--motion-smooth);
+  --motion-slow: 450ms var(--motion-smooth);
+
+  /* ─── Typography Scales ─── */
+  --font-heading: 'Marcellus', 'Georgia', serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-accent: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ─── Glassmorphism Utility Classes ─── */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
+}
+
+.glass-panel--dark {
+  background: var(--glass-bg-dark);
+  backdrop-filter: var(--glass-blur-lg);
+  -webkit-backdrop-filter: var(--glass-blur-lg);
+  border: 1px solid var(--glass-border-gold);
+  color: #FFFFFF;
+}
+
+.glass-panel--gold {
+  background: linear-gradient(135deg, rgba(197, 155, 39, 0.14) 0%, rgba(255, 255, 255, 0.6) 100%);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border-gold);
+}
+
+/* ─── Micro-Interactions & Button Enhancements ─── */
+.btn-pressable {
+  transition: transform var(--motion-fast), box-shadow var(--motion-fast), background var(--motion-base);
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.btn-pressable:hover {
+  transform: translateY(-2px);
+}
+
+.btn-pressable:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Glow on hover for primary/gold CTAs */
+.btn--gold.btn-pressable:hover {
+  box-shadow: 0 6px 20px rgba(197, 155, 39, 0.45);
+}
+
+.btn--primary.btn-pressable:hover {
+  box-shadow: 0 6px 20px rgba(90, 12, 26, 0.35);
+}
+
+/* Live Status Beacon */
+.live-beacon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #15803D;
+  background: rgba(22, 163, 74, 0.1);
+  border: 1px solid rgba(22, 163, 74, 0.25);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.live-beacon__dot {
+  width: 8px;
+  height: 8px;
+  background: #16A34A;
+  border-radius: 50%;
+  position: relative;
+}
+
+.live-beacon__dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: rgba(22, 163, 74, 0.45);
+  animation: beaconPulse 1.8s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@keyframes beaconPulse {
+  0% { transform: scale(0.85); opacity: 0.9; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Touch Targets on Mobile (minimum 48px standard) */
+@media (max-width: 768px) {
+  .btn,
+  .pill-select,
+  .search-swap-btn,
+  .trip-radio-label {
+    min-height: 48px;
+  }
+}

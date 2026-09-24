@@ -5,6 +5,7 @@ import Footer from "@/components/Footer/Footer.astro";
 import FAQ from "@/components/FAQ/FAQ.astro";
 import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
 import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import SmoothMotion from "@/components/SmoothMotion/SmoothMotion.astro";
 import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
 import { generateServiceSchema } from "@/utils/seo";
@@ -48,10 +49,25 @@ const jodhpurFaqs = [
 
   <main id="main-content">
     <section class="route-hero">
-      <div class="container text-center">
-        <span class="heritage-pill">Blue City Express Corridor</span>
+      <div class="route-hero__backdrop" aria-hidden="true"></div>
+      <div class="container text-center route-hero__content">
+        <div class="hero-badge-row">
+          <span class="heritage-pill">Blue City Express Corridor</span>
+          <span class="live-beacon"><span class="live-beacon__dot"></span> 24/7 Direct Dispatch</span>
+        </div>
         <h1 class="route-title">Ajmer to Jodhpur Taxi Service</h1>
         <p class="route-subtitle">205 km • ~4 Hours • Doorstep Pickup in Ajmer &amp; Pushkar • Starting from ₹3,000</p>
+        
+        <div class="route-hero__cta-group">
+          <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn-pressable btn--sm">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.288.043.088.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.2.662.589 1.221.77 1.394.856.173.086.275.073.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.043.072.043.419-.101.824z"/></svg>
+            Instant WhatsApp Quote
+          </a>
+          <a href={`tel:${business.phone}`} class="btn btn--outline-light btn-pressable btn--sm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            Call: {business.phoneFormatted}
+          </a>
+        </div>
       </div>
     </section>
 
@@ -70,7 +86,7 @@ const jodhpurFaqs = [
 
             <h3 class="tier-heading">Vehicle Options</h3>
             <div class="pricing-cards-row">
-              <div class="p-card">
+              <SmoothMotion animation="fadeUp" class="p-card" delay={0}>
                 <span class="p-type">Sedan</span>
                 <h4 class="p-car">Maruti Swift Dzire</h4>
                 <div class="p-fare">From ₹3,000 <small>one-way</small></div>
@@ -79,12 +95,12 @@ const jodhpurFaqs = [
                   <li>✓ 2 Large Bags</li>
                   <li>✓ Chilled AC</li>
                 </ul>
-                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">
+                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn-pressable btn--sm p-btn">
                   Book Sedan
                 </a>
-              </div>
+              </SmoothMotion>
 
-              <div class="p-card featured-p-card">
+              <SmoothMotion animation="fadeUp" class="p-card featured-p-card" delay={120}>
                 <span class="p-type gold">Royal MUV</span>
                 <h4 class="p-car">Innova Crysta</h4>
                 <div class="p-fare">From ₹5,500 <small>one-way</small></div>
@@ -93,15 +109,15 @@ const jodhpurFaqs = [
                   <li>✓ 4+ Luggage Bags</li>
                   <li>✓ Plush Captain Seats</li>
                 </ul>
-                <a href={waCrysta} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm p-btn">
+                <a href={waCrysta} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn-pressable btn--sm p-btn">
                   Book Crysta
                 </a>
-              </div>
+              </SmoothMotion>
             </div>
           </div>
 
           <aside class="route-sidebar">
-            <div class="sidebar-box">
+            <div class="sidebar-box glass-panel">
               <h3 class="side-title">Route Summary</h3>
               <div class="side-list">
                 <div class="side-item">
@@ -123,10 +139,10 @@ const jodhpurFaqs = [
               </div>
 
               <div class="side-actions">
-                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm full-w">
+                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn-pressable btn--sm full-w">
                   WhatsApp Instant Quote
                 </a>
-                <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn--sm full-w">
+                <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn-pressable btn--sm full-w">
                   Call: {business.phoneFormatted}
                 </a>
               </div>
@@ -146,38 +162,74 @@ const jodhpurFaqs = [
 
 <style>
   .route-hero {
-    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    position: relative;
+    background: radial-gradient(circle at 50% 20%, rgba(197, 155, 39, 0.15) 0%, transparent 60%),
+                linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
     color: #FFFFFF;
-    padding: calc(var(--header-height, 74px) + 38px) 0 36px;
+    padding: calc(var(--header-height, 74px) + 38px) 0 44px;
     border-bottom: 3px solid var(--color-accent);
+    overflow: hidden;
+  }
+
+  .route-hero__backdrop {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: radial-gradient(circle at 80% 0%, rgba(212, 175, 55, 0.18) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .route-hero__content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-badge-row {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
   }
 
   .heritage-pill {
     display: inline-block;
-    background: rgba(197, 155, 39, 0.2);
+    background: rgba(197, 155, 39, 0.22);
     border: 1px solid var(--color-accent);
-    color: var(--color-accent-light);
+    color: var(--color-accent-gold);
     font-size: 0.8125rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    padding: 4px 14px;
+    padding: 5px 14px;
     border-radius: var(--radius-full);
-    margin-bottom: 12px;
   }
 
   .route-title {
     font-family: var(--font-heading);
-    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-size: clamp(2.1rem, 4.5vw, 2.9rem);
     color: #FFFFFF;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
   }
 
   .route-subtitle {
     font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.92);
     max-width: 720px;
     margin: 0 auto;
+    line-height: 1.55;
+  }
+
+  .route-hero__cta-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 22px;
+    flex-wrap: wrap;
   }
 
   .route-content-section {
@@ -332,6 +384,19 @@ const jodhpurFaqs = [
   @media (max-width: 992px) {
     .route-grid {
       grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .pricing-cards-row {
+      grid-template-columns: 1fr;
+    }
+    .route-hero__cta-group {
+      flex-direction: column;
+      width: 100%;
+    }
+    .route-hero__cta-group .btn {
+      width: 100%;
     }
   }
 </style>

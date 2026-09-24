@@ -15,6 +15,10 @@ const whatsappUrl = createWhatsAppBookingUrl();
         <div class="hero-top-grid">
           <!-- Left Column: Typography & Trip Type -->
           <div class="hero-text-col">
+            <div class="hero-badge-row">
+              <span class="live-beacon"><span class="live-beacon__dot"></span> 24/7 Direct Dispatch</span>
+              <span class="heritage-pill">Serving Ajmer Since 2008</span>
+            </div>
             <h1 class="hero-title">
               Taxi Service in <span class="highlight-yellow">Ajmer</span> &amp; Pushkar<br />
               <span class="highlight-yellow">Private Cabs</span> &amp; Outstation Rentals
@@ -196,27 +200,48 @@ const whatsappUrl = createWhatsAppBookingUrl();
     padding-top: 12px;
   }
 
+  .hero-badge-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+
+  .heritage-pill {
+    display: inline-block;
+    background: rgba(197, 155, 39, 0.15);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-dark);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+  }
+
   .hero-eyebrow {
     font-size: 1.125rem;
     font-weight: 600;
-    color: #6366F1 !important;
+    color: var(--color-accent-dark) !important;
     margin-bottom: 14px;
     letter-spacing: -0.01em;
   }
 
   .hero-title {
-    font-family: var(--font-body), system-ui, sans-serif !important;
+    font-family: var(--font-heading) !important;
     font-size: clamp(2.4rem, 4.2vw, 3.6rem) !important;
-    line-height: 1.15 !important;
+    line-height: 1.18 !important;
     font-weight: 800 !important;
-    color: #111827 !important;
+    color: var(--color-primary-dark) !important;
     margin-bottom: 18px !important;
-    letter-spacing: -0.03em !important;
+    letter-spacing: -0.01em !important;
   }
 
   .highlight-yellow {
-    color: var(--color-primary, #5A0C1A) !important;
-    -webkit-text-fill-color: var(--color-primary, #5A0C1A) !important;
+    color: var(--color-accent-dark) !important;
+    -webkit-text-fill-color: var(--color-accent-dark) !important;
     display: inline-block;
   }
 
@@ -266,7 +291,7 @@ const whatsappUrl = createWhatsAppBookingUrl();
   }
 
   .trip-radio-input:checked + .trip-radio-custom {
-    border-color: #6366F1;
+    border-color: var(--color-accent-dark);
   }
 
   .trip-radio-input:checked + .trip-radio-custom::after {
@@ -274,7 +299,7 @@ const whatsappUrl = createWhatsAppBookingUrl();
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: #6366F1;
+    background: var(--color-accent-dark);
   }
 
   /* Right Column: Car Image */

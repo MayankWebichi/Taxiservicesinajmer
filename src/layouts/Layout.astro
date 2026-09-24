@@ -1,6 +1,7 @@
 ---
 import { business } from "@/data/business";
 import { generateLocalBusinessSchema } from "@/utils/seo";
+import ScrollEngine from "@/components/ScrollEngine/ScrollEngine.astro";
 import "@/styles/global.css";
 
 export interface Props {
@@ -116,6 +117,9 @@ const localBusinessSchema = generateLocalBusinessSchema();
       </div>
     </div>
   </div>
+
+  <!-- lets-scroll Cinematic Scroll & Scrub Engine -->
+  <ScrollEngine />
 
   <slot />
 

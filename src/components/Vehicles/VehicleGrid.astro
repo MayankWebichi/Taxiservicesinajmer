@@ -1,6 +1,7 @@
 ---
 import { vehicles } from "@/data/vehicles";
 import VehicleCard from "./VehicleCard.astro";
+import SmoothMotion from "@/components/SmoothMotion/SmoothMotion.astro";
 
 export interface Props {
   limit?: number;
@@ -22,10 +23,10 @@ const displayVehicles = limit ? vehicles.slice(0, limit) : vehicles;
     </div>
 
     <div class="vehicles-grid" id="vehicles-container">
-      {displayVehicles.map((v) => (
-        <div class="grid-item" data-category={v.category}>
+      {displayVehicles.map((v, idx) => (
+        <SmoothMotion animation="fadeUp" delay={idx * 50} class="grid-item" data-category={v.category}>
           <VehicleCard vehicle={v} />
-        </div>
+        </SmoothMotion>
       ))}
     </div>
 

@@ -1,3 +1,5 @@
+@import "./design-tokens.css";
+
 /* ═══════════════════════════════════════════════════════════════
    Taxi Services in Ajmer — Global Design System
    Since 2008 • Premium Rajasthan Taxi Service
@@ -662,9 +664,9 @@ main#main-content > section:first-child:not(.hero-section),
     padding-inline: var(--space-4);
   }
 
-  /* Bottom bar spacing removed as mobile bottom bar is disabled */
+  /* Mobile bottom bar clearance */
   body {
-    padding-bottom: 0;
+    padding-bottom: calc(var(--mobile-bar-height, 60px) + env(safe-area-inset-bottom, 0px));
   }
 }
 
