@@ -1,3 +1,10 @@
+export interface VehicleFeatureBox {
+  point: string;
+  price: string;
+  toll?: string;
+  isLuxury?: boolean;
+}
+
 export interface Vehicle {
   id: string;
   name: string;
@@ -12,6 +19,7 @@ export interface Vehicle {
   popular: boolean;
   image: string;
   altText: string;
+  featureBoxes?: VehicleFeatureBox[];
   fixedFares?: {
     ajmerToPushkar?: number;
     ajmerToJaipur?: number;
@@ -115,37 +123,26 @@ export const vehicles: Vehicle[] = [
     id: "urbania-13-seater",
     name: "13 Seater Maharaja Urbania",
     category: "Tempo Traveller",
-    categoryLabel: "Luxury Maharaja Van (₹35/km Outstation)",
+    categoryLabel: "Luxury Maharaja Van",
     seats: 13,
     luggage: 10,
     ratePerKm: 35,
     hasAC: true,
     freeCancellation: true,
-    bestFor: "Luxury group tours, recliner seats, outstation trips & wedding guest escort",
+    bestFor: "Luxury group tours, royal weddings & corporate VIP delegation",
     popular: true,
     image: "/images/vehicles/13%20Seater%20Maharaja%20Urbania.png",
-    altText: "13 Seater Maharaja Urbania luxury tempo traveller in Ajmer"
-  },
-  {
-    id: "tempo-13-seater",
-    name: "13 Seater Tempo Traveller",
-    category: "Tempo Traveller",
-    categoryLabel: "Small Group Traveller",
-    seats: 13,
-    luggage: 10,
-    ratePerKm: 22,
-    hasAC: true,
-    freeCancellation: true,
-    bestFor: "Family pilgrimages, Pushkar fair & corporate outings",
-    popular: true,
-    image: "/images/vehicles/Force%20Tempo%20Traveller.png",
-    altText: "13 Seater AC Tempo Traveller rental service in Ajmer"
+    altText: "13 Seater Maharaja Urbania luxury tempo traveller in Ajmer",
+    featureBoxes: [
+      { point: "Comfort:", price: "Maharaja Recliner Seats", toll: "(Push-Back)", isLuxury: true },
+      { point: "Touring:", price: "Luxury Group Tours", toll: "(All Rajasthan)", isLuxury: true }
+    ]
   },
   {
     id: "urbania-17-seater",
     name: "17 Seater Urbania Traveller",
     category: "Tempo Traveller",
-    categoryLabel: "Luxury 17-Seater Van (₹35/km Outstation)",
+    categoryLabel: "Luxury 17-Seater Van",
     seats: 17,
     luggage: 12,
     ratePerKm: 35,
@@ -154,7 +151,11 @@ export const vehicles: Vehicle[] = [
     bestFor: "High-comfort group journeys & outstation trips across Rajasthan",
     popular: false,
     image: "/images/vehicles/17%20Seater%20Urbania%20Traveller.png",
-    altText: "17 Seater Urbania luxury traveller in Ajmer"
+    altText: "17 Seater Urbania luxury traveller in Ajmer",
+    featureBoxes: [
+      { point: "Comfort:", price: "Push-Back Recliners", toll: "(High-Roof AC)", isLuxury: true },
+      { point: "Touring:", price: "Grand Group Tours", toll: "(All Rajasthan)", isLuxury: true }
+    ]
   },
   {
     id: "toyota-glanza",
@@ -169,7 +170,11 @@ export const vehicles: Vehicle[] = [
     bestFor: "Budget city travel, local Ajmer darshan & solo/couple trips",
     popular: false,
     image: "/images/vehicles/Toyota%20Glanza.png",
-    altText: "Toyota Glanza AC hatchback taxi available for hire in Ajmer"
+    altText: "Toyota Glanza AC hatchback taxi available for hire in Ajmer",
+    featureBoxes: [
+      { point: "Ajmer City:", price: "Local Darshan Tour", toll: "(Full Day)" },
+      { point: "Pushkar Drop:", price: "Budget AC Hatchback", toll: "(One-Way)" }
+    ]
   },
   {
     id: "toyota-rumion",
@@ -186,6 +191,7 @@ export const vehicles: Vehicle[] = [
     image: "/images/vehicles/Toyota%20Rumion.png",
     altText: "Toyota Rumion premium SUV cab booking in Ajmer",
     fixedFares: {
+      ajmerToPushkar: 1200,
       ajmerToJaipur: 2800,
       ajmerToDelhiAirport: 7500
     }
@@ -203,7 +209,11 @@ export const vehicles: Vehicle[] = [
     bestFor: "Executive travel & long-distance Rajasthan tours",
     popular: false,
     image: "/images/vehicles/Kia%20Carens.png",
-    altText: "Kia Carens premium cab service in Ajmer and Pushkar"
+    altText: "Kia Carens premium cab service in Ajmer and Pushkar",
+    featureBoxes: [
+      { point: "Executive:", price: "Plush Captain Seats", toll: "(6-Seater)" },
+      { point: "Outstation:", price: "Smooth Highway Cruiser", toll: "(Long Distance)" }
+    ]
   },
   {
     id: "tempo-17-seater",
@@ -218,7 +228,11 @@ export const vehicles: Vehicle[] = [
     bestFor: "Extended family tours & outstation pilgrimage trips",
     popular: false,
     image: "/images/vehicles/Force%20Tempo%20Traveller.png",
-    altText: "17 Seater Tempo Traveller on rent in Ajmer"
+    altText: "17 Seater Tempo Traveller on rent in Ajmer",
+    featureBoxes: [
+      { point: "Group Coach:", price: "High-Roof AC Cabin", toll: "(Push-Back)" },
+      { point: "Touring:", price: "Outstation & Pilgrimage", toll: "(Rajasthan)" }
+    ]
   },
   {
     id: "tempo-21-seater",
@@ -233,7 +247,11 @@ export const vehicles: Vehicle[] = [
     bestFor: "College trips, large family events & religious tours",
     popular: false,
     image: "/images/vehicles/Force%20Tempo%20Traveller.png",
-    altText: "21 Seater Tempo Traveller for hire in Ajmer"
+    altText: "21 Seater Tempo Traveller for hire in Ajmer",
+    featureBoxes: [
+      { point: "Large Group:", price: "Spacious Legroom & AC", toll: "(21 Seats)" },
+      { point: "Touring:", price: "Pushkar & Rajasthan Yatra", toll: "(All State)" }
+    ]
   },
   {
     id: "tempo-27-seater",
@@ -248,7 +266,11 @@ export const vehicles: Vehicle[] = [
     bestFor: "Wedding transportation, school/college groups & conventions",
     popular: false,
     image: "/images/vehicles/Force%20Tempo%20Traveller.png",
-    altText: "27 Seater luxury mini bus tempo traveller in Ajmer"
+    altText: "27 Seater luxury mini bus tempo traveller in Ajmer",
+    featureBoxes: [
+      { point: "Maxi Coach:", price: "Deluxe 27-Seater AC", toll: "(High-Roof)" },
+      { point: "Occasions:", price: "Wedding & Event Transport", toll: "(Rajasthan)" }
+    ]
   }
 ];
 

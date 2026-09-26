@@ -57,7 +57,7 @@ const whatsappUrl = createWhatsAppBookingUrl({ vehicle: vehicle.name });
       </div>
     </div>
 
-    <!-- Fixed Route Highlight if Available -->
+    <!-- Fixed Route / Feature Highlight Boxes -->
     {vehicle.fixedFares?.ajmerToPushkar && (
       <div class="fixed-route-banner">
         <span class="route-point">Ajmer ➔ Pushkar:</span>
@@ -72,6 +72,13 @@ const whatsappUrl = createWhatsAppBookingUrl({ vehicle: vehicle.name });
         <span class="route-toll">(One-Way fixed)</span>
       </div>
     )}
+    {vehicle.featureBoxes && vehicle.featureBoxes.map((box) => (
+      <div class:list={["fixed-route-banner", { "luxury-banner": box.isLuxury }]}>
+        <span class="route-point">{box.point}</span>
+        <strong class="route-price">{box.price}</strong>
+        {box.toll && <span class="route-toll">{box.toll}</span>}
+      </div>
+    ))}
 
     <!-- Actions -->
     <div class="card-actions">
@@ -254,7 +261,28 @@ const whatsappUrl = createWhatsAppBookingUrl({ vehicle: vehicle.name });
     padding: 6px 10px;
     font-size: 0.8125rem;
     color: var(--color-primary);
+    margin-bottom: 6px;
+    min-height: 32px;
+  }
+
+  .fixed-route-banner:last-of-type {
     margin-bottom: var(--space-md);
+  }
+
+  .fixed-route-banner.luxury-banner {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(139, 21, 56, 0.05) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    box-shadow: 0 1px 4px rgba(212, 175, 55, 0.08);
+  }
+
+  .luxury-banner .route-point {
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .luxury-banner .route-price {
+    color: var(--color-primary);
+    font-weight: 700;
   }
 
   .route-price {
@@ -265,6 +293,7 @@ const whatsappUrl = createWhatsAppBookingUrl({ vehicle: vehicle.name });
     font-size: 0.75rem;
     color: var(--color-text-muted);
     margin-left: auto;
+    white-space: nowrap;
   }
 
   .card-actions {
