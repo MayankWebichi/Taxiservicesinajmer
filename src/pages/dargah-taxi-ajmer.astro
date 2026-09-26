@@ -34,11 +34,12 @@ const faqs = [
   <Header />
   <main id="main-content">
 
+    <!-- Hero Section (Centered Layout) -->
     <section class="route-hero dargah-hero">
       <div class="container text-center">
         <span class="heritage-pill">Ajmer's Most Sacred Pilgrimage • Local Cab Service</span>
         <h1 class="route-title">Dargah Taxi Service — Ajmer Sharif</h1>
-        <p class="route-subtitle">Respectful & Reliable Cab Service to the Shrine of Hazrat Khwaja Moinuddin Chishti · ₹200 Onwards · 24/7 Available</p>
+        <p class="route-subtitle">Respectful &amp; Reliable Cab Service to the Shrine of Hazrat Khwaja Moinuddin Chishti · ₹200 Onwards · 24/7 Available</p>
         <div class="cta-row">
           <a href={waBook} target="_blank" rel="noopener noreferrer" class="btn btn--gold">Book Dargah Cab Now</a>
           <a href={`tel:${business.phone}`} class="btn btn--outline-white">Call: {business.phoneFormatted}</a>
@@ -46,91 +47,109 @@ const faqs = [
       </div>
     </section>
 
+    <!-- Main Content Section -->
     <section class="route-content-section">
       <div class="container">
         <div class="route-grid">
+          
           <div class="route-main">
-            <span class="section-subtitle">Serving Ajmer Pilgrims Since 2008</span>
-            <h2 class="section-title">Trusted Taxi to Ajmer Sharif Dargah</h2>
-            <p>
-              Ajmer Sharif — the revered dargah of Sufi saint Hazrat Khwaja Moinuddin Chishti — attracts millions of pilgrims every year from across India and the world. Whether you're arriving at Ajmer Railway Station, the Bus Stand, or from a hotel — our taxi service provides respectful, comfortable, and punctual cab service to the Dargah.
-            </p>
-            <p>
-              We understand the significance of this sacred journey. Our drivers are courteous, familiar with the Dargah entry routes and parking restrictions, and always on time — especially during busy festival days and the annual Urs celebration.
-            </p>
+            
+            <!-- Overview Card -->
+            <div class="content-block">
+              <span class="section-badge">Serving Ajmer Pilgrims Since 2008</span>
+              <h2 class="block-title">Trusted Taxi to Ajmer Sharif Dargah</h2>
+              <p>
+                Ajmer Sharif — the revered dargah of Sufi saint Hazrat Khwaja Moinuddin Chishti — attracts millions of pilgrims every year from across India and the world. Whether you're arriving at Ajmer Railway Station, the Bus Stand, or from a hotel — our taxi service provides respectful, comfortable, and punctual cab service to the Dargah.
+              </p>
+              <p>
+                We understand the significance of this sacred journey. Our drivers are courteous, familiar with the Dargah entry routes and parking restrictions, and always on time — especially during busy festival days and the annual Urs celebration.
+              </p>
+            </div>
 
-            <h3 class="tier-heading">Our Dargah Taxi Packages</h3>
-            <div class="package-cards">
-              <div class="pkg-card">
-                <div class="pkg-icon">🕌</div>
-                <h4 class="pkg-title">One-Way Dargah Drop</h4>
-                <div class="pkg-fare">From ₹200</div>
-                <p class="pkg-desc">Single drop from your hotel, railway station, or bus stand to Ajmer Sharif Dargah gate.</p>
-                <a href={waBook} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">Book Drop</a>
-              </div>
+            <!-- Packages Card (Clean 2x2 Grid) -->
+            <div class="content-block">
+              <h3 class="tier-heading">Our Dargah Taxi Packages</h3>
+              <p class="tier-sub">Fixed transparent fares with doorstep pickup and zero hidden extras:</p>
+              
+              <div class="package-cards">
+                <div class="pkg-card">
+                  <div class="pkg-icon">🕌</div>
+                  <h4 class="pkg-title">One-Way Dargah Drop</h4>
+                  <div class="pkg-fare">From ₹200</div>
+                  <p class="pkg-desc">Single drop from your hotel, railway station, or bus stand to Ajmer Sharif Dargah gate.</p>
+                  <a href={waBook} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">Book Drop</a>
+                </div>
 
-              <div class="pkg-card pkg-card--featured">
-                <div class="pkg-badge">Most Booked</div>
-                <div class="pkg-icon">🗺️</div>
-                <h4 class="pkg-title">Full Day Ajmer Sightseeing</h4>
-                <div class="pkg-fare">From ₹1,200</div>
-                <p class="pkg-desc">Cover Dargah + Ana Sagar Lake + Taragarh Fort + Adhai Din Ka Jhonpra + Nareli Jain Temple in one cab, one day.</p>
-                <a href={waFullDay} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm">Book Full Day</a>
-              </div>
+                <div class="pkg-card pkg-card--featured">
+                  <div class="pkg-badge">Most Booked</div>
+                  <div class="pkg-icon">🗺️</div>
+                  <h4 class="pkg-title">Full Day Ajmer Sightseeing</h4>
+                  <div class="pkg-fare">From ₹1,200</div>
+                  <p class="pkg-desc">Cover Dargah + Ana Sagar Lake + Taragarh Fort + Adhai Din Ka Jhonpra + Nareli Jain Temple in one cab, one day.</p>
+                  <a href={waFullDay} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm">Book Full Day</a>
+                </div>
 
-              <div class="pkg-card">
-                <div class="pkg-icon">🔄</div>
-                <h4 class="pkg-title">Dargah Return Cab</h4>
-                <div class="pkg-fare">From ₹350</div>
-                <p class="pkg-desc">Return cab from Dargah back to your hotel, station, or any Ajmer address. Driver waits during your darshan.</p>
-                <a href={waBook} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">Book Return</a>
-              </div>
+                <div class="pkg-card">
+                  <div class="pkg-icon">🔄</div>
+                  <h4 class="pkg-title">Dargah Return Cab</h4>
+                  <div class="pkg-fare">From ₹350</div>
+                  <p class="pkg-desc">Return cab from Dargah back to your hotel, station, or any Ajmer address. Driver waits during your darshan.</p>
+                  <a href={waBook} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">Book Return</a>
+                </div>
 
-              <div class="pkg-card pkg-card--featured">
-                <div class="pkg-badge">Pilgrimage Special</div>
-                <div class="pkg-icon">✨</div>
-                <h4 class="pkg-title">Ajmer to Sarwar Sharif Ziyarat</h4>
-                <div class="pkg-fare">₹2,000 <small>Round Trip</small></div>
-                <p class="pkg-desc">Hazrat Khwaja Fakhruddin Chishti Dargah (Sarwad). Dzire/Etios ₹2,000, Ertiga ₹2,500, Crysta ₹3,500. Ziyarat wait-time included.</p>
-                <a href="/ajmer-to-sarwar-sharif-taxi/" class="btn btn--gold btn--sm">View Sarwar Taxi</a>
+                <div class="pkg-card pkg-card--featured">
+                  <div class="pkg-badge">Pilgrimage Special</div>
+                  <div class="pkg-icon">✨</div>
+                  <h4 class="pkg-title">Ajmer to Sarwar Sharif Ziyarat</h4>
+                  <div class="pkg-fare">₹2,000 <small>Round Trip</small></div>
+                  <p class="pkg-desc">Hazrat Khwaja Fakhruddin Chishti Dargah (Sarwad). Dzire/Etios ₹2,000, Ertiga ₹2,500, Crysta ₹3,500. Ziyarat wait-time included.</p>
+                  <a href="/ajmer-to-sarwar-sharif-taxi/" class="btn btn--gold btn--sm">View Sarwar Taxi</a>
+                </div>
               </div>
             </div>
 
-            <h3 class="tier-heading" style="margin-top: var(--space-2xl)">Pickup Locations We Cover</h3>
-            <div class="pickup-grid">
-              <div class="pickup-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18M3 10l9-7 9 7M3 10v10a1 1 0 001 1h5v-5h4v5h5a1 1 0 001-1V10"/></svg>
-                <span>All Ajmer Hotels</span>
-              </div>
-              <div class="pickup-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h5l2 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-                <span>Ajmer Railway Station</span>
-              </div>
-              <div class="pickup-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-                <span>Ajmer Bus Stand</span>
-              </div>
-              <div class="pickup-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span>Pushkar (14 km away)</span>
+            <!-- Pickup Locations Card -->
+            <div class="content-block">
+              <h3 class="tier-heading">Pickup Locations We Cover</h3>
+              <p class="tier-sub">Instant 24/7 doorstep dispatch anywhere across the city:</p>
+              <div class="pickup-grid">
+                <div class="pickup-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18M3 10l9-7 9 7M3 10v10a1 1 0 001 1h5v-5h4v5h5a1 1 0 001-1V10"/></svg>
+                  <span>All Ajmer Hotels &amp; Resorts</span>
+                </div>
+                <div class="pickup-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h5l2 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                  <span>Ajmer Junction Railway Station</span>
+                </div>
+                <div class="pickup-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                  <span>Ajmer Central Bus Stand</span>
+                </div>
+                <div class="pickup-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>Pushkar Town &amp; Desert Camps</span>
+                </div>
               </div>
             </div>
 
-            <div class="route-itinerary-box" style="margin-top: var(--space-xl)">
-              <h3>Places to Visit Near Ajmer Sharif Dargah</h3>
-              <ul>
-                <li>• <strong>Adhai Din Ka Jhonpra (0.3 km):</strong> A stunning 12th-century mosque known for its intricate Quranic inscriptions and Indo-Islamic architecture. Walking distance from Dargah.</li>
-                <li>• <strong>Taragarh Fort (3 km uphill):</strong> The "Star Fort" perched on a hilltop overlooking all of Ajmer. Panoramic views of the city.</li>
-                <li>• <strong>Ana Sagar Lake (2 km):</strong> A historic artificial lake built in the 12th century, with the marble-inlaid Daulat Bagh Gardens on its banks.</li>
-                <li>• <strong>Nareli Jain Temple (8 km):</strong> A spectacular modern Jain temple complex with intricate marble carvings on the outskirts of Ajmer.</li>
+            <!-- Places to Visit Card -->
+            <div class="content-block route-itinerary-box">
+              <h3 class="tier-heading">Places to Visit Near Ajmer Sharif Dargah</h3>
+              <ul class="places-list">
+                <li><strong>Adhai Din Ka Jhonpra (0.3 km):</strong> A stunning 12th-century mosque known for its intricate Quranic inscriptions and Indo-Islamic architecture. Walking distance from Dargah.</li>
+                <li><strong>Taragarh Fort (3 km uphill):</strong> The "Star Fort" perched on a hilltop overlooking all of Ajmer. Panoramic views of the city.</li>
+                <li><strong>Ana Sagar Lake (2 km):</strong> A historic artificial lake built in the 12th century, with the marble-inlaid Daulat Bagh Gardens on its banks.</li>
+                <li><strong>Nareli Jain Temple (8 km):</strong> A spectacular modern Jain temple complex with intricate marble carvings on the outskirts of Ajmer.</li>
               </ul>
             </div>
+
           </div>
 
+          <!-- Sidebar -->
           <aside class="route-sidebar">
             <div class="sidebar-box">
               <h3 class="side-title">Book Your Dargah Cab</h3>
-              <p style="font-size:0.875rem; color: var(--color-text-muted); margin-bottom: var(--space-md);">Call or WhatsApp us for instant booking. No advance payment needed.</p>
+              <p class="side-sub">Call or WhatsApp us for instant booking. No advance payment needed.</p>
               <div class="side-actions">
                 <a href={waBook} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm full-w">WhatsApp Booking</a>
                 <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn--sm full-w">Call: {business.phoneFormatted}</a>
@@ -138,17 +157,19 @@ const faqs = [
               <div class="dargah-hours">
                 <h4>Dargah Darshan Timings</h4>
                 <div class="hours-list">
-                  <div class="hour-item"><span>Summer (Apr–Sep):</span><span>5:00 AM – 10:00 PM</span></div>
-                  <div class="hour-item"><span>Winter (Oct–Mar):</span><span>5:30 AM – 9:30 PM</span></div>
-                  <div class="hour-item"><span>Urs Season:</span><span>24 Hours Open</span></div>
+                  <div class="hour-item"><span>Summer (Apr–Sep):</span><strong>5:00 AM – 10:00 PM</strong></div>
+                  <div class="hour-item"><span>Winter (Oct–Mar):</span><strong>5:30 AM – 9:30 PM</strong></div>
+                  <div class="hour-item"><span>Urs Season:</span><strong>24 Hours Open</strong></div>
                 </div>
               </div>
             </div>
-            <div class="sidebar-trust">
-              <h4>Why Choose Us?</h4>
+
+            <div class="sidebar-box sidebar-trust">
+              <h4>Why Pilgrims Choose Us?</h4>
               <p>Serving Ajmer Sharif pilgrims since 2008. Respectful drivers who understand the sanctity of your visit. Zero advance, pay after the trip.</p>
             </div>
           </aside>
+
         </div>
       </div>
     </section>
@@ -161,42 +182,344 @@ const faqs = [
 </Layout>
 
 <style>
-  .route-hero { background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%); color: #FFF; padding: calc(var(--header-height, 74px) + 38px) 0 36px; border-bottom: 3px solid var(--color-accent); }
-  .dargah-hero { background: linear-gradient(135deg, #1A0408 0%, #3D0910 50%, #5A0C1A 100%); }
-  .heritage-pill { display: inline-block; background: rgba(197,155,39,0.2); border: 1px solid var(--color-accent); color: var(--color-accent-light); font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 14px; border-radius: var(--radius-full); margin-bottom: 12px; }
-  .route-title { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 2.75rem); color: #FFF; margin-bottom: 6px; }
-  .route-subtitle { font-size: 1.125rem; color: rgba(255,255,255,0.9); max-width: 720px; margin: 0 auto var(--space-lg); }
-  .cta-row { display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap; }
-  .btn--outline-white { border: 2px solid rgba(255,255,255,0.5); color: #FFF; background: transparent; }
-  .btn--outline-white:hover { background: rgba(255,255,255,0.1); }
-  .route-content-section { padding: var(--space-4xl) 0; background: #FFF; }
-  .route-grid { display: grid; grid-template-columns: 1fr 340px; gap: var(--space-3xl); }
-  .tier-heading { font-family: var(--font-heading); font-size: 1.375rem; color: var(--color-primary); margin: var(--space-xl) 0 var(--space-md); }
-  .package-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-md); margin-bottom: var(--space-xl); }
-  .pkg-card { background: #FFF; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-sm); box-shadow: 0 4px 12px rgba(34,24,28,0.05); position: relative; }
-  .pkg-card--featured { border: 2px solid var(--color-accent); background: var(--color-cream); }
-  .pkg-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--color-accent); color: #FFF; font-size: 0.7rem; font-weight: 800; padding: 2px 10px; border-radius: var(--radius-full); white-space: nowrap; }
-  .pkg-icon { font-size: 2rem; }
-  .pkg-title { font-family: var(--font-heading); font-size: 1.1rem; color: var(--color-primary); margin: 0; }
-  .pkg-fare { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: var(--color-primary); }
-  .pkg-desc { font-size: 0.8125rem; color: var(--color-text-muted); line-height: 1.5; flex: 1; margin: 0; }
-  .pickup-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: var(--space-sm); }
-  .pickup-item { display: flex; align-items: center; gap: 10px; background: var(--color-cream); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 10px 14px; font-size: 0.875rem; color: var(--color-text); font-weight: 500; }
-  .pickup-item svg { width: 18px; height: 18px; color: var(--color-primary); flex-shrink: 0; }
-  .route-itinerary-box { background: var(--color-cream); border: 1px solid var(--color-border); border-left: 4px solid var(--color-accent); padding: var(--space-xl); border-radius: var(--radius-md); }
-  .route-itinerary-box h3 { font-family: var(--font-heading); color: var(--color-primary); font-size: 1.25rem; margin-bottom: var(--space-sm); }
-  .route-itinerary-box ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.875rem; color: var(--color-text); }
-  .route-sidebar { display: flex; flex-direction: column; gap: var(--space-lg); }
-  .sidebar-box { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-xl); }
-  .side-title { font-family: var(--font-heading); font-size: 1.125rem; color: var(--color-primary); margin-bottom: var(--space-sm); padding-bottom: 6px; border-bottom: 2px solid var(--color-accent); }
-  .side-actions { display: flex; flex-direction: column; gap: 8px; margin-bottom: var(--space-lg); }
-  .full-w { width: 100%; justify-content: center; }
-  .dargah-hours { background: var(--color-cream); border-radius: var(--radius-md); padding: var(--space-md); }
-  .dargah-hours h4 { font-family: var(--font-heading); color: var(--color-primary); font-size: 0.9375rem; margin-bottom: 8px; }
-  .hours-list { display: flex; flex-direction: column; gap: 6px; }
-  .hour-item { display: flex; justify-content: space-between; font-size: 0.8125rem; color: var(--color-text); border-bottom: 1px dashed var(--color-border); padding-bottom: 4px; }
-  .sidebar-trust { background: var(--color-cream); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-lg); }
-  .sidebar-trust h4 { font-family: var(--font-heading); color: var(--color-primary); font-size: 1rem; margin-bottom: 4px; }
-  .sidebar-trust p { font-size: 0.8125rem; color: var(--color-text-muted); line-height: 1.5; margin: 0; }
-  @media (max-width: 992px) { .route-grid { grid-template-columns: 1fr; } .package-cards { grid-template-columns: 1fr; } .pickup-grid { grid-template-columns: 1fr; } }
+  .route-hero {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #FFF;
+    padding: calc(var(--header-height, 74px) + 38px) 0 36px;
+    border-bottom: 3px solid var(--color-accent);
+    text-align: center;
+  }
+  .dargah-hero {
+    background: linear-gradient(135deg, #1A0408 0%, #3D0910 50%, #5A0C1A 100%);
+  }
+
+  .heritage-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(197,155,39,0.2);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-light);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    margin: 0 auto 12px auto;
+    text-align: center;
+  }
+
+  .route-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: #FFF;
+    margin: 0 auto 8px auto;
+    text-align: center;
+    max-width: 900px;
+  }
+
+  .route-subtitle {
+    font-size: 1.125rem;
+    color: rgba(255,255,255,0.9);
+    max-width: 760px;
+    margin: 0 auto var(--space-lg) auto;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .cta-row {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+
+  .btn--outline-white {
+    border: 2px solid rgba(255,255,255,0.5);
+    color: #FFF;
+    background: transparent;
+  }
+  .btn--outline-white:hover {
+    background: rgba(255,255,255,0.1);
+  }
+
+  /* ─── Content Section ─── */
+  .route-content-section {
+    padding: var(--space-3xl) 0 var(--space-4xl);
+    background: #f8fafc;
+  }
+
+  .route-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+
+  .content-block {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    margin-bottom: var(--space-xl);
+    box-shadow: 0 4px 14px rgba(34,24,28,0.04);
+  }
+
+  .section-badge {
+    display: inline-block;
+    background: rgba(197, 155, 39, 0.15);
+    color: var(--color-accent-dark, #8c6d1f);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-full);
+    padding: 3px 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+  }
+
+  .block-title {
+    font-family: var(--font-heading);
+    font-size: 1.65rem;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--space-md);
+  }
+
+  .content-block p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #475569;
+    margin-bottom: var(--space-md);
+  }
+  .content-block p:last-child {
+    margin-bottom: 0;
+  }
+
+  .tier-heading {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    color: var(--color-primary);
+    margin: 0 0 4px 0;
+  }
+
+  .tier-sub {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: var(--space-lg);
+  }
+
+  /* 2x2 Package Cards Grid */
+  .package-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  .pkg-card {
+    background: #FFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    box-shadow: 0 2px 8px rgba(34,24,28,0.04);
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .pkg-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  }
+
+  .pkg-card--featured {
+    border: 2px solid var(--color-accent);
+    background: linear-gradient(135deg, #fff 0%, #fffbf2 100%);
+  }
+
+  .pkg-badge {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--color-accent);
+    color: #FFF;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    padding: 2px 10px;
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+
+  .pkg-icon { font-size: 1.85rem; }
+  .pkg-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    margin: 0;
+  }
+  .pkg-fare {
+    font-family: var(--font-heading);
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: var(--color-primary);
+  }
+  .pkg-fare small {
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 500;
+  }
+  .pkg-desc {
+    font-size: 0.825rem;
+    color: #64748b;
+    line-height: 1.5;
+    flex: 1;
+    margin: 0 0 var(--space-sm) 0;
+  }
+
+  /* Pickup Locations Grid */
+  .pickup-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .pickup-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f8fafc;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    font-size: 0.9rem;
+    color: #1e293b;
+    font-weight: 600;
+  }
+  .pickup-item svg {
+    width: 20px;
+    height: 20px;
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  /* Places list */
+  .places-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-md) 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .places-list li {
+    font-size: 0.9375rem;
+    color: #334155;
+    line-height: 1.6;
+    padding-left: 18px;
+    position: relative;
+  }
+  .places-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+  .places-list strong {
+    color: var(--color-primary-dark);
+  }
+
+  /* ─── Sidebar ─── */
+  .route-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  .sidebar-box {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: 0 4px 14px rgba(34,24,28,0.04);
+  }
+  .side-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--color-accent);
+  }
+  .side-sub {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: var(--space-md);
+    line-height: 1.5;
+  }
+  .side-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: var(--space-lg);
+  }
+  .full-w {
+    width: 100%;
+    justify-content: center;
+  }
+  .dargah-hours {
+    background: #f8fafc;
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    border: 1px solid #e2e8f0;
+  }
+  .dargah-hours h4 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+  }
+  .hours-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .hour-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8125rem;
+    color: #334155;
+    border-bottom: 1px dashed #e2e8f0;
+    padding-bottom: 4px;
+  }
+  .hour-item strong {
+    color: var(--color-primary-dark);
+  }
+  .sidebar-trust {
+    background: linear-gradient(135deg, #fff 0%, #fffdf8 100%);
+    border-color: rgba(197, 155, 39, 0.4);
+  }
+  .sidebar-trust h4 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+  }
+  .sidebar-trust p {
+    font-size: 0.85rem;
+    color: #475569;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 992px) {
+    .route-grid { grid-template-columns: 1fr; }
+    .package-cards { grid-template-columns: 1fr; }
+    .pickup-grid { grid-template-columns: 1fr; }
+  }
 </style>

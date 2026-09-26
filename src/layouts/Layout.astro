@@ -1,6 +1,6 @@
 ---
 import { business } from "@/data/business";
-import { generateLocalBusinessSchema } from "@/utils/seo";
+import { generateLocalBusinessSchema, generateWebSiteSearchSchema } from "@/utils/seo";
 import ScrollEngine from "@/components/ScrollEngine/ScrollEngine.astro";
 import "@/styles/global.css";
 
@@ -26,6 +26,7 @@ const siteUrl = business.website;
 const canonicalUrl = `${siteUrl}${canonicalPath}`;
 const fullOgImage = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}`;
 const localBusinessSchema = generateLocalBusinessSchema();
+const websiteSearchSchema = generateWebSiteSearchSchema();
 ---
 
 <!DOCTYPE html>
@@ -82,6 +83,9 @@ const localBusinessSchema = generateLocalBusinessSchema();
 
   <!-- LocalBusiness Schema (Global) -->
   <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+
+  <!-- WebSite Sitelinks Searchbox Schema (Google Search Competitor Ranking) -->
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSearchSchema)} />
 
   <!-- Page-specific Schema -->
   {schemaMarkup && (

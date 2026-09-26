@@ -154,3 +154,22 @@ export function generateServiceSchema(
 
   return schema;
 }
+
+export function generateWebSiteSearchSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": business.name,
+    "alternateName": ["Taxi Services in Ajmer", "Panwar Taxi Ajmer", "Ajmer Cab Booking", "Pushkar Taxi"],
+    "url": business.website,
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": `${business.website}/fare-calculator/?from=Ajmer&to={search_term_string}`
+      },
+      "query-input": "required name=search_term_string"
+    }
+  };
+}
+

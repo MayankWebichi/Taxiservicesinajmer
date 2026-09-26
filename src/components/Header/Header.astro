@@ -17,14 +17,14 @@ const servicesList = [
     title: "Airport Transfer",
     desc: "Kishangarh (VIKG) & Jaipur (JAI) 24/7",
     href: "/airport-transfer/",
-    tag: "Fixed Fares",
+    tag: "24/7 Drops",
     icon: "M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"
   },
   {
     title: "Ajmer Sightseeing",
-    desc: "Full day (₹2,500) & half day (₹1,500) tours",
+    desc: "Dargah, Ana Sagar, Taragarh & temples",
     href: "/ajmer-sightseeing-taxi/",
-    tag: "₹2,500 / ₹1,500",
+    tag: "Full & Half Day",
     icon: "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
   },
   {
@@ -419,26 +419,27 @@ const whatsappUrl = createWhatsAppBookingUrl();
     color: #C59B27;
   }
 
-  /* ─── Mega Dropdown Menu ─── */
+  /* ─── Mega Dropdown Menu (Optimized for Desktop) ─── */
   .services-dropdown-menu {
     position: absolute;
-    top: calc(100% + 12px);
-    left: 50%;
-    transform: translateX(-50%) translateY(8px);
-    width: 580px;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 630px;
+    max-width: min(630px, calc(100vw - 32px));
     background: #FFFFFF;
     border-radius: 16px;
-    border: 1px solid rgba(197, 155, 39, 0.25);
-    box-shadow: 0 20px 48px rgba(34, 24, 28, 0.16), 0 4px 12px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(197, 155, 39, 0.35);
+    box-shadow: 0 24px 54px rgba(34, 24, 28, 0.18), 0 4px 16px rgba(0, 0, 0, 0.06);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    transform: translateY(8px);
     transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s;
     overflow: hidden;
     z-index: 10000;
   }
 
-  /* Invisible hover bridge */
+  /* Generous hover bridge prevents accidental closing when moving cursor */
   .services-dropdown-menu::before {
     content: '';
     position: absolute;
@@ -454,12 +455,12 @@ const whatsappUrl = createWhatsAppBookingUrl();
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
 
   .dropdown-header {
     background: linear-gradient(135deg, #2E050D 0%, #5A0C1A 100%);
-    padding: 12px 18px;
+    padding: 12px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -476,15 +477,15 @@ const whatsappUrl = createWhatsAppBookingUrl();
   }
 
   .dropdown-tagline {
-    color: rgba(255, 255, 255, 0.75);
-    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.75rem;
   }
 
   .dropdown-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    padding: 14px;
+    gap: 10px;
+    padding: 16px;
     background: #FFFFFF;
   }
 
@@ -492,8 +493,8 @@ const whatsappUrl = createWhatsAppBookingUrl();
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    padding: 10px 12px;
-    border-radius: 10px;
+    padding: 11px 14px;
+    border-radius: 12px;
     text-decoration: none;
     border: 1px solid transparent;
     transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
@@ -501,15 +502,15 @@ const whatsappUrl = createWhatsAppBookingUrl();
 
   .dropdown-item:hover {
     background: #FAF6ED;
-    border-color: rgba(197, 155, 39, 0.3);
+    border-color: rgba(197, 155, 39, 0.35);
     transform: translateY(-1px);
   }
 
   .item-icon-box {
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
-    background: rgba(90, 12, 26, 0.07);
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(90, 12, 26, 0.08);
     color: #5A0C1A;
     display: flex;
     align-items: center;
@@ -532,12 +533,12 @@ const whatsappUrl = createWhatsAppBookingUrl();
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 6px;
-    margin-bottom: 2px;
+    gap: 8px;
+    margin-bottom: 3px;
   }
 
   .item-title {
-    font-size: 0.875rem;
+    font-size: 0.9rem;
     font-weight: 700;
     color: #1F2937;
     white-space: nowrap;
@@ -546,20 +547,21 @@ const whatsappUrl = createWhatsAppBookingUrl();
   }
 
   .item-tag {
-    font-size: 0.68rem;
+    font-size: 0.6875rem;
     font-weight: 800;
     color: #5A0C1A;
-    background: rgba(197, 155, 39, 0.2);
+    background: rgba(197, 155, 39, 0.18);
     border: 1px solid rgba(197, 155, 39, 0.4);
-    padding: 1px 6px;
+    padding: 2px 7px;
     border-radius: 4px;
     white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .item-desc {
-    font-size: 0.75rem;
+    font-size: 0.775rem;
     color: #6B7280;
-    line-height: 1.35;
+    line-height: 1.4;
     margin: 0;
     white-space: nowrap;
     overflow: hidden;
@@ -569,7 +571,7 @@ const whatsappUrl = createWhatsAppBookingUrl();
   .dropdown-footer {
     background: #F9FAFB;
     border-top: 1px solid #E5E7EB;
-    padding: 10px 16px;
+    padding: 11px 18px;
     display: flex;
     align-items: center;
     justify-content: space-between;

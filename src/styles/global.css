@@ -289,13 +289,87 @@ button {
 main#main-content > section:first-child:not(.hero-section),
 .page-banner,
 .route-hero,
+.dargah-hero,
 .blog-hero,
 .article-hero,
 .calc-hero,
 .notfound-section {
   padding-top: calc(var(--header-height, 72px) + 38px) !important;
   padding-bottom: 36px !important;
+  text-align: center !important;
 }
+
+/* Universal Center Alignment Utilities */
+.text-center,
+[class*="text-center"] {
+  text-align: center !important;
+}
+
+/* Universal centering for heritage-pill and badges across the whole website */
+.heritage-pill,
+[class*="heritage-pill"],
+.heritage-badge,
+.hero-pill,
+.calc-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin-inline: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Ensure all hero containers center their contents properly */
+.route-hero .container,
+.dargah-hero .container,
+.page-banner .container,
+.calc-hero .container,
+.blog-hero .container,
+.article-hero .container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin-inline: auto !important;
+}
+
+.route-hero .route-title,
+.route-hero .page-title,
+.route-hero .hero-title,
+.dargah-hero .route-title,
+.page-banner .page-title,
+.calc-hero .calc-title {
+  text-align: center !important;
+  margin-inline: auto !important;
+  width: 100% !important;
+}
+
+.route-hero .route-subtitle,
+.route-hero .page-subtitle,
+.route-hero .hero-subtitle,
+.dargah-hero .route-subtitle,
+.page-banner .page-subtitle,
+.calc-hero .calc-sub {
+  text-align: center !important;
+  margin-inline: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 780px !important;
+}
+
+.route-hero .cta-row,
+.route-hero .hero-cta-btns,
+.route-hero .hero-fare-pills,
+.dargah-hero .cta-row {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-inline: auto !important;
+  flex-wrap: wrap !important;
+}
+
 
 .section--cream {
   background-color: var(--cream);
