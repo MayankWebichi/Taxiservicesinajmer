@@ -1,0 +1,857 @@
+---
+import { seoRoutesData, type SeoRouteItem } from "@/data/seoRoutesData";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateServiceSchema, generateFAQSchema } from "@/utils/seo";
+
+export async function getStaticPaths() {
+  return seoRoutesData.map((route) => ({
+    params: { route: route.slug },
+    props: { route },
+  }));
+}
+
+interface Props {
+  route: SeoRouteItem;
+}
+
+const { route } = Astro.props;
+
+const waSedan = createWhatsAppBookingUrl({
+  pickup: route.from,
+  destination: route.to,
+  vehicle: `Maruti Swift Dzire / Toyota Etios (₹${route.sedanFare.toLocaleString('en-IN')})`,
+  tripType: `${route.from} to ${route.to} Taxi`,
+  customMessage: `Hello! I want to book an AC Sedan (Dzire/Etios) for ${route.from} to ${route.to} taxi at ₹${route.sedanFare.toLocaleString('en-IN')}. Please confirm availability.`
+});
+
+const waErtiga = createWhatsAppBookingUrl({
+  pickup: route.from,
+  destination: route.to,
+  vehicle: `Maruti Ertiga 6-Seater (₹${route.suvFare.toLocaleString('en-IN')})`,
+  tripType: `${route.from} to ${route.to} Taxi`,
+  customMessage: `Hello! I want to book a 6-Seater Maruti Ertiga for ${route.from} to ${route.to} taxi at ₹${route.suvFare.toLocaleString('en-IN')}. Please confirm availability.`
+});
+
+const waCrysta = createWhatsAppBookingUrl({
+  pickup: route.from,
+  destination: route.to,
+  vehicle: `Toyota Innova Crysta (₹${route.crystaFare.toLocaleString('en-IN')})`,
+  tripType: `${route.from} to ${route.to} Taxi`,
+  customMessage: `Hello! I want to book a Toyota Innova Crysta for ${route.from} to ${route.to} taxi at ₹${route.crystaFare.toLocaleString('en-IN')}. Please confirm availability.`
+});
+
+const serviceSchema = generateServiceSchema({
+  name: `${route.from} to ${route.to} Taxi Service`,
+  description: route.metaDescription,
+  url: `${business.website}/${route.slug}/`,
+  providerName: business.name,
+  providerUrl: business.website,
+  price: String(route.sedanFare),
+  priceCurrency: "INR"
+});
+
+const faqSchema = generateFAQSchema(route.faqs);
+---
+
+<Layout
+  title={route.title}
+  description={route.metaDescription}
+  canonicalPath={`/${route.slug}/`}
+  schemaMarkup={serviceSchema}
+>
+  <Header />
+
+  <main id="main-content">
+    <!-- Hero Banner -->
+    <section class="seo-route-hero">
+      <div class="container text-center">
+        <span class="heritage-pill">Verified Highway Taxi Rate • Serving Since 2008</span>
+        <h1 class="route-title">{route.from} to {route.to} Taxi Service</h1>
+        <p class="route-subtitle">{route.heroSubtitle}</p>
+
+        <!-- Pricing Pills -->
+        <div class="hero-fare-pills">
+          <div class="h-pill">Dzire / Etios: <strong>₹{route.sedanFare.toLocaleString('en-IN')}</strong></div>
+          <div class="h-pill gold">Ertiga 6-Seater: <strong>₹{route.suvFare.toLocaleString('en-IN')}</strong></div>
+          <div class="h-pill">Innova Crysta: <strong>₹{route.crystaFare.toLocaleString('en-IN')}</strong></div>
+        </div>
+
+        <div class="hero-cta-btns">
+          <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.178.181-.077.355.101.174.449.741.964 1.2.662.591 1.221.774 1.394.861.173.087.275.072.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.044.073.044.42-.1 1.016z"/></svg>
+            Book Cab on WhatsApp
+          </a>
+          <a href={`tel:${business.phone}`} class="btn btn--outline-light btn--lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            Call 24/7 Helpline: {business.phoneFormatted}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <section class="route-content-section">
+      <div class="container">
+        <div class="route-grid">
+          <div class="route-main">
+            <!-- Route Overview Block -->
+            <div class="content-block">
+              <span class="section-subtitle">Comfortable Highway Journey</span>
+              <h2 class="section-title">Reliable {route.from} to {route.to} Cab Rental</h2>
+              <p>
+                Looking for a dependable, private, and air-conditioned cab between <strong>{route.from}</strong> and <strong>{route.to}</strong>? With over 18 years of Rajasthan transport experience since 2008, <strong>Taxi Services in Ajmer</strong> delivers punctual doorstep pickups, experienced chauffeurs, and 100% transparent pricing.
+              </p>
+              <p>
+                The journey covers roughly <strong>{route.distanceKm} km</strong> via <strong>{route.highway}</strong>, taking approximately <strong>{route.estimatedTime}</strong>. Whether you need an early-morning train/flight transfer, a family pilgrimage trip, or a corporate outstation commute, our clean vehicles and verified drivers ensure maximum comfort.
+              </p>
+            </div>
+
+            <!-- Vehicle Pricing Breakdown -->
+            <div class="content-block">
+              <h3 class="tier-heading">Verified Fares ({route.from} ➔ {route.to})</h3>
+              <p class="tier-subtext">Direct-operator pricing with doorstep pickup, chilled AC, sanitized interior, and no hidden booking fees.</p>
+
+              <div class="pricing-cards-row">
+                <!-- Sedan -->
+                <div class="p-card">
+                  <div class="p-card-top">
+                    <span class="p-type">Comfort Sedan</span>
+                    <h4 class="p-car">Maruti Dzire / Toyota Etios</h4>
+                  </div>
+                  <div class="p-image-wrap">
+                    <img 
+                      src="/images/vehicles/Maruti%20Swift%20Dzire.png" 
+                      alt={`Maruti Swift Dzire for ${route.from} to ${route.to}`}
+                      width="240"
+                      height="140"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="p-fare">
+                    <span class="currency">₹</span>{route.sedanFare.toLocaleString('en-IN')}
+                    <span class="fare-tag">Fixed Fare</span>
+                  </div>
+                  <ul class="p-features">
+                    <li>✓ 4 Passenger Seats with Chilled AC</li>
+                    <li>✓ 2 Medium Luggage Bags</li>
+                    <li>✓ Doorstep Pickup &amp; Direct Drop</li>
+                    <li>✓ Punctual, Background-Checked Driver</li>
+                  </ul>
+                  <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--block p-btn">
+                    Book Sedan @ ₹{route.sedanFare.toLocaleString('en-IN')}
+                  </a>
+                </div>
+
+                <!-- Ertiga (Featured) -->
+                <div class="p-card featured-p-card">
+                  <div class="card-badge">Most Popular for Families</div>
+                  <div class="p-card-top">
+                    <span class="p-type gold">Spacious 6-Seater MPV</span>
+                    <h4 class="p-car">Maruti Suzuki Ertiga</h4>
+                  </div>
+                  <div class="p-image-wrap">
+                    <img 
+                      src="/images/vehicles/Maruti%20Suzuki%20Ertiga.png" 
+                      alt={`Maruti Suzuki Ertiga for ${route.from} to ${route.to}`}
+                      width="240"
+                      height="140"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="p-fare gold-fare">
+                    <span class="currency">₹</span>{route.suvFare.toLocaleString('en-IN')}
+                    <span class="fare-tag gold-tag">Best Value</span>
+                  </div>
+                  <ul class="p-features">
+                    <li>✓ 6 Comfortable Passenger Seats</li>
+                    <li>✓ Dual Chilled Air Conditioning Vents</li>
+                    <li>✓ Extra Legroom for Elders &amp; Children</li>
+                    <li>✓ Ample Space for 3–4 Large Bags</li>
+                  </ul>
+                  <a href={waErtiga} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--block p-btn">
+                    Book Ertiga @ ₹{route.suvFare.toLocaleString('en-IN')}
+                  </a>
+                </div>
+
+                <!-- Innova Crysta -->
+                <div class="p-card">
+                  <div class="p-card-top">
+                    <span class="p-type">VIP Luxury SUV</span>
+                    <h4 class="p-car">Toyota Innova Crysta</h4>
+                  </div>
+                  <div class="p-image-wrap">
+                    <img 
+                      src="/images/vehicles/inova%20cresta.png" 
+                      alt={`Toyota Innova Crysta for ${route.from} to ${route.to}`}
+                      width="240"
+                      height="140"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="p-fare">
+                    <span class="currency">₹</span>{route.crystaFare.toLocaleString('en-IN')}
+                    <span class="fare-tag">VIP Travel</span>
+                  </div>
+                  <ul class="p-features">
+                    <li>✓ 6/7 Captain Recliner Seats</li>
+                    <li>✓ Supreme Highway Ride &amp; Suspension</li>
+                    <li>✓ High Safety Rating &amp; Luggage Carrier</li>
+                    <li>✓ Executive Senior Chauffeur</li>
+                  </ul>
+                  <a href={waCrysta} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--block p-btn">
+                    Book Crysta @ ₹{route.crystaFare.toLocaleString('en-IN')}
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Route Stops & Highlights -->
+            <div class="content-block itinerary-block">
+              <h3 class="tier-heading">Trip Highlights &amp; Suggested Stops</h3>
+              <p>{route.routeHighlights}</p>
+              <div class="stops-box">
+                <span class="stops-label">En-Route Convenience:</span>
+                <ul class="stops-list">
+                  {route.popularStops.map((stop) => (
+                    <li>📍 {stop}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <!-- Why Choose Us -->
+            <div class="content-block why-choose-block">
+              <h3 class="tier-heading">Why Book Your {route.from} to {route.to} Taxi with Us?</h3>
+              <ul class="reasons-list">
+                <li>
+                  <strong>✓ Over 18 Years of Operational Excellence:</strong> Serving tourists, pilgrims, and local residents across Rajasthan since 2008 with an untarnished reputation.
+                </li>
+                <li>
+                  <strong>✓ 100% Punctual Doorstep Service:</strong> We pick you up right from your doorstep, hotel porch, or airport terminal—no waiting on the road with luggage.
+                </li>
+                <li>
+                  <strong>✓ Dedicated Fleet &amp; Zero Commission Agents:</strong> You deal directly with our verified local fleet operators, ensuring direct pricing with no middlemen commissions.
+                </li>
+                <li>
+                  <strong>✓ Experienced Chauffeurs:</strong> Polite, non-smoking, uniformed highway drivers with exhaustive route knowledge and defensive driving habits.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Sticky Sidebar -->
+          <aside class="route-sidebar">
+            <div class="sidebar-box booking-quick-box">
+              <h3 class="side-title">Quick Booking Summary</h3>
+              <div class="route-quick-specs">
+                <div class="spec-row">
+                  <span class="label">From:</span>
+                  <span class="val">{route.from}</span>
+                </div>
+                <div class="spec-row">
+                  <span class="label">To:</span>
+                  <span class="val">{route.to}</span>
+                </div>
+                <div class="spec-row">
+                  <span class="label">Distance:</span>
+                  <span class="val">~{route.distanceKm} km</span>
+                </div>
+                <div class="spec-row">
+                  <span class="label">Estimated Time:</span>
+                  <span class="val">{route.estimatedTime}</span>
+                </div>
+                <div class="spec-row">
+                  <span class="label">Highway:</span>
+                  <span class="val">{route.highway}</span>
+                </div>
+              </div>
+
+              <div class="side-fare-summary">
+                <div class="fare-row">
+                  <span>Sedan (Dzire/Etios)</span>
+                  <strong>₹{route.sedanFare.toLocaleString('en-IN')}</strong>
+                </div>
+                <div class="fare-row highlight">
+                  <span>Maruti Ertiga (6-Str)</span>
+                  <strong>₹{route.suvFare.toLocaleString('en-IN')}</strong>
+                </div>
+                <div class="fare-row">
+                  <span>Toyota Innova Crysta</span>
+                  <strong>₹{route.crystaFare.toLocaleString('en-IN')}</strong>
+                </div>
+              </div>
+
+              <div class="side-cta-stack">
+                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--block">
+                  Book on WhatsApp
+                </a>
+                <a href={`tel:${business.phone}`} class="btn btn--outline-dark btn--block">
+                  Call: {business.phoneFormatted}
+                </a>
+              </div>
+            </div>
+
+            <!-- Interlinked Links Box -->
+            <div class="sidebar-box routes-box">
+              <h4 class="tips-title">Related High-Demand Routes</h4>
+              <ul class="sidebar-links">
+                <li><a href="/pushkar-to-ajmer-taxi/">→ Pushkar to Ajmer Taxi (₹700)</a></li>
+                <li><a href="/ajmer-to-sarwar-sharif-taxi/">→ Ajmer to Sarwar Sharif (₹2,000)</a></li>
+                <li><a href="/ajmer-to-jaipur-taxi/">→ Ajmer to Jaipur Taxi (₹1,999)</a></li>
+                <li><a href="/tours/">→ Rajasthan Tour Packages (12 Handcrafted)</a></li>
+                <li><a href="/wedding-logistics/">→ Wedding Transportation &amp; Fleet</a></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-subtitle">Got Questions?</span>
+          <h2 class="section-title">Frequently Asked Questions — {route.from} to {route.to}</h2>
+          <p class="section-desc">Clear information about fares, driving times, and vehicle options.</p>
+        </div>
+
+        <div class="faq-accordion-list">
+          {route.faqs.map((faq, idx) => (
+            <details class="faq-item" id={`faq-${idx}`}>
+              <summary class="faq-question">
+                <span>{faq.question}</span>
+                <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Pre-Footer CTA -->
+    <section class="bottom-cta-banner">
+      <div class="container text-center">
+        <h2>Ready to Book Your {route.from} to {route.to} Cab?</h2>
+        <p>Book with Ajmer's verified chauffeur service since 2008. Punctual doorstep pickup, clean air-conditioned vehicles, and honest direct pricing.</p>
+        <div class="bottom-cta-row">
+          <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--lg">
+            Book on WhatsApp
+          </a>
+          <a href={`tel:${business.phone}`} class="btn btn--outline-light btn--lg">
+            Call Operator: {business.phoneFormatted}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<style>
+  .seo-route-hero {
+    background: linear-gradient(135deg, #1A1215 0%, #2D1D24 50%, #442430 100%);
+    color: #FFFFFF;
+    padding: calc(var(--header-height, 74px) + 38px) 0 44px;
+    border-bottom: 3px solid var(--color-accent);
+  }
+
+  .heritage-pill {
+    display: inline-block;
+    background: rgba(197, 155, 39, 0.2);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-light);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 6px 16px;
+    border-radius: var(--radius-full);
+    margin-bottom: 14px;
+  }
+
+  .route-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4.2vw, 3rem);
+    color: #FFFFFF;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .route-subtitle {
+    font-size: 1.0625rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 800px;
+    margin: 0 auto 24px;
+    line-height: 1.6;
+  }
+
+  .hero-fare-pills {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .h-pill {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    padding: 8px 18px;
+    border-radius: var(--radius-full);
+    font-size: 0.9375rem;
+  }
+
+  .h-pill strong {
+    color: var(--color-accent-light);
+    margin-left: 4px;
+  }
+
+  .h-pill.gold {
+    background: rgba(197, 155, 39, 0.25);
+    border-color: var(--color-accent);
+  }
+
+  .hero-cta-btns {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  /* Main Grid */
+  .route-content-section {
+    padding: var(--space-4xl) 0;
+    background: var(--color-surface);
+  }
+
+  .route-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: var(--space-3xl);
+    align-items: start;
+  }
+
+  .content-block {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    margin-bottom: var(--space-2xl);
+    box-shadow: 0 4px 16px rgba(34, 24, 28, 0.04);
+  }
+
+  .content-block p {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-md);
+  }
+
+  .tier-heading {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+
+  .tier-subtext {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-xl);
+  }
+
+  /* Pricing Cards */
+  .pricing-cards-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .p-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+  }
+
+  .p-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(34, 24, 28, 0.1);
+  }
+
+  .featured-p-card {
+    border: 2px solid var(--color-accent);
+    box-shadow: 0 8px 24px rgba(197, 155, 39, 0.18);
+  }
+
+  .card-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-accent);
+    color: #1A1215;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 12px;
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+  }
+
+  .p-card-top {
+    margin-bottom: var(--space-sm);
+  }
+
+  .p-type {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+    color: var(--color-text-muted);
+  }
+
+  .p-type.gold {
+    color: var(--color-accent-dark);
+  }
+
+  .p-car {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-top: 2px;
+  }
+
+  .p-image-wrap {
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: var(--space-sm) 0;
+  }
+
+  .p-image-wrap img {
+    max-height: 95px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.08));
+  }
+
+  .p-fare {
+    font-family: var(--font-heading);
+    font-size: 1.875rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px dashed var(--color-border);
+  }
+
+  .gold-fare {
+    color: var(--color-accent-dark);
+  }
+
+  .currency {
+    font-size: 1.125rem;
+  }
+
+  .fare-tag {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: rgba(34, 24, 28, 0.06);
+    color: var(--color-text);
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    margin-left: auto;
+  }
+
+  .gold-tag {
+    background: rgba(197, 155, 39, 0.2);
+    color: var(--color-accent-dark);
+  }
+
+  .p-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-lg);
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .p-btn {
+    margin-top: auto;
+  }
+
+  /* Stops */
+  .stops-box {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .stops-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    margin-bottom: 8px;
+  }
+
+  .stops-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.9375rem;
+    color: var(--color-text);
+  }
+
+  /* Why Choose */
+  .reasons-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-md) 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .reasons-list li {
+    font-size: 1rem;
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+
+  .reasons-list strong {
+    color: var(--color-primary);
+  }
+
+  /* Sidebar */
+  .sidebar-box {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    margin-bottom: var(--space-xl);
+    box-shadow: 0 4px 16px rgba(34, 24, 28, 0.04);
+  }
+
+  .side-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  .route-quick-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: var(--space-lg);
+  }
+
+  .spec-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .spec-row .label {
+    color: var(--color-text-muted);
+  }
+
+  .spec-row .val {
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .side-fare-summary {
+    background: var(--color-cream);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    margin-bottom: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .fare-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    color: var(--color-text);
+  }
+
+  .fare-row strong {
+    color: var(--color-primary);
+  }
+
+  .fare-row.highlight {
+    background: rgba(197, 155, 39, 0.2);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+  }
+
+  .fare-row.highlight strong {
+    color: var(--color-accent-dark);
+  }
+
+  .side-cta-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tips-title {
+    font-size: 1.0625rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.9375rem;
+  }
+
+  .sidebar-links a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .sidebar-links a:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  /* FAQs */
+  .faq-section {
+    padding: var(--space-4xl) 0;
+    background: #FFFFFF;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .faq-accordion-list {
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .faq-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-lg);
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--color-primary);
+    user-select: none;
+  }
+
+  .faq-question:hover {
+    color: var(--color-accent-dark);
+  }
+
+  .faq-answer {
+    padding: 0 var(--space-lg) var(--space-lg);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+  }
+
+  /* Bottom CTA */
+  .bottom-cta-banner {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #FFFFFF;
+    padding: var(--space-4xl) 0;
+    border-top: 3px solid var(--color-accent);
+  }
+
+  .bottom-cta-banner h2 {
+    color: #FFFFFF;
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    margin-bottom: var(--space-sm);
+  }
+
+  .bottom-cta-banner p {
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 650px;
+    margin: 0 auto var(--space-xl);
+    font-size: 1.0625rem;
+  }
+
+  .bottom-cta-row {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .route-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pricing-cards-row {
+      grid-template-columns: 1fr;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+  }
+</style>

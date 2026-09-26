@@ -6,172 +6,774 @@ import Destinations from "@/components/Destinations/Destinations.astro";
 import FAQ from "@/components/FAQ/FAQ.astro";
 import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
 import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateServiceSchema, generateFAQSchema } from "@/utils/seo";
 
-const pageTitle = "Ajmer & Pushkar Tour Packages | Sightseeing Cabs (Since 2008)";
-const pageDescription = "Explore Ajmer Sharif Dargah, Pushkar Lake, Brahma Temple & Rajasthan circuits with our guided chauffeur tour packages. Flexible itineraries, clean AC cabs & transparent rates.";
+const pageTitle = "Rajasthan Tour Packages & Ajmer Sightseeing Cabs | Best Rates (2026)";
+const pageDescription = "Handcrafted Rajasthan tour packages & Ajmer sightseeing cabs since 2008. Ajmer Sharif, Pushkar, Jaipur, Udaipur, Jodhpur, Jaisalmer & Golden Triangle circuits. AC Sedans, Ertiga, Innova Crysta & Urbania.";
 
-const waAjmerTour = createWhatsAppBookingUrl({ tripType: "1 Day Ajmer Dargah Darshan", pickup: "Ajmer" });
-const waPushkarTour = createWhatsAppBookingUrl({ tripType: "1 Day Pushkar Pilgrimage Tour", pickup: "Ajmer" });
-const waCombinedTour = createWhatsAppBookingUrl({ tripType: "2 Days Ajmer + Pushkar Combo Tour", pickup: "Ajmer" });
-const waUrsTour = createWhatsAppBookingUrl({ tripType: "3 Days Ajmer Urs Special Package", pickup: "Ajmer" });
-const waGoldenTriangle = createWhatsAppBookingUrl({ tripType: "5 Days Golden Triangle + Pushkar Tour", pickup: "Ajmer" });
-const waRajasthanTour = createWhatsAppBookingUrl({ tripType: "7 Days Rajasthan Heritage Tour", pickup: "Ajmer" });
+// WhatsApp Pre-filled links
+const waCustomTour = createWhatsAppBookingUrl({ 
+  tripType: "Custom Rajasthan Tour Package", 
+  pickup: "Ajmer / Pushkar / Jaipur",
+  customMessage: "Hello! I am planning a Rajasthan tour package and would like a customized itinerary and taxi quotation. My travel dates and group details are:"
+});
+
+const waAjmerTour = createWhatsAppBookingUrl({ 
+  tripType: "1 Day Ajmer Dargah & Heritage Tour", 
+  pickup: "Ajmer",
+  customMessage: "Hello! I want to book 1 Day Ajmer Dargah & City Sightseeing Cab (₹2,500 Full Day / ₹1,500 Half Day). Please share availability."
+});
+
+const waPushkarTour = createWhatsAppBookingUrl({ 
+  tripType: "1 Day Pushkar Pilgrimage & Desert Tour", 
+  pickup: "Ajmer / Pushkar",
+  customMessage: "Hello! I want to book 1 Day Pushkar Pilgrimage & Desert Sightseeing Cab. Please share fare and booking details."
+});
+
+const waSarwarCombo = createWhatsAppBookingUrl({ 
+  tripType: "Ajmer + Sarwar Sharif Sufi Ziyarat Combo", 
+  pickup: "Ajmer",
+  customMessage: "Hello! I want to book the Same-Day Ajmer Sharif + Sarwar Sharif Sufi Ziyarat Combo Cab (from ₹2,800). Please share vehicle availability."
+});
+
+const waCombinedTour = createWhatsAppBookingUrl({ 
+  tripType: "2 Days Ajmer + Pushkar Combo Tour", 
+  pickup: "Ajmer",
+  customMessage: "Hello! I want to book the 2 Days Ajmer + Pushkar Combo Tour (starts at ₹3,500). Please share itinerary details."
+});
+
+const waUrsTour = createWhatsAppBookingUrl({ 
+  tripType: "3 Days Ajmer Urs & Sufi Pilgrimage", 
+  pickup: "Ajmer",
+  customMessage: "Hello! I am inquiring about the 3 Days Ajmer Urs Festival & Sufi Pilgrimage taxi package. Please share details."
+});
+
+const waKhatuSalasar = createWhatsAppBookingUrl({ 
+  tripType: "Khatu Shyam Ji & Salasar Balaji Tour", 
+  pickup: "Ajmer",
+  customMessage: "Hello! I want to book a taxi from Ajmer for Khatu Shyam Ji & Salasar Balaji Darshan. Please share rates."
+});
+
+const waMewarTour = createWhatsAppBookingUrl({ 
+  tripType: "3 Days Mewar Heritage Tour (Nathdwara - Chittor - Udaipur)", 
+  pickup: "Ajmer",
+  customMessage: "Hello! I want to book 3 Days Mewar Heritage Tour (Ajmer - Nathdwara - Chittorgarh - Udaipur) starting at ₹9,500. Please share quotes for Sedan / Ertiga / Crysta."
+});
+
+const waRoyalClassic = createWhatsAppBookingUrl({ 
+  tripType: "4 Days Royal Rajasthan Classic (Jaipur - Ajmer - Pushkar - Jodhpur)", 
+  pickup: "Ajmer / Jaipur",
+  customMessage: "Hello! I want to book 4 Days Royal Rajasthan Classic Tour (Jaipur - Ajmer - Pushkar - Jodhpur). Please share car options and rates."
+});
+
+const waGoldenTriangle = createWhatsAppBookingUrl({ 
+  tripType: "5 Days Golden Triangle + Pushkar Circuit", 
+  pickup: "Delhi / Jaipur / Ajmer",
+  customMessage: "Hello! I want to book 5 Days Golden Triangle + Pushkar Tour (Delhi - Agra - Jaipur - Ajmer - Pushkar). Please send full quotation."
+});
+
+const waDesertOdyssey = createWhatsAppBookingUrl({ 
+  tripType: "6 Days Desert Corridor Tour (Pushkar - Bikaner - Jaisalmer)", 
+  pickup: "Ajmer",
+  customMessage: "Hello! I am interested in the 6 Days Desert Corridor Tour covering Ajmer, Pushkar, Bikaner & Jaisalmer Sam Sand Dunes. Please share taxi package details."
+});
+
+const waGrandRajasthan = createWhatsAppBookingUrl({ 
+  tripType: "7 Days Grand Rajasthan Heritage Odyssey", 
+  pickup: "Jaipur / Ajmer",
+  customMessage: "Hello! I want to book 7 Days Complete Rajasthan Heritage Tour (Jaipur, Ajmer, Pushkar, Jodhpur, Udaipur). Please share detailed itinerary and vehicle pricing."
+});
+
+const waMaharajaCircuit = createWhatsAppBookingUrl({ 
+  tripType: "9 Days Royal Rajasthan Maharaja Grand Expedition", 
+  pickup: "Jaipur / Delhi / Ajmer",
+  customMessage: "Hello! I want to book the comprehensive 9 Days Royal Rajasthan Grand Expedition. Please send complete route itinerary and quotation for our group."
+});
+
+const waGroupUrbania = createWhatsAppBookingUrl({ 
+  tripType: "Group Rajasthan Tour (Force Urbania / Tempo Traveller)", 
+  pickup: "Ajmer",
+  customMessage: "Hello! We have a large group / family and need a Force Urbania (13/17 seater) or Tempo Traveller for a Rajasthan Tour. Please share best package rates."
+});
+
+const serviceSchema = generateServiceSchema({
+  name: "Rajasthan Tour Packages & Sightseeing Taxi Ajmer",
+  description: "Comprehensive Rajasthan road trip tour packages, spiritual pilgrimage circuits, and guided sightseeing cab rentals covering Ajmer, Pushkar, Jaipur, Udaipur, Jodhpur, and Jaisalmer.",
+  url: `${business.website}/tours/`,
+  providerName: business.name,
+  providerUrl: business.website,
+  price: "1800",
+  priceCurrency: "INR"
+});
+
+const tourFaqs = [
+  {
+    question: "Can I customize the Rajasthan tour packages according to my travel dates?",
+    answer: "Yes, 100%! All our Rajasthan tour packages are fully customizable. You can adjust the number of days, choose specific cities (such as adding Chittorgarh, Mount Abu, or Ranthambore), set your preferred departure times, and select your vehicle tier.",
+    category: "General" as const
+  },
+  {
+    question: "What vehicles are available for Rajasthan multi-day road trips?",
+    answer: "We offer a modern, well-maintained fleet: 4-seater sedans (Maruti Swift Dzire & Toyota Etios), 6-seater family MPVs (Maruti Suzuki Ertiga & Toyota Rumion), VIP luxury SUVs (Toyota Innova Crysta), and 13 to 27 seater Maharaja Force Urbania vans and Tempo Travellers for larger families and pilgrim groups.",
+    category: "Vehicles" as const
+  },
+  {
+    question: "Are highway toll taxes, state permits, and driver allowances included?",
+    answer: "Yes, we provide transparent all-inclusive quotations that clearly detail fuel, vehicle hire, driver night allowance, and state border permits. There are zero surprise surcharges or hidden fees.",
+    category: "Pricing" as const
+  },
+  {
+    question: "Can you arrange hotel or railway station pickups from cities other than Ajmer?",
+    answer: "Yes! While our base headquarters is in Ajmer & Pushkar, our All-India Tourist Permit fleet operates seamlessly across Jaipur Airport, Delhi IGI Airport, Jodhpur, and Udaipur for pickups and drop-offs.",
+    category: "Routes" as const
+  },
+  {
+    question: "How do we book a Rajasthan tour cab?",
+    answer: "Booking is effortless! Click any WhatsApp button on this page or call our 24/7 hotline at " + business.phoneFormatted + ". Share your travel dates, passenger count, and preferred route. We will instantly share a tailored itinerary and guaranteed quote.",
+    category: "Booking" as const
+  }
+];
+
+const faqSchema = generateFAQSchema(tourFaqs);
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonicalPath="/tours/">
+<Layout 
+  title={pageTitle} 
+  description={pageDescription} 
+  canonicalPath="/tours/"
+  schemaMarkup={serviceSchema}
+>
   <Header />
 
   <main id="main-content">
-    <section class="page-banner">
+    <!-- Hero Banner -->
+    <section class="tour-hero-section">
       <div class="container text-center">
-        <span class="heritage-pill">Guided Pilgrimage &amp; Sightseeing</span>
-        <h1 class="page-title">Ajmer &amp; Pushkar Tour Packages</h1>
-        <p class="page-subtitle">Curated Day Tours, Spiritual Pilgrimages, and Multi-Day Rajasthan Road Trips</p>
+        <span class="heritage-pill">Premier Chauffeur Tours • Serving Since 2008</span>
+        <h1 class="hero-title">Rajasthan Tour Packages &amp; Sightseeing Cabs</h1>
+        <p class="hero-desc">
+          Handcrafted Spiritual Pilgrimages, Royal Heritage Circuits, and Multi-Day Desert Expeditions with Experienced Highway Chauffeurs
+        </p>
+
+        <!-- Trust Highlights -->
+        <div class="hero-feature-tags">
+          <div class="f-tag">✓ 100% Chilled AC Cabs</div>
+          <div class="f-tag">✓ Polite, Verified Drivers</div>
+          <div class="f-tag">✓ No Hidden Surcharges</div>
+          <div class="f-tag">✓ Doorstep Pickup Across Rajasthan</div>
+          <div class="f-tag gold">✓ Dzire, Ertiga, Crysta &amp; Urbania</div>
+        </div>
+
+        <div class="hero-cta-group">
+          <a href={waCustomTour} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.178.181-.077.355.101.174.449.741.964 1.2.662.591 1.221.774 1.394.861.173.087.275.072.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.044.073.044.42-.1 1.016z"/></svg>
+            Plan Custom Rajasthan Tour
+          </a>
+          <a href={`tel:${business.phone}`} class="btn btn--outline-light btn--lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            Instant Call: {business.phoneFormatted}
+          </a>
+        </div>
       </div>
     </section>
 
-    <!-- Popular Tour Packages -->
-    <section class="tours-section">
+    <!-- Main Tour Packages Hub -->
+    <section class="packages-hub-section" id="tour-packages">
+      <div class="container">
+        <!-- Interactive Category Filter Navigation -->
+        <div class="tour-filter-bar">
+          <button type="button" class="filter-btn active" data-filter="all">All Packages (12)</button>
+          <button type="button" class="filter-btn" data-filter="spiritual">Spiritual &amp; Pilgrimage (5)</button>
+          <button type="button" class="filter-btn" data-filter="heritage">Heritage &amp; Forts (3)</button>
+          <button type="button" class="filter-btn" data-filter="desert">Desert &amp; Circuits (3)</button>
+          <button type="button" class="filter-btn" data-filter="group">Group &amp; Van Fleet (1)</button>
+        </div>
+
+        <!-- Tour Cards Grid -->
+        <div class="tours-catalog-grid" id="tours-catalog">
+
+          <!-- 1. 1 Day Ajmer Dargah Darshan -->
+          <article class="tour-card" data-category="spiritual">
+            <div class="tour-card-header">
+              <span class="badge-duration">Full Day / 8 Hours</span>
+              <span class="badge-cat spiritual">Spiritual</span>
+            </div>
+            <h3 class="tour-name">1 Day Ajmer Dargah Darshan &amp; Heritage</h3>
+            <p class="tour-desc">A revered spiritual journey through Ajmer Sharif Dargah, historic 12th-century mosques, and the royal lakes of Chauhan kings.</p>
+            
+            <div class="route-stops-box">
+              <span class="stops-title">Covered Attractions:</span>
+              <ul class="stops-list">
+                <li>📍 Hazrat Khwaja Moinuddin Chishti Dargah</li>
+                <li>📍 Adhai Din Ka Jhopra 12th-Century Mosque</li>
+                <li>📍 Ana Sagar Lake &amp; Daulat Bagh Pavilions</li>
+                <li>📍 Taragarh Fort &amp; Nareli Jain Marble Temple</li>
+              </ul>
+            </div>
+
+            <div class="tour-pricing-row">
+              <div class="price-tier">
+                <span class="tier-label">Full Day (8 Hrs / 80 Km)</span>
+                <span class="price-val">₹2,500</span>
+              </div>
+              <div class="price-tier">
+                <span class="tier-label">Half Day (4 Hrs / 40 Km)</span>
+                <span class="price-val">₹1,500</span>
+              </div>
+            </div>
+
+            <div class="tour-card-footer">
+              <a href={waAjmerTour} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--block">
+                Book Ajmer Tour
+              </a>
+            </div>
+          </article>
+
+          <!-- 2. 1 Day Pushkar Pilgrimage & Desert Sunset -->
+          <article class="tour-card" data-category="spiritual">
+            <div class="tour-card-header">
+              <span class="badge-duration">Full Day</span>
+              <span class="badge-cat spiritual">Sacred Town</span>
+            </div>
+            <h3 class="tour-name">1 Day Pushkar Pilgrimage &amp; Desert Ghats</h3>
+            <p class="tour-desc">Drive across the scenic Nagpahari hill pass into holy Pushkar for Brahma Temple puja, holy dip at 52 ghats, and sunset over dunes.</p>
+            
+            <div class="route-stops-box">
+              <span class="stops-title">Covered Attractions:</span>
+              <ul class="stops-list">
+                <li>📍 14th-Century Jagatpita Brahma Temple</li>
+                <li>📍 52 Sacred Bathing Ghats of Holy Pushkar Lake</li>
+                <li>📍 Savitri Mata Temple Hilltop Ropeway</li>
+                <li>📍 Varaha Temple, Rangji Temple &amp; Desert Sunset</li>
+              </ul>
+            </div>
+
+            <div class="tour-pricing-row">
+              <div class="price-tier">
+                <span class="tier-label">Swift Dzire / Etios</span>
+                <span class="price-val">₹1,800</span>
+              </div>
+              <div class="price-tier">
+                <span class="tier-label">Maruti Ertiga (6-Seater)</span>
+                <span class="price-val">₹2,600</span>
+              </div>
+            </div>
+
+            <div class="tour-card-footer">
+              <a href={waPushkarTour} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--block">
+                Book Pushkar Tour
+              </a>
+            </div>
+          </article>
+
+          <!-- 3. Ajmer Sharif + Sarwar Sharif Sufi Ziyarat Combo (FEATURED) -->
+          <article class="tour-card featured-pkg" data-category="spiritual">
+            <div class="pkg-ribbon">Pilgrim Special</div>
+            <div class="tour-card-header">
+              <span class="badge-duration gold-badge">Same Day Combo</span>
+              <span class="badge-cat spiritual">Sufi Ziyarat</span>
+            </div>
+            <h3 class="tour-name">Ajmer Sharif + Sarwar Sharif Ziyarat Combo</h3>
+            <p class="tour-desc">Complete your Sufi pilgrimage by paying respects at both Khwaja Gharib Nawaz Dargah in Ajmer and Hazrat Khwaja Fakhruddin Chishti Dargah at Sarwar.</p>
+            
+            <div class="route-stops-box">
+              <span class="stops-title">Covered Attractions:</span>
+              <ul class="stops-list">
+                <li>📍 Morning: Ajmer Sharif Dargah Ziyarat &amp; Fatiha</li>
+                <li>📍 Scenic 62 km drive to Sarwar Sharif (Sarwad)</li>
+                <li>📍 Afternoon: Hazrat Khwaja Fakhruddin Chishti Shrine</li>
+                <li>📍 2–3 Hours Ziyarat wait-time &amp; safe return to Ajmer</li>
+              </ul>
+            </div>
+
+            <div class="tour-pricing-row">
+              <div class="price-tier">
+                <span class="tier-label">Dzire / Etios</span>
+                <span class="price-val gold-text">₹2,800</span>
+              </div>
+              <div class="price-tier">
+                <span class="tier-label">Ertiga 6-Seater</span>
+                <span class="price-val">₹3,600</span>
+              </div>
+              <div class="price-tier">
+                <span class="tier-label">Innova Crysta</span>
+                <span class="price-val">₹4,800</span>
+              </div>
+            </div>
+
+            <div class="tour-card-footer">
+              <a href={waSarwarCombo} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--block">
+                Book Sufi Combo Tour
+              </a>
+            </div>
+          </article>
+
+          <!-- 4. 2 Days Ajmer + Pushkar Leisure Combo -->
+          <article class="tour-card" data-category="spiritual">
+            <div class="tour-card-header">
+              <span class="badge-duration">2 Days / 1 Night</span>
+              <span class="badge-cat spiritual">Twin Cities</span>
+            </div>
+            <h3 class="tour-name">2 Days Ajmer + Pushkar Complete Tour</h3>
+            <p class="tour-desc">The ideal weekend relaxation and pilgrimage tour covering both sacred cities with relaxed sightseeing and evening desert sunset.</p>
+            
+            <div class="route-stops-box">
+              <span class="stops-title">Day-Wise Itinerary:</span>
+              <ul class="stops-list">
+                <li>📍 Day 1: Ajmer Dargah Ziyarat, Ana Sagar, Taragarh Fort</li>
+                <li>📍 Day 2: Pushkar Brahma Temple, 52 Ghats Aarti &amp; Desert Safari</li>
+                <li>📍 Doorstep hotel &amp; railway station pickup/drops</li>
+                <li>📍 AC cab stays dedicated with you for both days</li>
+              </ul>
+            </div>
+
+            <div class="tour-pricing-row">
+              <div class="price-tier">
+                <span class="tier-label">Swift Dzire / Etios</span>
+                <span class="price-val">₹3,500</span>
+              </div>
+              <div class="price-tier">
+                <span class="tier-label">Ertiga 6-Seater</span>
+                <span class="price-val">₹4,800</span>
+              </div>
+            </div>
+
+            <div class="tour-card-footer">
+              <a href={waCombinedTour} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--block">
+                Book 2-Day Combo
+              </a>
+            </div>
+          </article>
+
+          <!-- 5. Khatu Shyam Ji & Salasar Balaji Tour from Ajmer -->
+          <article class="tour-card" data-category="spiritual">
+            <div class="tour-card-header">
+              <span class="badge-duration">1 or 2 Days</span>
+              <span class="badge-cat spiritual">Spiritual Circuit</span>
+            </div>
+            <h3 class="tour-name">Khatu Shyam Ji &amp; Salasar Balaji Yatra</h3>
+            <p class="tour-desc">Dedicated pilgrimage cab from Ajmer to Baba Shyam Mandir (Khatu Dham) and Salasar Hanuman Ji with complete darshan wait-time.</p>
+            
+            <div class="route-stops-box">
+              <span class="stops-title">Covered Temples:</span>
+              <ul class="stops-list">
+                <li>📍 Shri Khatu Shyam Ji Mandir (Sikar)</li>
+                <li>📍 Salasar Balaji Hanuman Temple (Churu)</li>
+                <li>📍 Optional stop at Jeen Mata Ji shrine</li>
+                <li>📍 Experienced highway driver for safe family travel</li>
+              </ul>
+            </div>
+
+            <div class="tour-pricing-row">
+              <div class="price-tier">
+                <span class="tier-label">Sedan (Same Day)</span>
+                <span class="price-val">₹5,500</span>
+              </div>
+              <div class="price-tier">
+                <span class="tier-label">Ertiga 6-Seater</span>
+                <span class="price-val">₹7,200</span>
+              </div>
+            </div>
+
+            <div class="tour-card-footer">
+              <a href={waKhatuSalasar} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--block">
+                Book Khatu-Salasar Cab
+              </a>
+            </div>
+          </article>
+
+          <!-- 6. 3 Days Mewar Heritage Circuit (FEATURED) -->
+          <article class="tour-card featured-pkg" data-category="heritage">
+            <div class="pkg-ribbon">Top Seller</div>
+            <div class="tour-card-header">
+              <span class="badge-duration gold-badge">3 Days / 2 Nights</span>
+              <span class="badge-cat heritage">Royal Mewar</span>
+            </div>
+            <h3 class="tour-name">3 Days Mewar Heritage Tour (Udaipur &amp; Chittor)</h3>
+            <p class="tour-desc">Experience the valour of Chittorgarh, the divine presence of Nathdwara Shrinathji, and the royal lakes of Udaipur in AC luxury.</p>
+            
+            <div class="route-stops-box">
+              <span class="stops-title">Day-Wise Itinerary:</span>
+              <ul class="stops-list">
+                <li>📍 Day 1: Ajmer ➔ Nathdwara Shrinathji ➔ Udaipur Lake City</li>
+                <li>📍 Day 2: City Palace Udaipur, Saheliyon Ki Bari, Pichola Boating</li>
+                <li>📍 Day 3: Massive Chittorgarh Fort (Vijay Stambh) ➔ Ajmer Drop</li>
+                <li>📍 Smooth 4-lane NH58 / NH48 highway driving</li>
+              </ul>
+            </div>
+
+            <div class="tour-pricing-row">
+              <div class="price-tier">
+                <span class="tier-label">Comfort Sedan</span>
+                <span class="price-val gold-text">₹9,500</span>
+              </div>
+              <div class="price-tier">
+                <span class="tier-label">Maruti Ertiga</span>
+                <span class="price-val">₹13,500</span>
+              </div>
+              <div class="price-tier">
+                <span class="tier-label">Innova Crysta</span>
+                <span class="price-val">₹17,500</span>
+              </div>
+            </div>
+
+            <div class="tour-card-footer">
+              <a href={waMewarTour} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--block">
+                Book Mewar Tour
+              </a>
+            </div>
+          </article>
+
+          <!-- 7. 4 Days Royal Rajasthan Classic (Jaipur - Ajmer - Pushkar - Jodhpur) -->
+          <article class="tour-card" data-category="heritage">
+            <div class="tour-card-header">
+              <span class="badge-duration">4 Days / 3 Nights</span>
+              <span class="badge-cat heritage">Imperial Circuit</span>
+            </div>
+            <h3 class="tour-name">4 Days Royal Rajasthan Classic Tour</h3>
+            <p class="tour-desc">Connecting the Pink City Jaipur, sacred Ajmer &amp; Pushkar, and the majestic Blue City of Jodhpur with Mehrangarh Fort.</p>
+            
+            <div class="route-stops-box">
+              <span class="stops-title">Day-Wise Itinerary:</span>
+              <ul class="stops-list">
+                <li>📍 Day 1: Jaipur City Palace, Hawa Mahal &amp; Amer Fort</li>
+                <li>📍 Day 2: Jaipur ➔ Kishangarh Dumping Yard ➔ Ajmer Dargah</li>
+                <li>📍 Day 3: Pushkar Brahma Temple &amp; Lake ➔ Drive to Jodhpur</li>
+                <li>📍 Day 4: Mehrangarh Fort, Jaswant Thada, Umaid Bhawan</li>
+              </ul>
+            </div>
+
+            <div class="tour-pricing-row">
+              <div class="price-tier">
+                <span class="tier-label">Comfort Sedan</span>
+                <span class="price-val">₹13,500</span>
+              </div>
+              <div class="price-tier">
+                <span class="tier-label">Ertiga 6-Seater</span>
+                <span class="price-val">₹18,500</span>
+              </div>
+            </div>
+
+            <div class="tour-card-footer">
+              <a href={waRoyalClassic} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--block">
+                Book Royal Classic Tour
+              </a>
+            </div>
+          </article>
+
+          <!-- 8. 5 Days Golden Triangle + Pushkar Circuit -->
+          <article class="tour-card" data-category="heritage">
+            <div class="tour-card-header">
+              <span class="badge-duration">5 Days / 4 Nights</span>
+              <span class="badge-cat heritage">World Heritage</span>
+            </div>
+            <h3 class="tour-name">5 Days Golden Triangle + Pushkar Circuit</h3>
+            <p class="tour-desc">The ultimate North India flagship circuit: Delhi capital, Taj Mahal in Agra, Pink City Jaipur, and the spiritual oasis of Ajmer &amp; Pushkar.</p>
+            
+            <div class="route-stops-box">
+              <span class="stops-title">Day-Wise Itinerary:</span>
+              <ul class="stops-list">
+                <li>📍 Day 1: Delhi pickup ➔ Agra Taj Mahal &amp; Agra Fort</li>
+                <li>📍 Day 2: Fatehpur Sikri ➔ Jaipur (Pink City monuments)</li>
+                <li>📍 Day 3: Amer Fort, Jal Mahal &amp; Jaipur local bazaars</li>
+                <li>📍 Day 4: Jaipur ➔ Ajmer Sharif Dargah &amp; Pushkar Ghats</li>
+                <li>📍 Day 5: Pushkar Brahma Temple ➔ Delhi / Jaipur Airport Drop</li>
+              </ul>
+            </div>
+
+            <div class="tour-pricing-row">
+              <div class="price-tier">
+                <span class="tier-label">Comfort Sedan</span>
+                <span class="price-val">₹16,999</span>
+              </div>
+              <div class="price-tier">
+                <span class="tier-label">Ertiga / Crysta</span>
+                <span class="price-val">From ₹23,500</span>
+              </div>
+            </div>
+
+            <div class="tour-card-footer">
+              <a href={waGoldenTriangle} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--block">
+                Book Golden Triangle
+              </a>
+            </div>
+          </article>
+
+          <!-- 9. 6 Days Desert Corridor Tour (Pushkar - Bikaner - Jaisalmer) -->
+          <article class="tour-card" data-category="desert">
+            <div class="tour-card-header">
+              <span class="badge-duration">6 Days / 5 Nights</span>
+              <span class="badge-cat desert">Thar Desert</span>
+            </div>
+            <h3 class="tour-name">6 Days Royal Desert Corridor &amp; Dunes</h3>
+            <p class="tour-desc">Immerse in the Golden Sands of the Thar Desert: Junagarh Fort in Bikaner, Jaisalmer Living Fort, and luxury desert camping at Sam Dunes.</p>
+            
+            <div class="route-stops-box">
+              <span class="stops-title">Day-Wise Itinerary:</span>
+              <ul class="stops-list">
+                <li>📍 Day 1: Ajmer &amp; Pushkar Ghats &amp; Desert sunset</li>
+                <li>📍 Day 2: Pushkar ➔ Bikaner (Junagarh Fort &amp; Camel Farm)</li>
+                <li>📍 Day 3: Bikaner ➔ Golden City Jaisalmer Check-in</li>
+                <li>📍 Day 4: Jaisalmer Fort, Patwon Ki Haveli &amp; Sam Sand Dunes</li>
+                <li>📍 Day 5: Desert Camel Safari, Folk Dance &amp; Camp Night</li>
+                <li>📍 Day 6: Return drive with Jodhpur or Ajmer drop</li>
+              </ul>
+            </div>
+
+            <div class="tour-pricing-row">
+              <div class="price-tier">
+                <span class="tier-label">Comfort Sedan</span>
+                <span class="price-val">₹21,500</span>
+              </div>
+              <div class="price-tier">
+                <span class="tier-label">Ertiga / Crysta</span>
+                <span class="price-val">From ₹29,500</span>
+              </div>
+            </div>
+
+            <div class="tour-card-footer">
+              <a href={waDesertOdyssey} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--block">
+                Book Desert Corridor
+              </a>
+            </div>
+          </article>
+
+          <!-- 10. 7 Days Complete Rajasthan Heritage Grand Tour (FEATURED) -->
+          <article class="tour-card featured-pkg" data-category="desert">
+            <div class="pkg-ribbon">Grand Odyssey</div>
+            <div class="tour-card-header">
+              <span class="badge-duration gold-badge">7 Days / 6 Nights</span>
+              <span class="badge-cat desert">Royal Odyssey</span>
+            </div>
+            <h3 class="tour-name">7 Days Grand Rajasthan Heritage Odyssey</h3>
+            <p class="tour-desc">The definitive Rajasthan road trip: Jaipur, Ajmer, Pushkar, Jodhpur, Ranakpur Jain Temples, and romantic Udaipur in royal private transport.</p>
+            
+            <div class="route-stops-box">
+              <span class="stops-title">Day-Wise Itinerary:</span>
+              <ul class="stops-list">
+                <li>📍 Days 1–2: Pink City Jaipur (Amer, City Palace, Hawa Mahal)</li>
+                <li>📍 Day 3: Ajmer Sharif Ziyarat &amp; Holy Pushkar Lake</li>
+                <li>📍 Day 4: Sun City Jodhpur (Mehrangarh &amp; Clock Tower)</li>
+                <li>📍 Day 5: 1444 Pillars of Ranakpur Marble Temple ➔ Udaipur</li>
+                <li>📍 Days 6–7: Udaipur Lake Pichola Boating, City Palace &amp; Drop</li>
+              </ul>
+            </div>
+
+            <div class="tour-pricing-row">
+              <div class="price-tier">
+                <span class="tier-label">Comfort Sedan</span>
+                <span class="price-val gold-text">₹24,999</span>
+              </div>
+              <div class="price-tier">
+                <span class="tier-label">Ertiga 6-Seater</span>
+                <span class="price-val">₹33,500</span>
+              </div>
+              <div class="price-tier">
+                <span class="tier-label">Innova Crysta</span>
+                <span class="price-val">₹42,000</span>
+              </div>
+            </div>
+
+            <div class="tour-card-footer">
+              <a href={waGrandRajasthan} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--block">
+                Book Grand 7-Day Tour
+              </a>
+            </div>
+          </article>
+
+          <!-- 11. 9 Days Royal Rajasthan Maharaja Grand Expedition -->
+          <article class="tour-card" data-category="desert">
+            <div class="tour-card-header">
+              <span class="badge-duration">9 Days / 8 Nights</span>
+              <span class="badge-cat desert">Full State Tour</span>
+            </div>
+            <h3 class="tour-name">9 Days Maharaja Rajasthan Grand Expedition</h3>
+            <p class="tour-desc">A magnificent all-encompassing expedition covering all corners of Rajasthan with dedicated veteran highway chauffeur.</p>
+            
+            <div class="route-stops-box">
+              <span class="stops-title">Destinations Covered:</span>
+              <ul class="stops-list">
+                <li>📍 Jaipur Pink City &bull; Shekhawati Fresco Mansions</li>
+                <li>📍 Bikaner Junagarh &bull; Jaisalmer Thar Sand Dunes</li>
+                <li>📍 Jodhpur Blue City &bull; Ranakpur Marble Architecture</li>
+                <li>📍 Udaipur Lake Pichola &bull; Ajmer Sharif &bull; Pushkar Ghats</li>
+              </ul>
+            </div>
+
+            <div class="tour-pricing-row">
+              <div class="price-tier">
+                <span class="tier-label">Sedan Package</span>
+                <span class="price-val">₹32,000</span>
+              </div>
+              <div class="price-tier">
+                <span class="tier-label">Innova Crysta VIP</span>
+                <span class="price-val">₹54,000</span>
+              </div>
+            </div>
+
+            <div class="tour-card-footer">
+              <a href={waMaharajaCircuit} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--block">
+                Book 9-Day Expedition
+              </a>
+            </div>
+          </article>
+
+          <!-- 12. Group & Family Van Fleet (Urbania & Tempo) -->
+          <article class="tour-card" data-category="group">
+            <div class="tour-card-header">
+              <span class="badge-duration">Flexible Days</span>
+              <span class="badge-cat group">Large Groups</span>
+            </div>
+            <h3 class="tour-name">Custom Group &amp; Family Van Tour Fleet</h3>
+            <p class="tour-desc">Traveling with 8 to 26 members? Choose our luxury Force Maharaja Urbania or air-conditioned Tempo Travellers with recliner captain seats.</p>
+            
+            <div class="route-stops-box">
+              <span class="stops-title">Fleet Specifications:</span>
+              <ul class="stops-list">
+                <li>📍 13 &amp; 17 Seater Maharaja Force Urbania Vans</li>
+                <li>📍 17, 21 &amp; 26 Seater Luxury Tempo Travellers</li>
+                <li>📍 Individual AC vents, USB chargers &amp; audio system</li>
+                <li>📍 Giant luggage boots for family baggage &amp; gifts</li>
+              </ul>
+            </div>
+
+            <div class="tour-pricing-row">
+              <div class="price-tier">
+                <span class="tier-label">Tempo Traveller</span>
+                <span class="price-val">From ₹22/km</span>
+              </div>
+              <div class="price-tier">
+                <span class="tier-label">Force Urbania</span>
+                <span class="price-val">Custom Quote</span>
+              </div>
+            </div>
+
+            <div class="tour-card-footer">
+              <a href={waGroupUrbania} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--block">
+                Inquire Group Fleet
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Custom Tour Planner Callout Box -->
+    <section class="custom-planner-section">
+      <div class="container">
+        <div class="custom-planner-card">
+          <div class="planner-text">
+            <span class="plan-tag">Need a Tailored Itinerary?</span>
+            <h2>Create Your Dream Rajasthan Vacation</h2>
+            <p>
+              Want to mix and match destinations? Need a cab for elderly parents with frequent breaks? Looking for a honeymoon luxury cab or pilgrim convoy? Tell us your requirements, and our tour specialists will design a custom itinerary with guaranteed direct-operator fares.
+            </p>
+            <div class="planner-perks">
+              <span>✓ Free Itinerary Consulting</span>
+              <span>✓ Zero Cancellation Fees on Early Notice</span>
+              <span>✓ 24/7 Roadside Assistance</span>
+            </div>
+          </div>
+          <div class="planner-action">
+            <a href={waCustomTour} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--lg">
+              WhatsApp Your Travel Dates
+            </a>
+            <span class="sub-call">Or call directly at <a href={`tel:${business.phone}`}>{business.phoneFormatted}</a></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inclusions & Exclusions Section -->
+    <section class="tour-transparency-section">
       <div class="container">
         <div class="section-header text-center">
-          <span class="section-subtitle">Handcrafted Itineraries</span>
-          <h2 class="section-title">Featured Sightseeing &amp; Tour Packages</h2>
-          <p class="section-desc">Doorstep hotel and railway station pickup in Ajmer with experienced local chauffeurs.</p>
+          <span class="section-subtitle">Complete Transparency</span>
+          <h2 class="section-title">What is Included in Your Tour Package</h2>
+          <p class="section-desc">We take pride in 100% upfront clarity so you can enjoy your vacation with complete peace of mind.</p>
         </div>
 
-        <div class="tours-grid">
-          <!-- Tour 1: 1 Day Ajmer Dargah Darshan -->
-          <div class="tour-card">
-            <div class="tour-badge">Full Day / 8 Hours</div>
-            <h3 class="tour-title">1 Day Ajmer Dargah Darshan &amp; City Heritage</h3>
-            <p class="tour-desc">A spiritual and historical immersion covering the ancient Chauhan capital and the revered Sufi sanctuary.</p>
-            <ul class="tour-stops">
-              <li>📍 Hazrat Khwaja Moinuddin Chishti Dargah</li>
-              <li>📍 Adhai Din Ka Jhopra 12th-century monument</li>
-              <li>📍 Ana Sagar Lake &amp; Daulat Bagh marble pavilions</li>
-              <li>📍 Taragarh Hill Fort panoramic viewpoint</li>
-              <li>📍 Nareli Jain Temple &amp; local bazaars</li>
-            </ul>
-            <div class="tour-footer">
-              <span class="tour-price">₹2,500 Full Day • ₹1,500 Half Day</span>
-              <a href={waAjmerTour} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">
-                Book Tour
-              </a>
+        <div class="transparency-grid">
+          <div class="transparency-col inc-col">
+            <div class="col-head">
+              <span class="head-icon">✓</span>
+              <h3>What is Included</h3>
             </div>
+            <ul class="col-list">
+              <li>• Dedicated commercial AC vehicle for the entire itinerary duration</li>
+              <li>• Experienced, verified, and uniformed highway chauffeur</li>
+              <li>• Vehicle fuel, engine lubricants, and routine maintenance</li>
+              <li>• Chauffeur night allowance, food, and accommodation</li>
+              <li>• Doorstep pickup and final drop at your hotel, airport, or railway station</li>
+              <li>• Flexible en-route photo halts, tea breaks, and meal stops</li>
+              <li>• 24/7 operations &amp; dispatch team monitoring your ride</li>
+            </ul>
           </div>
 
-          <!-- Tour 2: 1 Day Pushkar Pilgrimage -->
-          <div class="tour-card">
-            <div class="tour-badge">Full Day Tour</div>
-            <h3 class="tour-title">1 Day Pushkar Pilgrimage &amp; Ghats Tour</h3>
-            <p class="tour-desc">Journey through the scenic Nagpahari pass to one of the world's holiest pilgrimage towns nestled beside the sacred lake.</p>
-            <ul class="tour-stops">
-              <li>📍 14th-Century Jagatpita Brahma Temple</li>
-              <li>📍 52 Sacred Bathing Ghats of Pushkar Lake</li>
-              <li>📍 Savitri Devi Temple hill ropeway</li>
-              <li>📍 Varaha Temple &amp; Old Rangji Temple</li>
-              <li>📍 Pushkar Camel grounds &amp; Sunset aarti</li>
-            </ul>
-            <div class="tour-footer">
-              <span class="tour-price">Starts at ₹1,800</span>
-              <a href={waPushkarTour} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">
-                Book Tour
-              </a>
+          <div class="transparency-col exc-col">
+            <div class="col-head">
+              <span class="head-icon">✕</span>
+              <h3>What is Excluded</h3>
             </div>
-          </div>
-
-          <!-- Tour 3: 2 Days Ajmer + Pushkar Combo -->
-          <div class="tour-card featured-tour">
-            <div class="tour-badge gold-badge">Most Popular • 2 Days</div>
-            <h3 class="tour-title">2 Days Ajmer + Pushkar Combo Tour</h3>
-            <p class="tour-desc">Both sacred cities in one comprehensive package for pilgrims, families, and weekend travelers.</p>
-            <ul class="tour-stops">
-              <li>📍 Day 1: Ajmer Sharif Dargah Ziyarat, Ana Sagar, Taragarh</li>
-              <li>📍 Day 2: Pushkar Brahma Temple, 52 Ghats, Desert Sunset</li>
-              <li>📍 Station/hotel pickup &amp; drops included</li>
-              <li>📍 Dedicated AC cab for entire itinerary</li>
-              <li>📍 Chauffeur with deep local route expertise</li>
+            <ul class="col-list">
+              <li>• Monument entry tickets, camera fees, and museum audio guides</li>
+              <li>• Hotel stay and accommodation (can be recommended on request)</li>
+              <li>• Personal meals, snacks, and personal shopping expenses</li>
+              <li>• Camel safari / boat ride / ropeway activity charges</li>
+              <li>• Fastag toll taxes and state road entry permits (billed as actuals)</li>
+              <li>• Any extra detours not included in the finalized tour itinerary</li>
             </ul>
-            <div class="tour-footer">
-              <span class="tour-price">Starts at ₹3,500</span>
-              <a href={waCombinedTour} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm">
-                Book Combo Tour
-              </a>
-            </div>
-          </div>
-
-          <!-- Tour 4: 3 Days Ajmer Urs Special -->
-          <div class="tour-card">
-            <div class="tour-badge">3 Days / Festival Special</div>
-            <h3 class="tour-title">3 Days Ajmer Urs &amp; Sufi Pilgrimage</h3>
-            <p class="tour-desc">Special spiritual Urs festival package with dedicated cab and driver on standby for prayer schedules.</p>
-            <ul class="tour-stops">
-              <li>📍 Multiple visits to Dargah Sharif during festival timings</li>
-              <li>📍 Ziyarat support and verified local parking assistance</li>
-              <li>📍 Pushkar Brahma Temple excursion included</li>
-              <li>📍 Full 3 days dedicated chauffeur &amp; AC vehicle</li>
-              <li>📍 24/7 on-call dispatch support</li>
-            </ul>
-            <div class="tour-footer">
-              <span class="tour-price">Starts at ₹5,999</span>
-              <a href={waUrsTour} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">
-                Book Urs Package
-              </a>
-            </div>
-          </div>
-
-          <!-- Tour 5: 5 Days Golden Triangle + Pushkar -->
-          <div class="tour-card">
-            <div class="tour-badge">5 Days Circuit</div>
-            <h3 class="tour-title">5 Days Golden Triangle + Pushkar Tour</h3>
-            <p class="tour-desc">Delhi – Agra – Jaipur – Ajmer – Pushkar world-famous heritage circuit in a private luxury cab.</p>
-            <ul class="tour-stops">
-              <li>📍 Taj Mahal &amp; Agra Fort in Agra</li>
-              <li>📍 Amer Fort, Hawa Mahal &amp; City Palace in Jaipur</li>
-              <li>📍 Ajmer Sharif Dargah &amp; Pushkar Holy Lake</li>
-              <li>📍 Intercity toll, state permits &amp; fuel included</li>
-              <li>📍 Airport or railway station pickup / drop</li>
-            </ul>
-            <div class="tour-footer">
-              <span class="tour-price">Starts at ₹12,999</span>
-              <a href={waGoldenTriangle} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">
-                Book 5-Day Circuit
-              </a>
-            </div>
-          </div>
-
-          <!-- Tour 6: 7 Days Rajasthan Heritage Tour -->
-          <div class="tour-card">
-            <div class="tour-badge">7 Days Grand Tour</div>
-            <h3 class="tour-title">7 Days Complete Rajasthan Heritage Tour</h3>
-            <p class="tour-desc">Comprehensive road trip covering Jaipur, Ajmer, Pushkar, Jodhpur, and Udaipur with verified private chauffeur.</p>
-            <ul class="tour-stops">
-              <li>📍 Pink City Jaipur (Amer, Nahargarh, City Palace)</li>
-              <li>📍 Ajmer Sharif &amp; Sacred Pushkar Ghats</li>
-              <li>📍 Blue City Jodhpur (Mehrangarh &amp; Umaid Bhawan)</li>
-              <li>📍 City of Lakes Udaipur (Lake Pichola &amp; City Palace)</li>
-              <li>📍 Dedicated AC car with seasoned highway chauffeur</li>
-            </ul>
-            <div class="tour-footer">
-              <span class="tour-price">Starts at ₹19,999</span>
-              <a href={waRajasthanTour} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">
-                Book Grand Tour
-              </a>
-            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Destinations Visual Grid -->
+    <!-- Visual Destinations Grid -->
     <Destinations limit={6} />
 
-    <!-- FAQ -->
-    <FAQ 
-      title="Sightseeing &amp; Tour FAQs" 
-      subtitle="Planning Your Ajmer Trip" 
-    />
+    <!-- FAQs -->
+    <section class="tour-faq-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-subtitle">Got Questions?</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-desc">Everything you need to know about booking and traveling on a Rajasthan tour cab.</p>
+        </div>
+
+        <div class="faq-list-wrap">
+          {tourFaqs.map((faq, idx) => (
+            <details class="tour-faq-item" id={`faq-${idx}`}>
+              <summary class="faq-q">
+                <span>{faq.question}</span>
+                <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="faq-a">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Action CTA -->
+    <section class="bottom-tour-cta">
+      <div class="container text-center">
+        <h2>Ready to Explore Royal Rajasthan?</h2>
+        <p>Book your tour with Ajmer's most trusted chauffeur taxi operator since 2008. Reliable vehicles, seasoned drivers, and honest rates.</p>
+        <div class="cta-btn-row">
+          <a href={waCustomTour} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--lg">
+            Chat on WhatsApp
+          </a>
+          <a href={`tel:${business.phone}`} class="btn btn--outline-light btn--lg">
+            Call Operator: {business.phoneFormatted}
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <Footer />
@@ -179,11 +781,41 @@ const waRajasthanTour = createWhatsAppBookingUrl({ tripType: "7 Days Rajasthan H
   <MobileBottomBar />
 </Layout>
 
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<script>
+  // Interactive Filter Script
+  document.addEventListener("DOMContentLoaded", () => {
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>(".filter-btn");
+    const tourCards = document.querySelectorAll<HTMLElement>(".tour-card");
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        // Toggle active button state
+        filterButtons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const selectedFilter = btn.getAttribute("data-filter") || "all";
+
+        tourCards.forEach((card) => {
+          const category = card.getAttribute("data-category");
+          if (selectedFilter === "all" || category === selectedFilter) {
+            card.style.display = "flex";
+            card.style.opacity = "1";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+  });
+</script>
+
 <style>
-  .page-banner {
-    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  .tour-hero-section {
+    background: linear-gradient(135deg, #1B1316 0%, #2A1A22 50%, #3D222F 100%);
     color: #FFFFFF;
-    padding: calc(var(--header-height, 74px) + 38px) 0 36px;
+    padding: calc(var(--header-height, 74px) + 38px) 0 44px;
     border-bottom: 3px solid var(--color-accent);
   }
 
@@ -196,31 +828,99 @@ const waRajasthanTour = createWhatsAppBookingUrl({ tripType: "7 Days Rajasthan H
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    padding: 4px 14px;
+    padding: 5px 16px;
     border-radius: var(--radius-full);
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
 
-  .page-title {
+  .hero-title {
     font-family: var(--font-heading);
-    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-size: clamp(2rem, 4.2vw, 3rem);
     color: #FFFFFF;
-    margin-bottom: 6px;
+    margin-bottom: 12px;
+    line-height: 1.2;
   }
 
-  .page-subtitle {
+  .hero-desc {
     font-size: 1.125rem;
     color: rgba(255, 255, 255, 0.9);
-    max-width: 650px;
-    margin: 0 auto;
+    max-width: 780px;
+    margin: 0 auto 24px;
+    line-height: 1.6;
   }
 
-  .tours-section {
+  .hero-feature-tags {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .f-tag {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .f-tag.gold {
+    background: rgba(197, 155, 39, 0.25);
+    border-color: var(--color-accent);
+    color: var(--color-accent-light);
+  }
+
+  .hero-cta-group {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  /* Filter Navigation Bar */
+  .packages-hub-section {
     padding: var(--space-4xl) 0;
     background: var(--color-surface);
   }
 
-  .tours-grid {
+  .tour-filter-bar {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-3xl);
+  }
+
+  .filter-btn {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    padding: 10px 20px;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: 0 2px 8px rgba(34, 24, 28, 0.04);
+  }
+
+  .filter-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-primary);
+  }
+
+  .filter-btn.active {
+    background: var(--color-primary);
+    color: #FFFFFF;
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(34, 24, 28, 0.2);
+  }
+
+  /* Catalog Grid */
+  .tours-catalog-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-xl);
@@ -233,79 +933,411 @@ const waRajasthanTour = createWhatsAppBookingUrl({ tripType: "7 Days Rajasthan H
     padding: var(--space-xl);
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 16px rgba(34, 24, 28, 0.05);
     position: relative;
+    box-shadow: 0 4px 16px rgba(34, 24, 28, 0.05);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
   }
 
-  .featured-tour {
+  .tour-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(34, 24, 28, 0.1);
+  }
+
+  .featured-pkg {
     border: 2px solid var(--color-accent);
-    box-shadow: 0 8px 24px rgba(197, 155, 39, 0.15);
+    box-shadow: 0 8px 24px rgba(197, 155, 39, 0.16);
   }
 
-  .tour-badge {
+  .pkg-ribbon {
     position: absolute;
-    top: 14px;
-    right: 14px;
-    background: var(--color-cream);
-    color: var(--color-primary);
+    top: -12px;
+    left: 24px;
+    background: var(--color-accent);
+    color: #1A1215;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 12px;
+    border-radius: var(--radius-full);
+  }
+
+  .tour-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+  }
+
+  .badge-duration {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
     font-size: 0.75rem;
     font-weight: 700;
-    padding: 3px 8px;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+  }
+
+  .badge-duration.gold-badge {
+    background: rgba(197, 155, 39, 0.15);
+    border-color: var(--color-accent);
+    color: var(--color-accent-dark);
+  }
+
+  .badge-cat {
+    font-size: 0.6875rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2px 8px;
     border-radius: var(--radius-sm);
-    border: 1px solid var(--color-border);
   }
 
-  .gold-badge {
-    background: var(--color-accent);
-    color: #FFFFFF;
-    border: none;
+  .badge-cat.spiritual {
+    background: #E8F5E9;
+    color: #2E7D32;
   }
 
-  .tour-title {
+  .badge-cat.heritage {
+    background: #FFF3E0;
+    color: #E65100;
+  }
+
+  .badge-cat.desert {
+    background: #EDE7F6;
+    color: #4527A0;
+  }
+
+  .badge-cat.group {
+    background: #E3F2FD;
+    color: #1565C0;
+  }
+
+  .tour-name {
     font-family: var(--font-heading);
     font-size: 1.25rem;
     color: var(--color-primary);
-    margin-top: var(--space-md);
-    margin-bottom: var(--space-xs);
+    margin-bottom: 8px;
+    line-height: 1.35;
   }
 
   .tour-desc {
     font-size: 0.875rem;
     color: var(--color-text-muted);
-    line-height: 1.5;
+    line-height: 1.6;
     margin-bottom: var(--space-md);
   }
 
-  .tour-stops {
+  .route-stops-box {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    flex-grow: 1;
+  }
+
+  .stops-title {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    margin-bottom: 6px;
+  }
+
+  .stops-list {
     list-style: none;
     padding: 0;
-    margin: 0 0 var(--space-xl) 0;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+    margin: 0;
     font-size: 0.8125rem;
     color: var(--color-text);
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    line-height: 1.45;
   }
 
-  .tour-footer {
+  .tour-pricing-row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding-top: var(--space-md);
-    border-top: 1px solid var(--color-border);
-    margin-top: auto;
+    gap: 6px;
+    padding: var(--space-sm) 0;
+    border-top: 1px dashed var(--color-border);
+    margin-bottom: var(--space-md);
   }
 
-  .tour-price {
-    font-family: var(--font-heading);
-    font-size: 1.125rem;
-    font-weight: 700;
+  .price-tier {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tier-label {
+    font-size: 0.6875rem;
+    color: var(--color-text-muted);
+  }
+
+  .price-val {
+    font-size: 1rem;
+    font-weight: 800;
     color: var(--color-primary);
   }
 
-  @media (max-width: 992px) {
-    .tours-grid {
+  .price-val.gold-text {
+    color: var(--color-accent-dark);
+  }
+
+  .tour-card-footer {
+    margin-top: auto;
+  }
+
+  /* Custom Planner Section */
+  .custom-planner-section {
+    padding: var(--space-3xl) 0;
+    background: #FFFFFF;
+  }
+
+  .custom-planner-card {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #FFFFFF;
+    border-radius: var(--radius-lg);
+    padding: var(--space-3xl);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2xl);
+    box-shadow: 0 10px 30px rgba(34, 24, 28, 0.12);
+  }
+
+  .plan-tag {
+    display: inline-block;
+    background: rgba(197, 155, 39, 0.25);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-light);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 12px;
+    border-radius: var(--radius-full);
+    margin-bottom: 8px;
+  }
+
+  .planner-text h2 {
+    color: #FFFFFF;
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    margin-bottom: 10px;
+  }
+
+  .planner-text p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 680px;
+    margin-bottom: var(--space-md);
+  }
+
+  .planner-perks {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    font-size: 0.875rem;
+    color: var(--color-accent-light);
+    font-weight: 600;
+  }
+
+  .planner-action {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sub-call {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .sub-call a {
+    color: var(--color-accent-light);
+    text-decoration: underline;
+  }
+
+  /* Inclusions & Exclusions */
+  .tour-transparency-section {
+    padding: var(--space-4xl) 0;
+    background: var(--color-surface);
+  }
+
+  .transparency-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .transparency-col {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    box-shadow: 0 4px 16px rgba(34, 24, 28, 0.04);
+  }
+
+  .inc-col {
+    border-top: 4px solid #2E7D32;
+  }
+
+  .exc-col {
+    border-top: 4px solid #C62828;
+  }
+
+  .col-head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .head-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-full);
+    font-weight: 800;
+  }
+
+  .inc-col .head-icon {
+    background: #E8F5E9;
+    color: #2E7D32;
+  }
+
+  .exc-col .head-icon {
+    background: #FFEBEE;
+    color: #C62828;
+  }
+
+  .col-head h3 {
+    font-size: 1.25rem;
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  .col-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.9375rem;
+    color: var(--color-text);
+    line-height: 1.5;
+  }
+
+  /* FAQ */
+  .tour-faq-section {
+    padding: var(--space-4xl) 0;
+    background: #FFFFFF;
+  }
+
+  .faq-list-wrap {
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .tour-faq-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .faq-q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-lg);
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--color-primary);
+    user-select: none;
+  }
+
+  .faq-q:hover {
+    color: var(--color-accent-dark);
+  }
+
+  .faq-a {
+    padding: 0 var(--space-lg) var(--space-lg);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+  }
+
+  /* Bottom CTA */
+  .bottom-tour-cta {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #FFFFFF;
+    padding: var(--space-4xl) 0;
+    border-top: 3px solid var(--color-accent);
+  }
+
+  .bottom-tour-cta h2 {
+    color: #FFFFFF;
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    margin-bottom: var(--space-sm);
+  }
+
+  .bottom-tour-cta p {
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 650px;
+    margin: 0 auto var(--space-xl);
+    font-size: 1.0625rem;
+  }
+
+  .cta-btn-row {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  /* Responsive Breakpoints */
+  @media (max-width: 1024px) {
+    .tours-catalog-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .custom-planner-card {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .planner-perks {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .tours-catalog-grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .transparency-grid {
       grid-template-columns: 1fr;
     }
   }

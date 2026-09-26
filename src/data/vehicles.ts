@@ -112,25 +112,6 @@ export const vehicles: Vehicle[] = [
     }
   },
   {
-    id: "toyota-innova",
-    name: "Toyota Innova",
-    category: "SUV",
-    categoryLabel: "Trusted Family Cab",
-    seats: 6,
-    luggage: 5,
-    ratePerKm: 16,
-    hasAC: true,
-    freeCancellation: true,
-    bestFor: "Multi-day Rajasthan tours & extra luggage comfort",
-    popular: true,
-    image: "/images/vehicles/innova.svg",
-    altText: "Toyota Innova family taxi hire in Ajmer for Rajasthan tours",
-    fixedFares: {
-      ajmerToPushkar: 1500,
-      ajmerToJaipur: 3500
-    }
-  },
-  {
     id: "urbania-13-seater",
     name: "13 Seater Maharaja Urbania",
     category: "Tempo Traveller",

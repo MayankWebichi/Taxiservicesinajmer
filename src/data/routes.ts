@@ -1,7 +1,6 @@
 export interface RoutePricing {
   sedanFare?: number;
   suvFare?: number;
-  innovaFare?: number;
   crystaFare?: number;
   startingPrice?: number;
   priceNote?: string;
@@ -38,7 +37,6 @@ export const routes: RouteItem[] = [
     pricing: {
       sedanFare: 1999,
       suvFare: 3000,
-      innovaFare: 3800,
       crystaFare: 4500,
       startingPrice: 1999,
       priceNote: "Fixed all-inclusive fare: Dzire/Etios ₹1,999, Ertiga ₹3,000, Crysta ₹4,500"
@@ -219,6 +217,27 @@ export const routes: RouteItem[] = [
     },
     description: "Direct taxi to the ancient temple city and desert dune camps of Osian.",
     highlights: ["Temple darshan & sand dunes", "Customized day returns", "AC comfort"]
+  },
+  {
+    id: "ajmer-sarwar-sharif",
+    slug: "ajmer-to-sarwar-sharif-taxi",
+    from: "Ajmer",
+    to: "Sarwar Sharif (Sarwad)",
+    title: "Ajmer to Sarwar Sharif Taxi",
+    distanceKm: 62,
+    estimatedTime: "1.5 Hours",
+    popular: true,
+    featuredOnHome: true,
+    hasDedicatedPage: true,
+    pricing: {
+      sedanFare: 2000,
+      suvFare: 2500,
+      crystaFare: 3500,
+      startingPrice: 2000,
+      priceNote: "Fixed round-trip / drop: Swift Dzire / Etios ₹2,000, Ertiga ₹2,500, Innova Crysta ₹3,500"
+    },
+    description: "Revered Sufi pilgrimage cab service to Hazrat Khwaja Syed Fakhruddin Chishti Dargah at Sarwar Sharif with wait time included for Ziyarat.",
+    highlights: ["Hazrat Khwaja Fakhruddin Chishti Dargah", "Doorstep pickup in Ajmer / Dargah", "Ziyarat wait-time included", "Dzire ₹2,000 | Ertiga ₹2,500 | Crysta ₹3,500"]
   }
 ];
 
@@ -226,6 +245,7 @@ export const popularCityDropList = [
   { name: "Jaipur", distanceKm: 135, hasFixedFare: true, fixedSedan: 1999 },
   { name: "Delhi IGI Airport", distanceKm: 390, hasFixedFare: true, fixedSedan: 5500 },
   { name: "Pushkar", distanceKm: 15, hasFixedFare: true, fixedSedan: 700 },
+  { name: "Sarwar Sharif", distanceKm: 62, hasFixedFare: true, fixedSedan: 2000 },
   { name: "Udaipur", distanceKm: 265, hasFixedFare: true, fixedSedan: 4500 },
   { name: "Jodhpur", distanceKm: 205, hasFixedFare: true, fixedSedan: 3500 },
   { name: "Kishangarh Airport", distanceKm: 30, hasFixedFare: false },

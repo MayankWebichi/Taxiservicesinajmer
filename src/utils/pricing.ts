@@ -33,7 +33,7 @@ export function calculateRouteFare(
     let fixed = 700; // Swift Dzire / Toyota Etios Sedan
     if (vehicle.id === "swift-dzire" || vehicle.id === "toyota-etios" || vehicle.category === "Sedan" || vehicle.category === "Hatchback") fixed = 700;
     else if (vehicle.id === "maruti-ertiga" || vehicle.id === "toyota-rumion") fixed = 1200;
-    else if (vehicle.id === "toyota-innova" || vehicle.id === "toyota-innova-crysta") fixed = 1500;
+    else if (vehicle.id === "toyota-innova-crysta") fixed = 1500;
     else if (vehicle.category === "Tempo Traveller") fixed = 2500;
     else fixed = 700;
 
@@ -58,7 +58,6 @@ export function calculateRouteFare(
     if (vehicle.category === "Hatchback") fixed = 1999;
     else if (vehicle.id === "swift-dzire" || vehicle.id === "toyota-etios") fixed = 1999;
     else if (vehicle.id === "maruti-ertiga" || vehicle.id === "toyota-rumion") fixed = 3000;
-    else if (vehicle.id === "toyota-innova") fixed = 3800;
     else if (vehicle.id === "toyota-innova-crysta") fixed = 4500;
     else fixed = 135 * vehicle.ratePerKm;
 

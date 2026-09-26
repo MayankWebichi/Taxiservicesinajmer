@@ -7,8 +7,7 @@ export interface Props {
 }
 
 const { limit } = Astro.props;
-const filteredServices = services.filter((s) => s.id !== "wedding-car-rental");
-const displayServices = limit ? filteredServices.slice(0, limit) : filteredServices;
+const displayServices = limit ? services.slice(0, limit) : services;
 ---
 
 <section class="services-section" id="services-section" aria-label="Our Taxi and Car Rental Services">

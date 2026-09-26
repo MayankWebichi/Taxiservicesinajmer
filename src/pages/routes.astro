@@ -1,0 +1,407 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { seoRoutesData } from "@/data/seoRoutesData";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+
+const pageTitle = "All Taxi Routes & Cab Fares | Ajmer & Pushkar Intercity Directory";
+const pageDescription = "Explore 220+ verified taxi routes connecting Ajmer, Pushkar, Jaipur, Delhi, Udaipur, Jodhpur, and pilgrimage shrines across Rajasthan. Accurate fares, distances, and 24/7 doorstep cabs.";
+
+const pushkarRoutes = seoRoutesData.filter(r => r.from === 'Pushkar' || r.to === 'Pushkar');
+const airportRoutes = seoRoutesData.filter(r => r.from.includes('Airport') || r.to.includes('Airport') || r.from.includes('Railway') || r.to.includes('Station'));
+const inboundRoutes = seoRoutesData.filter(r => (r.to === 'Ajmer' || r.to === 'Pushkar') && r.from !== 'Ajmer' && r.from !== 'Pushkar');
+const otherRoutes = seoRoutesData.filter(r => !pushkarRoutes.includes(r) && !airportRoutes.includes(r) && !inboundRoutes.includes(r));
+---
+
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/routes/">
+  <Header />
+
+  <main id="main-content">
+    <section class="routes-hero">
+      <div class="container text-center">
+        <span class="heritage-badge">Rajasthan Outstation Directory</span>
+        <h1 class="hero-title">220+ Verified Taxi Routes &amp; Fares</h1>
+        <p class="hero-subtitle">
+          Transparent fares, exact highway distances, and 24/7 doorstep pickup across Ajmer, Pushkar, and entire Rajasthan.
+        </p>
+        
+        <!-- Live Quick Search Bar -->
+        <div class="search-box-wrap">
+          <input 
+            type="text" 
+            id="route-search" 
+            placeholder="Type any destination or route (e.g., Pushkar, Jaipur, Khatu, Delhi)..." 
+            aria-label="Search taxi routes"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Category Tabs & Route Grid -->
+    <section class="routes-content-section">
+      <div class="container">
+        
+        <div class="category-tabs" role="tablist">
+          <button class="cat-tab active" data-target="all-panel">All Routes ({seoRoutesData.length})</button>
+          <button class="cat-tab" data-target="pushkar-panel">Pushkar Routes ({pushkarRoutes.length})</button>
+          <button class="cat-tab" data-target="inbound-panel">Inbound to Ajmer ({inboundRoutes.length})</button>
+          <button class="cat-tab" data-target="airport-panel">Airport &amp; Station ({airportRoutes.length})</button>
+        </div>
+
+        <div id="all-panel" class="tab-panel active">
+          <div class="routes-grid" id="routes-grid">
+            {seoRoutesData.map((route) => {
+              const waUrl = createWhatsAppBookingUrl({
+                pickupLocation: route.from,
+                dropLocation: route.to,
+                tripType: "One-Way / Round Trip",
+              });
+              return (
+                <article class="route-card" data-title={`${route.from} to ${route.to} ${route.highway}`.toLowerCase()}>
+                  <div class="rc-header">
+                    <span class="rc-distance">{route.distanceKm} km • {route.estimatedTime}</span>
+                    <span class="rc-highway">{route.highway.split(';')[0]}</span>
+                  </div>
+                  <h2 class="rc-title">
+                    <a href={`/${route.slug}/`}>{route.from} &rarr; {route.to} Taxi</a>
+                  </h2>
+                  <div class="rc-pricing">
+                    <div class="price-chip">
+                      <span class="chip-label">Sedan</span>
+                      <span class="chip-val">₹{route.sedanFare.toLocaleString('en-IN')}</span>
+                    </div>
+                    <div class="price-chip">
+                      <span class="chip-label">Ertiga</span>
+                      <span class="chip-val">₹{route.suvFare.toLocaleString('en-IN')}</span>
+                    </div>
+                    <div class="price-chip">
+                      <span class="chip-label">Crysta</span>
+                      <span class="chip-val">₹{route.crystaFare.toLocaleString('en-IN')}</span>
+                    </div>
+                  </div>
+                  <div class="rc-actions">
+                    <a href={`/${route.slug}/`} class="btn-view">View Route &amp; Timings &rarr;</a>
+                    <a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn-wa">WhatsApp</a>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Why Book With Us Banner -->
+    <section class="trust-banner">
+      <div class="container text-center">
+        <h2>Why 50,000+ Pilgrims &amp; Travelers Trust Our Chauffeurs Since 2008</h2>
+        <div class="trust-features">
+          <div class="tf-item">
+            <span class="tf-icon">✓</span>
+            <h4>Zero Return Toll Surprise</h4>
+            <p>One-way fares mean one-way price. No return fare trickery on drop trips.</p>
+          </div>
+          <div class="tf-item">
+            <span class="tf-icon">✓</span>
+            <h4>Highway Experienced Drivers</h4>
+            <p>Police-verified, courteous local drivers fluent in Hindi, Marwari, and English.</p>
+          </div>
+          <div class="tf-item">
+            <span class="tf-icon">✓</span>
+            <h4>Sanitized &amp; AC Guaranteed</h4>
+            <p>All vehicles thoroughly sanitized with 100% active cooling across Rajasthan summers.</p>
+          </div>
+          <div class="tf-item">
+            <span class="tf-icon">✓</span>
+            <h4>Doorstep 24/7 Pickup</h4>
+            <p>Punctual morning or midnight pick-ups from any hotel, residence, airport, or railway station.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<script>
+  // Live Search filter
+  const searchInput = document.getElementById('route-search') as HTMLInputElement;
+  const cards = document.querySelectorAll('.route-card');
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const q = (e.target as HTMLInputElement).value.toLowerCase().trim();
+      cards.forEach((card) => {
+        const title = card.getAttribute('data-title') || '';
+        if (!q || title.includes(q)) {
+          (card as HTMLElement).style.display = 'flex';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  }
+</script>
+
+<style>
+  .routes-hero {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #fff;
+    padding: var(--space-3xl) 0 var(--space-2xl);
+    position: relative;
+    border-bottom: 3px solid var(--color-accent);
+  }
+
+  .heritage-badge {
+    display: inline-block;
+    background: rgba(197, 155, 39, 0.2);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-light);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    margin-bottom: var(--space-md);
+  }
+
+  .hero-title {
+    font-size: clamp(1.85rem, 4vw, 2.75rem);
+    color: #fff;
+    margin-bottom: var(--space-sm);
+  }
+
+  .hero-subtitle {
+    max-width: 680px;
+    margin: 0 auto var(--space-xl);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .search-box-wrap {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .search-box-wrap input {
+    width: 100%;
+    padding: 1rem 1.4rem;
+    font-size: 1.05rem;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--color-accent);
+    outline: none;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    color: var(--color-text);
+  }
+
+  .routes-content-section {
+    padding: var(--space-3xl) 0;
+    background: #f8fafc;
+  }
+
+  .category-tabs {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .cat-tab {
+    padding: 0.6rem 1.25rem;
+    border-radius: var(--radius-full);
+    border: 1px solid #cbd5e1;
+    background: #fff;
+    color: #475569;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .cat-tab.active, .cat-tab:hover {
+    background: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+  }
+
+  .routes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .route-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    border: 1px solid #e2e8f0;
+    padding: 1.35rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .route-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    border-color: var(--color-accent);
+  }
+
+  .rc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+  }
+
+  .rc-distance {
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .rc-highway {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 140px;
+  }
+
+  .rc-title {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-heading);
+    line-height: 1.3;
+  }
+
+  .rc-title a {
+    color: var(--color-primary-dark);
+    text-decoration: none;
+  }
+
+  .rc-title a:hover {
+    color: var(--color-accent);
+  }
+
+  .rc-pricing {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+    background: #f1f5f9;
+    padding: 0.6rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.15rem;
+    text-align: center;
+  }
+
+  .chip-label {
+    display: block;
+    font-size: 0.7rem;
+    color: #64748b;
+    text-transform: uppercase;
+  }
+
+  .chip-val {
+    display: block;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    font-size: 0.95rem;
+  }
+
+  .rc-actions {
+    margin-top: auto;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .btn-view {
+    flex: 1;
+    text-align: center;
+    background: #e2e8f0;
+    color: #1e293b;
+    font-weight: 600;
+    font-size: 0.825rem;
+    padding: 0.55rem 0.75rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .btn-view:hover {
+    background: #cbd5e1;
+  }
+
+  .btn-wa {
+    background: #25D366;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.825rem;
+    padding: 0.55rem 0.95rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-wa:hover {
+    background: #1eb855;
+  }
+
+  .trust-banner {
+    padding: var(--space-3xl) 0;
+    background: #fff;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .trust-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.5rem;
+    margin-top: var(--space-2xl);
+    text-align: left;
+  }
+
+  .tf-item {
+    padding: 1.25rem;
+    background: #f8fafc;
+    border-radius: var(--radius-lg);
+    border: 1px solid #e2e8f0;
+  }
+
+  .tf-icon {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background: var(--color-accent);
+    color: #fff;
+    text-align: center;
+    line-height: 28px;
+    border-radius: 50%;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .tf-item h4 {
+    margin-bottom: 0.4rem;
+    font-size: 1.05rem;
+  }
+
+  .tf-item p {
+    font-size: 0.875rem;
+    color: #64748b;
+    line-height: 1.5;
+  }
+</style>
