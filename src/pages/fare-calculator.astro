@@ -360,12 +360,12 @@ const calcSchema = {
               </div>
 
               <div class="cab-col-pricing">
-                <div class="price-mrp" id="mrp-crysta">₹2,100</div>
+                <div class="price-mrp" id="mrp-crysta">₹2,450</div>
                 <div class="price-live-wrap">
                   <span class="currency">₹</span>
-                  <span class="price-amount" id="price-crysta">1,500</span>
+                  <span class="price-amount" id="price-crysta">1,800</span>
                 </div>
-                <span class="savings-tag" id="save-crysta">Save ₹600 (Direct Rate)</span>
+                <span class="savings-tag" id="save-crysta">Save ₹650 (Direct Rate)</span>
                 <span class="tax-info">Toll extra as per Fastag</span>
                 <a href="#" class="btn-book-cab" id="btn-book-crysta" target="_blank" rel="noopener noreferrer">
                   Book Crysta &rarr;
@@ -404,12 +404,12 @@ const calcSchema = {
               </div>
 
               <div class="cab-col-pricing">
-                <div class="price-mrp" id="mrp-tempo">₹3,400</div>
+                <div class="price-mrp" id="mrp-tempo">₹4,750</div>
                 <div class="price-live-wrap">
                   <span class="currency">₹</span>
-                  <span class="price-amount" id="price-tempo">2,500</span>
+                  <span class="price-amount" id="price-tempo">3,500</span>
                 </div>
-                <span class="savings-tag" id="save-tempo">Save ₹900 (Direct Rate)</span>
+                <span class="savings-tag" id="save-tempo">Save ₹1,250 (Direct Rate)</span>
                 <span class="tax-info">Toll extra as per Fastag</span>
                 <a href="#" class="btn-book-cab" id="btn-book-tempo" target="_blank" rel="noopener noreferrer">
                   Book Tempo &rarr;
@@ -448,12 +448,12 @@ const calcSchema = {
               </div>
 
               <div class="cab-col-pricing">
-                <div class="price-mrp" id="mrp-urbania">₹4,800</div>
+                <div class="price-mrp" id="mrp-urbania">₹6,100</div>
                 <div class="price-live-wrap">
                   <span class="currency">₹</span>
-                  <span class="price-amount" id="price-urbania">3,500</span>
+                  <span class="price-amount" id="price-urbania">4,500</span>
                 </div>
-                <span class="savings-tag" id="save-urbania">Save ₹1,300 (Direct Rate)</span>
+                <span class="savings-tag" id="save-urbania">Save ₹1,600 (Direct Rate)</span>
                 <span class="tax-info">Toll extra as per Fastag</span>
                 <a href="#" class="btn-book-cab" id="btn-book-urbania" target="_blank" rel="noopener noreferrer">
                   Book Urbania &rarr;
@@ -536,15 +536,17 @@ const calcSchema = {
     fixedSedan?: number;
     fixedErtiga?: number;
     fixedCrysta?: number;
+    fixedTempo?: number;
+    fixedUrbania?: number;
   }
 
   const CITY_CACHE: Record<string, CityNode> = {
     "ajmer": { name: "Ajmer", lat: 26.4499, lng: 74.6399, distFromAjmer: 0, timeFromAjmer: "0 Mins", highway: "City Center" },
-    "pushkar": { name: "Pushkar", lat: 26.4899, lng: 74.5511, distFromAjmer: 14, timeFromAjmer: "30-40 Mins", highway: "Pushkar Ghati / Nagpahari Pass", fixedSedan: 700, fixedErtiga: 1200, fixedCrysta: 1500 },
+    "pushkar": { name: "Pushkar", lat: 26.4899, lng: 74.5511, distFromAjmer: 14, timeFromAjmer: "30-40 Mins", highway: "Pushkar Ghati / Nagpahari Pass", fixedSedan: 700, fixedErtiga: 1200, fixedCrysta: 1800, fixedTempo: 3500, fixedUrbania: 4500 },
     "sarwar-sharif": { name: "Sarwar Sharif", lat: 26.0652, lng: 75.0062, distFromAjmer: 64, timeFromAjmer: "1.5 Hrs", highway: "NH 448 & Kekri Highway", fixedSedan: 2000, fixedErtiga: 2500, fixedCrysta: 3500 },
     "kishangarh-airport": { name: "Kishangarh Airport (KQH)", lat: 26.5985, lng: 74.8155, distFromAjmer: 28, timeFromAjmer: "40 Mins", highway: "NH 48 Jaipur Road", fixedSedan: 1000, fixedErtiga: 1500, fixedCrysta: 2000 },
     "kishangarh-dumping-yard": { name: "Kishangarh Marble Dumping Yard", lat: 26.5822, lng: 74.8624, distFromAjmer: 32, timeFromAjmer: "45 Mins", highway: "NH 48 Marble Zone", fixedSedan: 1200, fixedErtiga: 1800, fixedCrysta: 2400 },
-    "jaipur": { name: "Jaipur", lat: 26.9124, lng: 75.7873, distFromAjmer: 135, timeFromAjmer: "2.5 Hrs", highway: "NH 48 Express Highway", fixedSedan: 1999, fixedErtiga: 3000, fixedCrysta: 4500 },
+    "jaipur": { name: "Jaipur", lat: 26.9124, lng: 75.7873, distFromAjmer: 135, timeFromAjmer: "2.5 Hrs", highway: "NH 48 Express Highway", fixedSedan: 1999, fixedErtiga: 3000, fixedCrysta: 4500, fixedTempo: 10500 },
     "jaipur-airport": { name: "Jaipur International Airport (JAI)", lat: 26.8289, lng: 75.8056, distFromAjmer: 140, timeFromAjmer: "2.5-3 Hrs", highway: "NH 48 via Jaipur Ring Road", fixedSedan: 2200, fixedErtiga: 3200, fixedCrysta: 4800 },
     "khatu-shyam-ji": { name: "Khatu Shyam Ji", lat: 27.3621, lng: 75.4055, distFromAjmer: 180, timeFromAjmer: "3.5 Hrs", highway: "NH 48 & Ringas State Highway", fixedSedan: 3000, fixedErtiga: 4200, fixedCrysta: 5500 },
     "salasar-balaji": { name: "Salasar Balaji", lat: 27.7214, lng: 74.7208, distFromAjmer: 175, timeFromAjmer: "3.5 Hrs", highway: "NH 58 via Didwana / Sujangarh", fixedSedan: 3000, fixedErtiga: 4000, fixedCrysta: 5200 },
@@ -727,13 +729,21 @@ const calcSchema = {
     // Check SEO bridge
     checkSeoBridge(origin, destination);
 
+    // Helper to get verified fixed fare in either direction
+    const getFixedFare = (key: 'fixedSedan' | 'fixedErtiga' | 'fixedCrysta' | 'fixedTempo' | 'fixedUrbania') => {
+      if (isRound) return undefined;
+      if (cityA.name === "Ajmer") return cityB[key];
+      if (cityB.name === "Ajmer") return cityA[key];
+      return undefined;
+    };
+
     // Calculate prices for all 5 car classes
     const vehiclesConfig = [
-      { key: "sedan", rate: 11, min: 700, mrpMultiplier: 1.35, fixed: !isRound && cityA.name === "Ajmer" ? cityB.fixedSedan : undefined },
-      { key: "ertiga", rate: 13, min: 1200, mrpMultiplier: 1.33, fixed: !isRound && cityA.name === "Ajmer" ? cityB.fixedErtiga : undefined },
-      { key: "crysta", rate: 18, min: 1500, mrpMultiplier: 1.35, fixed: !isRound && cityA.name === "Ajmer" ? cityB.fixedCrysta : undefined },
-      { key: "tempo", rate: 25, min: 2500, mrpMultiplier: 1.35, fixed: undefined },
-      { key: "urbania", rate: 35, min: 3500, mrpMultiplier: 1.35, fixed: undefined }
+      { key: "sedan", rate: 11, min: 700, mrpMultiplier: 1.35, fixed: getFixedFare("fixedSedan") },
+      { key: "ertiga", rate: 13, min: 1200, mrpMultiplier: 1.33, fixed: getFixedFare("fixedErtiga") },
+      { key: "crysta", rate: 18, min: 1800, mrpMultiplier: 1.35, fixed: getFixedFare("fixedCrysta") },
+      { key: "tempo", rate: 25, min: 3500, mrpMultiplier: 1.35, fixed: getFixedFare("fixedTempo") },
+      { key: "urbania", rate: 35, min: 4500, mrpMultiplier: 1.35, fixed: getFixedFare("fixedUrbania") }
     ];
 
     vehiclesConfig.forEach(v => {

@@ -112,7 +112,7 @@ export const vehicles: Vehicle[] = [
     image: "/images/vehicles/inova%20cresta.png",
     altText: "Toyota Innova Crysta luxury taxi rental in Ajmer",
     fixedFares: {
-      ajmerToPushkar: 1500,
+      ajmerToPushkar: 1800,
       ajmerToJaipur: 4500,
       ajmerToUdaipur: 8500,
       ajmerToJodhpur: 6000,
@@ -136,7 +136,10 @@ export const vehicles: Vehicle[] = [
     featureBoxes: [
       { point: "Comfort:", price: "Maharaja Recliner Seats", toll: "(Push-Back)", isLuxury: true },
       { point: "Touring:", price: "Luxury Group Tours", toll: "(All Rajasthan)", isLuxury: true }
-    ]
+    ],
+    fixedFares: {
+      ajmerToPushkar: 4500
+    }
   },
   {
     id: "urbania-17-seater",
@@ -155,7 +158,10 @@ export const vehicles: Vehicle[] = [
     featureBoxes: [
       { point: "Comfort:", price: "Push-Back Recliners", toll: "(High-Roof AC)", isLuxury: true },
       { point: "Touring:", price: "Grand Group Tours", toll: "(All Rajasthan)", isLuxury: true }
-    ]
+    ],
+    fixedFares: {
+      ajmerToPushkar: 4500
+    }
   },
   {
     id: "toyota-glanza",
@@ -232,7 +238,11 @@ export const vehicles: Vehicle[] = [
     featureBoxes: [
       { point: "Group Coach:", price: "High-Roof AC Cabin", toll: "(Push-Back)" },
       { point: "Touring:", price: "Outstation & Pilgrimage", toll: "(Rajasthan)" }
-    ]
+    ],
+    fixedFares: {
+      ajmerToPushkar: 3500,
+      ajmerToJaipur: 10500
+    }
   },
   {
     id: "tempo-21-seater",
@@ -251,7 +261,11 @@ export const vehicles: Vehicle[] = [
     featureBoxes: [
       { point: "Large Group:", price: "Spacious Legroom & AC", toll: "(21 Seats)" },
       { point: "Touring:", price: "Pushkar & Rajasthan Yatra", toll: "(All State)" }
-    ]
+    ],
+    fixedFares: {
+      ajmerToPushkar: 3500,
+      ajmerToJaipur: 10500
+    }
   },
   {
     id: "tempo-27-seater",
@@ -270,7 +284,11 @@ export const vehicles: Vehicle[] = [
     featureBoxes: [
       { point: "Maxi Coach:", price: "Deluxe 27-Seater AC", toll: "(High-Roof)" },
       { point: "Occasions:", price: "Wedding & Event Transport", toll: "(Rajasthan)" }
-    ]
+    ],
+    fixedFares: {
+      ajmerToPushkar: 3500,
+      ajmerToJaipur: 10500
+    }
   }
 ];
 

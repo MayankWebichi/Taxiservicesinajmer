@@ -17,7 +17,7 @@ export const faqs: FAQItem[] = [
   },
   {
     question: "What is the fixed fare for an Ajmer to Jaipur taxi?",
-    answer: "For the 135 km Ajmer to Jaipur route, we offer verified fixed fares: Swift Dzire / Toyota Etios Sedan at ₹1,999, Maruti Ertiga / Toyota Rumion at ₹3,000, and Toyota Innova Crysta at ₹4,500. Toll and parking charges are extra as applicable.",
+    answer: "For the 135 km Ajmer to Jaipur route, we offer verified fixed fares: Swift Dzire / Toyota Etios Sedan at ₹1,999, Maruti Ertiga / Toyota Rumion at ₹3,000, Toyota Innova Crysta at ₹4,500, and Tempo Traveller (13–17 Seater) at ₹10,500. Toll and parking charges are extra as applicable.",
     category: "Pricing"
   },
   {
@@ -27,7 +27,7 @@ export const faqs: FAQItem[] = [
   },
   {
     question: "Which vehicles are available in your fleet?",
-    answer: "Our fully air-conditioned fleet includes budget hatchbacks (Toyota Glanza @ ₹10/km), sedans (Swift Dzire, Toyota Etios @ ₹11/km, with Ajmer–Pushkar drop at ₹700 and Ajmer–Jaipur at ₹1,999), 6-seater SUVs (Maruti Ertiga, Toyota Rumion @ ₹13/km, Kia Carens @ ₹14/km), luxury SUVs (Toyota Innova Crysta @ ₹18/km), luxury Force Urbania vans (outstation @ ₹35/km), and 13 to 27-seater Tempo Travellers (from ₹22/km).",
+    answer: "Our fully air-conditioned fleet includes budget hatchbacks (Toyota Glanza @ ₹10/km), sedans (Swift Dzire, Toyota Etios @ ₹11/km, with Ajmer–Pushkar drop at ₹700 and Ajmer–Jaipur at ₹1,999), 6-seater SUVs (Maruti Ertiga, Toyota Rumion @ ₹13/km, Kia Carens @ ₹14/km), luxury SUVs (Toyota Innova Crysta @ ₹18/km, Ajmer–Pushkar drop ₹1,800), 13 to 27-seater Tempo Travellers (Ajmer–Pushkar drop ₹3,500, Ajmer–Jaipur ₹10,500), and luxury Maharaja Force Urbania vans (Ajmer–Pushkar drop ₹4,500).",
     category: "General"
   },
   {

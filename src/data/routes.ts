@@ -2,6 +2,8 @@ export interface RoutePricing {
   sedanFare?: number;
   suvFare?: number;
   crystaFare?: number;
+  tempoFare?: number;
+  urbaniaFare?: number;
   startingPrice?: number;
   priceNote?: string;
 }
@@ -38,8 +40,9 @@ export const routes: RouteItem[] = [
       sedanFare: 1999,
       suvFare: 3000,
       crystaFare: 4500,
+      tempoFare: 10500,
       startingPrice: 1999,
-      priceNote: "Fixed all-inclusive fare: Dzire/Etios ₹1,999, Ertiga ₹3,000, Crysta ₹4,500"
+      priceNote: "Fixed all-inclusive fare: Dzire/Etios ₹1,999, Ertiga ₹3,000, Crysta ₹4,500, Tempo ₹10,500"
     },
     description: "Daily direct one-way and round-trip taxi service connecting Ajmer and the Pink City. Punctual doorstep pickup across Ajmer and Pushkar.",
     highlights: ["NH 48 expressway route", "Doorstep pickup & drop", "Clean AC cabs", "Verified fixed fares"]
@@ -79,9 +82,11 @@ export const routes: RouteItem[] = [
     pricing: {
       sedanFare: 700,
       suvFare: 1200,
-      crystaFare: 1500,
+      crystaFare: 1800,
+      tempoFare: 3500,
+      urbaniaFare: 4500,
       startingPrice: 700,
-      priceNote: "Fixed one-way drop: ₹700 (Swift Dzire / Toyota Etios)"
+      priceNote: "Fixed one-way drop: Dzire ₹700, Ertiga ₹1,200, Crysta ₹1,800, Tempo ₹3,500, Urbania ₹4,500"
     },
     description: "Scenic drive through the Nag Pahar hills connecting Ajmer Dargah with the holy town of Pushkar, Brahma Temple, and Pushkar Lake.",
     highlights: ["Brahma Temple & 52 Ghats", "Flexible wait time for darshan", "Desert safari drop options", "Same-day return available"]
@@ -242,9 +247,9 @@ export const routes: RouteItem[] = [
 ];
 
 export const popularCityDropList = [
-  { name: "Jaipur", distanceKm: 135, hasFixedFare: true, fixedSedan: 1999 },
+  { name: "Jaipur", distanceKm: 135, hasFixedFare: true, fixedSedan: 1999, fixedTempo: 10500 },
   { name: "Delhi IGI Airport", distanceKm: 390, hasFixedFare: true, fixedSedan: 5500 },
-  { name: "Pushkar", distanceKm: 15, hasFixedFare: true, fixedSedan: 700 },
+  { name: "Pushkar", distanceKm: 15, hasFixedFare: true, fixedSedan: 700, fixedCrysta: 1800, fixedTempo: 3500, fixedUrbania: 4500 },
   { name: "Sarwar Sharif", distanceKm: 62, hasFixedFare: true, fixedSedan: 2000 },
   { name: "Udaipur", distanceKm: 265, hasFixedFare: true, fixedSedan: 4500 },
   { name: "Jodhpur", distanceKm: 205, hasFixedFare: true, fixedSedan: 3500 },

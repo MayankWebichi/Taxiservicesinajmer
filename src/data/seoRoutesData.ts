@@ -28,11 +28,11 @@ export const seoRoutesData: SeoRouteItem[] = [
     "estimatedTime": "30-40 Mins",
     "sedanFare": 700,
     "suvFare": 1200,
-    "crystaFare": 1500,
+    "crystaFare": 1800,
     "highway": "Pushkar Ghati / Nagpahari Pass",
     "title": "Pushkar to Ajmer Taxi | Cab Fare ₹700 (Since 2008)",
-    "metaDescription": "Book verified Pushkar to Ajmer taxi from ₹700. 14 km drive in 30-40 Mins via Pushkar Ghati / Nagpahari Pass. AC Sedans (₹700), Ertiga (₹1,200) & Innova Crysta (₹1,500). Doorstep pickup 24/7.",
-    "heroSubtitle": "14 KM Highway Route via Pushkar Ghati / Nagpahari Pass • AC Sedan ₹700 • Ertiga ₹1,200 • Innova Crysta ₹1,500 • Punctual 24/7 Doorstep Service",
+    "metaDescription": "Book verified Pushkar to Ajmer taxi from ₹700. 14 km drive in 30-40 Mins via Pushkar Ghati / Nagpahari Pass. AC Sedans (₹700), Ertiga (₹1,200) & Innova Crysta (₹1,800). Doorstep pickup 24/7.",
+    "heroSubtitle": "14 KM Highway Route via Pushkar Ghati / Nagpahari Pass • AC Sedan ₹700 • Ertiga ₹1,200 • Innova Crysta ₹1,800 • Punctual 24/7 Doorstep Service",
     "routeHighlights": "Direct downhill drive via Pushkar Ghati connecting Pushkar lake with Ajmer city, Dargah and Railway Station.",
     "popularStops": [
       "Pushkar Doorstep Hotel & Station Pickup",
@@ -43,7 +43,7 @@ export const seoRoutesData: SeoRouteItem[] = [
     "faqs": [
       {
         "question": "What is the fixed taxi fare from Pushkar to Ajmer?",
-        "answer": "Our verified fares for Pushkar to Ajmer are: AC Sedan (Maruti Dzire / Toyota Etios) at ₹700; 6-Seater Maruti Ertiga at ₹1,200; and VIP Toyota Innova Crysta at ₹1,500. Fastag tolls are payable as per actuals."
+        "answer": "Our verified fares for Pushkar to Ajmer are: AC Sedan (Maruti Dzire / Toyota Etios) at ₹700; 6-Seater Maruti Ertiga at ₹1,200; and VIP Toyota Innova Crysta at ₹1,800. Fastag tolls are payable as per actuals."
       },
       {
         "question": "How long does it take by cab from Pushkar to Ajmer?",
@@ -67,11 +67,11 @@ export const seoRoutesData: SeoRouteItem[] = [
     "estimatedTime": "35 Mins",
     "sedanFare": 700,
     "suvFare": 1200,
-    "crystaFare": 1500,
+    "crystaFare": 1800,
     "highway": "Pushkar Ghati / Station Road",
     "title": "Pushkar to Ajmer Railway Station Taxi | Cab Fare ₹700 (Since 2008)",
-    "metaDescription": "Book verified Pushkar to Ajmer Railway Station taxi from ₹700. 15 km drive in 35 Mins via Pushkar Ghati / Station Road. AC Sedans (₹700), Ertiga (₹1,200) & Innova Crysta (₹1,500). Doorstep pickup 24/7.",
-    "heroSubtitle": "15 KM Highway Route via Pushkar Ghati / Station Road • AC Sedan ₹700 • Ertiga ₹1,200 • Innova Crysta ₹1,500 • Punctual 24/7 Doorstep Service",
+    "metaDescription": "Book verified Pushkar to Ajmer Railway Station taxi from ₹700. 15 km drive in 35 Mins via Pushkar Ghati / Station Road. AC Sedans (₹700), Ertiga (₹1,200) & Innova Crysta (₹1,800). Doorstep pickup 24/7.",
+    "heroSubtitle": "15 KM Highway Route via Pushkar Ghati / Station Road • AC Sedan ₹700 • Ertiga ₹1,200 • Innova Crysta ₹1,800 • Punctual 24/7 Doorstep Service",
     "routeHighlights": "Punctual doorstep pickup from Pushkar resorts/hostels with timed drop at Ajmer Junction for all major express trains.",
     "popularStops": [
       "Pushkar Doorstep Hotel & Station Pickup",
@@ -82,7 +82,7 @@ export const seoRoutesData: SeoRouteItem[] = [
     "faqs": [
       {
         "question": "What is the fixed taxi fare from Pushkar to Ajmer Railway Station?",
-        "answer": "Our verified fares for Pushkar to Ajmer Railway Station are: AC Sedan (Maruti Dzire / Toyota Etios) at ₹700; 6-Seater Maruti Ertiga at ₹1,200; and VIP Toyota Innova Crysta at ₹1,500. Fastag tolls are payable as per actuals."
+        "answer": "Our verified fares for Pushkar to Ajmer Railway Station are: AC Sedan (Maruti Dzire / Toyota Etios) at ₹700; 6-Seater Maruti Ertiga at ₹1,200; and VIP Toyota Innova Crysta at ₹1,800. Fastag tolls are payable as per actuals."
       },
       {
         "question": "How long does it take by cab from Pushkar to Ajmer Railway Station?",

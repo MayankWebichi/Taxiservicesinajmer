@@ -242,9 +242,9 @@ const whatsappUrl = createWhatsAppBookingUrl();
               <span class="veh-badge purple">VIP Ride</span>
             </div>
             <div class="item-pricing">
-              <div class="veh-mrp" id="hero-mrp-crysta">₹2,400</div>
+              <div class="veh-mrp" id="hero-mrp-crysta">₹2,500</div>
               <div class="veh-price-box">
-                <span class="veh-currency">₹</span><strong class="veh-amount" id="hero-price-crysta">1,500</strong>
+                <span class="veh-currency">₹</span><strong class="veh-amount" id="hero-price-crysta">1,800</strong>
                 <span class="veh-type" id="hero-type-crysta">Fixed Drop</span>
               </div>
             </div>
@@ -264,10 +264,10 @@ const whatsappUrl = createWhatsAppBookingUrl();
               <span class="veh-badge gold">Maharaja Recliner</span>
             </div>
             <div class="item-pricing">
-              <div class="veh-mrp" id="hero-mrp-urbania">₹4,800</div>
+              <div class="veh-mrp" id="hero-mrp-urbania">₹6,100</div>
               <div class="veh-price-box">
-                <span class="veh-currency">₹</span><strong class="veh-amount" id="hero-price-urbania">3,500</strong>
-                <span class="veh-type" id="hero-type-urbania">Direct Rate</span>
+                <span class="veh-currency">₹</span><strong class="veh-amount" id="hero-price-urbania">4,500</strong>
+                <span class="veh-type" id="hero-type-urbania">Fixed Drop</span>
               </div>
             </div>
             <a href="#" class="btn-hero-cab-book" id="hero-book-urbania" target="_blank" rel="noopener noreferrer">
@@ -1084,7 +1084,7 @@ const whatsappUrl = createWhatsAppBookingUrl();
   // ─── High-Accuracy Database of Coordinates & Verified Distances ───
   const CITY_CACHE = {
     "ajmer": { name: "Ajmer", lat: 26.4499, lng: 74.6399, distFromAjmer: 0, timeFromAjmer: "0 Mins", highway: "City Center" },
-    "pushkar": { name: "Pushkar", lat: 26.4899, lng: 74.5511, distFromAjmer: 14, timeFromAjmer: "30-40 Mins", highway: "Pushkar Ghati / Nagpahari Pass", fixedSedan: 700, fixedErtiga: 1200, fixedCrysta: 1500 },
+    "pushkar": { name: "Pushkar", lat: 26.4899, lng: 74.5511, distFromAjmer: 14, timeFromAjmer: "30-40 Mins", highway: "Pushkar Ghati / Nagpahari Pass", fixedSedan: 700, fixedErtiga: 1200, fixedCrysta: 1800, fixedUrbania: 4500 },
     "sarwar-sharif": { name: "Sarwar Sharif", lat: 26.0652, lng: 75.0062, distFromAjmer: 64, timeFromAjmer: "1.5 Hrs", highway: "NH 448 & Kekri Highway", fixedSedan: 2000, fixedErtiga: 2500, fixedCrysta: 3500 },
     "kishangarh-airport": { name: "Kishangarh Airport (KQH)", lat: 26.5985, lng: 74.8155, distFromAjmer: 28, timeFromAjmer: "40 Mins", highway: "NH 48 Jaipur Road", fixedSedan: 1000, fixedErtiga: 1500, fixedCrysta: 2000 },
     "kishangarh-dumping-yard": { name: "Kishangarh Marble Dumping Yard", lat: 26.5822, lng: 74.8624, distFromAjmer: 32, timeFromAjmer: "45 Mins", highway: "NH 48 Marble Zone", fixedSedan: 1200, fixedErtiga: 1800, fixedCrysta: 2400 },
@@ -1260,7 +1260,7 @@ const whatsappUrl = createWhatsAppBookingUrl();
     if (isRound && !isLocal) fareErtiga = Math.round(fareErtiga * 1.8);
 
     // Vehicle 3: Crysta
-    let fareCrysta = 1500;
+    let fareCrysta = 1800;
     if (isLocal) {
       fareCrysta = 3800;
     } else if (cityA.name === "Ajmer" && cityB.fixedCrysta) {
@@ -1273,11 +1273,15 @@ const whatsappUrl = createWhatsAppBookingUrl();
     if (isRound && !isLocal) fareCrysta = Math.round(fareCrysta * 1.8);
 
     // Vehicle 4: 13 Seater Maharaja Urbania
-    let fareUrbania = 3500;
+    let fareUrbania = 4500;
     if (isLocal) {
       fareUrbania = 5500;
+    } else if (cityA.name === "Ajmer" && cityB.fixedUrbania) {
+      fareUrbania = cityB.fixedUrbania;
+    } else if (cityB.name === "Ajmer" && cityA.fixedUrbania) {
+      fareUrbania = cityA.fixedUrbania;
     } else {
-      fareUrbania = Math.max(3500, distance * 35);
+      fareUrbania = Math.max(4500, distance * 35);
     }
     if (isRound && !isLocal) fareUrbania = Math.round(fareUrbania * 1.8);
 

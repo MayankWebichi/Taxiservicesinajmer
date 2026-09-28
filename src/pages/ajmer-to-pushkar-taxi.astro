@@ -10,9 +10,13 @@ import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
 import { generateServiceSchema } from "@/utils/seo";
 
 const pageTitle = "Ajmer to Pushkar Taxi | Cab Fare ₹700 (Since 2008)";
-const pageDescription = "Book Ajmer to Pushkar taxi from ₹700 (Maruti Swift Dzire & Toyota Etios). 14 km scenic hill drive via Pushkar Ghati. Brahma Temple, Holy Lake Ghats, and Desert Safari. 24/7 doorstep pickup.";
+const pageDescription = "Book Ajmer to Pushkar taxi from ₹700 (Swift Dzire / Etios), Innova Crysta ₹1,800, Tempo Traveller ₹3,500 & Force Urbania ₹4,500. 14 km scenic hill drive via Pushkar Ghati. 24/7 doorstep pickup.";
 
-const waTransfer = createWhatsAppBookingUrl({ pickup: "Ajmer Railway Station", destination: "Pushkar Hotel/Lake", vehicle: "Sedan Dzire/Etios (₹700 One-Way)" });
+const waSedan = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Pushkar", vehicle: "Sedan Dzire/Etios (₹700 One-Way)" });
+const waErtiga = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Pushkar", vehicle: "Maruti Ertiga (₹1,200 One-Way)" });
+const waCrysta = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Pushkar", vehicle: "Toyota Innova Crysta (₹1,800 One-Way Drop)" });
+const waTempo = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Pushkar", vehicle: "Tempo Traveller 13-17 Seater (₹3,500 One-Way Drop)" });
+const waUrbania = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Pushkar", vehicle: "Maharaja Force Urbania (₹4,500 One-Way Drop)" });
 const waTour = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Pushkar Sightseeing Tour", vehicle: "Sedan (₹1,500 Full Day)" });
 
 const serviceSchema = generateServiceSchema({
@@ -26,8 +30,8 @@ const serviceSchema = generateServiceSchema({
 
 const pushkarFaqs = [
   {
-    question: "What is the taxi fare from Ajmer Railway Station to Pushkar?",
-    answer: "One-way sedan transfer (Maruti Swift Dzire / Toyota Etios) from Ajmer Railway Station or any hotel to Pushkar starts at ₹700. For complete half-day or full-day sightseeing packages, rates start at ₹1,500 for a sedan.",
+    question: "What is the taxi fare from Ajmer Railway Station or hotels to Pushkar?",
+    answer: "Our verified one-way drop fares are: AC Sedan (Maruti Swift Dzire / Toyota Etios) at ₹700; Maruti Ertiga (6-Seater) at ₹1,200; VIP Toyota Innova Crysta at ₹1,800; Tempo Traveller (13–17 Seater) at ₹3,500; and Maharaja Force Urbania (13–17 Seater) at ₹4,500. Full-day Pushkar sightseeing starts at ₹1,500.",
     category: "Pricing" as const
   },
   {
@@ -51,7 +55,7 @@ const pushkarFaqs = [
       <div class="container text-center">
         <span class="heritage-pill">Sacred Pilgrimage Gateway</span>
         <h1 class="route-title">Ajmer to Pushkar Taxi Service</h1>
-        <p class="route-subtitle">14 km Scenic Drive via Pushkar Ghati • One-Way Drop ₹700 (Dzire / Etios) • Full Day Tour ₹1,500</p>
+        <p class="route-subtitle">14 km Scenic Drive via Pushkar Ghati • Dzire ₹700 • Ertiga ₹1,200 • Crysta ₹1,800 • Tempo ₹3,500 • Urbania ₹4,500</p>
       </div>
     </section>
 
@@ -68,19 +72,59 @@ const pushkarFaqs = [
               Located just 14 km northwest of Ajmer, traveling by private AC taxi through the picturesque winding roads of <strong>Pushkar Ghati</strong> offers a tranquil and scenic transition from the bustling city of Ajmer to the serene desert oasis of Pushkar.
             </p>
 
-            <h3 class="tier-heading">Pushkar Cab Options</h3>
+            <h3 class="tier-heading">Verified Ajmer to Pushkar Cab Rates</h3>
             <div class="pricing-cards-row">
               <div class="p-card">
-                <span class="p-type">One-Way Transfer</span>
-                <h4 class="p-car">Sedan Drop (Dzire / Etios)</h4>
-                <div class="p-fare">₹700 <small>one-way</small></div>
-                <p>Doorstep pickup from Ajmer Station or hotel and direct drop at any Pushkar resort or ghat in Swift Dzire or Toyota Etios.</p>
-                <a href={waTransfer} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">
-                  Book Drop @ ₹700
+                <span class="p-type">Budget Sedan</span>
+                <h4 class="p-car">Maruti Dzire / Etios</h4>
+                <div class="p-fare">₹700 <small>one-way drop</small></div>
+                <p>4 Seats • 2 Bags • Chilled AC. Direct drop at any Pushkar hotel, resort, or ghat.</p>
+                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">
+                  Book Sedan @ ₹700
+                </a>
+              </div>
+
+              <div class="p-card">
+                <span class="p-type">Family 6-Seater</span>
+                <h4 class="p-car">Maruti Ertiga</h4>
+                <div class="p-fare">₹1,200 <small>one-way drop</small></div>
+                <p>6 Seats • 4 Bags • Dual AC. Spacious legroom for families and luggage.</p>
+                <a href={waErtiga} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">
+                  Book Ertiga @ ₹1,200
+                </a>
+              </div>
+
+              <div class="p-card">
+                <span class="p-type">VIP Premium SUV</span>
+                <h4 class="p-car">Toyota Innova Crysta</h4>
+                <div class="p-fare">₹1,800 <small>one-way drop</small></div>
+                <p>7 Seats • 5 Bags • Reclining Captain Seats. Supreme comfort &amp; executive suspension.</p>
+                <a href={waCrysta} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">
+                  Book Crysta @ ₹1,800
+                </a>
+              </div>
+
+              <div class="p-card">
+                <span class="p-type">Group Pilgrimage</span>
+                <h4 class="p-car">Tempo Traveller (13–17)</h4>
+                <div class="p-fare">₹3,500 <small>one-way drop</small></div>
+                <p>13-17 Seats • 10+ Bags • High-Cool AC. Best for pilgrim groups, joint families &amp; yatris.</p>
+                <a href={waTempo} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">
+                  Book Tempo @ ₹3,500
                 </a>
               </div>
 
               <div class="p-card featured-p-card">
+                <span class="p-type gold">Ultra Luxury Van</span>
+                <h4 class="p-car">Maharaja Force Urbania</h4>
+                <div class="p-fare">₹4,500 <small>one-way drop</small></div>
+                <p>13-17 Seats • Pushback Maharaja Recliners • Individual AC Vents • Royal Wedding Standard.</p>
+                <a href={waUrbania} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm p-btn">
+                  Book Urbania @ ₹4,500
+                </a>
+              </div>
+
+              <div class="p-card">
                 <span class="p-type gold">Complete Day Tour</span>
                 <h4 class="p-car">Pushkar Sightseeing</h4>
                 <div class="p-fare">₹1,500 <small>full day</small></div>
@@ -105,13 +149,25 @@ const pushkarFaqs = [
                   <span class="s-val">30 - 40 Mins</span>
                 </div>
                 <div class="side-item">
-                  <span class="s-label">Drop Fare:</span>
-                  <span class="s-val gold-text">₹700 (Dzire / Etios)</span>
+                  <span class="s-label">Sedan Drop:</span>
+                  <span class="s-val gold-text">₹700</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Crysta Drop:</span>
+                  <span class="s-val gold-text">₹1,800</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Tempo Drop:</span>
+                  <span class="s-val gold-text">₹3,500</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Urbania Drop:</span>
+                  <span class="s-val gold-text">₹4,500</span>
                 </div>
               </div>
 
               <div class="side-actions">
-                <a href={waTransfer} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm full-w">
+                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm full-w">
                   Book on WhatsApp
                 </a>
                 <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn--sm full-w">
@@ -307,6 +363,12 @@ const pushkarFaqs = [
 
   @media (max-width: 992px) {
     .route-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .pricing-cards-row {
       grid-template-columns: 1fr;
     }
   }

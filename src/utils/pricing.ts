@@ -33,8 +33,9 @@ export function calculateRouteFare(
     let fixed = 700; // Swift Dzire / Toyota Etios Sedan
     if (vehicle.id === "swift-dzire" || vehicle.id === "toyota-etios" || vehicle.category === "Sedan" || vehicle.category === "Hatchback") fixed = 700;
     else if (vehicle.id === "maruti-ertiga" || vehicle.id === "toyota-rumion") fixed = 1200;
-    else if (vehicle.id === "toyota-innova-crysta") fixed = 1500;
-    else if (vehicle.category === "Tempo Traveller") fixed = 2500;
+    else if (vehicle.id === "toyota-innova-crysta") fixed = 1800;
+    else if (vehicle.id.includes("urbania")) fixed = 4500;
+    else if (vehicle.category === "Tempo Traveller") fixed = 3500;
     else fixed = 700;
 
     return {
@@ -44,7 +45,7 @@ export function calculateRouteFare(
       distanceKm: 15,
       vehicleName: vehicle.name,
       tripType,
-      notes: "Fixed verified one-way drop fare for Ajmer–Pushkar route (Swift Dzire / Toyota Etios ₹700)."
+      notes: "Fixed verified one-way drop fare for Ajmer–Pushkar route (Dzire ₹700, Ertiga ₹1,200, Crysta ₹1,800, Tempo ₹3,500, Urbania ₹4,500)."
     };
   }
 
@@ -59,6 +60,7 @@ export function calculateRouteFare(
     else if (vehicle.id === "swift-dzire" || vehicle.id === "toyota-etios") fixed = 1999;
     else if (vehicle.id === "maruti-ertiga" || vehicle.id === "toyota-rumion") fixed = 3000;
     else if (vehicle.id === "toyota-innova-crysta") fixed = 4500;
+    else if (vehicle.category === "Tempo Traveller") fixed = 10500;
     else fixed = 135 * vehicle.ratePerKm;
 
     return {
@@ -68,7 +70,7 @@ export function calculateRouteFare(
       distanceKm: 135,
       vehicleName: vehicle.name,
       tripType,
-      notes: "Fixed verified fare for Ajmer–Jaipur route (Dzire/Etios ₹1,999, Ertiga ₹3,000, Crysta ₹4,500). Toll/parking extra."
+      notes: "Fixed verified fare for Ajmer–Jaipur route (Dzire/Etios ₹1,999, Ertiga ₹3,000, Crysta ₹4,500, Tempo Traveller ₹10,500). Toll/parking extra."
     };
   }
 

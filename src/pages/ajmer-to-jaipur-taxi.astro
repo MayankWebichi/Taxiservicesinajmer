@@ -15,6 +15,7 @@ const pageDescription = "Book verified Ajmer to Jaipur one-way taxi from ₹1,99
 const waSedan = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jaipur", vehicle: "Maruti Dzire / Toyota Etios (₹1,999 Fixed)" });
 const waErtiga = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jaipur", vehicle: "Maruti Ertiga (₹3,000 Fixed)" });
 const waInnova = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jaipur", vehicle: "Toyota Innova Crysta (₹4,500 Fixed)" });
+const waTempo  = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jaipur", vehicle: "Tempo Traveller 13-17 Seater (₹10,500 Fixed)" });
 
 const serviceSchema = generateServiceSchema({
   name: "Ajmer to Jaipur Taxi Service",
@@ -28,7 +29,7 @@ const serviceSchema = generateServiceSchema({
 const jaipurFaqs = [
   {
     question: "What is the fixed fare for an Ajmer to Jaipur taxi?",
-    answer: "Our verified one-way fixed fares are: Maruti Dzire / Toyota Etios Sedan at ₹1,999; Maruti Ertiga at ₹3,000; and Toyota Innova Crysta at ₹4,500. Toll taxes are payable as per actual FASTag receipts.",
+    answer: "Our verified one-way fixed fares are: Maruti Dzire / Toyota Etios Sedan at ₹1,999; Maruti Ertiga at ₹3,000; Toyota Innova Crysta at ₹4,500; and Tempo Traveller (13–17 Seater) at ₹10,500. Toll taxes are payable as per actual FASTag receipts.",
     category: "Pricing" as const
   },
   {
@@ -64,6 +65,7 @@ const jaipurFaqs = [
           <div class="h-pill">Dzire / Etios: <strong>₹1,999</strong></div>
           <div class="h-pill">Ertiga 6-Seater: <strong>₹3,000</strong></div>
           <div class="h-pill">Innova Crysta: <strong>₹4,500</strong></div>
+          <div class="h-pill">Tempo Traveller: <strong>₹10,500</strong></div>
         </div>
       </div>
     </section>
@@ -129,6 +131,21 @@ const jaipurFaqs = [
                   Book Crysta @ ₹4,500
                 </a>
               </div>
+
+              <div class="p-card">
+                <span class="p-type">Group Coach</span>
+                <h4 class="p-car">Tempo Traveller (13–17)</h4>
+                <div class="p-fare">₹10,500 <small>one-way</small></div>
+                <ul class="p-features">
+                  <li>✓ 13–17 Pushback Seats</li>
+                  <li>✓ 10+ Large Bags</li>
+                  <li>✓ Dual Powerful AC</li>
+                  <li>✓ Ideal for Weddings &amp; Tours</li>
+                </ul>
+                <a href={waTempo} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">
+                  Book Tempo @ ₹10,500
+                </a>
+              </div>
             </div>
 
             <!-- Route Details & Itinerary Notes -->
@@ -170,6 +187,14 @@ const jaipurFaqs = [
                 <div class="side-item">
                   <span class="s-label">Starting Price:</span>
                   <span class="s-val gold-text">₹1,999 (Sedan)</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Innova Crysta:</span>
+                  <span class="s-val gold-text">₹4,500</span>
+                </div>
+                <div class="side-item">
+                  <span class="s-label">Tempo Traveller:</span>
+                  <span class="s-val gold-text">₹10,500</span>
                 </div>
               </div>
 
@@ -277,7 +302,7 @@ const jaipurFaqs = [
 
   .pricing-cards-row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-md);
     margin-bottom: var(--space-2xl);
   }
