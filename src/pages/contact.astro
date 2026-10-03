@@ -26,6 +26,19 @@ const waUrl = createWhatsAppBookingUrl();
 
     <section class="contact-section">
       <div class="container">
+
+        <!-- Mobile Direct Contact Bar -->
+        <div class="contact-quick-actions">
+          <a href={`tel:${business.phone}`} class="c-quick-btn c-quick-btn--call">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            <span>Call 24/7 Hotline</span>
+          </a>
+          <a href={waUrl} target="_blank" rel="noopener noreferrer" class="c-quick-btn c-quick-btn--wa">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.288.043.088.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.2.662.589 1.221.77 1.394.856.173.086.275.073.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.043.072.043.419-.101.824z"/></svg>
+            <span>WhatsApp Dispatch</span>
+          </a>
+        </div>
+
         <div class="contact-grid">
           <!-- Office Info Column -->
           <div class="contact-info-col">
@@ -86,6 +99,10 @@ const waUrl = createWhatsAppBookingUrl();
           <!-- Quick WhatsApp Inquiry Box -->
           <div class="contact-form-col">
             <div class="inquiry-form-card">
+              <div class="form-header-badge">
+                <span class="pulse-dot"></span>
+                <span>Direct Fleet Dispatch</span>
+              </div>
               <h3 class="form-title">Send a Quick Cab Inquiry</h3>
               <p class="form-sub">Fill this quick form to connect with our dispatch team on WhatsApp.</p>
 
@@ -116,9 +133,10 @@ const waUrl = createWhatsAppBookingUrl();
                   <textarea id="c-details-text" class="form-control" rows="3" placeholder="e.g. Pickup from Ajmer Station at 10 AM, drop to Jaipur"></textarea>
                 </div>
 
-                <button type="button" id="btn-contact-wa" class="btn btn--gold btn--lg btn-full">
+                <button type="button" id="btn-contact-wa" class="btn-contact-wa-submit">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.288.043.088.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.2.662.589 1.221.77 1.394.856.173.086.275.073.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.043.072.043.419-.101.824z"/></svg>
-                  Inquire on WhatsApp
+                  <span>Inquire on WhatsApp</span>
+                  <span class="btn-arr">&rarr;</span>
                 </button>
               </form>
             </div>
@@ -127,7 +145,15 @@ const waUrl = createWhatsAppBookingUrl();
 
         <!-- Google Map Section -->
         <div class="map-container">
-          <h3 class="map-title">Our Service Area — Ajmer &amp; Pushkar</h3>
+          <div class="map-header">
+            <div>
+              <h3 class="map-title">Our Service Area — Ajmer &amp; Pushkar</h3>
+              <p class="map-sub">Doorstep pickup available across all railway stations, hotels, dargah zones, and residential sectors.</p>
+            </div>
+            <a href="https://maps.google.com/?q=Ajmer,Rajasthan" target="_blank" rel="noopener noreferrer" class="map-external-link">
+              Open in Google Maps &rarr;
+            </a>
+          </div>
           <div class="map-responsive">
             <iframe 
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57134.99042296497!2d74.597645!3d26.449895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be6d8fcb7cd01%3A0xc3b8606416f5cffc!2sAjmer%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
@@ -182,7 +208,7 @@ Please reply with availability and quote.`;
   .page-banner {
     background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
     color: #FFFFFF;
-    padding: calc(var(--header-height, 74px) + 38px) 0 36px;
+    padding: calc(var(--header-height, 74px) + 24px) 0 28px;
     border-bottom: 3px solid var(--color-accent);
   }
 
@@ -191,77 +217,148 @@ Please reply with availability and quote.`;
     background: rgba(197, 155, 39, 0.2);
     border: 1px solid var(--color-accent);
     color: var(--color-accent-light);
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    padding: 4px 14px;
+    padding: 3px 12px;
     border-radius: var(--radius-full);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   .page-title {
     font-family: var(--font-heading);
-    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
     color: #FFFFFF;
     margin-bottom: 6px;
+    line-height: 1.2;
   }
 
   .page-subtitle {
-    font-size: 1.125rem;
+    font-size: clamp(0.9375rem, 2vw, 1.0625rem);
     color: rgba(255, 255, 255, 0.9);
     max-width: 650px;
     margin: 0 auto;
+    line-height: 1.5;
   }
 
   .contact-section {
-    padding: var(--space-4xl) 0;
+    padding: var(--space-xl) 0 var(--space-3xl);
     background: #FFFFFF;
   }
 
+  /* Quick Mobile Action Bar */
+  .contact-quick-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .c-quick-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-decoration: none;
+    min-height: 48px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .c-quick-btn:active {
+    transform: scale(0.98);
+  }
+
+  .c-quick-btn--call {
+    background: var(--color-primary);
+    color: #FFFFFF;
+  }
+
+  .c-quick-btn--call:hover {
+    background: var(--color-primary-dark);
+    color: #FFFFFF;
+  }
+
+  .c-quick-btn--wa {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFFFFF;
+  }
+
+  .c-quick-btn--wa:hover {
+    filter: brightness(1.05);
+    color: #FFFFFF;
+  }
+
+  @media (min-width: 769px) {
+    .contact-quick-actions {
+      display: none;
+    }
+  }
+
+  /* Contact Main Layout */
   .contact-grid {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: var(--space-3xl);
-    margin-bottom: var(--space-3xl);
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+  }
+
+  @media (min-width: 992px) {
+    .contact-grid {
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: var(--space-3xl);
+      margin-bottom: var(--space-3xl);
+    }
   }
 
   .contact-heading {
     font-family: var(--font-heading);
-    font-size: 1.75rem;
+    font-size: clamp(1.4rem, 2.8vw, 1.85rem);
     color: var(--color-primary);
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-xs);
+    line-height: 1.25;
   }
 
   .contact-lead {
     color: var(--color-text-muted);
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: var(--space-xl);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    margin-bottom: var(--space-lg);
   }
 
   .contact-cards-list {
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: var(--space-sm);
   }
 
   .c-card {
     display: flex;
     align-items: flex-start;
-    gap: var(--space-md);
+    gap: 12px;
     background: var(--color-cream);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    padding: var(--space-md) var(--space-lg);
+    padding: 14px 16px;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .c-card:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 12px rgba(90, 12, 26, 0.06);
   }
 
   .c-icon {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     background: #FFFFFF;
     border: 1px solid var(--color-border);
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
@@ -269,18 +366,25 @@ Please reply with availability and quote.`;
     flex-shrink: 0;
   }
 
+  .c-details {
+    min-width: 0; /* Prevents overflow in flex children */
+    flex: 1;
+  }
+
   .c-details h4 {
     font-family: var(--font-heading);
-    font-size: 1.125rem;
+    font-size: 1rem;
     color: var(--color-primary);
     margin-bottom: 2px;
+    font-weight: 700;
   }
 
   .c-details address {
     font-style: normal;
     color: var(--color-text);
-    font-size: 0.9375rem;
-    line-height: 1.5;
+    font-size: 0.875rem;
+    line-height: 1.45;
+    word-break: break-word;
   }
 
   .c-details p {
@@ -288,86 +392,254 @@ Please reply with availability and quote.`;
   }
 
   .c-subtext {
-    font-size: 0.8125rem;
+    font-size: 0.775rem;
     color: var(--color-text-muted);
     display: block;
-    margin-top: 2px;
+    margin-top: 3px;
+    line-height: 1.35;
   }
 
   .highlight-link {
     color: var(--color-primary);
     font-weight: 700;
-    font-size: 1.125rem;
+    font-size: 1.05rem;
     text-decoration: underline;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    transition: color var(--transition-fast);
   }
 
+  .highlight-link:hover {
+    color: var(--color-accent-dark);
+  }
+
+  /* Form Card */
   .inquiry-form-card {
     background: #FFFFFF;
-    border: 2px solid var(--color-border);
+    border: 1.5px solid var(--color-border);
     border-radius: var(--radius-xl);
-    padding: var(--space-2xl);
-    box-shadow: 0 8px 24px rgba(34, 24, 28, 0.08);
+    padding: 18px 16px;
+    box-shadow: 0 6px 20px rgba(34, 24, 28, 0.06);
+  }
+
+  @media (min-width: 640px) {
+    .inquiry-form-card {
+      padding: var(--space-xl);
+    }
+  }
+
+  @media (min-width: 992px) {
+    .inquiry-form-card {
+      padding: var(--space-2xl);
+    }
+  }
+
+  .form-header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(90, 12, 26, 0.08);
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    margin-bottom: 12px;
+  }
+
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 0 rgba(34, 197, 94, 0.4);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    }
   }
 
   .form-title {
     font-family: var(--font-heading);
-    font-size: 1.375rem;
+    font-size: 1.25rem;
     color: var(--color-primary);
     margin-bottom: 4px;
+    line-height: 1.3;
   }
 
   .form-sub {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     color: var(--color-text-muted);
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-md);
+    line-height: 1.45;
   }
 
   .inquiry-form {
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: 12px;
   }
 
   .form-field {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 5px;
   }
 
   .form-field label {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     font-weight: 600;
     color: var(--color-text);
   }
 
-  .btn-full {
+  .form-control {
+    font-size: 16px; /* Prevents auto-zoom on iOS Safari */
+    min-height: 44px;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 8px 12px;
+    color: var(--color-text);
+    background: var(--color-cream);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    font-family: inherit;
     width: 100%;
-    margin-top: var(--space-xs);
+    box-sizing: border-box;
   }
 
+  .form-control:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(90, 12, 26, 0.12);
+    background: #FFFFFF;
+  }
+
+  textarea.form-control {
+    min-height: 80px;
+    resize: vertical;
+  }
+
+  .btn-contact-wa-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 48px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    margin-top: 6px;
+    padding: 10px 16px;
+  }
+
+  .btn-contact-wa-submit:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
+  }
+
+  .btn-contact-wa-submit:active {
+    transform: scale(0.98);
+  }
+
+  .btn-arr {
+    font-size: 1.1rem;
+    transition: transform var(--transition-fast);
+  }
+
+  .btn-contact-wa-submit:hover .btn-arr {
+    transform: translateX(4px);
+  }
+
+  /* Map Container */
   .map-container {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    padding: var(--space-xl);
+    padding: 16px;
     border-radius: var(--radius-xl);
+  }
+
+  @media (min-width: 640px) {
+    .map-container {
+      padding: var(--space-xl);
+    }
+  }
+
+  .map-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: var(--space-md);
+  }
+
+  @media (min-width: 640px) {
+    .map-header {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
   }
 
   .map-title {
     font-family: var(--font-heading);
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     color: var(--color-primary);
-    margin-bottom: var(--space-md);
+    margin-bottom: 4px;
+  }
+
+  .map-sub {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .map-external-link {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: underline;
+    white-space: nowrap;
+    display: inline-block;
   }
 
   .map-responsive {
     overflow: hidden;
     border-radius: var(--radius-lg);
     border: 1px solid var(--color-border);
+    height: 260px;
   }
 
-  @media (max-width: 992px) {
-    .contact-grid {
-      grid-template-columns: 1fr;
+  @media (min-width: 640px) {
+    .map-responsive {
+      height: 320px;
     }
+  }
+
+  @media (min-width: 992px) {
+    .map-responsive {
+      height: 380px;
+    }
+  }
+
+  .map-responsive iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
   }
 </style>
