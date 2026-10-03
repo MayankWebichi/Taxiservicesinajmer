@@ -1508,21 +1508,28 @@ const calcSchema = {
     margin-bottom: 12px;
   }
   .btn-book-cab {
-    background: #25D366;
-    color: #FFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFF !important;
     font-weight: 800;
-    font-size: 0.95rem;
-    padding: 10px 22px;
+    font-size: 0.925rem;
+    padding: 10px 20px;
     border-radius: var(--radius-md);
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-    transition: all 0.2s;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+    transition: all 0.2s ease;
     width: 100%;
     text-align: center;
+    min-height: 44px;
   }
   .btn-book-cab:hover {
-    background: #1eb855;
+    background: linear-gradient(135deg, #22C55E 0%, #0F766E 100%);
     transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
+    color: #FFF !important;
   }
 
   /* ─── Comparison Table Section ─── */

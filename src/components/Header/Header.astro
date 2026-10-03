@@ -69,7 +69,7 @@ const isServiceActive = servicesList.some(s => currentPath === s.href || current
 // Primary Desktop Nav Links
 const desktopNav = [
   { label: "Home", href: "/", isActive: currentPath === "/" },
-  { label: "Services", href: "#services-dropdown", isDropdown: true, isActive: isServiceActive },
+  { label: "Services", href: "/#services-section", isDropdown: true, isActive: isServiceActive },
   { label: "Tour Packages", href: "/tours/", isActive: currentPath.startsWith("/tours") },
   { label: "Taxi Fare Calculator", href: "/fare-calculator/", isActive: currentPath.startsWith("/fare-calculator") },
   { label: "About", href: "/about/", isActive: currentPath.startsWith("/about") },
@@ -80,6 +80,7 @@ const desktopNav = [
 // All links for Mobile Drawer
 const mobileLinks = [
   { label: "Home", href: "/" },
+  { label: "All Taxi Services (Local & Outstation)", href: "/#services-section" },
   { label: "Taxi Fare & Route Calculator", href: "/fare-calculator/" },
   { label: "Tour Packages (Rajasthan)", href: "/tours/" },
   { label: "Wedding Logistics", href: "/wedding-logistics/" },
@@ -113,50 +114,67 @@ const whatsappUrl = createWhatsAppBookingUrl();
         {desktopNav.map((link) => (
           <li class={`nav-item ${link.isDropdown ? "nav-item--dropdown" : ""} ${link.isActive ? "is-active" : ""}`} id={link.isDropdown ? "services-nav-container" : undefined}>
             {link.isDropdown ? (
-              <button 
-                type="button" 
-                class="nav-link nav-dropdown-trigger" 
-                id="services-dropdown-btn"
-                aria-expanded="false" 
-                aria-haspopup="true"
-                aria-controls="services-dropdown-menu"
-              >
-                <span>Services</span>
-                <svg class="dropdown-arrow" width="13" height="13" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                </svg>
-              </button>
+              <div class="nav-dropdown-wrapper">
+                <a 
+                  href="/#services-section" 
+                  class="nav-link nav-dropdown-link" 
+                  id="services-nav-link"
+                  aria-haspopup="true"
+                >
+                  <span>Services</span>
+                </a>
+                <button 
+                  type="button" 
+                  class="nav-dropdown-toggle-btn" 
+                  id="services-dropdown-btn"
+                  aria-expanded="false" 
+                  aria-label="Toggle Services Dropdown Menu"
+                  aria-controls="services-dropdown-menu"
+                >
+                  <svg class="dropdown-arrow" width="13" height="13" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                  </svg>
+                </button>
+              </div>
               
               <!-- Mega Dropdown Menu -->
               <div class="services-dropdown-menu" id="services-dropdown-menu" role="menu" aria-label="Taxi Services Menu">
-                <div class="dropdown-header">
-                  <span class="dropdown-badge">Ajmer Chauffeur Services</span>
-                  <span class="dropdown-tagline">Clean AC Cabs &bull; Verified Drivers &bull; Since 2008</span>
-                </div>
-                <div class="dropdown-grid">
-                  {servicesList.map((s) => (
-                    <a href={s.href} class="dropdown-item" role="menuitem">
-                      <div class="item-icon-box">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d={s.icon}></path>
-                        </svg>
-                      </div>
-                      <div class="item-body">
-                        <div class="item-top">
-                          <strong class="item-title">{s.title}</strong>
-                          <span class="item-tag">{s.tag}</span>
-                        </div>
-                        <p class="item-desc">{s.desc}</p>
-                      </div>
+                <div class="services-dropdown-panel">
+                  <div class="dropdown-header">
+                    <div class="dropdown-header-titles">
+                      <span class="dropdown-badge">Ajmer Chauffeur Services</span>
+                      <span class="dropdown-tagline">Clean AC Cabs &bull; Verified Drivers &bull; Since 2008</span>
+                    </div>
+                    <a href="/#services-section" class="dropdown-header-view-all" id="dropdown-header-view-all">
+                      <span>Services Section</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="7 13 12 18 17 13"></polyline><line x1="12" y1="6" x2="12" y2="18"></line></svg>
                     </a>
-                  ))}
-                </div>
-                <div class="dropdown-footer">
-                  <span class="footer-note">Looking for custom round-trip or wedding packages?</span>
-                  <a href={`tel:${business.phone}`} class="footer-call">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-                    Call {business.phoneFormatted}
-                  </a>
+                  </div>
+                  <div class="dropdown-grid">
+                    {servicesList.map((s) => (
+                      <a href={s.href} class="dropdown-item" role="menuitem">
+                        <div class="item-icon-box">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d={s.icon}></path>
+                          </svg>
+                        </div>
+                        <div class="item-body">
+                          <div class="item-top">
+                            <strong class="item-title">{s.title}</strong>
+                            <span class="item-tag">{s.tag}</span>
+                          </div>
+                          <p class="item-desc">{s.desc}</p>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                  <div class="dropdown-footer">
+                    <span class="footer-note">Looking for custom round-trip or wedding packages?</span>
+                    <a href={`tel:${business.phone}`} class="footer-call">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                      Call {business.phoneFormatted}
+                    </a>
+                  </div>
                 </div>
               </div>
             ) : (
@@ -408,8 +426,8 @@ const whatsappUrl = createWhatsAppBookingUrl();
   }
 
   .dropdown-arrow {
-    transition: transform 0.2s ease;
-    opacity: 0.7;
+    transition: transform 0.22s ease;
+    opacity: 0.75;
   }
 
   .nav-item--dropdown:hover .dropdown-arrow,
@@ -419,34 +437,64 @@ const whatsappUrl = createWhatsAppBookingUrl();
     color: #C59B27;
   }
 
-  /* ─── Mega Dropdown Menu (Optimized for Desktop) ─── */
+  /* Nav Dropdown Wrapper */
+  .nav-dropdown-wrapper {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 8px;
+    transition: background 0.18s ease;
+  }
+
+  .nav-dropdown-wrapper:hover,
+  .nav-item--dropdown:hover .nav-dropdown-wrapper,
+  .nav-item--dropdown.is-open .nav-dropdown-wrapper {
+    background: rgba(90, 12, 26, 0.05);
+  }
+
+  .nav-dropdown-link {
+    padding-right: 2px !important;
+  }
+
+  .nav-dropdown-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 8px 8px 2px;
+    background: transparent;
+    border: none;
+    color: #4B5563;
+    cursor: pointer;
+    border-radius: 0 8px 8px 0;
+    transition: color 0.18s ease;
+  }
+
+  .nav-dropdown-wrapper:hover .nav-dropdown-toggle-btn,
+  .nav-dropdown-wrapper:hover .nav-dropdown-link {
+    color: #5A0C1A;
+  }
+
+  /* ─── Mega Dropdown Menu (Continuous Hover Zone, Zero Flicker) ─── */
   .services-dropdown-menu {
     position: absolute;
-    top: calc(100% + 6px);
-    left: 0;
-    width: 630px;
-    max-width: min(630px, calc(100vw - 32px));
+    top: 100%;
+    left: -20px;
+    padding-top: 10px; /* Safe continuous hover bridge */
+    width: 660px;
+    max-width: min(660px, calc(100vw - 32px));
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(6px);
+    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s;
+    z-index: 10005;
+  }
+
+  .services-dropdown-panel {
     background: #FFFFFF;
     border-radius: 16px;
     border: 1px solid rgba(197, 155, 39, 0.35);
     box-shadow: 0 24px 54px rgba(34, 24, 28, 0.18), 0 4px 16px rgba(0, 0, 0, 0.06);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(8px);
-    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s;
     overflow: hidden;
-    z-index: 10000;
-  }
-
-  /* Generous hover bridge prevents accidental closing when moving cursor */
-  .services-dropdown-menu::before {
-    content: '';
-    position: absolute;
-    top: -14px;
-    left: 0;
-    right: 0;
-    height: 14px;
   }
 
   .nav-item--dropdown:hover .services-dropdown-menu,
@@ -465,6 +513,13 @@ const whatsappUrl = createWhatsAppBookingUrl();
     align-items: center;
     justify-content: space-between;
     border-bottom: 2px solid #C59B27;
+    gap: 12px;
+  }
+
+  .dropdown-header-titles {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
   }
 
   .dropdown-badge {
@@ -479,6 +534,29 @@ const whatsappUrl = createWhatsAppBookingUrl();
   .dropdown-tagline {
     color: rgba(255, 255, 255, 0.85);
     font-size: 0.75rem;
+  }
+
+  .dropdown-header-view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(197, 155, 39, 0.22);
+    border: 1px solid rgba(197, 155, 39, 0.6);
+    color: #F5D278;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.18s ease;
+  }
+
+  .dropdown-header-view-all:hover {
+    background: #C59B27;
+    color: #2E050D;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(197, 155, 39, 0.35);
   }
 
   .dropdown-grid {
@@ -1028,10 +1106,33 @@ const whatsappUrl = createWhatsAppBookingUrl();
       link.addEventListener("click", closeMenu);
     });
 
-    // Desktop Services Dropdown click/keyboard toggle
-    const dropdownBtn = document.getElementById("services-dropdown-btn");
+    // Smooth scroll for Services nav link when already on home page
+    const servicesLink = document.getElementById("services-nav-link");
+    const dropdownHeaderLink = document.getElementById("dropdown-header-view-all");
     const dropdownContainer = document.getElementById("services-nav-container");
+    const dropdownBtn = document.getElementById("services-dropdown-btn");
 
+    function handleServicesClick(e: Event) {
+      const isHome = window.location.pathname === "/" || window.location.pathname === "" || window.location.pathname.endsWith("/index.html");
+      if (isHome) {
+        const target = document.getElementById("services-section");
+        if (target) {
+          e.preventDefault();
+          dropdownContainer?.classList.remove("is-open");
+          dropdownBtn?.setAttribute("aria-expanded", "false");
+          const header = document.getElementById("site-header");
+          const headerHeight = header ? header.offsetHeight : 72;
+          const topPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 16;
+          window.scrollTo({ top: topPos, behavior: "smooth" });
+          history.pushState(null, "", "#services-section");
+        }
+      }
+    }
+
+    servicesLink?.addEventListener("click", handleServicesClick);
+    dropdownHeaderLink?.addEventListener("click", handleServicesClick);
+
+    // Desktop Services Dropdown click/keyboard toggle
     dropdownBtn?.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();

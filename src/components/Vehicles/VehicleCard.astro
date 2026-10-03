@@ -310,4 +310,13 @@ const whatsappUrl = createWhatsAppBookingUrl({ vehicle: vehicle.name });
   .action-call {
     padding: 8px 12px;
   }
+
+  @media (max-width: 380px) {
+    .card-actions {
+      flex-direction: column;
+    }
+    .action-call {
+      justify-content: center;
+    }
+  }
 </style>

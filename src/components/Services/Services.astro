@@ -71,6 +71,7 @@ const displayServices = limit ? services.slice(0, limit) : services;
   .services-section {
     padding: clamp(36px, 5vw, 56px) 0;
     background-color: var(--color-surface);
+    scroll-margin-top: calc(var(--header-height, 72px) + 20px);
   }
 
   @media (max-width: 900px) {

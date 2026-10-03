@@ -189,89 +189,153 @@ const whatsappUrl = createWhatsAppBookingUrl();
           
           <!-- Sedan: Dzire / Etios -->
           <div class="hero-cab-item" data-veh="sedan">
+            <div class="cab-badge-ribbon">
+              <span class="veh-badge green">Economical &bull; Best Value</span>
+            </div>
             <div class="item-top">
-              <span class="veh-icon">🚗</span>
+              <div class="veh-icon-badge">🚗</div>
               <div class="veh-meta">
-                <span class="veh-title">Maruti Dzire / Etios</span>
-                <span class="veh-specs">4 Seats &bull; 2 Bags &bull; AC</span>
+                <div class="veh-title-row">
+                  <h3 class="veh-title">Maruti Dzire / Etios</h3>
+                </div>
+                <div class="veh-specs-tags">
+                  <span class="veh-spec-chip">4 Seats</span>
+                  <span class="veh-spec-chip">2 Bags</span>
+                  <span class="veh-spec-chip">AC</span>
+                </div>
               </div>
-              <span class="veh-badge green">Economical</span>
             </div>
             <div class="item-pricing">
-              <div class="veh-mrp" id="hero-mrp-sedan">₹1,100</div>
+              <div class="veh-mrp-row">
+                <span class="veh-mrp" id="hero-mrp-sedan">₹1,100</span>
+                <span class="veh-save-badge" id="hero-save-sedan">SAVE 35%</span>
+              </div>
               <div class="veh-price-box">
                 <span class="veh-currency">₹</span><strong class="veh-amount" id="hero-price-sedan">700</strong>
                 <span class="veh-type" id="hero-type-sedan">Fixed Drop</span>
               </div>
+              <div class="veh-perk-hint">✓ Pay Driver at Drop &bull; Zero Advance</div>
             </div>
-            <a href="#" class="btn-hero-cab-book" id="hero-book-sedan" target="_blank" rel="noopener noreferrer">
-              Book on WhatsApp
+            <a href="#" class="btn-hero-cab-book" id="hero-book-sedan" target="_blank" rel="noopener noreferrer" aria-label="Book Maruti Dzire on WhatsApp">
+              <svg class="wa-btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.288.043.088.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.2.662.589 1.221.77 1.394.856.173.086.275.073.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.043.072.043.419-.101.824z"/>
+              </svg>
+              <span>Book on WhatsApp</span>
+              <span class="btn-arrow-icon">&rarr;</span>
             </a>
           </div>
 
           <!-- SUV: Ertiga -->
-          <div class="hero-cab-item" data-veh="ertiga">
+          <div class="hero-cab-item featured-item" data-veh="ertiga">
+            <div class="cab-badge-ribbon">
+              <span class="veh-badge blue">Most Popular &bull; Family Choice</span>
+            </div>
             <div class="item-top">
-              <span class="veh-icon">🚙</span>
+              <div class="veh-icon-badge">🚙</div>
               <div class="veh-meta">
-                <span class="veh-title">Maruti Suzuki Ertiga</span>
-                <span class="veh-specs">6 Seats &bull; 4 Bags &bull; AC</span>
+                <div class="veh-title-row">
+                  <h3 class="veh-title">Maruti Suzuki Ertiga</h3>
+                </div>
+                <div class="veh-specs-tags">
+                  <span class="veh-spec-chip">6 Seats</span>
+                  <span class="veh-spec-chip">4 Bags</span>
+                  <span class="veh-spec-chip">Dual AC</span>
+                </div>
               </div>
-              <span class="veh-badge blue">Family SUV</span>
             </div>
             <div class="item-pricing">
-              <div class="veh-mrp" id="hero-mrp-ertiga">₹1,800</div>
+              <div class="veh-mrp-row">
+                <span class="veh-mrp" id="hero-mrp-ertiga">₹1,800</span>
+                <span class="veh-save-badge" id="hero-save-ertiga">SAVE 35%</span>
+              </div>
               <div class="veh-price-box">
                 <span class="veh-currency">₹</span><strong class="veh-amount" id="hero-price-ertiga">1,200</strong>
                 <span class="veh-type" id="hero-type-ertiga">Fixed Drop</span>
               </div>
+              <div class="veh-perk-hint">✓ Pay Driver at Drop &bull; Zero Advance</div>
             </div>
-            <a href="#" class="btn-hero-cab-book" id="hero-book-ertiga" target="_blank" rel="noopener noreferrer">
-              Book on WhatsApp
+            <a href="#" class="btn-hero-cab-book" id="hero-book-ertiga" target="_blank" rel="noopener noreferrer" aria-label="Book Maruti Ertiga on WhatsApp">
+              <svg class="wa-btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.288.043.088.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.2.662.589 1.221.77 1.394.856.173.086.275.073.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.043.072.043.419-.101.824z"/>
+              </svg>
+              <span>Book on WhatsApp</span>
+              <span class="btn-arrow-icon">&rarr;</span>
             </a>
           </div>
 
           <!-- Premium SUV: Innova Crysta -->
           <div class="hero-cab-item" data-veh="crysta">
+            <div class="cab-badge-ribbon">
+              <span class="veh-badge purple">VIP Ride &bull; Executive</span>
+            </div>
             <div class="item-top">
-              <span class="veh-icon">✨</span>
+              <div class="veh-icon-badge">✨</div>
               <div class="veh-meta">
-                <span class="veh-title">Toyota Innova Crysta</span>
-                <span class="veh-specs">7 Seats &bull; 5 Bags &bull; AC</span>
+                <div class="veh-title-row">
+                  <h3 class="veh-title">Toyota Innova Crysta</h3>
+                </div>
+                <div class="veh-specs-tags">
+                  <span class="veh-spec-chip">7 Seats</span>
+                  <span class="veh-spec-chip">5 Bags</span>
+                  <span class="veh-spec-chip">Luxury AC</span>
+                </div>
               </div>
-              <span class="veh-badge purple">VIP Ride</span>
             </div>
             <div class="item-pricing">
-              <div class="veh-mrp" id="hero-mrp-crysta">₹2,500</div>
+              <div class="veh-mrp-row">
+                <span class="veh-mrp" id="hero-mrp-crysta">₹2,500</span>
+                <span class="veh-save-badge" id="hero-save-crysta">SAVE 35%</span>
+              </div>
               <div class="veh-price-box">
                 <span class="veh-currency">₹</span><strong class="veh-amount" id="hero-price-crysta">1,800</strong>
                 <span class="veh-type" id="hero-type-crysta">Fixed Drop</span>
               </div>
+              <div class="veh-perk-hint">✓ Pay Driver at Drop &bull; Zero Advance</div>
             </div>
-            <a href="#" class="btn-hero-cab-book" id="hero-book-crysta" target="_blank" rel="noopener noreferrer">
-              Book on WhatsApp
+            <a href="#" class="btn-hero-cab-book" id="hero-book-crysta" target="_blank" rel="noopener noreferrer" aria-label="Book Toyota Innova Crysta on WhatsApp">
+              <svg class="wa-btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.288.043.088.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.2.662.589 1.221.77 1.394.856.173.086.275.073.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.043.072.043.419-.101.824z"/>
+              </svg>
+              <span>Book on WhatsApp</span>
+              <span class="btn-arrow-icon">&rarr;</span>
             </a>
           </div>
 
           <!-- Luxury Van: 13 Seater Maharaja Urbania -->
           <div class="hero-cab-item luxury-item" data-veh="urbania">
+            <div class="cab-badge-ribbon">
+              <span class="veh-badge gold">Royal Luxury &bull; Maharaja Recliner</span>
+            </div>
             <div class="item-top">
-              <span class="veh-icon">👑</span>
+              <div class="veh-icon-badge">👑</div>
               <div class="veh-meta">
-                <span class="veh-title">13 Seater Maharaja Urbania</span>
-                <span class="veh-specs">13 Seats &bull; Recliners &bull; AC</span>
+                <div class="veh-title-row">
+                  <h3 class="veh-title">13 Seater Maharaja Urbania</h3>
+                </div>
+                <div class="veh-specs-tags">
+                  <span class="veh-spec-chip">13 Seats</span>
+                  <span class="veh-spec-chip">Pushback</span>
+                  <span class="veh-spec-chip">VIP Van</span>
+                </div>
               </div>
-              <span class="veh-badge gold">Maharaja Recliner</span>
             </div>
             <div class="item-pricing">
-              <div class="veh-mrp" id="hero-mrp-urbania">₹6,100</div>
+              <div class="veh-mrp-row">
+                <span class="veh-mrp" id="hero-mrp-urbania">₹6,100</span>
+                <span class="veh-save-badge" id="hero-save-urbania">SAVE 35%</span>
+              </div>
               <div class="veh-price-box">
                 <span class="veh-currency">₹</span><strong class="veh-amount" id="hero-price-urbania">4,500</strong>
                 <span class="veh-type" id="hero-type-urbania">Fixed Drop</span>
               </div>
+              <div class="veh-perk-hint">✓ Pay Driver at Drop &bull; Zero Advance</div>
             </div>
-            <a href="#" class="btn-hero-cab-book" id="hero-book-urbania" target="_blank" rel="noopener noreferrer">
-              Book on WhatsApp
+            <a href="#" class="btn-hero-cab-book" id="hero-book-urbania" target="_blank" rel="noopener noreferrer" aria-label="Book 13 Seater Urbania on WhatsApp">
+              <svg class="wa-btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.288.043.088.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.2.662.589 1.221.77 1.394.856.173.086.275.073.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.043.072.043.419-.101.824z"/>
+              </svg>
+              <span>Book on WhatsApp</span>
+              <span class="btn-arrow-icon">&rarr;</span>
             </a>
           </div>
 
@@ -814,43 +878,63 @@ const whatsappUrl = createWhatsAppBookingUrl();
   /* Live Vehicle Price Cards Grid */
   .hero-cabs-row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin-bottom: 12px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 14px;
   }
 
   .hero-cab-item {
     background: #FFFFFF;
     border: 1.5px solid #E5E7EB;
-    border-radius: 12px;
-    padding: 12px;
+    border-radius: 16px;
+    padding: 14px;
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
   }
 
   .hero-cab-item:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    border-color: var(--color-accent, #C59B27);
+    box-shadow: 0 12px 28px rgba(90, 12, 26, 0.1);
+    border-color: #C59B27;
+  }
+
+  .hero-cab-item.featured-item {
+    border-color: rgba(29, 78, 216, 0.35);
+    background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
   }
 
   .hero-cab-item.luxury-item {
-    background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF7 100%);
-    border-color: rgba(212, 175, 55, 0.55);
-    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.1);
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF5 100%);
+    border-color: rgba(197, 155, 39, 0.45);
+    box-shadow: 0 4px 18px rgba(197, 155, 39, 0.12);
+  }
+
+  .cab-badge-ribbon {
+    margin-bottom: 8px;
   }
 
   .item-top {
     display: flex;
     align-items: flex-start;
-    gap: 8px;
+    gap: 10px;
     margin-bottom: 8px;
   }
 
-  .veh-icon {
+  .veh-icon-badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #FAF6ED;
+    border: 1px solid rgba(197, 155, 39, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1.35rem;
-    line-height: 1;
+    flex-shrink: 0;
   }
 
   .veh-meta {
@@ -858,88 +942,167 @@ const whatsappUrl = createWhatsAppBookingUrl();
     min-width: 0;
   }
 
+  .veh-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    margin-bottom: 2px;
+  }
+
   .veh-title {
-    display: block;
-    font-size: 0.8125rem;
-    font-weight: 700;
+    font-size: 0.875rem;
+    font-weight: 800;
     color: #111827;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-
-  .veh-specs {
-    display: block;
-    font-size: 0.6875rem;
-    color: #6B7280;
+    letter-spacing: -0.01em;
+    margin: 0;
   }
 
   .veh-badge {
-    font-size: 0.625rem;
+    font-size: 0.65rem;
     font-weight: 800;
     text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 6px;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    display: inline-block;
+  }
+  .veh-badge.green { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
+  .veh-badge.blue { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+  .veh-badge.purple { background: #F5F3FF; color: #6D28D9; border: 1px solid #DDD6FE; }
+  .veh-badge.gold { background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
+
+  .veh-specs-tags {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+
+  .veh-spec-chip {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: #4B5563;
+    background: #F3F4F6;
     padding: 2px 6px;
     border-radius: 4px;
-    letter-spacing: 0.04em;
     white-space: nowrap;
   }
-  .veh-badge.green { background: #ECFDF5; color: #047857; }
-  .veh-badge.blue { background: #EFF6FF; color: #1D4ED8; }
-  .veh-badge.purple { background: #F5F3FF; color: #6D28D9; }
-  .veh-badge.gold { background: #FEF3C7; color: #B45309; }
 
   .item-pricing {
     margin-top: auto;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed #E5E7EB;
+  }
+
+  .veh-mrp-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 2px;
   }
 
   .veh-mrp {
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     color: #9CA3AF;
     text-decoration: line-through;
+    font-weight: 600;
+  }
+
+  .veh-save-badge {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #DC2626;
+    background: #FEF2F2;
+    border: 1px solid #FECACA;
+    padding: 1px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.02em;
   }
 
   .veh-price-box {
     display: flex;
     align-items: baseline;
-    gap: 2px;
+    gap: 3px;
   }
 
   .veh-currency {
-    font-size: 0.8125rem;
-    font-weight: 700;
-    color: var(--color-primary, #6B1124);
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #5A0C1A;
   }
 
   .veh-amount {
-    font-size: 1.3rem;
+    font-size: 1.45rem;
     font-weight: 800;
-    color: var(--color-primary, #6B1124);
-    font-family: var(--font-heading);
+    color: #5A0C1A;
+    font-family: var(--font-heading, serif);
+    line-height: 1;
   }
 
   .veh-type {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #4B5563;
+    background: #F3F4F6;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-left: 6px;
+  }
+
+  .veh-perk-hint {
     font-size: 0.6875rem;
-    font-weight: 600;
-    color: #6B7280;
-    margin-left: 4px;
+    color: #059669;
+    font-weight: 700;
+    margin-top: 4px;
   }
 
   .btn-hero-cab-book {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #25D366;
-    color: #FFFFFF;
+    gap: 7px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFFFFF !important;
     text-decoration: none;
-    font-size: 0.78125rem;
+    font-size: 0.8125rem;
     font-weight: 700;
-    padding: 7px 10px;
-    border-radius: 8px;
-    transition: background 0.15s;
+    padding: 9px 12px;
+    border-radius: 9px;
+    box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+    transition: all 0.18s ease;
+    width: 100%;
+    min-height: 40px;
   }
+
   .btn-hero-cab-book:hover {
-    background: #20BA5A;
+    background: linear-gradient(135deg, #22C55E 0%, #0F766E 100%);
+    transform: translateY(-1.5px);
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.42);
+    color: #FFFFFF !important;
+  }
+
+  .btn-hero-cab-book:active {
+    transform: scale(0.98);
+  }
+
+  .wa-btn-icon {
+    flex-shrink: 0;
+  }
+
+  .btn-arrow-icon {
+    font-size: 0.85rem;
+    transition: transform 0.15s ease;
+  }
+
+  .btn-hero-cab-book:hover .btn-arrow-icon {
+    transform: translateX(3px);
   }
 
   .hero-calc-bottom-link {
@@ -962,7 +1125,8 @@ const whatsappUrl = createWhatsAppBookingUrl();
   /* Responsive Rules */
   @media (max-width: 1024px) {
     .hero-cabs-row {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
     }
     .hero-calc-fields {
       flex-direction: column;
@@ -977,6 +1141,29 @@ const whatsappUrl = createWhatsAppBookingUrl();
   @media (max-width: 640px) {
     .hero-cabs-row {
       grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .hero-cab-item {
+      padding: 12px;
+    }
+    .item-top {
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .veh-icon-badge {
+      width: 36px;
+      height: 36px;
+      font-size: 1.25rem;
+    }
+    .veh-title {
+      font-size: 0.85rem;
+    }
+    .veh-amount {
+      font-size: 1.35rem;
+    }
+    .btn-hero-cab-book {
+      min-height: 44px; /* Touch-optimized */
+      font-size: 0.84rem;
     }
     .hero-calc-card {
       padding: 12px;
@@ -1291,18 +1478,26 @@ const whatsappUrl = createWhatsAppBookingUrl();
     if (priceSedan) priceSedan.textContent = fareSedan.toLocaleString("en-IN");
     if (mrpSedan) mrpSedan.textContent = `₹${Math.round(fareSedan * 1.35).toLocaleString("en-IN")}`;
     if (typeSedan) typeSedan.textContent = typeLabel;
+    const saveSedan = document.getElementById("hero-save-sedan");
+    if (saveSedan) saveSedan.textContent = `SAVE ₹${Math.round(fareSedan * 0.35).toLocaleString("en-IN")}`;
 
     if (priceErtiga) priceErtiga.textContent = fareErtiga.toLocaleString("en-IN");
     if (mrpErtiga) mrpErtiga.textContent = `₹${Math.round(fareErtiga * 1.35).toLocaleString("en-IN")}`;
     if (typeErtiga) typeErtiga.textContent = typeLabel;
+    const saveErtiga = document.getElementById("hero-save-ertiga");
+    if (saveErtiga) saveErtiga.textContent = `SAVE ₹${Math.round(fareErtiga * 0.35).toLocaleString("en-IN")}`;
 
     if (priceCrysta) priceCrysta.textContent = fareCrysta.toLocaleString("en-IN");
     if (mrpCrysta) mrpCrysta.textContent = `₹${Math.round(fareCrysta * 1.35).toLocaleString("en-IN")}`;
     if (typeCrysta) typeCrysta.textContent = typeLabel;
+    const saveCrysta = document.getElementById("hero-save-crysta");
+    if (saveCrysta) saveCrysta.textContent = `SAVE ₹${Math.round(fareCrysta * 0.35).toLocaleString("en-IN")}`;
 
     if (priceUrbania) priceUrbania.textContent = fareUrbania.toLocaleString("en-IN");
     if (mrpUrbania) mrpUrbania.textContent = `₹${Math.round(fareUrbania * 1.35).toLocaleString("en-IN")}`;
     if (typeUrbania) typeUrbania.textContent = isLocal ? "8Hr Package" : (isRound ? "Round Trip" : "Direct Rate");
+    const saveUrbania = document.getElementById("hero-save-urbania");
+    if (saveUrbania) saveUrbania.textContent = `SAVE ₹${Math.round(fareUrbania * 0.35).toLocaleString("en-IN")}`;
 
     // Update WhatsApp links
     const cleanPhone = (businessPhone || "917737314538").replace(/[^0-9]/g, "");
