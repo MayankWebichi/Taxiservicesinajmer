@@ -75,30 +75,70 @@ const faqSchema = generateFAQSchema(route.faqs);
         <h1 class="route-title">{route.from} to {route.to} Taxi Service</h1>
         <p class="route-subtitle">{route.heroSubtitle}</p>
 
-        <!-- Pricing Pills -->
-        <div class="hero-fare-pills">
-          <div class="h-pill">Dzire / Etios: <strong>₹{route.sedanFare.toLocaleString('en-IN')}</strong></div>
-          <div class="h-pill gold">Ertiga 6-Seater: <strong>₹{route.suvFare.toLocaleString('en-IN')}</strong></div>
-          <div class="h-pill">Innova Crysta: <strong>₹{route.crystaFare.toLocaleString('en-IN')}</strong></div>
+        <!-- Route Spec Strip in Hero -->
+        <div class="hero-specs-strip">
+          <div class="spec-chip">
+            <span class="chip-icon">📍</span>
+            <span>Distance: <strong>~{route.distanceKm} km</strong></span>
+          </div>
+          <div class="spec-chip">
+            <span class="chip-icon">⏱️</span>
+            <span>Est. Time: <strong>{route.estimatedTime}</strong></span>
+          </div>
+          <div class="spec-chip">
+            <span class="chip-icon">🛣️</span>
+            <span>Highway: <strong>{route.highway}</strong></span>
+          </div>
         </div>
 
+        <!-- Pricing Pills -->
+        <div class="hero-fare-pills">
+          <div class="h-pill">
+            <span class="car-tag">🚗 Sedan:</span>
+            <strong>₹{route.sedanFare.toLocaleString('en-IN')}</strong>
+          </div>
+          <div class="h-pill gold">
+            <span class="car-tag">🚙 Ertiga 6-Str:</span>
+            <strong>₹{route.suvFare.toLocaleString('en-IN')}</strong>
+          </div>
+          <div class="h-pill">
+            <span class="car-tag">🚐 Crysta:</span>
+            <strong>₹{route.crystaFare.toLocaleString('en-IN')}</strong>
+          </div>
+        </div>
+
+        <!-- Hero Action Buttons -->
         <div class="hero-cta-btns">
-          <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--lg">
+          <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn-hero-action btn-hero-action--wa">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.178.181-.077.355.101.174.449.741.964 1.2.662.591 1.221.774 1.394.861.173.087.275.072.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.044.073.044.42-.1 1.016z"/></svg>
-            Book Cab on WhatsApp
+            <span>Book Cab on WhatsApp</span>
           </a>
-          <a href={`tel:${business.phone}`} class="btn btn--outline-light btn--lg">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-            Call 24/7 Helpline: {business.phoneFormatted}
+          <a href={`tel:${business.phone}`} class="btn-hero-action btn-hero-action--call">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            <span>Call 24/7: {business.phoneFormatted}</span>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Main Content Grid -->
+    <!-- Main Content Section -->
     <section class="route-content-section">
       <div class="container">
+        
+        <!-- Mobile Quick CTA Bar (< 768px) -->
+        <div class="route-mobile-cta-bar">
+          <a href={waSedan} target="_blank" rel="noopener noreferrer" class="m-cta-btn m-cta-btn--wa">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.178.181-.077.355.101.174.449.741.964 1.2.662.591 1.221.774 1.394.861.173.087.275.072.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.044.073.044.42-.1 1.016z"/></svg>
+            <span>Book on WhatsApp</span>
+          </a>
+          <a href={`tel:${business.phone}`} class="m-cta-btn m-cta-btn--call">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            <span>Call 24/7</span>
+          </a>
+        </div>
+
         <div class="route-grid">
+          <!-- Main Content Area -->
           <div class="route-main">
             <!-- Route Overview Block -->
             <div class="content-block">
@@ -112,17 +152,22 @@ const faqSchema = generateFAQSchema(route.faqs);
               </p>
             </div>
 
-            <!-- Vehicle Pricing Breakdown -->
+            <!-- Vehicle Pricing Cards -->
             <div class="content-block">
-              <h3 class="tier-heading">Verified Fares ({route.from} ➔ {route.to})</h3>
-              <p class="tier-subtext">Direct-operator pricing with doorstep pickup, chilled AC, sanitized interior, and no hidden booking fees.</p>
+              <div class="block-header">
+                <div>
+                  <h3 class="tier-heading">Verified Fares ({route.from} ➔ {route.to})</h3>
+                  <p class="tier-subtext">Direct-operator pricing with doorstep pickup, chilled AC, sanitized interior, and no hidden booking fees.</p>
+                </div>
+                <span class="live-rate-tag"><span class="pulse-dot"></span> LIVE 2026 RATES</span>
+              </div>
 
               <div class="pricing-cards-row">
-                <!-- Sedan -->
+                <!-- 1. Sedan -->
                 <div class="p-card">
                   <div class="p-card-top">
                     <span class="p-type">Comfort Sedan</span>
-                    <h4 class="p-car">Maruti Dzire / Toyota Etios</h4>
+                    <h4 class="p-car">Maruti Dzire / Etios</h4>
                   </div>
                   <div class="p-image-wrap">
                     <img 
@@ -134,7 +179,7 @@ const faqSchema = generateFAQSchema(route.faqs);
                     />
                   </div>
                   <div class="p-fare">
-                    <span class="currency">₹</span>{route.sedanFare.toLocaleString('en-IN')}
+                    <span class="currency">₹</span><span class="amount">{route.sedanFare.toLocaleString('en-IN')}</span>
                     <span class="fare-tag">Fixed Fare</span>
                   </div>
                   <ul class="p-features">
@@ -143,14 +188,15 @@ const faqSchema = generateFAQSchema(route.faqs);
                     <li>✓ Doorstep Pickup &amp; Direct Drop</li>
                     <li>✓ Punctual, Background-Checked Driver</li>
                   </ul>
-                  <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--block p-btn">
-                    Book Sedan @ ₹{route.sedanFare.toLocaleString('en-IN')}
+                  <a href={waSedan} target="_blank" rel="noopener noreferrer" class="p-btn p-btn--primary">
+                    <span>Book Sedan @ ₹{route.sedanFare.toLocaleString('en-IN')}</span>
+                    <span class="arr">&rarr;</span>
                   </a>
                 </div>
 
-                <!-- Ertiga (Featured) -->
+                <!-- 2. Ertiga (Featured) -->
                 <div class="p-card featured-p-card">
-                  <div class="card-badge">Most Popular for Families</div>
+                  <div class="card-badge">Family &amp; Luggage Bestseller</div>
                   <div class="p-card-top">
                     <span class="p-type gold">Spacious 6-Seater MPV</span>
                     <h4 class="p-car">Maruti Suzuki Ertiga</h4>
@@ -165,7 +211,7 @@ const faqSchema = generateFAQSchema(route.faqs);
                     />
                   </div>
                   <div class="p-fare gold-fare">
-                    <span class="currency">₹</span>{route.suvFare.toLocaleString('en-IN')}
+                    <span class="currency">₹</span><span class="amount">{route.suvFare.toLocaleString('en-IN')}</span>
                     <span class="fare-tag gold-tag">Best Value</span>
                   </div>
                   <ul class="p-features">
@@ -174,12 +220,13 @@ const faqSchema = generateFAQSchema(route.faqs);
                     <li>✓ Extra Legroom for Elders &amp; Children</li>
                     <li>✓ Ample Space for 3–4 Large Bags</li>
                   </ul>
-                  <a href={waErtiga} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--block p-btn">
-                    Book Ertiga @ ₹{route.suvFare.toLocaleString('en-IN')}
+                  <a href={waErtiga} target="_blank" rel="noopener noreferrer" class="p-btn p-btn--gold">
+                    <span>Book Ertiga @ ₹{route.suvFare.toLocaleString('en-IN')}</span>
+                    <span class="arr">&rarr;</span>
                   </a>
                 </div>
 
-                <!-- Innova Crysta -->
+                <!-- 3. Innova Crysta -->
                 <div class="p-card">
                   <div class="p-card-top">
                     <span class="p-type">VIP Luxury SUV</span>
@@ -195,7 +242,7 @@ const faqSchema = generateFAQSchema(route.faqs);
                     />
                   </div>
                   <div class="p-fare">
-                    <span class="currency">₹</span>{route.crystaFare.toLocaleString('en-IN')}
+                    <span class="currency">₹</span><span class="amount">{route.crystaFare.toLocaleString('en-IN')}</span>
                     <span class="fare-tag">VIP Travel</span>
                   </div>
                   <ul class="p-features">
@@ -204,8 +251,9 @@ const faqSchema = generateFAQSchema(route.faqs);
                     <li>✓ High Safety Rating &amp; Luggage Carrier</li>
                     <li>✓ Executive Senior Chauffeur</li>
                   </ul>
-                  <a href={waCrysta} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--block p-btn">
-                    Book Crysta @ ₹{route.crystaFare.toLocaleString('en-IN')}
+                  <a href={waCrysta} target="_blank" rel="noopener noreferrer" class="p-btn p-btn--primary">
+                    <span>Book Crysta @ ₹{route.crystaFare.toLocaleString('en-IN')}</span>
+                    <span class="arr">&rarr;</span>
                   </a>
                 </div>
               </div>
@@ -213,62 +261,87 @@ const faqSchema = generateFAQSchema(route.faqs);
 
             <!-- Route Stops & Highlights -->
             <div class="content-block itinerary-block">
-              <h3 class="tier-heading">Trip Highlights &amp; Suggested Stops</h3>
-              <p>{route.routeHighlights}</p>
+              <h3 class="tier-heading">Trip Highlights &amp; Suggested Highway Stops</h3>
+              <p class="highlight-desc">{route.routeHighlights}</p>
+              
               <div class="stops-box">
-                <span class="stops-label">En-Route Convenience:</span>
-                <ul class="stops-list">
-                  {route.popularStops.map((stop) => (
-                    <li>📍 {stop}</li>
+                <span class="stops-label">En-Route Convenience &amp; Sightseeing Points:</span>
+                <div class="stops-grid">
+                  {route.popularStops.map((stop, idx) => (
+                    <div class="stop-item">
+                      <span class="stop-num">{idx + 1}</span>
+                      <span class="stop-text">{stop}</span>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             </div>
 
             <!-- Why Choose Us -->
             <div class="content-block why-choose-block">
               <h3 class="tier-heading">Why Book Your {route.from} to {route.to} Taxi with Us?</h3>
-              <ul class="reasons-list">
-                <li>
-                  <strong>✓ Over 18 Years of Operational Excellence:</strong> Serving tourists, pilgrims, and local residents across Rajasthan since 2008 with an untarnished reputation.
-                </li>
-                <li>
-                  <strong>✓ 100% Punctual Doorstep Service:</strong> We pick you up right from your doorstep, hotel porch, or airport terminal—no waiting on the road with luggage.
-                </li>
-                <li>
-                  <strong>✓ Dedicated Fleet &amp; Zero Commission Agents:</strong> You deal directly with our verified local fleet operators, ensuring direct pricing with no middlemen commissions.
-                </li>
-                <li>
-                  <strong>✓ Experienced Chauffeurs:</strong> Polite, non-smoking, uniformed highway drivers with exhaustive route knowledge and defensive driving habits.
-                </li>
-              </ul>
+              <div class="reasons-grid">
+                <div class="reason-card">
+                  <span class="r-icon">🏆</span>
+                  <div>
+                    <h4>18+ Years Experience</h4>
+                    <p>Serving tourists, pilgrims, and local residents across Rajasthan since 2008 with a proven track record.</p>
+                  </div>
+                </div>
+
+                <div class="reason-card">
+                  <span class="r-icon">⏱️</span>
+                  <div>
+                    <h4>100% Punctual Pickup</h4>
+                    <p>We pick you up right from your doorstep, hotel porch, or railway platform with zero delay.</p>
+                  </div>
+                </div>
+
+                <div class="reason-card">
+                  <span class="r-icon">🚫</span>
+                  <div>
+                    <h4>Zero Advance Deposit</h4>
+                    <p>No upfront prepayment needed. Pay your driver directly at the end of your trip.</p>
+                  </div>
+                </div>
+
+                <div class="reason-card">
+                  <span class="r-icon">🛡️</span>
+                  <div>
+                    <h4>Verified Highway Drivers</h4>
+                    <p>Polite, non-smoking, uniformed highway drivers with exhaustive route knowledge and safety permits.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- Sticky Sidebar -->
           <aside class="route-sidebar">
             <div class="sidebar-box booking-quick-box">
+              <span class="side-badge">Trip Overview</span>
               <h3 class="side-title">Quick Booking Summary</h3>
+              
               <div class="route-quick-specs">
                 <div class="spec-row">
-                  <span class="label">From:</span>
+                  <span class="label">Pickup Point:</span>
                   <span class="val">{route.from}</span>
                 </div>
                 <div class="spec-row">
-                  <span class="label">To:</span>
+                  <span class="label">Drop Location:</span>
                   <span class="val">{route.to}</span>
                 </div>
                 <div class="spec-row">
-                  <span class="label">Distance:</span>
+                  <span class="label">Total Distance:</span>
                   <span class="val">~{route.distanceKm} km</span>
                 </div>
                 <div class="spec-row">
-                  <span class="label">Estimated Time:</span>
+                  <span class="label">Driving Time:</span>
                   <span class="val">{route.estimatedTime}</span>
                 </div>
                 <div class="spec-row">
-                  <span class="label">Highway:</span>
-                  <span class="val">{route.highway}</span>
+                  <span class="label">Main Route:</span>
+                  <span class="val highway-val">{route.highway}</span>
                 </div>
               </div>
 
@@ -288,24 +361,27 @@ const faqSchema = generateFAQSchema(route.faqs);
               </div>
 
               <div class="side-cta-stack">
-                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--block">
-                  Book on WhatsApp
+                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="side-action-btn side-action-btn--wa">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.178.181-.077.355.101.174.449.741.964 1.2.662.591 1.221.774 1.394.861.173.087.275.072.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.044.073.044.42-.1 1.016z"/></svg>
+                  <span>Book on WhatsApp</span>
                 </a>
-                <a href={`tel:${business.phone}`} class="btn btn--outline-dark btn--block">
-                  Call: {business.phoneFormatted}
+                <a href={`tel:${business.phone}`} class="side-action-btn side-action-btn--call">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                  <span>Call: {business.phoneFormatted}</span>
                 </a>
               </div>
             </div>
 
             <!-- Interlinked Links Box -->
             <div class="sidebar-box routes-box">
-              <h4 class="tips-title">Related High-Demand Routes</h4>
+              <h4 class="tips-title">Popular Routes &amp; Tours</h4>
               <ul class="sidebar-links">
-                <li><a href="/pushkar-to-ajmer-taxi/">→ Pushkar to Ajmer Taxi (₹700)</a></li>
-                <li><a href="/ajmer-to-sarwar-sharif-taxi/">→ Ajmer to Sarwar Sharif (₹2,000)</a></li>
-                <li><a href="/ajmer-to-jaipur-taxi/">→ Ajmer to Jaipur Taxi (₹1,999)</a></li>
-                <li><a href="/tours/">→ Rajasthan Tour Packages (12 Handcrafted)</a></li>
-                <li><a href="/wedding-logistics/">→ Wedding Transportation &amp; Fleet</a></li>
+                <li><a href="/pushkar-to-ajmer-taxi/">&rarr; Pushkar to Ajmer Taxi (₹700)</a></li>
+                <li><a href="/ajmer-to-pushkar-taxi/">&rarr; Ajmer to Pushkar Taxi (₹700)</a></li>
+                <li><a href="/ajmer-to-sarwar-sharif-taxi/">&rarr; Ajmer to Sarwar Sharif (₹1,800)</a></li>
+                <li><a href="/ajmer-to-jaipur-taxi/">&rarr; Ajmer to Jaipur Cab (₹1,800)</a></li>
+                <li><a href="/fare-calculator/">&rarr; Live Cab Fare Calculator</a></li>
+                <li><a href="/tours/">&rarr; Handcrafted Rajasthan Tours</a></li>
               </ul>
             </div>
           </aside>
@@ -327,7 +403,7 @@ const faqSchema = generateFAQSchema(route.faqs);
             <details class="faq-item" id={`faq-${idx}`}>
               <summary class="faq-question">
                 <span>{faq.question}</span>
-                <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
               </summary>
               <div class="faq-answer">
                 <p>{faq.answer}</p>
@@ -344,11 +420,13 @@ const faqSchema = generateFAQSchema(route.faqs);
         <h2>Ready to Book Your {route.from} to {route.to} Cab?</h2>
         <p>Book with Ajmer's verified chauffeur service since 2008. Punctual doorstep pickup, clean air-conditioned vehicles, and honest direct pricing.</p>
         <div class="bottom-cta-row">
-          <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--lg">
-            Book on WhatsApp
+          <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn-hero-action btn-hero-action--wa">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.178.181-.077.355.101.174.449.741.964 1.2.662.591 1.221.774 1.394.861.173.087.275.072.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.044.073.044.42-.1 1.016z"/></svg>
+            <span>Book on WhatsApp</span>
           </a>
-          <a href={`tel:${business.phone}`} class="btn btn--outline-light btn--lg">
-            Call Operator: {business.phoneFormatted}
+          <a href={`tel:${business.phone}`} class="btn-hero-action btn-hero-action--call">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            <span>Call: {business.phoneFormatted}</span>
           </a>
         </div>
       </div>
@@ -363,10 +441,11 @@ const faqSchema = generateFAQSchema(route.faqs);
 <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 <style>
+  /* Hero Banner */
   .seo-route-hero {
     background: linear-gradient(135deg, #1A1215 0%, #2D1D24 50%, #442430 100%);
     color: #FFFFFF;
-    padding: calc(var(--header-height, 74px) + 38px) 0 44px;
+    padding: calc(var(--header-height, 74px) + 20px) 0 32px;
     border-bottom: 3px solid var(--color-accent);
   }
 
@@ -375,51 +454,91 @@ const faqSchema = generateFAQSchema(route.faqs);
     background: rgba(197, 155, 39, 0.2);
     border: 1px solid var(--color-accent);
     color: var(--color-accent-light);
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    padding: 6px 16px;
+    padding: 4px 14px;
     border-radius: var(--radius-full);
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
 
   .route-title {
     font-family: var(--font-heading);
-    font-size: clamp(2rem, 4.2vw, 3rem);
+    font-size: clamp(1.6rem, 3.8vw, 2.75rem);
     color: #FFFFFF;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     line-height: 1.2;
+    word-break: break-word;
   }
 
   .route-subtitle {
-    font-size: 1.0625rem;
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
     color: rgba(255, 255, 255, 0.9);
     max-width: 800px;
-    margin: 0 auto 24px;
-    line-height: 1.6;
+    margin: 0 auto 16px;
+    line-height: 1.5;
   }
 
-  .hero-fare-pills {
+  /* Route Specs Strip */
+  .hero-specs-strip {
     display: flex;
     justify-content: center;
-    gap: var(--space-md);
+    gap: 8px;
     flex-wrap: wrap;
-    margin-bottom: 28px;
+    margin-bottom: 18px;
+  }
+
+  .spec-chip {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 5px 12px;
+    border-radius: var(--radius-full);
+    font-size: 0.8125rem;
+    color: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .spec-chip strong {
+    color: var(--color-accent-light);
+  }
+
+  /* Fare Pills */
+  .hero-fare-pills {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    max-width: 580px;
+    margin: 0 auto 22px;
+  }
+
+  @media (max-width: 520px) {
+    .hero-fare-pills {
+      grid-template-columns: 1fr;
+      gap: 6px;
+      max-width: 320px;
+    }
   }
 
   .h-pill {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #FFFFFF;
-    padding: 8px 18px;
-    border-radius: var(--radius-full);
-    font-size: 0.9375rem;
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+    font-size: 0.84rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    white-space: nowrap;
   }
 
   .h-pill strong {
     color: var(--color-accent-light);
-    margin-left: 4px;
+    font-weight: 800;
   }
 
   .h-pill.gold {
@@ -427,133 +546,309 @@ const faqSchema = generateFAQSchema(route.faqs);
     border-color: var(--color-accent);
   }
 
+  /* Hero CTA Buttons */
   .hero-cta-btns {
     display: flex;
     justify-content: center;
-    gap: var(--space-md);
+    gap: 12px;
     flex-wrap: wrap;
+  }
+
+  .btn-hero-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    min-height: 48px;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .btn-hero-action--wa {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  }
+
+  .btn-hero-action--wa:hover {
+    filter: brightness(1.05);
+    transform: translateY(-2px);
+  }
+
+  .btn-hero-action--call {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    color: #FFFFFF !important;
+  }
+
+  .btn-hero-action--call:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #FFFFFF;
+  }
+
+  @media (max-width: 640px) {
+    .hero-cta-btns {
+      flex-direction: column;
+      align-items: stretch;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+  }
+
+  /* Mobile Quick CTA Bar */
+  .route-mobile-cta-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  @media (min-width: 769px) {
+    .route-mobile-cta-bar {
+      display: none;
+    }
+  }
+
+  .m-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 10px;
+    border-radius: var(--radius-md);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-decoration: none;
+    min-height: 46px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .m-cta-btn--wa {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFFFFF !important;
+  }
+
+  .m-cta-btn--call {
+    background: var(--color-primary);
+    color: #FFFFFF !important;
   }
 
   /* Main Grid */
   .route-content-section {
-    padding: var(--space-4xl) 0;
+    padding: var(--space-xl) 0 var(--space-3xl);
     background: var(--color-surface);
   }
 
   .route-grid {
     display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: var(--space-3xl);
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
     align-items: start;
+  }
+
+  @media (min-width: 1025px) {
+    .route-grid {
+      grid-template-columns: 1fr 340px;
+      gap: var(--space-3xl);
+    }
   }
 
   .content-block {
     background: #FFFFFF;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-2xl);
-    margin-bottom: var(--space-2xl);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: 18px 16px;
+    margin-bottom: var(--space-xl);
     box-shadow: 0 4px 16px rgba(34, 24, 28, 0.04);
   }
 
+  @media (min-width: 640px) {
+    .content-block {
+      padding: var(--space-xl);
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .content-block {
+      padding: var(--space-2xl);
+    }
+  }
+
+  .section-subtitle {
+    display: inline-block;
+    color: var(--color-accent-dark);
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+    color: var(--color-primary);
+    margin-bottom: 12px;
+    line-height: 1.25;
+  }
+
   .content-block p {
-    font-size: 1.0625rem;
-    line-height: 1.75;
+    font-size: 0.95rem;
+    line-height: 1.65;
     color: var(--color-text-muted);
     margin-bottom: var(--space-md);
   }
 
-  .tier-heading {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    color: var(--color-primary);
+  .content-block p:last-child {
+    margin-bottom: 0;
+  }
+
+  .block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
     margin-bottom: 8px;
   }
 
-  .tier-subtext {
-    font-size: 0.9375rem;
-    color: var(--color-text-muted);
-    margin-bottom: var(--space-xl);
+  .tier-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+    color: var(--color-primary);
+    margin-bottom: 4px;
+    line-height: 1.3;
   }
 
-  /* Pricing Cards */
+  .tier-subtext {
+    font-size: 0.84rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-lg);
+    line-height: 1.45;
+  }
+
+  .live-rate-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #ECFDF5;
+    color: #047857;
+    border: 1px solid #A7F3D0;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+  }
+
+  .pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10B981;
+  }
+
+  /* Pricing Cards Grid */
   .pricing-cards-row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-lg);
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .pricing-cards-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .pricing-cards-row {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
   }
 
   .p-card {
     background: #FFFFFF;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-lg);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: 16px;
     display: flex;
     flex-direction: column;
     position: relative;
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
   }
 
   .p-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 24px rgba(34, 24, 28, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(34, 24, 28, 0.08);
+    border-color: var(--color-accent);
   }
 
   .featured-p-card {
     border: 2px solid var(--color-accent);
-    box-shadow: 0 8px 24px rgba(197, 155, 39, 0.18);
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF5 100%);
+    box-shadow: 0 8px 24px rgba(197, 155, 39, 0.14);
   }
 
   .card-badge {
     position: absolute;
-    top: -12px;
+    top: -11px;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--color-accent);
-    color: #1A1215;
+    background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 100%);
+    color: #24040B;
     font-size: 0.6875rem;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     padding: 3px 12px;
     border-radius: var(--radius-full);
     white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   }
 
   .p-card-top {
-    margin-bottom: var(--space-sm);
+    margin-bottom: 6px;
   }
 
   .p-type {
     display: block;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--color-text-muted);
   }
 
   .p-type.gold {
-    color: var(--color-accent-dark);
+    color: #B45309;
   }
 
   .p-car {
-    font-size: 1.125rem;
+    font-family: var(--font-heading);
+    font-size: 1.0625rem;
     font-weight: 700;
     color: var(--color-primary);
     margin-top: 2px;
+    line-height: 1.25;
   }
 
   .p-image-wrap {
-    height: 110px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: var(--space-sm) 0;
+    margin: 8px 0;
   }
 
   .p-image-wrap img {
-    max-height: 95px;
+    max-height: 85px;
     width: auto;
     object-fit: contain;
     filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.08));
@@ -561,63 +856,113 @@ const faqSchema = generateFAQSchema(route.faqs);
 
   .p-fare {
     font-family: var(--font-heading);
-    font-size: 1.875rem;
+    font-size: 1.75rem;
     font-weight: 800;
     color: var(--color-primary);
     display: flex;
     align-items: baseline;
-    gap: 4px;
-    margin-bottom: var(--space-md);
-    padding-bottom: var(--space-sm);
+    gap: 3px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
     border-bottom: 1px dashed var(--color-border);
   }
 
   .gold-fare {
-    color: var(--color-accent-dark);
+    color: #15803D;
   }
 
   .currency {
-    font-size: 1.125rem;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .amount {
+    line-height: 1;
   }
 
   .fare-tag {
     font-family: var(--font-body);
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-size: 0.6875rem;
+    font-weight: 700;
     background: rgba(34, 24, 28, 0.06);
     color: var(--color-text);
-    padding: 2px 8px;
+    padding: 2px 7px;
     border-radius: var(--radius-sm);
     margin-left: auto;
   }
 
   .gold-tag {
-    background: rgba(197, 155, 39, 0.2);
-    color: var(--color-accent-dark);
+    background: #DCFCE7;
+    color: #15803D;
   }
 
   .p-features {
     list-style: none;
     padding: 0;
-    margin: 0 0 var(--space-lg);
-    font-size: 0.875rem;
+    margin: 0 0 16px;
+    font-size: 0.8125rem;
     color: var(--color-text-muted);
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
   }
 
   .p-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 0.84rem;
+    text-decoration: none;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
     margin-top: auto;
   }
 
-  /* Stops */
+  .p-btn--primary {
+    background: var(--color-primary);
+    color: #FFFFFF !important;
+  }
+
+  .p-btn--primary:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-1px);
+  }
+
+  .p-btn--gold {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFFFFF !important;
+    box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+  }
+
+  .p-btn--gold:hover {
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+  }
+
+  .p-btn .arr {
+    transition: transform var(--transition-fast);
+  }
+
+  .p-btn:hover .arr {
+    transform: translateX(4px);
+  }
+
+  /* Stops & Highlights */
+  .highlight-desc {
+    margin-bottom: 12px;
+  }
+
   .stops-box {
     background: var(--color-surface);
-    border-radius: var(--radius-md);
-    padding: var(--space-md);
-    margin-top: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 14px 16px;
   }
 
   .stops-label {
@@ -625,100 +970,181 @@ const faqSchema = generateFAQSchema(route.faqs);
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    font-weight: 700;
-    color: var(--color-text-muted);
-    margin-bottom: 8px;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: 10px;
   }
 
-  .stops-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .stops-grid {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    font-size: 0.9375rem;
+    gap: 8px;
+  }
+
+  .stop-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.875rem;
     color: var(--color-text);
+  }
+
+  .stop-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #FFFFFF;
+    font-size: 0.72rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
   }
 
   /* Why Choose */
-  .reasons-list {
-    list-style: none;
-    padding: 0;
-    margin: var(--space-md) 0 0;
+  .reasons-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  @media (min-width: 640px) {
+    .reasons-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+  }
+
+  .reason-card {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-  }
-
-  .reasons-list li {
-    font-size: 1rem;
-    color: var(--color-text);
-    line-height: 1.6;
-  }
-
-  .reasons-list strong {
-    color: var(--color-primary);
-  }
-
-  /* Sidebar */
-  .sidebar-box {
-    background: #FFFFFF;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--color-cream);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    padding: var(--space-xl);
-    margin-bottom: var(--space-xl);
+    padding: 14px 16px;
+  }
+
+  .r-icon {
+    font-size: 1.35rem;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .reason-card h4 {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: var(--color-primary);
+    margin-bottom: 2px;
+    font-weight: 700;
+  }
+
+  .reason-card p {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  /* Sticky Sidebar */
+  .route-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  @media (min-width: 1025px) {
+    .route-sidebar {
+      position: sticky;
+      top: calc(var(--header-height, 74px) + 20px);
+    }
+  }
+
+  .sidebar-box {
+    background: #FFFFFF;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: 18px 16px;
     box-shadow: 0 4px 16px rgba(34, 24, 28, 0.04);
+  }
+
+  .side-badge {
+    display: inline-block;
+    background: rgba(90, 12, 26, 0.08);
+    color: var(--color-primary);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    margin-bottom: 8px;
   }
 
   .side-title {
     font-family: var(--font-heading);
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     color: var(--color-primary);
-    margin-bottom: var(--space-md);
-    padding-bottom: var(--space-sm);
+    margin-bottom: 12px;
+    padding-bottom: 6px;
     border-bottom: 2px solid var(--color-accent);
   }
 
   .route-quick-specs {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-bottom: var(--space-lg);
+    gap: 8px;
+    margin-bottom: 14px;
   }
 
   .spec-row {
     display: flex;
     justify-content: space-between;
-    font-size: 0.875rem;
-    padding-bottom: 8px;
+    align-items: baseline;
+    font-size: 0.8125rem;
+    padding-bottom: 6px;
     border-bottom: 1px solid var(--color-border);
+    gap: 8px;
   }
 
   .spec-row .label {
     color: var(--color-text-muted);
+    white-space: nowrap;
   }
 
   .spec-row .val {
     font-weight: 700;
     color: var(--color-primary);
+    text-align: right;
+    word-break: break-word;
   }
 
   .side-fare-summary {
     background: var(--color-cream);
     border: 1px solid var(--color-accent);
     border-radius: var(--radius-md);
-    padding: var(--space-md);
-    margin-bottom: var(--space-lg);
+    padding: 10px 12px;
+    margin-bottom: 14px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
   }
 
   .fare-row {
     display: flex;
     justify-content: space-between;
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     color: var(--color-text);
   }
 
@@ -727,25 +1153,51 @@ const faqSchema = generateFAQSchema(route.faqs);
   }
 
   .fare-row.highlight {
-    background: rgba(197, 155, 39, 0.2);
-    padding: 4px 8px;
+    background: rgba(197, 155, 39, 0.18);
+    padding: 3px 6px;
     border-radius: var(--radius-sm);
   }
 
   .fare-row.highlight strong {
-    color: var(--color-accent-dark);
+    color: #B45309;
   }
 
   .side-cta-stack {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
+  }
+
+  .side-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 14px;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: none;
+    min-height: 46px;
+    transition: transform var(--transition-fast);
+  }
+
+  .side-action-btn--wa {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFFFFF !important;
+    box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+  }
+
+  .side-action-btn--call {
+    background: var(--color-primary);
+    color: #FFFFFF !important;
   }
 
   .tips-title {
-    font-size: 1.0625rem;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
     color: var(--color-primary);
-    margin-bottom: var(--space-sm);
+    margin-bottom: 8px;
   }
 
   .sidebar-links {
@@ -754,24 +1206,27 @@ const faqSchema = generateFAQSchema(route.faqs);
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    font-size: 0.9375rem;
+    gap: 6px;
   }
 
   .sidebar-links a {
     color: var(--color-primary);
     text-decoration: none;
+    font-size: 0.84rem;
     font-weight: 600;
+    display: block;
+    padding: 4px 0;
+    border-bottom: 1px dashed var(--color-border);
+    transition: color 0.15s;
   }
 
   .sidebar-links a:hover {
-    color: var(--color-accent);
-    text-decoration: underline;
+    color: var(--color-accent-dark);
   }
 
   /* FAQs */
   .faq-section {
-    padding: var(--space-4xl) 0;
+    padding: var(--space-2xl) 0 var(--space-3xl);
     background: #FFFFFF;
     border-top: 1px solid var(--color-border);
   }
@@ -781,76 +1236,96 @@ const faqSchema = generateFAQSchema(route.faqs);
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: 10px;
   }
 
   .faq-item {
     background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-lg);
     overflow: hidden;
+    transition: border-color var(--transition-fast);
+  }
+
+  .faq-item[open] {
+    border-color: var(--color-accent);
+    background: #FFFFFF;
   }
 
   .faq-question {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--space-lg);
+    padding: 14px 16px;
     cursor: pointer;
     font-weight: 700;
+    font-size: 0.95rem;
     color: var(--color-primary);
     user-select: none;
+    list-style: none;
   }
 
-  .faq-question:hover {
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .chevron {
     color: var(--color-accent-dark);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .faq-item[open] .chevron {
+    transform: rotate(180deg);
   }
 
   .faq-answer {
-    padding: 0 var(--space-lg) var(--space-lg);
-    font-size: 0.9375rem;
-    line-height: 1.7;
+    padding: 0 16px 14px;
+    font-size: 0.875rem;
+    line-height: 1.6;
     color: var(--color-text-muted);
+  }
+
+  .faq-answer p {
+    margin: 0;
   }
 
   /* Bottom CTA */
   .bottom-cta-banner {
     background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
     color: #FFFFFF;
-    padding: var(--space-4xl) 0;
+    padding: var(--space-2xl) 0;
     border-top: 3px solid var(--color-accent);
   }
 
   .bottom-cta-banner h2 {
     color: #FFFFFF;
     font-family: var(--font-heading);
-    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-    margin-bottom: var(--space-sm);
+    font-size: clamp(1.4rem, 3vw, 2.1rem);
+    margin-bottom: 8px;
+    line-height: 1.25;
   }
 
   .bottom-cta-banner p {
     color: rgba(255, 255, 255, 0.9);
     max-width: 650px;
-    margin: 0 auto var(--space-xl);
-    font-size: 1.0625rem;
+    margin: 0 auto 18px;
+    font-size: 0.9375rem;
+    line-height: 1.5;
   }
 
   .bottom-cta-row {
     display: flex;
     justify-content: center;
-    gap: var(--space-md);
+    gap: 12px;
     flex-wrap: wrap;
   }
 
-  /* Responsive */
-  @media (max-width: 1024px) {
-    .route-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .pricing-cards-row {
-      grid-template-columns: 1fr;
-      max-width: 440px;
+  @media (max-width: 640px) {
+    .bottom-cta-row {
+      flex-direction: column;
+      align-items: stretch;
+      max-width: 320px;
       margin: 0 auto;
     }
   }
