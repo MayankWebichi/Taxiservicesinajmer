@@ -1,0 +1,673 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+
+const pageTitle = "Kishangarh Airport (KQH) to Ajmer & Pushkar Taxi Guide 2026 — Fares & Booking | Taxi Services in Ajmer";
+const pageDescription = "Landing at Kishangarh Airport (KQH / VIKG)? 2026 taxi guide: fixed cab rates to Ajmer (₹900) & Pushkar (₹1,400), flight tracking, meet-and-greet & Marble Dumping Yard tours.";
+
+const waAirport = createWhatsAppBookingUrl({ 
+  pickup: "Kishangarh Airport (KQH)", 
+  tripType: "One Way",
+  customMessage: "Hello, I will be landing at Kishangarh Airport and need to book an airport taxi pickup. Please share vehicle availability." 
+});
+
+const publishDate = "2026-09-25";
+const formattedDate = "September 25, 2026";
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Kishangarh Airport (KQH) to Ajmer & Pushkar Taxi Guide 2026 — Fares & Booking",
+  "description": "Essential airport taxi guide for fliers landing at Kishangarh Airport (KQH). Detailed transfer fares to Ajmer Dargah, Pushkar hotels, and visiting the Marble Dumping Yard.",
+  "datePublished": publishDate,
+  "dateModified": publishDate,
+  "author": {
+    "@type": "Organization",
+    "name": business.name,
+    "url": business.website
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": business.name,
+    "url": business.website
+  }
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalPath="/blog/kishangarh-airport-to-ajmer-pushkar-taxi-fare/"
+  schemaMarkup={articleSchema}
+>
+  <Header />
+  <main id="main-content">
+    <section class="article-hero">
+      <div class="container">
+        <div class="article-meta">
+          <span class="art-cat">Airport Transfer</span>
+          <time datetime={publishDate} class="art-date">📅 {formattedDate}</time>
+          <span class="art-read">⏱️ 6 min read</span>
+        </div>
+        <h1 class="article-title">Kishangarh Airport (KQH) to Ajmer &amp; Pushkar Taxi Guide 2026 — Fares &amp; Booking</h1>
+        <p class="article-lead">Kishangarh Airport (IATA: KQH, ICAO: VIKG) is the closest commercial airport serving both Ajmer (28 km) and Pushkar (42 km). Here is everything incoming passengers need to know about flight terminal pickups, on-spot taxi shortages, transparent cab rates, and adding a visit to the famous Marble Dumping Yard.</p>
+        <div class="art-author">
+          <div class="author-avatar">TS</div>
+          <div>
+            <strong>Taxi Services in Ajmer</strong>
+            <span>Official Airport Transfer Operators · Serving Pilgrims &amp; Fliers Since 2008</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li><a href="/">Home</a></li>
+          <li aria-hidden="true">&rsaquo;</li>
+          <li><a href="/blog/">Blog</a></li>
+          <li aria-hidden="true">&rsaquo;</li>
+          <li aria-current="page">Kishangarh Airport Taxi Guide</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Article Content -->
+    <section class="article-section">
+      <div class="container">
+        <div class="article-layout">
+          <article class="article-body">
+            
+            <div class="toc-box">
+              <h2 class="toc-title">Airport Guide Sections</h2>
+              <ol class="toc-list">
+                <li><a href="#about-airport">1. About Kishangarh Airport (KQH) &amp; Operating Airlines</a></li>
+                <li><a href="#distance-travel-time">2. Distance &amp; Driving Times to Ajmer and Pushkar</a></li>
+                <li><a href="#fare-chart-kqh">3. 2026 Fixed Taxi Fares from Kishangarh Airport</a></li>
+                <li><a href="#dumping-yard">4. Popular En-Route Tour: The Kishangarh Marble Dumping Yard</a></li>
+                <li><a href="#why-prebook">5. Why On-Spot Taxis Are Scarce at KQH</a></li>
+                <li><a href="#flight-tracking">6. Flight Tracking &amp; Chauffeur Meet-and-Greet</a></li>
+                <li><a href="#faqs">7. Frequently Asked Questions (FAQs)</a></li>
+              </ol>
+            </div>
+
+            <h2 id="about-airport">1. About Kishangarh Airport (KQH) &amp; Operating Airlines</h2>
+            <p>
+              Inaugurated to boost pilgrimage connectivity, <strong>Kishangarh Airport</strong> is located on NH 48 just outside the marble city of Kishangarh. The airport connects the Ajmer–Pushkar region directly with major metros including Delhi (Indira Gandhi International Airport), Ahmedabad, Hyderabad, Lucknow, and Mumbai via regional carriers such as Star Air and Alliance Air.
+            </p>
+            <p>
+              Because it is a regional airport, passenger volume arrives in batches around scheduled flight landings. Within 20 minutes of landing, dozens of passengers exit the single terminal simultaneously, creating sudden surges in local taxi demand.
+            </p>
+
+            <h2 id="distance-travel-time">2. Distance &amp; Driving Times to Ajmer and Pushkar</h2>
+            <p>
+              Depending on your final hotel or residence, here is the realistic driving duration via NH 48:
+            </p>
+            <div class="info-card">
+              <h4>📍 Airport Travel Breakdown:</h4>
+              <ul>
+                <li>• <strong>Kishangarh Airport &rarr; Ajmer City Center / Dargah:</strong> 28 KM · 35 to 45 mins via NH 48</li>
+                <li>• <strong>Kishangarh Airport &rarr; Pushkar Holy Town:</strong> 42 KM · 50 to 65 mins via Ajmer Bypass &amp; Nag Pahar</li>
+                <li>• <strong>Kishangarh Airport &rarr; Sarwar Sharif:</strong> 85 KM · 1 hr 45 mins via Nasirabad Highway</li>
+                <li>• <strong>Kishangarh Airport &rarr; Jaipur:</strong> 105 KM · 1 hr 45 mins via NH 48 Expressway</li>
+              </ul>
+            </div>
+
+            <h2 id="fare-chart-kqh">3. 2026 Fixed Taxi Fares from Kishangarh Airport</h2>
+            <p>
+              We provide fixed, transparent operator pricing with commercial permits, clean AC vehicles, and complimentary flight delay tracking:
+            </p>
+
+            <div class="table-wrap">
+              <table class="blog-table">
+                <thead>
+                  <tr>
+                    <th>Destination From Kishangarh Airport (KQH)</th>
+                    <th>Distance</th>
+                    <th>Dzire / Etios</th>
+                    <th>Ertiga (6-Seater)</th>
+                    <th>Innova Crysta</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Ajmer City / Railway Station / Dargah Drop</strong></td>
+                    <td>28 km</td>
+                    <td class="price-val">₹900</td>
+                    <td class="price-val">₹1,400</td>
+                    <td class="price-val">₹1,800</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Pushkar Resorts / Brahma Temple / Ghats</strong></td>
+                    <td>42 km</td>
+                    <td class="price-val">₹1,400</td>
+                    <td class="price-val">₹2,000</td>
+                    <td class="price-val">₹2,600</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Ajmer Drop + Marble Dumping Yard Stop</strong></td>
+                    <td>38 km</td>
+                    <td class="price-val">₹1,200</td>
+                    <td class="price-val">₹1,700</td>
+                    <td class="price-val">₹2,200</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Pushkar Drop + Marble Dumping Yard Stop</strong></td>
+                    <td>52 km</td>
+                    <td class="price-val">₹1,700</td>
+                    <td class="price-val">₹2,400</td>
+                    <td class="price-val">₹3,000</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="cta-inline">
+              <div class="cta-inline-content">
+                <h3>Flying into Kishangarh Airport?</h3>
+                <p>Share your flight number for guaranteed tarmac-to-hotel chauffeur pickup.</p>
+              </div>
+              <a href={waAirport} target="_blank" rel="noopener noreferrer" class="btn btn--gold">Book Airport Cab &rarr;</a>
+            </div>
+
+            <h2 id="dumping-yard">4. Popular En-Route Tour: The Kishangarh Marble Dumping Yard</h2>
+            <p>
+              The world-famous <strong>Kishangarh Marble Slurry Dumping Yard</strong> is located just 12 km from Kishangarh Airport. Often hailed as the <em>"Mines of Snow"</em> or <em>"White Switzerland of Rajasthan,"</em> this massive expanse of crystalline white marble slurry has been featured in blockbuster Bollywood movies and viral wedding shoots.
+            </p>
+            <p>
+              When booking our airport transfer, you can opt for the <strong>Dumping Yard En-Route Package</strong>:
+            </p>
+            <ul>
+              <li>Our driver picks you up from the airport and takes you directly to the Kishangarh Marble Association office for mandatory security gate pass clearance.</li>
+              <li>You spend 45 to 60 minutes taking photographs against the turquoise artificial lakes and white slurry dunes.</li>
+              <li>Your luggage remains safe inside the locked, air-conditioned cab trunk under chauffeur supervision.</li>
+              <li>You continue onward to your hotel in Ajmer or Pushkar refreshed.</li>
+            </ul>
+
+            <h2 id="why-prebook">5. Why On-Spot Taxis Are Scarce at KQH</h2>
+            <p>
+              Unlike mega-airports in Delhi or Mumbai, Kishangarh Airport does not have hundreds of app cabs like Uber or Ola queued up outside. Local aggregators often cancel rides or show "No Cabs Available" because drivers are unwilling to drive out 10 km empty from the city center.
+            </p>
+            <p>
+              Unscheduled travelers stepping out of the terminal frequently find themselves surrounded by private freelance operators demanding ₹1,800 to ₹2,500 for a basic sedan drop. <strong>Pre-booking your ride guarantees your vehicle and locks in your fair direct rate.</strong>
+            </p>
+
+            <h2 id="flight-tracking">6. Flight Tracking &amp; Chauffeur Meet-and-Greet</h2>
+            <p>
+              Regional flights can occasionally encounter airspace delays or weather diversions. When you book with Taxi Services in Ajmer:
+            </p>
+            <ol class="styled-list">
+              <li>You simply provide your <strong>Flight Number (e.g., S5 212 / 9I 843)</strong> when booking on WhatsApp.</li>
+              <li>Our dispatch team monitors live FlightRadar status.</li>
+              <li>Even if your flight touches down 90 minutes behind schedule, your driver will be waiting patiently at the Terminal Exit with your name placard.</li>
+              <li>Zero extra waiting fee is charged for airline delays.</li>
+            </ol>
+
+            <h2 id="faqs">7. Frequently Asked Questions (FAQs)</h2>
+            <div class="faq-accordion">
+              <div class="faq-item">
+                <h3>What is the taxi fare from Kishangarh Airport to Pushkar?</h3>
+                <p>The direct AC Sedan taxi fare from Kishangarh Airport to any hotel, tent camp, or resort in Pushkar is ₹1,400. For a larger 6-seater Ertiga (ideal for families with 3-4 bags), the fare is ₹2,000.</p>
+              </div>
+              <div class="faq-item">
+                <h3>Are pre-paid taxi booths available inside Kishangarh Airport?</h3>
+                <p>Kishangarh Airport does not have a formal pre-paid police booth. Most travelers pre-book with reputable local fleet operators like Taxi Services in Ajmer to ensure fixed pricing and avoid on-spot bargaining.</p>
+              </div>
+              <div class="faq-item">
+                <h3>Is an entry permit needed for the Kishangarh Marble Dumping Yard?</h3>
+                <p>Yes, a complimentary security pass must be stamped at the Kishangarh Marble Association gate. Our chauffeurs assist you with the permit process so you enter without any delay.</p>
+              </div>
+            </div>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside class="article-sidebar">
+            <div class="side-card cta-card">
+              <span class="side-pill">Airport Chauffeurs</span>
+              <h3>Kishangarh Airport Taxi</h3>
+              <p>Fixed rate ₹900 to Ajmer and ₹1,400 to Pushkar. Free flight delay tracking &amp; verified drivers.</p>
+              <a href={waAirport} target="_blank" rel="noopener noreferrer" class="side-btn side-btn--wa">
+                Book on WhatsApp &rarr;
+              </a>
+              <a href={`tel:${business.phone}`} class="side-btn side-btn--call">
+                Call {business.phoneFormatted}
+              </a>
+            </div>
+
+            <div class="side-card">
+              <h3>Related Airport &amp; City Guides</h3>
+              <ul class="side-links">
+                <li><a href="/ajmer-to-kishangarh-airport-taxi/">Kishangarh Airport Cab Page</a></li>
+                <li><a href="/blog/ajmer-to-pushkar-taxi-fare-guide-2026/">Ajmer to Pushkar Taxi Guide</a></li>
+                <li><a href="/blog/ajmer-railway-station-taxi-guide-2026/">Ajmer Railway Station Taxi Guide</a></li>
+                <li><a href="/blog/best-taxi-service-ajmer-2026/">Best Taxi Service in Ajmer 2026</a></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .article-hero {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #FFFFFF;
+    padding: calc(var(--header-height, 74px) + 24px) 0 32px;
+    border-bottom: 3px solid var(--color-accent);
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .art-cat {
+    background: rgba(197, 155, 39, 0.25);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-light);
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 12px;
+    border-radius: var(--radius-full);
+  }
+
+  .art-date, .art-read {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .article-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.85rem, 4vw, 2.65rem);
+    color: #FFFFFF;
+    line-height: 1.22;
+    margin-bottom: 12px;
+  }
+
+  .article-lead {
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.6;
+    max-width: 820px;
+    margin-bottom: 20px;
+  }
+
+  .art-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .author-avatar {
+    width: 44px;
+    height: 44px;
+    background: var(--color-accent);
+    color: var(--color-primary-dark);
+    font-weight: 800;
+    font-size: 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .art-author strong {
+    display: block;
+    color: #FFFFFF;
+    font-size: 0.9375rem;
+  }
+
+  .art-author span {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Breadcrumb */
+  .breadcrumb-nav {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: 10px 0;
+  }
+
+  .breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb-list a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .breadcrumb-list a:hover {
+    color: var(--color-accent-dark);
+  }
+
+  /* Layout */
+  .article-section {
+    padding: var(--space-xl) 0 var(--space-3xl);
+    background: #FFFFFF;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  @media (min-width: 992px) {
+    .article-layout {
+      grid-template-columns: 1fr 320px;
+      gap: var(--space-3xl);
+    }
+  }
+
+  .article-body {
+    min-width: 0;
+  }
+
+  .article-body h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.35rem, 2.5vw, 1.7rem);
+    color: var(--color-primary);
+    margin: var(--space-xl) 0 var(--space-sm);
+    line-height: 1.3;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .article-body h3 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--color-primary);
+    margin: var(--space-md) 0 var(--space-xs);
+  }
+
+  .article-body p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    margin-bottom: var(--space-md);
+  }
+
+  .article-body ul, .article-body ol {
+    margin-bottom: var(--space-md);
+    padding-left: 20px;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--color-text);
+  }
+
+  .article-body li {
+    margin-bottom: 6px;
+  }
+
+  .toc-box {
+    background: var(--color-cream);
+    border: 1.5px solid var(--color-accent);
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .toc-title {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+  }
+
+  .toc-list {
+    margin: 0;
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .toc-list a {
+    color: var(--color-primary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .toc-list a:hover {
+    color: var(--color-accent-dark);
+    text-decoration: underline;
+  }
+
+  .info-card {
+    background: var(--color-surface);
+    border-left: 4px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    margin-bottom: var(--space-lg);
+  }
+
+  .info-card h4 {
+    margin: 0 0 6px 0;
+    font-size: 0.95rem;
+    color: var(--color-primary);
+  }
+
+  .info-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    margin-bottom: 8px;
+  }
+
+  .blog-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  .blog-table th {
+    background: var(--color-primary);
+    color: #FFFFFF;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+  }
+
+  .blog-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text);
+  }
+
+  .blog-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .blog-table tbody tr:nth-child(even) {
+    background: var(--color-surface);
+  }
+
+  .price-val {
+    font-weight: 800;
+    color: var(--color-primary);
+  }
+
+  .cta-inline {
+    background: linear-gradient(135deg, #FFFDF5 0%, #FEF3C7 100%);
+    border: 1.5px solid var(--color-accent);
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: var(--space-xl) 0;
+  }
+
+  .cta-inline h3 {
+    margin: 0 0 4px 0;
+    font-size: 1.15rem;
+    color: var(--color-primary);
+  }
+
+  .cta-inline p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: var(--space-md);
+  }
+
+  .faq-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 14px 16px;
+  }
+
+  .faq-item h3 {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: var(--color-primary);
+    margin: 0 0 6px 0;
+  }
+
+  .faq-item p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  /* Sidebar */
+  .article-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .side-card {
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: 20px;
+  }
+
+  .cta-card {
+    background: #FFFFFF;
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 16px rgba(90, 12, 26, 0.08);
+  }
+
+  .side-pill {
+    display: inline-block;
+    background: rgba(90, 12, 26, 0.08);
+    color: var(--color-primary);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    margin-bottom: 8px;
+  }
+
+  .side-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+
+  .side-card p {
+    font-size: 0.84rem;
+    color: var(--color-text-muted);
+    line-height: 1.45;
+    margin-bottom: 14px;
+  }
+
+  .side-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 14px;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: none;
+    min-height: 44px;
+    margin-bottom: 8px;
+    transition: transform var(--transition-fast);
+  }
+
+  .side-btn--wa {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFFFFF !important;
+  }
+
+  .side-btn--call {
+    background: var(--color-primary);
+    color: #FFFFFF !important;
+  }
+
+  .side-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .side-links a {
+    color: var(--color-primary);
+    font-size: 0.84rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: block;
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--color-border);
+  }
+
+  .side-links a:hover {
+    color: var(--color-accent-dark);
+  }
+</style>

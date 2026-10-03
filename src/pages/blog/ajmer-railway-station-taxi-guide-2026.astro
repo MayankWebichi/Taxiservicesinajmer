@@ -1,0 +1,692 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+
+const pageTitle = "Ajmer Railway Station Taxi Guide 2026 — Pre-paid Cabs, Fares & Dargah Transfer | Taxi Services in Ajmer";
+const pageDescription = "Arriving at Ajmer Junction (AII)? Full 2026 guide for railway station taxis, auto vs cab fares, Dargah drop points, Pushkar transfers & pre-booking verified drivers.";
+
+const waStation = createWhatsAppBookingUrl({ 
+  pickup: "Ajmer Railway Station (Exit 1)", 
+  tripType: "One Way",
+  customMessage: "Hello, I will be arriving at Ajmer Railway Station and need to book a taxi pickup. Please share vehicle availability." 
+});
+
+const publishDate = "2026-10-01";
+const formattedDate = "October 1, 2026";
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Ajmer Railway Station Taxi Guide 2026 — Pre-paid Cabs, Fares & Dargah Transfer",
+  "description": "Complete guide for passengers arriving at Ajmer Junction (AII) railway station. Covers exit gates, pre-paid cab stands, fixed fares to Dargah, Pushkar and Kishangarh Airport.",
+  "datePublished": publishDate,
+  "dateModified": publishDate,
+  "author": {
+    "@type": "Organization",
+    "name": business.name,
+    "url": business.website
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": business.name,
+    "url": business.website
+  }
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalPath="/blog/ajmer-railway-station-taxi-guide-2026/"
+  schemaMarkup={articleSchema}
+>
+  <Header />
+  <main id="main-content">
+    <section class="article-hero">
+      <div class="container">
+        <div class="article-meta">
+          <span class="art-cat">Transit &amp; Railway Guide</span>
+          <time datetime={publishDate} class="art-date">📅 {formattedDate}</time>
+          <span class="art-read">⏱️ 7 min read</span>
+        </div>
+        <h1 class="article-title">Ajmer Railway Station Taxi Guide 2026 — Pre-paid Cabs, Fares &amp; Dargah Transfer</h1>
+        <p class="article-lead">Ajmer Junction (Station Code: AII) serves thousands of pilgrims, business travelers, and tourists arriving daily on trains like the Vande Bharat, Shatabdi, and Chetak Express. Here is how to navigate station exits, secure verified taxis, and avoid being overcharged.</p>
+        <div class="art-author">
+          <div class="author-avatar">TS</div>
+          <div>
+            <strong>Taxi Services in Ajmer</strong>
+            <span>Station Meet &amp; Greet Experts · Serving Travelers Since 2008</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb-list">
+          <li><a href="/">Home</a></li>
+          <li aria-hidden="true">&rsaquo;</li>
+          <li><a href="/blog/">Blog</a></li>
+          <li aria-hidden="true">&rsaquo;</li>
+          <li aria-current="page">Ajmer Railway Station Taxi Guide</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Article Content -->
+    <section class="article-section">
+      <div class="container">
+        <div class="article-layout">
+          <article class="article-body">
+            
+            <div class="toc-box">
+              <h2 class="toc-title">In This Railway Station Guide</h2>
+              <ol class="toc-list">
+                <li><a href="#station-layout">1. Ajmer Junction Layout: Platform 1 vs Platform 2/3 (Topdara Exit)</a></li>
+                <li><a href="#fare-chart">2. 2026 Fixed Taxi Fares from Ajmer Railway Station</a></li>
+                <li><a href="#dargah-drop">3. Reaching Ajmer Sharif Dargah: Where Do Cabs Drop You?</a></li>
+                <li><a href="#late-night">4. Late Night &amp; Early Morning Train Arrivals (Safety &amp; Availability)</a></li>
+                <li><a href="#auto-vs-taxi-station">5. Station Auto Touts vs Pre-Booked Chauffeurs</a></li>
+                <li><a href="#advance-booking">6. How Meet-and-Greet Pickup Works</a></li>
+                <li><a href="#faqs">7. Frequently Asked Questions (FAQs)</a></li>
+              </ol>
+            </div>
+
+            <h2 id="station-layout">1. Ajmer Junction Layout: Platform 1 vs Platform 2/3 (Topdara Exit)</h2>
+            <p>
+              Ajmer Junction is a major railway junction on the Delhi–Mumbai railway corridor. When stepping off your train, understanding which station gate to exit from saves you 20 minutes of hassle:
+            </p>
+            <ul>
+              <li><strong>Platform 1 Exit (Main Portico / Clock Tower Side):</strong> This is the primary station entrance facing the city. It leads directly to Station Road, Kutchery Road, and the auto-rickshaw queue. If you have booked your cab with us, our chauffeur will be waiting outside this main portico with your name placard.</li>
+              <li><strong>Platform 2/3 / Topdara Side Exit:</strong> Located on the eastern side towards Topdara and the Railway Carriage Works. This gate is less congested and offers direct vehicular access to the Kishangarh/Jaipur highway bypass without having to navigate city market traffic.</li>
+            </ul>
+
+            <h2 id="fare-chart">2. 2026 Fixed Taxi Fares from Ajmer Railway Station</h2>
+            <p>
+              Pre-booking your cab directly eliminates high-pressure bargaining outside the station gates. Here are our verified operator fares from Ajmer Junction:
+            </p>
+
+            <div class="table-wrap">
+              <table class="blog-table">
+                <thead>
+                  <tr>
+                    <th>Destination From Ajmer Station</th>
+                    <th>Distance</th>
+                    <th>Sedan (Dzire)</th>
+                    <th>Ertiga (6-Seater)</th>
+                    <th>Innova Crysta</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Ajmer Sharif Dargah (Outer Drop)</strong></td>
+                    <td>2.5 km</td>
+                    <td class="price-val">₹300</td>
+                    <td class="price-val">₹500</td>
+                    <td class="price-val">₹700</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Pushkar Holy Town (Hotel / Ghat)</strong></td>
+                    <td>14 km</td>
+                    <td class="price-val">₹700</td>
+                    <td class="price-val">₹1,200</td>
+                    <td class="price-val">₹1,500</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Kishangarh Airport (KQH)</strong></td>
+                    <td>28 km</td>
+                    <td class="price-val">₹900</td>
+                    <td class="price-val">₹1,400</td>
+                    <td class="price-val">₹1,800</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Jaipur City / Airport Drop</strong></td>
+                    <td>135 km</td>
+                    <td class="price-val">₹1,800</td>
+                    <td class="price-val">₹2,800</td>
+                    <td class="price-val">₹4,500</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sarwar Sharif Dargah</strong></td>
+                    <td>64 km</td>
+                    <td class="price-val">₹1,800</td>
+                    <td class="price-val">₹2,600</td>
+                    <td class="price-val">₹3,400</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Jodhpur City One-Way</strong></td>
+                    <td>200 km</td>
+                    <td class="price-val">₹2,800</td>
+                    <td class="price-val">₹4,200</td>
+                    <td class="price-val">₹5,500</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="cta-inline">
+              <div class="cta-inline-content">
+                <h3>Arriving by Train Today or Tomorrow?</h3>
+                <p>Send us your train name and arrival time for zero-delay station pickup.</p>
+              </div>
+              <a href={waStation} target="_blank" rel="noopener noreferrer" class="btn btn--gold">Book Station Pickup &rarr;</a>
+            </div>
+
+            <h2 id="dargah-drop">3. Reaching Ajmer Sharif Dargah: Where Do Cabs Drop You?</h2>
+            <p>
+              The revered <strong>Dargah of Khwaja Moinuddin Chishti</strong> is located just 2.5 km from Ajmer Junction. However, the inner lanes (Dargah Bazar, Nala Bazar, and Lakhan Kothri) are heavily congested and strictly restricted to pedestrians and authorized battery e-rickshaws.
+            </p>
+            <p>
+              <strong>Where our cabs drop you:</strong>
+            </p>
+            <ul>
+              <li><strong>Nizam Gate Approach / Delhi Gate:</strong> The closest vehicular approach point, approximately 400 meters from the holy sanctum.</li>
+              <li><strong>Khadim Chauraha / Shah Jahan Gate:</strong> Ideal if your guest house or hotel is located in the Khadim Mohalla area.</li>
+              <li><strong>Luggage Assistance:</strong> If you are carrying heavy pilgrim chaddars, deg cooking contributions, or family bags, our chauffeurs coordinate with licensed railway station coolies or battery rickshaws for seamless transfer right to your hotel doorstep.</li>
+            </ul>
+
+            <h2 id="late-night">4. Late Night &amp; Early Morning Train Arrivals (Safety &amp; Availability)</h2>
+            <p>
+              Many popular trains arrive at Ajmer at late hours:
+            </p>
+            <ul>
+              <li><strong>Delhi Cantt – Ajmer Vande Bharat (Train 20978):</strong> Arrives around 11:55 PM.</li>
+              <li><strong>Ajmer – Sealdah Superfast (Train 12988):</strong> Late night and early departures.</li>
+              <li><strong>Ahmedabad – Delhi Ashram Express:</strong> Passes past midnight.</li>
+            </ul>
+            <p>
+              Arriving late at night with family or elderly parents can be intimidating if you depend on finding a taxi on the spot. Street drivers often demand inflated fares of ₹1,500 for a simple Pushkar drop past 11 PM. By pre-booking with <strong>Taxi Services in Ajmer</strong>, your vehicle and driver details are dispatched to your WhatsApp well before your train pulls into the platform, and rates remain fixed without night surcharges.
+            </p>
+
+            <h2 id="auto-vs-taxi-station">5. Station Auto Touts vs Pre-Booked Chauffeurs</h2>
+            <p>
+              Outside Exit 1, you will encounter numerous auto-rickshaw drivers and commission agents ("touts") offering cheap rides. Be aware of common pitfalls:
+            </p>
+            <div class="info-card">
+              <h4>⚠️ What to Watch Out For Outside Ajmer Station:</h4>
+              <ul>
+                <li>• <strong>Hotel Diversion Tactic:</strong> Some touts claim your pre-booked hotel is "closed," "under repair," or "in a curfew zone" to redirect you to commission-paying lodges. Insist on going strictly to your booked address.</li>
+                <li>• <strong>Luggage Upcharges:</strong> Quoting ₹150 for an auto ride and then demanding ₹100 extra per suitcase.</li>
+                <li>• <strong>Pushkar Mountain Trouble:</strong> Taking small CNG autos across the Nag Pahar mountain pass at night without proper headlights.</li>
+              </ul>
+            </div>
+
+            <h2 id="advance-booking">6. How Meet-and-Greet Pickup Works</h2>
+            <p>
+              Booking with us takes under 60 seconds:
+            </p>
+            <ol class="styled-list">
+              <li>Message us on WhatsApp with your <strong>Train Number, Arrival Date, and Destination</strong>.</li>
+              <li>We send you vehicle options and a fixed price quote.</li>
+              <li>Zero advance deposit is needed.</li>
+              <li>15 minutes before your train arrives, you receive the chauffeur's name, mobile number, and car registration plate.</li>
+              <li>Meet your driver at the designated parking bay, travel comfortably in 100% AC, and pay the driver directly at your destination.</li>
+            </ol>
+
+            <h2 id="faqs">7. Frequently Asked Questions (FAQs)</h2>
+            <div class="faq-accordion">
+              <div class="faq-item">
+                <h3>What if my train gets delayed?</h3>
+                <p>We actively track live train running status via NTES. If your train is delayed by 1 hour or 5 hours, our driver will adjust the pickup time accordingly at no extra waiting fee.</p>
+              </div>
+              <div class="faq-item">
+                <h3>Where will the driver meet me at Ajmer Junction?</h3>
+                <p>The standard meeting spot is right outside Exit Gate 1 (Clock Tower Portico) near the VIP parking area. The driver will hold a placard with your name or call you as soon as you alight.</p>
+              </div>
+              <div class="faq-item">
+                <h3>Can I book a cab directly from Ajmer Station to Jaipur Airport?</h3>
+                <p>Yes. Many passengers taking morning flights from Jaipur International Airport (JAI) hire our direct one-way cab from Ajmer Station. The travel time is approximately 2.5 hours via the 6-lane NH 48 expressway.</p>
+              </div>
+            </div>
+
+          </article>
+
+          <!-- Sidebar -->
+          <aside class="article-sidebar">
+            <div class="side-card cta-card">
+              <span class="side-pill">Live Station Pickup</span>
+              <h3>Arriving at Ajmer Station?</h3>
+              <p>Sedan drop from ₹300. Pushkar drop from ₹700. Direct highway transfer to Jaipur ₹1,800.</p>
+              <a href={waStation} target="_blank" rel="noopener noreferrer" class="side-btn side-btn--wa">
+                Book Station Cab on WhatsApp &rarr;
+              </a>
+              <a href={`tel:${business.phone}`} class="side-btn side-btn--call">
+                Call {business.phoneFormatted}
+              </a>
+            </div>
+
+            <div class="side-card">
+              <h3>Popular Station Routes</h3>
+              <ul class="side-links">
+                <li><a href="/ajmer-railway-station-to-pushkar-taxi/">Ajmer Station to Pushkar Taxi</a></li>
+                <li><a href="/ajmer-railway-station-to-dargah-taxi/">Ajmer Station to Dargah Cab</a></li>
+                <li><a href="/ajmer-railway-station-to-kishangarh-airport-taxi/">Ajmer Station to Kishangarh Airport</a></li>
+                <li><a href="/ajmer-to-jaipur-taxi/">Ajmer to Jaipur Highway Cab</a></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .article-hero {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #FFFFFF;
+    padding: calc(var(--header-height, 74px) + 24px) 0 32px;
+    border-bottom: 3px solid var(--color-accent);
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .art-cat {
+    background: rgba(197, 155, 39, 0.25);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-light);
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 12px;
+    border-radius: var(--radius-full);
+  }
+
+  .art-date, .art-read {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .article-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.85rem, 4vw, 2.65rem);
+    color: #FFFFFF;
+    line-height: 1.22;
+    margin-bottom: 12px;
+  }
+
+  .article-lead {
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.6;
+    max-width: 820px;
+    margin-bottom: 20px;
+  }
+
+  .art-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .author-avatar {
+    width: 44px;
+    height: 44px;
+    background: var(--color-accent);
+    color: var(--color-primary-dark);
+    font-weight: 800;
+    font-size: 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .art-author strong {
+    display: block;
+    color: #FFFFFF;
+    font-size: 0.9375rem;
+  }
+
+  .art-author span {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Breadcrumb */
+  .breadcrumb-nav {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: 10px 0;
+  }
+
+  .breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb-list a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .breadcrumb-list a:hover {
+    color: var(--color-accent-dark);
+  }
+
+  /* Layout */
+  .article-section {
+    padding: var(--space-xl) 0 var(--space-3xl);
+    background: #FFFFFF;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  @media (min-width: 992px) {
+    .article-layout {
+      grid-template-columns: 1fr 320px;
+      gap: var(--space-3xl);
+    }
+  }
+
+  .article-body {
+    min-width: 0;
+  }
+
+  .article-body h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.35rem, 2.5vw, 1.7rem);
+    color: var(--color-primary);
+    margin: var(--space-xl) 0 var(--space-sm);
+    line-height: 1.3;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .article-body h3 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--color-primary);
+    margin: var(--space-md) 0 var(--space-xs);
+  }
+
+  .article-body p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    margin-bottom: var(--space-md);
+  }
+
+  .article-body ul, .article-body ol {
+    margin-bottom: var(--space-md);
+    padding-left: 20px;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--color-text);
+  }
+
+  .article-body li {
+    margin-bottom: 6px;
+  }
+
+  .toc-box {
+    background: var(--color-cream);
+    border: 1.5px solid var(--color-accent);
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .toc-title {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+  }
+
+  .toc-list {
+    margin: 0;
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .toc-list a {
+    color: var(--color-primary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .toc-list a:hover {
+    color: var(--color-accent-dark);
+    text-decoration: underline;
+  }
+
+  .info-card {
+    background: var(--color-surface);
+    border-left: 4px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    margin-bottom: var(--space-lg);
+  }
+
+  .info-card h4 {
+    margin: 0 0 6px 0;
+    font-size: 0.95rem;
+    color: var(--color-primary);
+  }
+
+  .info-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    margin-bottom: 8px;
+  }
+
+  .blog-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  .blog-table th {
+    background: var(--color-primary);
+    color: #FFFFFF;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+  }
+
+  .blog-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text);
+  }
+
+  .blog-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .blog-table tbody tr:nth-child(even) {
+    background: var(--color-surface);
+  }
+
+  .price-val {
+    font-weight: 800;
+    color: var(--color-primary);
+  }
+
+  .cta-inline {
+    background: linear-gradient(135deg, #FFFDF5 0%, #FEF3C7 100%);
+    border: 1.5px solid var(--color-accent);
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: var(--space-xl) 0;
+  }
+
+  .cta-inline h3 {
+    margin: 0 0 4px 0;
+    font-size: 1.15rem;
+    color: var(--color-primary);
+  }
+
+  .cta-inline p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: var(--space-md);
+  }
+
+  .faq-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 14px 16px;
+  }
+
+  .faq-item h3 {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: var(--color-primary);
+    margin: 0 0 6px 0;
+  }
+
+  .faq-item p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  /* Sidebar */
+  .article-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .side-card {
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: 20px;
+  }
+
+  .cta-card {
+    background: #FFFFFF;
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 16px rgba(90, 12, 26, 0.08);
+  }
+
+  .side-pill {
+    display: inline-block;
+    background: rgba(90, 12, 26, 0.08);
+    color: var(--color-primary);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    margin-bottom: 8px;
+  }
+
+  .side-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+
+  .side-card p {
+    font-size: 0.84rem;
+    color: var(--color-text-muted);
+    line-height: 1.45;
+    margin-bottom: 14px;
+  }
+
+  .side-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 14px;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: none;
+    min-height: 44px;
+    margin-bottom: 8px;
+    transition: transform var(--transition-fast);
+  }
+
+  .side-btn--wa {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFFFFF !important;
+  }
+
+  .side-btn--call {
+    background: var(--color-primary);
+    color: #FFFFFF !important;
+  }
+
+  .side-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .side-links a {
+    color: var(--color-primary);
+    font-size: 0.84rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: block;
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--color-border);
+  }
+
+  .side-links a:hover {
+    color: var(--color-accent-dark);
+  }
+</style>
