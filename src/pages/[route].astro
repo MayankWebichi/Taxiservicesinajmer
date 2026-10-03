@@ -3,6 +3,7 @@ import { seoRoutesData, type SeoRouteItem } from "@/data/seoRoutesData";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header/Header.astro";
 import Footer from "@/components/Footer/Footer.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
 import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
 import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
 import { business } from "@/data/business";
@@ -27,7 +28,7 @@ const waSedan = createWhatsAppBookingUrl({
   destination: route.to,
   vehicle: `Maruti Swift Dzire / Toyota Etios (₹${route.sedanFare.toLocaleString('en-IN')})`,
   tripType: `${route.from} to ${route.to} Taxi`,
-  customMessage: `Hello! I want to book an AC Sedan (Dzire/Etios) for ${route.from} to ${route.to} taxi at ₹${route.sedanFare.toLocaleString('en-IN')}. Please confirm availability.`
+  customMessage: `Hello! I want to book an AC Sedan (Dzire/Etios) for ${route.from} to ${route.to} taxi at ₹${route.sedanFare.toLocaleString('en-IN')}. Please confirm cab timings and availability.`
 });
 
 const waErtiga = createWhatsAppBookingUrl({
@@ -35,7 +36,7 @@ const waErtiga = createWhatsAppBookingUrl({
   destination: route.to,
   vehicle: `Maruti Ertiga 6-Seater (₹${route.suvFare.toLocaleString('en-IN')})`,
   tripType: `${route.from} to ${route.to} Taxi`,
-  customMessage: `Hello! I want to book a 6-Seater Maruti Ertiga for ${route.from} to ${route.to} taxi at ₹${route.suvFare.toLocaleString('en-IN')}. Please confirm availability.`
+  customMessage: `Hello! I want to book a 6-Seater Maruti Ertiga for ${route.from} to ${route.to} taxi at ₹${route.suvFare.toLocaleString('en-IN')}. Please confirm cab timings and availability.`
 });
 
 const waCrysta = createWhatsAppBookingUrl({
@@ -43,7 +44,7 @@ const waCrysta = createWhatsAppBookingUrl({
   destination: route.to,
   vehicle: `Toyota Innova Crysta (₹${route.crystaFare.toLocaleString('en-IN')})`,
   tripType: `${route.from} to ${route.to} Taxi`,
-  customMessage: `Hello! I want to book a Toyota Innova Crysta for ${route.from} to ${route.to} taxi at ₹${route.crystaFare.toLocaleString('en-IN')}. Please confirm availability.`
+  customMessage: `Hello! I want to book a Toyota Innova Crysta for ${route.from} to ${route.to} taxi at ₹${route.crystaFare.toLocaleString('en-IN')}. Please confirm cab timings and availability.`
 });
 
 const serviceSchema = generateServiceSchema({
@@ -57,6 +58,34 @@ const serviceSchema = generateServiceSchema({
 });
 
 const faqSchema = generateFAQSchema(route.faqs);
+
+// Timing Slots metadata
+const timingSlots = [
+  {
+    slot: "Early Morning Slot",
+    timeRange: "04:00 AM – 08:00 AM",
+    badge: "Fastest Highway Transit",
+    desc: `Optimal for morning flights, express train arrivals, or early pilgrimage ziyarat. Clear highway conditions on ${route.highway.split(';')[0]} with minimal congestion.`
+  },
+  {
+    slot: "Standard Day Slot",
+    timeRange: "08:00 AM – 04:00 PM",
+    badge: "Popular for Families",
+    desc: `Doorstep hotel checkout and city sightseeing pickup. Clean air-conditioned cabin with optional hygienic family food and refreshment halts.`
+  },
+  {
+    slot: "Evening Twilight Slot",
+    timeRange: "04:00 PM – 09:00 PM",
+    badge: "Pleasant Sunset Drive",
+    desc: `Comfortable evening intercity transfer. Enjoy sunset views across Rajasthan hills with punctual arrival at your destination.`
+  },
+  {
+    slot: "Night / Late Flight Slot",
+    timeRange: "09:00 PM – 04:00 AM",
+    badge: "24/7 On-Demand Service",
+    desc: `Late-night flight arrivals or midnight train drops. Experienced night chauffeurs, secure travel for solo women & families, zero hidden night surge fees.`
+  }
+];
 ---
 
 <Layout
@@ -69,13 +98,13 @@ const faqSchema = generateFAQSchema(route.faqs);
 
   <main id="main-content">
     <!-- Hero Banner -->
-    <section class="seo-route-hero">
+    <section class="route-hero">
       <div class="container text-center">
         <span class="heritage-pill">Verified Highway Taxi Rate • Serving Since 2008</span>
-        <h1 class="route-title">{route.from} to {route.to} Taxi Service</h1>
+        <h1 class="route-title">{route.from} to {route.to} Taxi &amp; Cab Timings</h1>
         <p class="route-subtitle">{route.heroSubtitle}</p>
 
-        <!-- Route Spec Strip in Hero -->
+        <!-- Route Spec Strip -->
         <div class="hero-specs-strip">
           <div class="spec-chip">
             <span class="chip-icon">📍</span>
@@ -89,32 +118,36 @@ const faqSchema = generateFAQSchema(route.faqs);
             <span class="chip-icon">🛣️</span>
             <span>Highway: <strong>{route.highway}</strong></span>
           </div>
+          <div class="spec-chip">
+            <span class="chip-icon">🕒</span>
+            <span>Timings: <strong>24/7 Available</strong></span>
+          </div>
         </div>
 
-        <!-- Pricing Pills -->
+        <!-- Pricing Pills in Hero -->
         <div class="hero-fare-pills">
           <div class="h-pill">
-            <span class="car-tag">🚗 Sedan:</span>
+            <span class="car-tag">Sedan:</span>
             <strong>₹{route.sedanFare.toLocaleString('en-IN')}</strong>
           </div>
           <div class="h-pill gold">
-            <span class="car-tag">🚙 Ertiga 6-Str:</span>
+            <span class="car-tag">Ertiga 6-Str:</span>
             <strong>₹{route.suvFare.toLocaleString('en-IN')}</strong>
           </div>
           <div class="h-pill">
-            <span class="car-tag">🚐 Crysta:</span>
+            <span class="car-tag">Innova Crysta:</span>
             <strong>₹{route.crystaFare.toLocaleString('en-IN')}</strong>
           </div>
         </div>
 
         <!-- Hero Action Buttons -->
         <div class="hero-cta-btns">
-          <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn-hero-action btn-hero-action--wa">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.178.181-.077.355.101.174.449.741.964 1.2.662.591 1.221.774 1.394.861.173.087.275.072.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.044.073.044.42-.1 1.016z"/></svg>
+          <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--gold hero-cta-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.178.181-.077.355.101.174.449.741.964 1.2.662.591 1.221.774 1.394.861.173.087.275.072.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.044.073.044.42-.1 1.016z"/></svg>
             <span>Book Cab on WhatsApp</span>
           </a>
-          <a href={`tel:${business.phone}`} class="btn-hero-action btn-hero-action--call">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          <a href={`tel:${business.phone}`} class="btn btn--outline-primary hero-cta-btn hero-cta-btn--call">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
             <span>Call 24/7: {business.phoneFormatted}</span>
           </a>
         </div>
@@ -133,183 +166,206 @@ const faqSchema = generateFAQSchema(route.faqs);
           </a>
           <a href={`tel:${business.phone}`} class="m-cta-btn m-cta-btn--call">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-            <span>Call 24/7</span>
+            <span>Call: {business.phoneFormatted}</span>
           </a>
         </div>
 
         <div class="route-grid">
           <!-- Main Content Area -->
           <div class="route-main">
-            <!-- Route Overview Block -->
-            <div class="content-block">
+            <!-- Route Overview -->
+            <div class="content-card">
               <span class="section-subtitle">Comfortable Highway Journey</span>
-              <h2 class="section-title">Reliable {route.from} to {route.to} Cab Rental</h2>
-              <p>
-                Looking for a dependable, private, and air-conditioned cab between <strong>{route.from}</strong> and <strong>{route.to}</strong>? With over 18 years of Rajasthan transport experience since 2008, <strong>Taxi Services in Ajmer</strong> delivers punctual doorstep pickups, experienced chauffeurs, and 100% transparent pricing.
+              <h2 class="section-title">Reliable {route.from} to {route.to} Cab Service</h2>
+              <p class="body-p">
+                Looking for a dependable, private, and air-conditioned cab between <strong>{route.from}</strong> and <strong>{route.to}</strong>? With over 18 years of Rajasthan transport experience since 2008, <strong>Taxi Services in Ajmer</strong> delivers punctual doorstep pickups, experienced highway chauffeurs, and 100% transparent pricing.
               </p>
-              <p>
-                The journey covers roughly <strong>{route.distanceKm} km</strong> via <strong>{route.highway}</strong>, taking approximately <strong>{route.estimatedTime}</strong>. Whether you need an early-morning train/flight transfer, a family pilgrimage trip, or a corporate outstation commute, our clean vehicles and verified drivers ensure maximum comfort.
+              <p class="body-p">
+                The trip spans approximately <strong>{route.distanceKm} km</strong> along <strong>{route.highway}</strong>, taking roughly <strong>{route.estimatedTime}</strong> under typical driving conditions. Whether you are traveling for a flight connection, train transfer, business conference, family pilgrimage, or sightseeing tour, our clean fleet guarantees complete peace of mind.
               </p>
             </div>
 
-            <!-- Vehicle Pricing Cards -->
-            <div class="content-block">
-              <div class="block-header">
+            <!-- Route Timings & Departure Schedule (Crucial for User) -->
+            <div class="content-card timings-card" id="route-timings">
+              <div class="card-header-flex">
                 <div>
-                  <h3 class="tier-heading">Verified Fares ({route.from} ➔ {route.to})</h3>
-                  <p class="tier-subtext">Direct-operator pricing with doorstep pickup, chilled AC, sanitized interior, and no hidden booking fees.</p>
+                  <span class="section-subtitle">Departure Schedules &amp; Slots</span>
+                  <h3 class="tier-heading">Cab Timings &amp; Daily Frequency ({route.from} ➔ {route.to})</h3>
                 </div>
-                <span class="live-rate-tag"><span class="pulse-dot"></span> LIVE 2026 RATES</span>
+                <span class="badge-247">24/7 ON-DEMAND</span>
               </div>
+              <p class="card-intro">
+                Unlike state buses with rigid schedules or private buses that pick up from remote bus stands, our private chauffeur cabs depart <strong>exactly at your preferred time</strong> directly from your hotel porch, home doorstep, railway platform, or airport terminal.
+              </p>
+
+              <div class="timings-grid">
+                {timingSlots.map((ts) => (
+                  <div class="timing-box">
+                    <div class="timing-top">
+                      <strong class="timing-slot">{ts.slot}</strong>
+                      <span class="timing-badge">{ts.badge}</span>
+                    </div>
+                    <div class="timing-hours">
+                      <span class="clock-icon">⏰</span>
+                      <span>{ts.timeRange}</span>
+                    </div>
+                    <p class="timing-desc">{ts.desc}</p>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Quick Dispatch Notice -->
+              <div class="dispatch-notice">
+                <span class="notice-icon">⚡</span>
+                <div class="notice-text">
+                  <strong>Need Immediate Pickup?</strong>
+                  <p>Our fleet is stationed across key junctions in Ajmer &amp; Pushkar. Urgent taxis can be dispatched within <strong>15 to 20 minutes</strong> of your confirmation.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vehicle Pricing Cards -->
+            <div class="content-card">
+              <div class="card-header-flex">
+                <div>
+                  <span class="section-subtitle">Direct Operator Pricing</span>
+                  <h3 class="tier-heading">Verified Fare Breakdown ({route.from} ➔ {route.to})</h3>
+                </div>
+                <span class="live-rate-tag">2026 FIXED FARES</span>
+              </div>
+              <p class="card-intro">No surge pricing, no platform convenience charges, and zero hidden return fare penalties.</p>
 
               <div class="pricing-cards-row">
                 <!-- 1. Sedan -->
                 <div class="p-card">
-                  <div class="p-card-top">
-                    <span class="p-type">Comfort Sedan</span>
-                    <h4 class="p-car">Maruti Dzire / Etios</h4>
-                  </div>
-                  <div class="p-image-wrap">
-                    <img 
-                      src="/images/vehicles/Maruti%20Swift%20Dzire.png" 
-                      alt={`Maruti Swift Dzire for ${route.from} to ${route.to}`}
-                      width="240"
-                      height="140"
-                      loading="lazy"
-                    />
-                  </div>
+                  <span class="p-type">Comfort Sedan</span>
+                  <h4 class="p-car">Maruti Dzire / Etios</h4>
                   <div class="p-fare">
                     <span class="currency">₹</span><span class="amount">{route.sedanFare.toLocaleString('en-IN')}</span>
-                    <span class="fare-tag">Fixed Fare</span>
+                    <small>Fixed One-Way</small>
                   </div>
                   <ul class="p-features">
-                    <li>✓ 4 Passenger Seats with Chilled AC</li>
+                    <li>✓ 4 Passenger Seats with AC</li>
                     <li>✓ 2 Medium Luggage Bags</li>
                     <li>✓ Doorstep Pickup &amp; Direct Drop</li>
-                    <li>✓ Punctual, Background-Checked Driver</li>
+                    <li>✓ Verified Highway Driver</li>
                   </ul>
-                  <a href={waSedan} target="_blank" rel="noopener noreferrer" class="p-btn p-btn--primary">
-                    <span>Book Sedan @ ₹{route.sedanFare.toLocaleString('en-IN')}</span>
-                    <span class="arr">&rarr;</span>
+                  <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">
+                    Book Sedan @ ₹{route.sedanFare.toLocaleString('en-IN')} &rarr;
                   </a>
                 </div>
 
                 <!-- 2. Ertiga (Featured) -->
                 <div class="p-card featured-p-card">
-                  <div class="card-badge">Family &amp; Luggage Bestseller</div>
-                  <div class="p-card-top">
-                    <span class="p-type gold">Spacious 6-Seater MPV</span>
-                    <h4 class="p-car">Maruti Suzuki Ertiga</h4>
-                  </div>
-                  <div class="p-image-wrap">
-                    <img 
-                      src="/images/vehicles/Maruti%20Suzuki%20Ertiga.png" 
-                      alt={`Maruti Suzuki Ertiga for ${route.from} to ${route.to}`}
-                      width="240"
-                      height="140"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div class="p-fare gold-fare">
+                  <div class="featured-badge">Family &amp; Luggage Bestseller</div>
+                  <span class="p-type gold">Spacious MPV</span>
+                  <h4 class="p-car">Maruti Suzuki Ertiga</h4>
+                  <div class="p-fare">
                     <span class="currency">₹</span><span class="amount">{route.suvFare.toLocaleString('en-IN')}</span>
-                    <span class="fare-tag gold-tag">Best Value</span>
+                    <small>Fixed One-Way</small>
                   </div>
                   <ul class="p-features">
-                    <li>✓ 6 Comfortable Passenger Seats</li>
-                    <li>✓ Dual Chilled Air Conditioning Vents</li>
-                    <li>✓ Extra Legroom for Elders &amp; Children</li>
-                    <li>✓ Ample Space for 3–4 Large Bags</li>
+                    <li>✓ 6 Passenger Seats</li>
+                    <li>✓ Dual Chilled AC Vents</li>
+                    <li>✓ Extra Legroom for Elders</li>
+                    <li>✓ Space for 3–4 Luggage Bags</li>
                   </ul>
-                  <a href={waErtiga} target="_blank" rel="noopener noreferrer" class="p-btn p-btn--gold">
-                    <span>Book Ertiga @ ₹{route.suvFare.toLocaleString('en-IN')}</span>
-                    <span class="arr">&rarr;</span>
+                  <a href={waErtiga} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm p-btn">
+                    Book Ertiga @ ₹{route.suvFare.toLocaleString('en-IN')} &rarr;
                   </a>
                 </div>
 
                 <!-- 3. Innova Crysta -->
                 <div class="p-card">
-                  <div class="p-card-top">
-                    <span class="p-type">VIP Luxury SUV</span>
-                    <h4 class="p-car">Toyota Innova Crysta</h4>
-                  </div>
-                  <div class="p-image-wrap">
-                    <img 
-                      src="/images/vehicles/inova%20cresta.png" 
-                      alt={`Toyota Innova Crysta for ${route.from} to ${route.to}`}
-                      width="240"
-                      height="140"
-                      loading="lazy"
-                    />
-                  </div>
+                  <span class="p-type">VIP Executive</span>
+                  <h4 class="p-car">Toyota Innova Crysta</h4>
                   <div class="p-fare">
                     <span class="currency">₹</span><span class="amount">{route.crystaFare.toLocaleString('en-IN')}</span>
-                    <span class="fare-tag">VIP Travel</span>
+                    <small>Fixed One-Way</small>
                   </div>
                   <ul class="p-features">
                     <li>✓ 6/7 Captain Recliner Seats</li>
-                    <li>✓ Supreme Highway Ride &amp; Suspension</li>
-                    <li>✓ High Safety Rating &amp; Luggage Carrier</li>
-                    <li>✓ Executive Senior Chauffeur</li>
+                    <li>✓ Supreme Highway Suspension</li>
+                    <li>✓ Ample Space for 5+ Large Bags</li>
+                    <li>✓ Senior Executive Chauffeur</li>
                   </ul>
-                  <a href={waCrysta} target="_blank" rel="noopener noreferrer" class="p-btn p-btn--primary">
-                    <span>Book Crysta @ ₹{route.crystaFare.toLocaleString('en-IN')}</span>
-                    <span class="arr">&rarr;</span>
+                  <a href={waCrysta} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm p-btn">
+                    Book Crysta @ ₹{route.crystaFare.toLocaleString('en-IN')} &rarr;
                   </a>
                 </div>
               </div>
             </div>
 
-            <!-- Route Stops & Highlights -->
-            <div class="content-block itinerary-block">
-              <h3 class="tier-heading">Trip Highlights &amp; Suggested Highway Stops</h3>
-              <p class="highlight-desc">{route.routeHighlights}</p>
+            <!-- Route Highlights & Suggested Stops -->
+            <div class="content-card itinerary-card">
+              <span class="section-subtitle">Highway Travel Highlights</span>
+              <h3 class="tier-heading">Route Highlights &amp; Suggested En-Route Halts</h3>
+              <p class="card-intro">{route.highlights}</p>
               
-              <div class="stops-box">
-                <span class="stops-label">En-Route Convenience &amp; Sightseeing Points:</span>
-                <div class="stops-grid">
-                  {route.popularStops.map((stop, idx) => (
-                    <div class="stop-item">
-                      <span class="stop-num">{idx + 1}</span>
-                      <span class="stop-text">{stop}</span>
-                    </div>
-                  ))}
+              <div class="stops-timeline">
+                <div class="timeline-step">
+                  <div class="step-num">1</div>
+                  <div class="step-content">
+                    <strong>Punctual Doorstep Pickup</strong>
+                    <p>Driver arrives 10–15 minutes early at your hotel, home, airport terminal, or railway station in {route.from}.</p>
+                  </div>
+                </div>
+                <div class="timeline-step">
+                  <div class="step-num">2</div>
+                  <div class="step-content">
+                    <strong>Smooth Highway Cruising on {route.highway}</strong>
+                    <p>Enjoy picturesque Rajasthan landscapes, toll expressways, and smooth rides with courteous local chauffeurs.</p>
+                  </div>
+                </div>
+                <div class="timeline-step">
+                  <div class="step-num">3</div>
+                  <div class="step-content">
+                    <strong>Hygienic Food &amp; Refreshment Break</strong>
+                    <p>Optional halt at clean, vetted highway restaurants for fresh tea, Rajasthani snacks, and sanitary washroom facilities.</p>
+                  </div>
+                </div>
+                <div class="timeline-step">
+                  <div class="step-num">4</div>
+                  <div class="step-content">
+                    <strong>Guaranteed Safe Drop at {route.to}</strong>
+                    <p>Direct luggage assistance and drop right to your destination gate, terminal, or hotel lobby.</p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Why Choose Us -->
-            <div class="content-block why-choose-block">
-              <h3 class="tier-heading">Why Book Your {route.from} to {route.to} Taxi with Us?</h3>
-              <div class="reasons-grid">
-                <div class="reason-card">
-                  <span class="r-icon">🏆</span>
+            <!-- Why Choose Us Grid -->
+            <div class="content-card">
+              <span class="section-subtitle">Trusted Heritage Since 2008</span>
+              <h3 class="tier-heading">Why 50,000+ Travelers Choose Our Ajmer Fleet</h3>
+              
+              <div class="trust-grid">
+                <div class="trust-item">
+                  <span class="trust-icon">🏆</span>
                   <div>
-                    <h4>18+ Years Experience</h4>
-                    <p>Serving tourists, pilgrims, and local residents across Rajasthan since 2008 with a proven track record.</p>
+                    <h4>18+ Years Direct Service</h4>
+                    <p>Founded in 2008, we are Ajmer's authentic local operator — not a third-party aggregator that re-sells bookings.</p>
                   </div>
                 </div>
-
-                <div class="reason-card">
-                  <span class="r-icon">⏱️</span>
+                <div class="trust-item">
+                  <span class="trust-icon">⏱️</span>
                   <div>
-                    <h4>100% Punctual Pickup</h4>
-                    <p>We pick you up right from your doorstep, hotel porch, or railway platform with zero delay.</p>
+                    <h4>100% Punctual Pickups</h4>
+                    <p>Guaranteed on-time arrivals for critical flight departures and train connections with driver contact shared in advance.</p>
                   </div>
                 </div>
-
-                <div class="reason-card">
-                  <span class="r-icon">🚫</span>
+                <div class="trust-item">
+                  <span class="trust-icon">🚫</span>
                   <div>
-                    <h4>Zero Advance Deposit</h4>
-                    <p>No upfront prepayment needed. Pay your driver directly at the end of your trip.</p>
+                    <h4>Zero Return Toll Scam</h4>
+                    <p>One-way fares are truly one-way. We never bill you for return driver allowance or round-trip empty kilometres.</p>
                   </div>
                 </div>
-
-                <div class="reason-card">
-                  <span class="r-icon">🛡️</span>
+                <div class="trust-item">
+                  <span class="trust-icon">🛡️</span>
                   <div>
                     <h4>Verified Highway Drivers</h4>
-                    <p>Polite, non-smoking, uniformed highway drivers with exhaustive route knowledge and safety permits.</p>
+                    <p>Polite, background-verified, non-smoking chauffeurs with thorough knowledge of Rajasthan shortcuts and safe passing.</p>
                   </div>
                 </div>
               </div>
@@ -318,70 +374,77 @@ const faqSchema = generateFAQSchema(route.faqs);
 
           <!-- Sticky Sidebar -->
           <aside class="route-sidebar">
-            <div class="sidebar-box booking-quick-box">
-              <span class="side-badge">Trip Overview</span>
-              <h3 class="side-title">Quick Booking Summary</h3>
+            <div class="sidebar-box">
+              <span class="side-badge">Trip Quick Reference</span>
+              <h3 class="side-title">Route &amp; Fare Summary</h3>
               
-              <div class="route-quick-specs">
-                <div class="spec-row">
-                  <span class="label">Pickup Point:</span>
-                  <span class="val">{route.from}</span>
+              <div class="side-list">
+                <div class="side-item">
+                  <span class="s-label">Origin:</span>
+                  <strong class="s-val">{route.from}</strong>
                 </div>
-                <div class="spec-row">
-                  <span class="label">Drop Location:</span>
-                  <span class="val">{route.to}</span>
+                <div class="side-item">
+                  <span class="s-label">Destination:</span>
+                  <strong class="s-val">{route.to}</strong>
                 </div>
-                <div class="spec-row">
-                  <span class="label">Total Distance:</span>
-                  <span class="val">~{route.distanceKm} km</span>
+                <div class="side-item">
+                  <span class="s-label">Distance:</span>
+                  <strong class="s-val">~{route.distanceKm} km</strong>
                 </div>
-                <div class="spec-row">
-                  <span class="label">Driving Time:</span>
-                  <span class="val">{route.estimatedTime}</span>
+                <div class="side-item">
+                  <span class="s-label">Driving Time:</span>
+                  <strong class="s-val">{route.estimatedTime}</strong>
                 </div>
-                <div class="spec-row">
-                  <span class="label">Main Route:</span>
-                  <span class="val highway-val">{route.highway}</span>
+                <div class="side-item">
+                  <span class="s-label">Highway Route:</span>
+                  <strong class="s-val text-primary">{route.highway}</strong>
                 </div>
-              </div>
-
-              <div class="side-fare-summary">
-                <div class="fare-row">
-                  <span>Sedan (Dzire/Etios)</span>
-                  <strong>₹{route.sedanFare.toLocaleString('en-IN')}</strong>
-                </div>
-                <div class="fare-row highlight">
-                  <span>Maruti Ertiga (6-Str)</span>
-                  <strong>₹{route.suvFare.toLocaleString('en-IN')}</strong>
-                </div>
-                <div class="fare-row">
-                  <span>Toyota Innova Crysta</span>
-                  <strong>₹{route.crystaFare.toLocaleString('en-IN')}</strong>
+                <div class="side-item">
+                  <span class="s-label">Service Window:</span>
+                  <strong class="s-val text-gold">24 Hours / 7 Days</strong>
                 </div>
               </div>
 
-              <div class="side-cta-stack">
-                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="side-action-btn side-action-btn--wa">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.178.181-.077.355.101.174.449.741.964 1.2.662.591 1.221.774 1.394.861.173.087.275.072.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.044.073.044.42-.1 1.016z"/></svg>
-                  <span>Book on WhatsApp</span>
+              <!-- Starting Fares Pill Box -->
+              <div class="sidebar-fare-callout">
+                <span class="callout-label">Fixed One-Way Cab Rates</span>
+                <div class="fare-tiers">
+                  <div class="fare-tier-line">
+                    <span>Sedan (Dzire):</span>
+                    <strong>₹{route.sedanFare.toLocaleString('en-IN')}</strong>
+                  </div>
+                  <div class="fare-tier-line highlight">
+                    <span>Ertiga (6-Str):</span>
+                    <strong>₹{route.suvFare.toLocaleString('en-IN')}</strong>
+                  </div>
+                  <div class="fare-tier-line">
+                    <span>Innova Crysta:</span>
+                    <strong>₹{route.crystaFare.toLocaleString('en-IN')}</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="side-actions">
+                <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm full-w">
+                  Book Instant on WhatsApp
                 </a>
-                <a href={`tel:${business.phone}`} class="side-action-btn side-action-btn--call">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-                  <span>Call: {business.phoneFormatted}</span>
+                <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn--sm full-w">
+                  Call: {business.phoneFormatted}
                 </a>
               </div>
             </div>
 
-            <!-- Interlinked Links Box -->
-            <div class="sidebar-box routes-box">
-              <h4 class="tips-title">Popular Routes &amp; Tours</h4>
+            <!-- Interlinked Routes Box -->
+            <div class="sidebar-box links-box">
+              <h4 class="side-title-sm">Popular Connected Routes</h4>
               <ul class="sidebar-links">
                 <li><a href="/pushkar-to-ajmer-taxi/">&rarr; Pushkar to Ajmer Taxi (₹700)</a></li>
                 <li><a href="/ajmer-to-pushkar-taxi/">&rarr; Ajmer to Pushkar Taxi (₹700)</a></li>
-                <li><a href="/ajmer-to-sarwar-sharif-taxi/">&rarr; Ajmer to Sarwar Sharif (₹1,800)</a></li>
-                <li><a href="/ajmer-to-jaipur-taxi/">&rarr; Ajmer to Jaipur Cab (₹1,800)</a></li>
-                <li><a href="/fare-calculator/">&rarr; Live Cab Fare Calculator</a></li>
-                <li><a href="/tours/">&rarr; Handcrafted Rajasthan Tours</a></li>
+                <li><a href="/ajmer-to-kishangarh-airport-taxi/">&rarr; Ajmer to Kishangarh Airport (₹800)</a></li>
+                <li><a href="/ajmer-to-jaipur-taxi/">&rarr; Ajmer to Jaipur Cab (₹1,999)</a></li>
+                <li><a href="/ajmer-to-sarwar-sharif-taxi/">&rarr; Ajmer to Sarwar Sharif (₹2,000)</a></li>
+                <li><a href="/routes/">&rarr; Explore All 220+ Rajasthan Routes</a></li>
+                <li><a href="/fare-calculator/">&rarr; Live Taxi Fare Calculator</a></li>
               </ul>
             </div>
           </aside>
@@ -389,43 +452,21 @@ const faqSchema = generateFAQSchema(route.faqs);
       </div>
     </section>
 
-    <!-- FAQs Section -->
-    <section class="faq-section">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-subtitle">Got Questions?</span>
-          <h2 class="section-title">Frequently Asked Questions — {route.from} to {route.to}</h2>
-          <p class="section-desc">Clear information about fares, driving times, and vehicle options.</p>
-        </div>
+    <!-- Official FAQs Component -->
+    <FAQ items={route.faqs} title={`Frequently Asked Questions — ${route.from} to ${route.to}`} subtitle="Clear Answers Before You Travel" />
 
-        <div class="faq-accordion-list">
-          {route.faqs.map((faq, idx) => (
-            <details class="faq-item" id={`faq-${idx}`}>
-              <summary class="faq-question">
-                <span>{faq.question}</span>
-                <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-              </summary>
-              <div class="faq-answer">
-                <p>{faq.answer}</p>
-              </div>
-            </details>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- Bottom Pre-Footer CTA -->
+    <!-- Bottom CTA Banner -->
     <section class="bottom-cta-banner">
       <div class="container text-center">
-        <h2>Ready to Book Your {route.from} to {route.to} Cab?</h2>
-        <p>Book with Ajmer's verified chauffeur service since 2008. Punctual doorstep pickup, clean air-conditioned vehicles, and honest direct pricing.</p>
+        <h2>Ready to Travel from {route.from} to {route.to}?</h2>
+        <p>Book with Ajmer's verified chauffeur service since 2008. Punctual doorstep pickup, clean air-conditioned vehicles, and honest direct operator pricing.</p>
         <div class="bottom-cta-row">
-          <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn-hero-action btn-hero-action--wa">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.178.181-.077.355.101.174.449.741.964 1.2.662.591 1.221.774 1.394.861.173.087.275.072.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.044.073.044.42-.1 1.016z"/></svg>
-            <span>Book on WhatsApp</span>
+          <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--gold">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.178.181-.077.355.101.174.449.741.964 1.2.662.591 1.221.774 1.394.861.173.087.275.072.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.044.073.044.42-.1 1.016z"/></svg>
+            <span>Book Cab on WhatsApp</span>
           </a>
-          <a href={`tel:${business.phone}`} class="btn-hero-action btn-hero-action--call">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          <a href={`tel:${business.phone}`} class="btn btn--outline-white">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
             <span>Call: {business.phoneFormatted}</span>
           </a>
         </div>
@@ -441,11 +482,11 @@ const faqSchema = generateFAQSchema(route.faqs);
 <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 <style>
-  /* Hero Banner */
-  .seo-route-hero {
-    background: linear-gradient(135deg, #1A1215 0%, #2D1D24 50%, #442430 100%);
+  /* Hero Banner matching Ajmer site standard */
+  .route-hero {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
     color: #FFFFFF;
-    padding: calc(var(--header-height, 74px) + 20px) 0 32px;
+    padding: calc(var(--header-height, 74px) + 38px) 0 36px;
     border-bottom: 3px solid var(--color-accent);
   }
 
@@ -454,7 +495,7 @@ const faqSchema = generateFAQSchema(route.faqs);
     background: rgba(197, 155, 39, 0.2);
     border: 1px solid var(--color-accent);
     color: var(--color-accent-light);
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -465,7 +506,7 @@ const faqSchema = generateFAQSchema(route.faqs);
 
   .route-title {
     font-family: var(--font-heading);
-    font-size: clamp(1.6rem, 3.8vw, 2.75rem);
+    font-size: clamp(1.85rem, 3.8vw, 2.75rem);
     color: #FFFFFF;
     margin-bottom: 8px;
     line-height: 1.2;
@@ -473,9 +514,9 @@ const faqSchema = generateFAQSchema(route.faqs);
   }
 
   .route-subtitle {
-    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    font-size: clamp(0.95rem, 2vw, 1.125rem);
     color: rgba(255, 255, 255, 0.9);
-    max-width: 800px;
+    max-width: 760px;
     margin: 0 auto 16px;
     line-height: 1.5;
   }
@@ -486,12 +527,12 @@ const faqSchema = generateFAQSchema(route.faqs);
     justify-content: center;
     gap: 8px;
     flex-wrap: wrap;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
 
   .spec-chip {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 5px 12px;
     border-radius: var(--radius-full);
     font-size: 0.8125rem;
@@ -505,45 +546,36 @@ const faqSchema = generateFAQSchema(route.faqs);
     color: var(--color-accent-light);
   }
 
-  /* Fare Pills */
+  /* Hero Fare Pills */
   .hero-fare-pills {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    justify-content: center;
     gap: 8px;
-    max-width: 580px;
-    margin: 0 auto 22px;
-  }
-
-  @media (max-width: 520px) {
-    .hero-fare-pills {
-      grid-template-columns: 1fr;
-      gap: 6px;
-      max-width: 320px;
-    }
+    flex-wrap: wrap;
+    margin-bottom: 22px;
   }
 
   .h-pill {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #FFFFFF;
-    padding: 8px 12px;
-    border-radius: var(--radius-md);
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(197, 155, 39, 0.45);
+    color: #F8E6B8;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
     font-size: 0.84rem;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 4px;
+    gap: 5px;
     white-space: nowrap;
   }
 
-  .h-pill strong {
-    color: var(--color-accent-light);
-    font-weight: 800;
+  .h-pill.gold {
+    background: rgba(197, 155, 39, 0.28);
+    border-color: var(--color-accent);
   }
 
-  .h-pill.gold {
-    background: rgba(197, 155, 39, 0.25);
-    border-color: var(--color-accent);
+  .h-pill strong {
+    color: #FFFFFF;
+    font-weight: 800;
   }
 
   /* Hero CTA Buttons */
@@ -554,39 +586,21 @@ const faqSchema = generateFAQSchema(route.faqs);
     flex-wrap: wrap;
   }
 
-  .btn-hero-action {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px 20px;
-    border-radius: var(--radius-md);
-    font-weight: 700;
-    font-size: 0.9375rem;
-    text-decoration: none;
+  .hero-cta-btn {
     min-height: 48px;
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    padding: 12px 22px;
+    font-size: 0.9375rem;
+    font-weight: 700;
   }
 
-  .btn-hero-action--wa {
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-    color: #FFFFFF !important;
-    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
-  }
-
-  .btn-hero-action--wa:hover {
-    filter: brightness(1.05);
-    transform: translateY(-2px);
-  }
-
-  .btn-hero-action--call {
+  .hero-cta-btn--call {
     background: rgba(255, 255, 255, 0.12);
-    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    border-color: rgba(255, 255, 255, 0.45);
     color: #FFFFFF !important;
   }
 
-  .btn-hero-action--call:hover {
-    background: rgba(255, 255, 255, 0.2);
+  .hero-cta-btn--call:hover {
+    background: rgba(255, 255, 255, 0.25);
     border-color: #FFFFFF;
   }
 
@@ -594,7 +608,7 @@ const faqSchema = generateFAQSchema(route.faqs);
     .hero-cta-btns {
       flex-direction: column;
       align-items: stretch;
-      max-width: 340px;
+      max-width: 320px;
       margin: 0 auto;
     }
   }
@@ -618,7 +632,7 @@ const faqSchema = generateFAQSchema(route.faqs);
     align-items: center;
     justify-content: center;
     gap: 6px;
-    padding: 12px 10px;
+    padding: 12px 8px;
     border-radius: var(--radius-md);
     font-size: 0.8125rem;
     font-weight: 700;
@@ -637,10 +651,10 @@ const faqSchema = generateFAQSchema(route.faqs);
     color: #FFFFFF !important;
   }
 
-  /* Main Grid */
+  /* Main Route Layout */
   .route-content-section {
-    padding: var(--space-xl) 0 var(--space-3xl);
-    background: var(--color-surface);
+    padding: var(--space-3xl) 0 var(--space-4xl);
+    background: var(--color-cream);
   }
 
   .route-grid {
@@ -657,25 +671,29 @@ const faqSchema = generateFAQSchema(route.faqs);
     }
   }
 
-  .content-block {
+  /* Content Cards */
+  .content-card {
     background: #FFFFFF;
-    border: 1.5px solid var(--color-border);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-xl);
-    padding: 18px 16px;
+    padding: var(--space-lg);
     margin-bottom: var(--space-xl);
-    box-shadow: 0 4px 16px rgba(34, 24, 28, 0.04);
+    box-shadow: 0 4px 16px rgba(34, 24, 28, 0.05);
   }
 
   @media (min-width: 640px) {
-    .content-block {
-      padding: var(--space-xl);
+    .content-card {
+      padding: var(--space-2xl);
     }
   }
 
-  @media (min-width: 1025px) {
-    .content-block {
-      padding: var(--space-2xl);
-    }
+  .card-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 6px;
   }
 
   .section-subtitle {
@@ -690,69 +708,161 @@ const faqSchema = generateFAQSchema(route.faqs);
 
   .section-title {
     font-family: var(--font-heading);
-    font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+    font-size: clamp(1.4rem, 2.5vw, 1.85rem);
     color: var(--color-primary);
     margin-bottom: 12px;
     line-height: 1.25;
   }
 
-  .content-block p {
-    font-size: 0.95rem;
-    line-height: 1.65;
-    color: var(--color-text-muted);
-    margin-bottom: var(--space-md);
-  }
-
-  .content-block p:last-child {
-    margin-bottom: 0;
-  }
-
-  .block-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 8px;
-  }
-
   .tier-heading {
     font-family: var(--font-heading);
-    font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+    font-size: clamp(1.2rem, 2.2vw, 1.5rem);
     color: var(--color-primary);
     margin-bottom: 4px;
     line-height: 1.3;
   }
 
-  .tier-subtext {
-    font-size: 0.84rem;
-    color: var(--color-text-muted);
-    margin-bottom: var(--space-lg);
-    line-height: 1.45;
+  .body-p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    margin-bottom: 12px;
   }
 
-  .live-rate-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
+  .body-p:last-child {
+    margin-bottom: 0;
+  }
+
+  .card-intro {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin-bottom: var(--space-lg);
+  }
+
+  /* Timings Card Specifics */
+  .timings-card {
+    border-left: 4px solid var(--color-accent);
+  }
+
+  .badge-247 {
+    display: inline-block;
     background: #ECFDF5;
     color: #047857;
     border: 1px solid #A7F3D0;
-    padding: 3px 10px;
-    border-radius: var(--radius-full);
     font-size: 0.72rem;
     font-weight: 800;
-    letter-spacing: 0.04em;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    letter-spacing: 0.05em;
   }
 
-  .pulse-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #10B981;
+  .timings-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: var(--space-lg);
   }
 
-  /* Pricing Cards Grid */
+  @media (min-width: 641px) {
+    .timings-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .timing-box {
+    background: var(--color-surface-warm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .timing-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .timing-slot {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: var(--color-primary);
+  }
+
+  .timing-badge {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--color-accent-dark);
+    background: rgba(197, 155, 39, 0.15);
+    padding: 2px 7px;
+    border-radius: var(--radius-sm);
+  }
+
+  .timing-hours {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .clock-icon {
+    font-size: 1rem;
+  }
+
+  .timing-desc {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  .dispatch-notice {
+    background: rgba(197, 155, 39, 0.12);
+    border: 1px dashed var(--color-accent);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .notice-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  .notice-text strong {
+    font-size: 0.875rem;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .notice-text p {
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* Vehicle Pricing Cards */
+  .live-rate-tag {
+    display: inline-block;
+    background: #ECFDF5;
+    color: #047857;
+    border: 1px solid #A7F3D0;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+  }
+
   .pricing-cards-row {
     display: grid;
     grid-template-columns: 1fr;
@@ -768,35 +878,35 @@ const faqSchema = generateFAQSchema(route.faqs);
   @media (min-width: 1025px) {
     .pricing-cards-row {
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 16px;
     }
   }
 
   .p-card {
     background: #FFFFFF;
-    border: 1.5px solid var(--color-border);
-    border-radius: var(--radius-xl);
-    padding: 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
     display: flex;
     flex-direction: column;
     position: relative;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 12px rgba(34, 24, 28, 0.05);
     transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
   }
 
   .p-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 24px rgba(34, 24, 28, 0.08);
+    box-shadow: 0 10px 24px rgba(34, 24, 28, 0.1);
     border-color: var(--color-accent);
   }
 
   .featured-p-card {
     border: 2px solid var(--color-accent);
-    background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF5 100%);
-    box-shadow: 0 8px 24px rgba(197, 155, 39, 0.14);
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF7 100%);
+    box-shadow: 0 6px 20px rgba(197, 155, 39, 0.15);
   }
 
-  .card-badge {
+  .featured-badge {
     position: absolute;
     top: -11px;
     left: 50%;
@@ -810,11 +920,7 @@ const faqSchema = generateFAQSchema(route.faqs);
     padding: 3px 12px;
     border-radius: var(--radius-full);
     white-space: nowrap;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  .p-card-top {
-    margin-bottom: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
   }
 
   .p-type {
@@ -823,7 +929,8 @@ const faqSchema = generateFAQSchema(route.faqs);
     text-transform: uppercase;
     letter-spacing: 0.06em;
     font-weight: 800;
-    color: var(--color-text-muted);
+    color: var(--color-primary);
+    margin-bottom: 2px;
   }
 
   .p-type.gold {
@@ -832,43 +939,32 @@ const faqSchema = generateFAQSchema(route.faqs);
 
   .p-car {
     font-family: var(--font-heading);
-    font-size: 1.0625rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    color: var(--color-primary);
-    margin-top: 2px;
+    color: var(--color-text);
+    margin-bottom: 8px;
     line-height: 1.25;
-  }
-
-  .p-image-wrap {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 8px 0;
-  }
-
-  .p-image-wrap img {
-    max-height: 85px;
-    width: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.08));
   }
 
   .p-fare {
     font-family: var(--font-heading);
-    font-size: 1.75rem;
+    font-size: 1.6rem;
     font-weight: 800;
     color: var(--color-primary);
-    display: flex;
-    align-items: baseline;
-    gap: 3px;
     margin-bottom: 12px;
     padding-bottom: 8px;
     border-bottom: 1px dashed var(--color-border);
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
   }
 
-  .gold-fare {
-    color: #15803D;
+  .p-fare small {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    margin-left: auto;
   }
 
   .currency {
@@ -880,122 +976,51 @@ const faqSchema = generateFAQSchema(route.faqs);
     line-height: 1;
   }
 
-  .fare-tag {
-    font-family: var(--font-body);
-    font-size: 0.6875rem;
-    font-weight: 700;
-    background: rgba(34, 24, 28, 0.06);
-    color: var(--color-text);
-    padding: 2px 7px;
-    border-radius: var(--radius-sm);
-    margin-left: auto;
-  }
-
-  .gold-tag {
-    background: #DCFCE7;
-    color: #15803D;
-  }
-
   .p-features {
     list-style: none;
     padding: 0;
-    margin: 0 0 16px;
+    margin: 0 0 var(--space-lg) 0;
     font-size: 0.8125rem;
-    color: var(--color-text-muted);
-    flex-grow: 1;
+    color: var(--color-text-secondary);
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
+    flex-grow: 1;
   }
 
   .p-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
     width: 100%;
-    min-height: 44px;
-    padding: 10px 14px;
-    border-radius: var(--radius-md);
-    font-weight: 700;
-    font-size: 0.84rem;
-    text-decoration: none;
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    justify-content: center;
     margin-top: auto;
+    font-weight: 700;
+    min-height: 42px;
   }
 
-  .p-btn--primary {
-    background: var(--color-primary);
-    color: #FFFFFF !important;
-  }
-
-  .p-btn--primary:hover {
-    background: var(--color-primary-dark);
-    transform: translateY(-1px);
-  }
-
-  .p-btn--gold {
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-    color: #FFFFFF !important;
-    box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
-  }
-
-  .p-btn--gold:hover {
-    filter: brightness(1.05);
-    transform: translateY(-1px);
-  }
-
-  .p-btn .arr {
-    transition: transform var(--transition-fast);
-  }
-
-  .p-btn:hover .arr {
-    transform: translateX(4px);
-  }
-
-  /* Stops & Highlights */
-  .highlight-desc {
-    margin-bottom: 12px;
-  }
-
-  .stops-box {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: 14px 16px;
-  }
-
-  .stops-label {
-    display: block;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-weight: 800;
-    color: var(--color-primary);
-    margin-bottom: 10px;
-  }
-
-  .stops-grid {
+  /* Stops Timeline */
+  .stops-timeline {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
+    margin-top: 12px;
   }
 
-  .stop-item {
+  .timeline-step {
     display: flex;
     align-items: flex-start;
-    gap: 10px;
-    font-size: 0.875rem;
-    color: var(--color-text);
+    gap: 12px;
+    background: var(--color-surface-warm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
   }
 
-  .stop-num {
-    width: 22px;
-    height: 22px;
+  .step-num {
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     background: var(--color-primary);
     color: #FFFFFF;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 800;
     display: flex;
     align-items: center;
@@ -1004,37 +1029,51 @@ const faqSchema = generateFAQSchema(route.faqs);
     margin-top: 1px;
   }
 
-  /* Why Choose */
-  .reasons-grid {
+  .step-content strong {
+    font-size: 0.9rem;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .step-content p {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  /* Trust Grid */
+  .trust-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 12px;
     margin-top: 12px;
   }
 
-  @media (min-width: 640px) {
-    .reasons-grid {
+  @media (min-width: 641px) {
+    .trust-grid {
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 14px;
     }
   }
 
-  .reason-card {
+  .trust-item {
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    background: var(--color-cream);
+    background: var(--color-surface-warm);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     padding: 14px 16px;
   }
 
-  .r-icon {
+  .trust-icon {
     font-size: 1.35rem;
     background: #FFFFFF;
     border: 1px solid var(--color-border);
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
@@ -1042,7 +1081,7 @@ const faqSchema = generateFAQSchema(route.faqs);
     flex-shrink: 0;
   }
 
-  .reason-card h4 {
+  .trust-item h4 {
     font-family: var(--font-heading);
     font-size: 0.95rem;
     color: var(--color-primary);
@@ -1050,7 +1089,7 @@ const faqSchema = generateFAQSchema(route.faqs);
     font-weight: 700;
   }
 
-  .reason-card p {
+  .trust-item p {
     font-size: 0.8125rem;
     color: var(--color-text-muted);
     line-height: 1.45;
@@ -1073,10 +1112,10 @@ const faqSchema = generateFAQSchema(route.faqs);
 
   .sidebar-box {
     background: #FFFFFF;
-    border: 1.5px solid var(--color-border);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-xl);
-    padding: 18px 16px;
-    box-shadow: 0 4px 16px rgba(34, 24, 28, 0.04);
+    padding: var(--space-lg);
+    box-shadow: 0 4px 16px rgba(34, 24, 28, 0.05);
   }
 
   .side-badge {
@@ -1101,103 +1140,105 @@ const faqSchema = generateFAQSchema(route.faqs);
     border-bottom: 2px solid var(--color-accent);
   }
 
-  .route-quick-specs {
+  .side-list {
     display: flex;
     flex-direction: column;
     gap: 8px;
     margin-bottom: 14px;
   }
 
-  .spec-row {
+  .side-item {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     font-size: 0.8125rem;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 5px;
+    border-bottom: 1px dashed var(--color-border);
     gap: 8px;
   }
 
-  .spec-row .label {
+  .s-label {
     color: var(--color-text-muted);
     white-space: nowrap;
   }
 
-  .spec-row .val {
+  .s-val {
     font-weight: 700;
-    color: var(--color-primary);
+    color: var(--color-text);
     text-align: right;
-    word-break: break-word;
   }
 
-  .side-fare-summary {
+  .text-primary {
+    color: var(--color-primary);
+  }
+
+  .text-gold {
+    color: #B45309;
+  }
+
+  .sidebar-fare-callout {
     background: var(--color-cream);
     border: 1px solid var(--color-accent);
     border-radius: var(--radius-md);
     padding: 10px 12px;
     margin-bottom: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
   }
 
-  .fare-row {
+  .callout-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-primary);
+    margin-bottom: 6px;
+  }
+
+  .fare-tiers {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .fare-tier-line {
     display: flex;
     justify-content: space-between;
     font-size: 0.8125rem;
     color: var(--color-text);
   }
 
-  .fare-row strong {
+  .fare-tier-line strong {
     color: var(--color-primary);
   }
 
-  .fare-row.highlight {
+  .fare-tier-line.highlight {
     background: rgba(197, 155, 39, 0.18);
-    padding: 3px 6px;
-    border-radius: var(--radius-sm);
+    padding: 2px 6px;
+    border-radius: var(--radius-xs);
   }
 
-  .fare-row.highlight strong {
+  .fare-tier-line.highlight strong {
     color: #B45309;
   }
 
-  .side-cta-stack {
+  .side-actions {
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
 
-  .side-action-btn {
-    display: flex;
-    align-items: center;
+  .full-w {
+    width: 100%;
     justify-content: center;
-    gap: 8px;
-    padding: 11px 14px;
-    border-radius: var(--radius-md);
-    font-size: 0.875rem;
-    font-weight: 700;
-    text-decoration: none;
-    min-height: 46px;
-    transition: transform var(--transition-fast);
   }
 
-  .side-action-btn--wa {
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-    color: #FFFFFF !important;
-    box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
-  }
-
-  .side-action-btn--call {
-    background: var(--color-primary);
-    color: #FFFFFF !important;
-  }
-
-  .tips-title {
+  .side-title-sm {
     font-family: var(--font-heading);
-    font-size: 1.05rem;
+    font-size: 1rem;
     color: var(--color-primary);
     margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--color-border);
   }
 
   .sidebar-links {
@@ -1212,82 +1253,16 @@ const faqSchema = generateFAQSchema(route.faqs);
   .sidebar-links a {
     color: var(--color-primary);
     text-decoration: none;
-    font-size: 0.84rem;
+    font-size: 0.8125rem;
     font-weight: 600;
     display: block;
-    padding: 4px 0;
+    padding: 3px 0;
     border-bottom: 1px dashed var(--color-border);
     transition: color 0.15s;
   }
 
   .sidebar-links a:hover {
     color: var(--color-accent-dark);
-  }
-
-  /* FAQs */
-  .faq-section {
-    padding: var(--space-2xl) 0 var(--space-3xl);
-    background: #FFFFFF;
-    border-top: 1px solid var(--color-border);
-  }
-
-  .faq-accordion-list {
-    max-width: 820px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .faq-item {
-    background: var(--color-surface);
-    border: 1.5px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    transition: border-color var(--transition-fast);
-  }
-
-  .faq-item[open] {
-    border-color: var(--color-accent);
-    background: #FFFFFF;
-  }
-
-  .faq-question {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 16px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--color-primary);
-    user-select: none;
-    list-style: none;
-  }
-
-  .faq-question::-webkit-details-marker {
-    display: none;
-  }
-
-  .chevron {
-    color: var(--color-accent-dark);
-    flex-shrink: 0;
-    transition: transform 0.2s ease;
-  }
-
-  .faq-item[open] .chevron {
-    transform: rotate(180deg);
-  }
-
-  .faq-answer {
-    padding: 0 16px 14px;
-    font-size: 0.875rem;
-    line-height: 1.6;
-    color: var(--color-text-muted);
-  }
-
-  .faq-answer p {
-    margin: 0;
   }
 
   /* Bottom CTA */
@@ -1321,11 +1296,22 @@ const faqSchema = generateFAQSchema(route.faqs);
     flex-wrap: wrap;
   }
 
+  .btn--outline-white {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    color: #FFFFFF !important;
+  }
+
+  .btn--outline-white:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: #FFFFFF;
+  }
+
   @media (max-width: 640px) {
     .bottom-cta-row {
       flex-direction: column;
       align-items: stretch;
-      max-width: 320px;
+      max-width: 300px;
       margin: 0 auto;
     }
   }

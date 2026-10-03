@@ -8,35 +8,38 @@ import { seoRoutesData } from "@/data/seoRoutesData";
 import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
 
-const pageTitle = "All Taxi Routes & Cab Fares | Ajmer & Pushkar Intercity Directory";
+const pageTitle = "220+ Taxi Routes & Cab Fares | Ajmer & Pushkar Intercity Directory";
 const pageDescription = "Explore 220+ verified taxi routes connecting Ajmer, Pushkar, Jaipur, Delhi, Udaipur, Jodhpur, and pilgrimage shrines across Rajasthan. Accurate fares, distances, and 24/7 doorstep cabs.";
 
 const pushkarRoutes = seoRoutesData.filter(r => r.from === 'Pushkar' || r.to === 'Pushkar');
 const airportRoutes = seoRoutesData.filter(r => r.from.includes('Airport') || r.to.includes('Airport') || r.from.includes('Railway') || r.to.includes('Station'));
 const inboundRoutes = seoRoutesData.filter(r => (r.to === 'Ajmer' || r.to === 'Pushkar') && r.from !== 'Ajmer' && r.from !== 'Pushkar');
-const otherRoutes = seoRoutesData.filter(r => !pushkarRoutes.includes(r) && !airportRoutes.includes(r) && !inboundRoutes.includes(r));
 ---
 
 <Layout title={pageTitle} description={pageDescription} canonicalPath="/routes/">
   <Header />
 
   <main id="main-content">
-    <section class="routes-hero">
+    <section class="route-hero">
       <div class="container text-center">
-        <span class="heritage-badge">Rajasthan Outstation Directory</span>
-        <h1 class="hero-title">220+ Verified Taxi Routes &amp; Fares</h1>
-        <p class="hero-subtitle">
-          Transparent fares, exact highway distances, and 24/7 doorstep pickup across Ajmer, Pushkar, and entire Rajasthan.
+        <span class="heritage-pill">Rajasthan Outstation Directory • Since 2008</span>
+        <h1 class="route-title">220+ Verified Taxi Routes &amp; Cab Fares</h1>
+        <p class="route-subtitle">
+          Transparent fixed fares, highway driving distances, and 24/7 doorstep pickup across Ajmer, Pushkar, and entire Rajasthan.
         </p>
         
         <!-- Live Quick Search Bar -->
         <div class="search-box-wrap">
-          <input 
-            type="text" 
-            id="route-search" 
-            placeholder="Type any destination or route (e.g., Pushkar, Jaipur, Khatu, Delhi)..." 
-            aria-label="Search taxi routes"
-          />
+          <div class="search-input-inner">
+            <span class="search-icon">🔍</span>
+            <input 
+              type="text" 
+              id="route-search" 
+              placeholder="Search destination or route (e.g., Pushkar, Jaipur, Airport, Station, Delhi)..." 
+              aria-label="Search taxi routes"
+            />
+          </div>
+          <p class="search-hint">Showing <strong id="route-count">{seoRoutesData.length}</strong> verified routes</p>
         </div>
       </div>
     </section>
@@ -46,51 +49,82 @@ const otherRoutes = seoRoutesData.filter(r => !pushkarRoutes.includes(r) && !air
       <div class="container">
         
         <div class="category-tabs" role="tablist">
-          <button class="cat-tab active" data-target="all-panel">All Routes ({seoRoutesData.length})</button>
-          <button class="cat-tab" data-target="pushkar-panel">Pushkar Routes ({pushkarRoutes.length})</button>
-          <button class="cat-tab" data-target="inbound-panel">Inbound to Ajmer ({inboundRoutes.length})</button>
-          <button class="cat-tab" data-target="airport-panel">Airport &amp; Station ({airportRoutes.length})</button>
+          <button class="cat-tab active" data-filter="all">All Routes ({seoRoutesData.length})</button>
+          <button class="cat-tab" data-filter="pushkar">Pushkar Routes ({pushkarRoutes.length})</button>
+          <button class="cat-tab" data-filter="inbound">Inbound to Ajmer ({inboundRoutes.length})</button>
+          <button class="cat-tab" data-filter="airport">Airport &amp; Station ({airportRoutes.length})</button>
         </div>
 
-        <div id="all-panel" class="tab-panel active">
-          <div class="routes-grid" id="routes-grid">
-            {seoRoutesData.map((route) => {
-              const waUrl = createWhatsAppBookingUrl({
-                pickupLocation: route.from,
-                dropLocation: route.to,
-                tripType: "One-Way / Round Trip",
-              });
-              return (
-                <article class="route-card" data-title={`${route.from} to ${route.to} ${route.highway}`.toLowerCase()}>
-                  <div class="rc-header">
-                    <span class="rc-distance">{route.distanceKm} km • {route.estimatedTime}</span>
-                    <span class="rc-highway">{route.highway.split(';')[0]}</span>
+        <div class="routes-grid" id="routes-grid">
+          {seoRoutesData.map((route) => {
+            const isPushkar = route.from === 'Pushkar' || route.to === 'Pushkar';
+            const isAirport = route.from.includes('Airport') || route.to.includes('Airport') || route.from.includes('Railway') || route.to.includes('Station');
+            const isInbound = (route.to === 'Ajmer' || route.to === 'Pushkar') && route.from !== 'Ajmer' && route.from !== 'Pushkar';
+            
+            const cats = ['all'];
+            if (isPushkar) cats.push('pushkar');
+            if (isAirport) cats.push('airport');
+            if (isInbound) cats.push('inbound');
+
+            const waUrl = createWhatsAppBookingUrl({
+              pickup: route.from,
+              destination: route.to,
+              vehicle: `Sedan / SUV Cab`,
+              tripType: `${route.from} to ${route.to} Taxi`,
+              customMessage: `Hello! I want to check cab timings & book a taxi for ${route.from} to ${route.to}. Please confirm available drivers.`
+            });
+
+            return (
+              <article 
+                class="route-card" 
+                data-title={`${route.from} to ${route.to} ${route.highway} ${route.slug}`.toLowerCase()}
+                data-categories={cats.join(' ')}
+              >
+                <div class="rc-header">
+                  <span class="rc-distance">📍 {route.distanceKm} km • {route.estimatedTime}</span>
+                  <span class="rc-highway" title={route.highway}>{route.highway.split(';')[0]}</span>
+                </div>
+
+                <h2 class="rc-title">
+                  <a href={`/${route.slug}/`}>{route.from} &rarr; {route.to}</a>
+                </h2>
+
+                <div class="rc-pricing">
+                  <div class="price-chip">
+                    <span class="chip-label">Sedan</span>
+                    <strong class="chip-val">₹{route.sedanFare.toLocaleString('en-IN')}</strong>
                   </div>
-                  <h2 class="rc-title">
-                    <a href={`/${route.slug}/`}>{route.from} &rarr; {route.to} Taxi</a>
-                  </h2>
-                  <div class="rc-pricing">
-                    <div class="price-chip">
-                      <span class="chip-label">Sedan</span>
-                      <span class="chip-val">₹{route.sedanFare.toLocaleString('en-IN')}</span>
-                    </div>
-                    <div class="price-chip">
-                      <span class="chip-label">Ertiga</span>
-                      <span class="chip-val">₹{route.suvFare.toLocaleString('en-IN')}</span>
-                    </div>
-                    <div class="price-chip">
-                      <span class="chip-label">Crysta</span>
-                      <span class="chip-val">₹{route.crystaFare.toLocaleString('en-IN')}</span>
-                    </div>
+                  <div class="price-chip highlight">
+                    <span class="chip-label">Ertiga 6-Str</span>
+                    <strong class="chip-val">₹{route.suvFare.toLocaleString('en-IN')}</strong>
                   </div>
-                  <div class="rc-actions">
-                    <a href={`/${route.slug}/`} class="btn-view">View Route &amp; Timings &rarr;</a>
-                    <a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn-wa">WhatsApp</a>
+                  <div class="price-chip">
+                    <span class="chip-label">Crysta</span>
+                    <strong class="chip-val">₹{route.crystaFare.toLocaleString('en-IN')}</strong>
                   </div>
-                </article>
-              );
-            })}
-          </div>
+                </div>
+
+                <div class="rc-actions">
+                  <a href={`/${route.slug}/`} class="btn-view">
+                    <span>View Route &amp; Timings</span>
+                    <span class="arr">&rarr;</span>
+                  </a>
+                  <a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn-wa" title="WhatsApp Booking">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.178.181-.077.355.101.174.449.741.964 1.2.662.591 1.221.774 1.394.861.173.087.275.072.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.044.073.044.42-.1 1.016z"/></svg>
+                    <span>WhatsApp</span>
+                  </a>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        <div id="no-routes-found" class="no-routes-msg" style="display: none;">
+          <h3>No routes matched your search</h3>
+          <p>We provide custom cab transfers to any location across Rajasthan and India.</p>
+          <a href={`tel:${business.phone}`} class="btn btn--primary btn--sm">
+            Call Operator: {business.phoneFormatted}
+          </a>
         </div>
 
       </div>
@@ -99,7 +133,7 @@ const otherRoutes = seoRoutesData.filter(r => !pushkarRoutes.includes(r) && !air
     <!-- Why Book With Us Banner -->
     <section class="trust-banner">
       <div class="container text-center">
-        <h2>Why 50,000+ Pilgrims &amp; Travelers Trust Our Chauffeurs Since 2008</h2>
+        <h2 class="trust-title">Why 50,000+ Pilgrims &amp; Travelers Trust Our Chauffeurs Since 2008</h2>
         <div class="trust-features">
           <div class="tf-item">
             <span class="tf-icon">✓</span>
@@ -132,35 +166,76 @@ const otherRoutes = seoRoutesData.filter(r => !pushkarRoutes.includes(r) && !air
 </Layout>
 
 <script>
-  // Live Search filter
-  const searchInput = document.getElementById('route-search') as HTMLInputElement;
-  const cards = document.querySelectorAll('.route-card');
+  function setupRouteFilters() {
+    const searchInput = document.getElementById('route-search') as HTMLInputElement | null;
+    const cards = document.querySelectorAll<HTMLElement>('.route-card');
+    const tabs = document.querySelectorAll<HTMLButtonElement>('.cat-tab');
+    const countDisplay = document.getElementById('route-count');
+    const noRoutesMsg = document.getElementById('no-routes-found');
 
-  if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-      const q = (e.target as HTMLInputElement).value.toLowerCase().trim();
+    let currentCategory = 'all';
+    let currentQuery = '';
+
+    function applyFilters() {
+      let visibleCount = 0;
+
       cards.forEach((card) => {
         const title = card.getAttribute('data-title') || '';
-        if (!q || title.includes(q)) {
-          (card as HTMLElement).style.display = 'flex';
+        const categories = (card.getAttribute('data-categories') || '').split(' ');
+
+        const matchesCategory = currentCategory === 'all' || categories.includes(currentCategory);
+        const matchesQuery = !currentQuery || title.includes(currentQuery);
+
+        if (matchesCategory && matchesQuery) {
+          card.style.display = 'flex';
+          visibleCount++;
         } else {
-          (card as HTMLElement).style.display = 'none';
+          card.style.display = 'none';
         }
       });
+
+      if (countDisplay) {
+        countDisplay.textContent = visibleCount.toString();
+      }
+
+      if (noRoutesMsg) {
+        noRoutesMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach((t) => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentCategory = tab.getAttribute('data-filter') || 'all';
+        applyFilters();
+      });
     });
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        currentQuery = (e.target as HTMLInputElement).value.toLowerCase().trim();
+        applyFilters();
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupRouteFilters);
+  } else {
+    setupRouteFilters();
   }
 </script>
 
 <style>
-  .routes-hero {
+  .route-hero {
     background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
-    color: #fff;
-    padding: var(--space-3xl) 0 var(--space-2xl);
-    position: relative;
+    color: #FFFFFF;
+    padding: calc(var(--header-height, 74px) + 38px) 0 36px;
     border-bottom: 3px solid var(--color-accent);
   }
 
-  .heritage-badge {
+  .heritage-pill {
     display: inline-block;
     background: rgba(197, 155, 39, 0.2);
     border: 1px solid var(--color-accent);
@@ -169,92 +244,135 @@ const otherRoutes = seoRoutesData.filter(r => !pushkarRoutes.includes(r) && !air
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    padding: 0.35rem 0.85rem;
-    border-radius: 999px;
-    margin-bottom: var(--space-md);
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    margin-bottom: 12px;
   }
 
-  .hero-title {
+  .route-title {
+    font-family: var(--font-heading);
     font-size: clamp(1.85rem, 4vw, 2.75rem);
-    color: #fff;
-    margin-bottom: var(--space-sm);
+    color: #FFFFFF;
+    margin-bottom: 8px;
+    line-height: 1.2;
   }
 
-  .hero-subtitle {
+  .route-subtitle {
     max-width: 680px;
-    margin: 0 auto var(--space-xl);
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 1.05rem;
-    line-height: 1.6;
+    margin: 0 auto 20px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+    line-height: 1.5;
   }
 
   .search-box-wrap {
-    max-width: 600px;
+    max-width: 620px;
     margin: 0 auto;
   }
 
-  .search-box-wrap input {
-    width: 100%;
-    padding: 1rem 1.4rem;
-    font-size: 1.05rem;
+  .search-input-inner {
+    display: flex;
+    align-items: center;
+    background: #FFFFFF;
     border-radius: var(--radius-full);
-    border: 2px solid var(--color-accent);
-    outline: none;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-    color: var(--color-text);
+    padding: 6px 14px;
+    border: 2.5px solid var(--color-accent);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   }
 
+  .search-icon {
+    font-size: 1.1rem;
+    margin-right: 8px;
+  }
+
+  .search-input-inner input {
+    width: 100%;
+    padding: 8px 4px;
+    font-size: 0.95rem;
+    border: none;
+    outline: none;
+    color: var(--color-text);
+    background: transparent;
+  }
+
+  .search-hint {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 8px;
+  }
+
+  .search-hint strong {
+    color: var(--color-accent-light);
+  }
+
+  /* Category Tabs */
   .routes-content-section {
-    padding: var(--space-3xl) 0;
-    background: #f8fafc;
+    padding: var(--space-3xl) 0 var(--space-4xl);
+    background: var(--color-cream);
   }
 
   .category-tabs {
     display: flex;
-    gap: 0.75rem;
+    gap: 8px;
     justify-content: center;
     flex-wrap: wrap;
     margin-bottom: var(--space-2xl);
   }
 
   .cat-tab {
-    padding: 0.6rem 1.25rem;
+    padding: 8px 18px;
     border-radius: var(--radius-full);
-    border: 1px solid #cbd5e1;
-    background: #fff;
-    color: #475569;
-    font-weight: 600;
-    font-size: 0.9rem;
+    border: 1.5px solid var(--color-border);
+    background: #FFFFFF;
+    color: var(--color-text-secondary);
+    font-weight: 700;
+    font-size: 0.85rem;
     cursor: pointer;
     transition: all 0.2s ease;
   }
 
-  .cat-tab.active, .cat-tab:hover {
+  .cat-tab.active,
+  .cat-tab:hover {
     background: var(--color-primary);
-    color: #fff;
+    color: #FFFFFF;
     border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(90, 12, 26, 0.2);
   }
 
+  /* Grid & Cards */
   .routes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .routes-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .routes-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
   }
 
   .route-card {
-    background: #fff;
-    border-radius: var(--radius-lg);
-    border: 1px solid #e2e8f0;
-    padding: 1.35rem;
+    background: #FFFFFF;
+    border-radius: var(--radius-xl);
+    border: 1.5px solid var(--color-border);
+    padding: 18px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 14px rgba(34, 24, 28, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
 
   .route-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 24px rgba(34, 24, 28, 0.1);
     border-color: var(--color-accent);
   }
 
@@ -263,8 +381,9 @@ const otherRoutes = seoRoutesData.filter(r => !pushkarRoutes.includes(r) && !air
     justify-content: space-between;
     align-items: center;
     font-size: 0.78rem;
-    color: #64748b;
-    margin-bottom: 0.5rem;
+    color: var(--color-text-muted);
+    margin-bottom: 8px;
+    gap: 6px;
   }
 
   .rc-distance {
@@ -273,6 +392,11 @@ const otherRoutes = seoRoutesData.filter(r => !pushkarRoutes.includes(r) && !air
   }
 
   .rc-highway {
+    font-weight: 600;
+    background: var(--color-cream);
+    padding: 2px 7px;
+    border-radius: var(--radius-sm);
+    font-size: 0.72rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -281,7 +405,7 @@ const otherRoutes = seoRoutesData.filter(r => !pushkarRoutes.includes(r) && !air
 
   .rc-title {
     font-size: 1.15rem;
-    margin-bottom: 1rem;
+    margin-bottom: 12px;
     font-family: var(--font-heading);
     line-height: 1.3;
   }
@@ -289,96 +413,152 @@ const otherRoutes = seoRoutesData.filter(r => !pushkarRoutes.includes(r) && !air
   .rc-title a {
     color: var(--color-primary-dark);
     text-decoration: none;
+    transition: color 0.15s ease;
   }
 
   .rc-title a:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-dark);
   }
 
   .rc-pricing {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 0.5rem;
-    background: #f1f5f9;
-    padding: 0.6rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    background: var(--color-surface-warm);
+    border: 1px solid var(--color-border);
+    padding: 8px;
     border-radius: var(--radius-md);
-    margin-bottom: 1.15rem;
+    margin-bottom: 14px;
     text-align: center;
+  }
+
+  .price-chip {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .price-chip.highlight {
+    background: rgba(197, 155, 39, 0.15);
+    border-radius: var(--radius-xs);
+    padding: 2px;
   }
 
   .chip-label {
     display: block;
-    font-size: 0.7rem;
-    color: #64748b;
+    font-size: 0.68rem;
+    color: var(--color-text-muted);
     text-transform: uppercase;
+    font-weight: 600;
   }
 
   .chip-val {
     display: block;
-    font-weight: 700;
-    color: var(--color-primary-dark);
-    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    font-size: 0.9375rem;
+  }
+
+  .price-chip.highlight .chip-val {
+    color: #B45309;
   }
 
   .rc-actions {
     margin-top: auto;
-    display: flex;
-    gap: 0.5rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
   }
 
   .btn-view {
-    flex: 1;
-    text-align: center;
-    background: #e2e8f0;
-    color: #1e293b;
-    font-weight: 600;
-    font-size: 0.825rem;
-    padding: 0.55rem 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: var(--color-cream);
+    border: 1.5px solid var(--color-primary);
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    padding: 9px 12px;
     border-radius: var(--radius-md);
     text-decoration: none;
-    transition: background 0.2s;
+    transition: all 0.2s ease;
   }
 
   .btn-view:hover {
-    background: #cbd5e1;
+    background: var(--color-primary);
+    color: #FFFFFF;
+  }
+
+  .btn-view .arr {
+    transition: transform 0.2s ease;
+  }
+
+  .btn-view:hover .arr {
+    transform: translateX(4px);
   }
 
   .btn-wa {
-    background: #25D366;
-    color: #fff;
-    font-weight: 600;
-    font-size: 0.825rem;
-    padding: 0.55rem 0.95rem;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    padding: 9px 12px;
     border-radius: var(--radius-md);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    gap: 5px;
+    transition: filter 0.15s ease;
   }
 
   .btn-wa:hover {
-    background: #1eb855;
+    filter: brightness(1.08);
   }
 
+  .no-routes-msg {
+    text-align: center;
+    padding: var(--space-3xl) 0;
+  }
+
+  .no-routes-msg h3 {
+    font-size: 1.35rem;
+    color: var(--color-primary);
+    margin-bottom: 6px;
+  }
+
+  .no-routes-msg p {
+    color: var(--color-text-muted);
+    margin-bottom: 14px;
+  }
+
+  /* Trust Banner */
   .trust-banner {
     padding: var(--space-3xl) 0;
-    background: #fff;
-    border-top: 1px solid #e2e8f0;
+    background: #FFFFFF;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .trust-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+    color: var(--color-primary);
+    margin-bottom: var(--space-xl);
   }
 
   .trust-features {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 1.5rem;
-    margin-top: var(--space-2xl);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
     text-align: left;
   }
 
   .tf-item {
-    padding: 1.25rem;
-    background: #f8fafc;
+    padding: 16px 18px;
+    background: var(--color-cream);
     border-radius: var(--radius-lg);
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--color-border);
   }
 
   .tf-icon {
@@ -386,22 +566,24 @@ const otherRoutes = seoRoutesData.filter(r => !pushkarRoutes.includes(r) && !air
     width: 28px;
     height: 28px;
     background: var(--color-accent);
-    color: #fff;
+    color: #FFFFFF;
     text-align: center;
     line-height: 28px;
     border-radius: 50%;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    margin-bottom: 8px;
   }
 
   .tf-item h4 {
-    margin-bottom: 0.4rem;
-    font-size: 1.05rem;
+    margin-bottom: 4px;
+    font-size: 1rem;
+    color: var(--color-primary);
   }
 
   .tf-item p {
-    font-size: 0.875rem;
-    color: #64748b;
+    font-size: 0.84rem;
+    color: var(--color-text-muted);
     line-height: 1.5;
+    margin: 0;
   }
 </style>
