@@ -103,9 +103,6 @@ const calcSchema = {
               <button type="button" class="mode-tab" data-trip="round-trip" id="tab-roundtrip">
                 <span class="mode-icon">⇄</span> Round Trip
               </button>
-              <button type="button" class="mode-tab" data-trip="local" id="tab-local">
-                <span class="mode-icon">⏱</span> Local 8Hr/80Km
-              </button>
             </div>
 
             <!-- Share & Reset Tools -->
@@ -1605,9 +1602,45 @@ const calcSchema = {
   }
 
   @media (max-width: 640px) {
+    .engine-card {
+      padding: 14px 12px;
+      border-radius: var(--radius-lg);
+      margin-top: -16px;
+    }
+    .engine-top-bar {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+    .trip-mode-group {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+      padding: 4px;
+    }
+    .mode-tab {
+      justify-content: center;
+      padding: 10px 8px;
+      font-size: 0.8125rem;
+      min-height: 44px;
+      white-space: nowrap;
+    }
+    .engine-tool-links {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .field-input {
+      font-size: 16px; /* Prevent iOS zoom */
+      height: 48px;
+    }
+    .input-inner-wrap {
+      min-height: 48px;
+    }
     .cab-card {
       grid-template-columns: 1fr;
       gap: 12px;
+      padding: 14px 12px;
     }
     .cab-perks {
       border-left: none;
@@ -1617,9 +1650,13 @@ const calcSchema = {
     }
     .cab-col-pricing {
       grid-column: span 1;
+      width: 100%;
+      align-items: stretch;
+      text-align: left;
     }
     .btn-book-cab {
       max-width: 100%;
+      min-height: 46px;
     }
   }
 </style>

@@ -9,15 +9,15 @@ import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
 import { generateServiceSchema } from "@/utils/seo";
 
-const pageTitle = "One-Way Taxi Ajmer | Book One Side Cab ₹10/km — Taxi Services in Ajmer (2026)";
-const pageDescription = "Book one-way taxi from Ajmer to any destination in Rajasthan or India. Starting ₹10/km. No return charge. Transparent fare, AC cabs, verified drivers. Instant WhatsApp booking 24/7.";
+const pageTitle = "One-Way Taxi Ajmer | Book One Side Cab ₹11/km — Taxi Services in Ajmer (2026)";
+const pageDescription = "Book one-way taxi from Ajmer to any destination in Rajasthan or India. Starting ₹11/km. No return charge. Transparent fare, AC cabs, verified drivers. Instant WhatsApp booking 24/7.";
 
 const waJaipur  = createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jaipur", vehicle: "Sedan (One-Way)", tripType: "One Way" });
-const waGeneral = createWhatsAppBookingUrl({ pickup: "Ajmer", tripType: "One Way", customMessage: "Hello, I need a one-way taxi from Ajmer. Please share fare and availability for my route." });
+const waGeneral = createWhatsAppBookingUrl({ pickup: "Ajmer", tripType: "One Way", customMessage: "Hello, I need a one-way taxi from Ajmer. Please share fare and vehicle availability for my route." });
 
 const serviceSchema = generateServiceSchema(
   "One Way Taxi Ajmer",
-  "Affordable one-way taxi service from Ajmer to all major destinations. No return fare. Starting ₹10/km for Sedan. Transparent pricing, AC cabs, 24/7 available.",
+  "Affordable one-way taxi service from Ajmer to all major destinations. No return fare. Starting ₹11/km for Sedan. Transparent pricing, AC cabs, 24/7 available.",
   `${business.website}/one-way-taxi-ajmer/`
 );
 
@@ -32,6 +32,15 @@ const routes = [
   { to: "Jaisalmer", km: "530 km", time: "9 hrs", sedan: "₹7,500", ertiga: "₹10,500", crysta: "₹14,500" },
 ];
 
+function getRouteWaUrl(dest: string, fare: string) {
+  return createWhatsAppBookingUrl({
+    pickup: "Ajmer",
+    destination: dest,
+    tripType: "One Way",
+    customMessage: `Hello! I would like to book a one-way taxi from Ajmer to ${dest} (Starting at ${fare}). Please confirm vehicle availability and pickup timing.`
+  });
+}
+
 const faqs = [
   { question: "What is the one-way taxi rate from Ajmer?", answer: "Our one-way outstation taxi rates start at ₹11/km for a Maruti Dzire or Toyota Etios Sedan, ₹13/km for Ertiga, ₹18/km for Innova Crysta, and ₹35/km for Force Urbania. For popular routes like Ajmer to Jaipur, we offer fixed one-way fares from ₹1,800, and Ajmer to Pushkar drop at ₹700.", category: "Pricing" as const },
   { question: "Do I need to pay a return fare for a one-way cab from Ajmer?", answer: "No. Our one-way taxi pricing does not include any return charges. You only pay for the one-way journey to your destination. This makes us significantly more affordable than operators who charge round-trip rates.", category: "Pricing" as const },
@@ -43,23 +52,52 @@ const faqs = [
 <Layout title={pageTitle} description={pageDescription} canonicalPath="/one-way-taxi-ajmer/" schemaMarkup={serviceSchema}>
   <Header />
   <main id="main-content">
+    <!-- Hero Banner -->
     <section class="route-hero">
       <div class="container text-center">
-        <span class="heritage-pill">One-Way Cab Service • No Return Fare • Since 2008</span>
+        <span class="heritage-pill">One-Way Cab Service • Zero Return Fare • Since 2008</span>
         <h1 class="route-title">One-Way Taxi from Ajmer</h1>
-        <p class="route-subtitle">Pay Only for Your Journey — No Return Charges · Starting ₹11/km · AC Cabs · 24/7 Booking</p>
+        <p class="route-subtitle">Pay Only for Your Journey — No Return Charges · Starting ₹11/km · AC Cabs · 24/7 Direct Dispatch</p>
+        
         <div class="hero-fare-pills">
-          <div class="h-pill">Sedan (Dzire/Etios): <strong>₹11/km</strong></div>
-          <div class="h-pill">Ertiga: <strong>₹13/km</strong></div>
-          <div class="h-pill">Innova Crysta: <strong>₹18/km</strong></div>
-          <div class="h-pill">Urbania Outstation: <strong>₹35/km</strong></div>
+          <div class="h-pill">
+            <span class="pill-car">🚗 Sedan:</span>
+            <strong>₹11/km</strong>
+          </div>
+          <div class="h-pill">
+            <span class="pill-car">🚙 Ertiga:</span>
+            <strong>₹13/km</strong>
+          </div>
+          <div class="h-pill">
+            <span class="pill-car">🚐 Innova Crysta:</span>
+            <strong>₹18/km</strong>
+          </div>
+          <div class="h-pill">
+            <span class="pill-car">🚌 Force Urbania:</span>
+            <strong>₹35/km</strong>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- Main Content Section -->
     <section class="route-content-section">
       <div class="container">
+        
+        <!-- Mobile Direct CTA Bar -->
+        <div class="route-mobile-cta-bar">
+          <a href={waGeneral} target="_blank" rel="noopener noreferrer" class="m-cta-btn m-cta-btn--wa">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.288.043.088.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.2.662.589 1.221.77 1.394.856.173.086.275.073.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.043.072.043.419-.101.824z"/></svg>
+            <span>Book Cab on WhatsApp</span>
+          </a>
+          <a href={`tel:${business.phone}`} class="m-cta-btn m-cta-btn--call">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            <span>Call 24/7 Hotline</span>
+          </a>
+        </div>
+
         <div class="route-grid">
+          <!-- Main Content Column -->
           <div class="route-main">
             <span class="section-subtitle">Transparent One-Way Pricing — No Hidden Charges</span>
             <h2 class="section-title">Affordable One-Way Cab from Ajmer</h2>
@@ -67,116 +105,826 @@ const faqs = [
               Many taxi operators in Ajmer charge you a round-trip fare even when you only need a one-way cab. At our taxi service, we believe in fair, transparent pricing. Our one-way cabs are priced only for the distance to your destination — with no return charges, no night allowance surprises, and no hidden fees.
             </p>
             <p>
-              Whether you're heading to Jaipur for a meeting, Delhi for a flight, or Pushkar for a day visit — our one-way taxis are the most cost-effective choice for solo travelers, couples, and families.
+              Whether you're heading to Jaipur for a flight or meeting, Delhi for outstation travel, or Pushkar for a darshan drop — our one-way taxis are the most cost-effective choice for solo travelers, families, and business professionals.
             </p>
 
-            <h3 class="tier-heading">One-Way Fare Table — Popular Ajmer Routes</h3>
+            <div class="table-header-row">
+              <h3 class="tier-heading">One-Way Fare Chart — Popular Ajmer Routes</h3>
+              <span class="table-badge">Zero Return Fare Guaranteed</span>
+            </div>
+
+            <!-- Desktop View: Fare Table -->
             <div class="fare-table-wrap">
               <table class="fare-table">
                 <thead>
                   <tr>
                     <th>Destination</th>
                     <th>Distance</th>
-                    <th>Time</th>
+                    <th>Est. Time</th>
                     <th>Sedan (Dzire/Etios)</th>
                     <th>Ertiga (6-Seater)</th>
                     <th>Innova Crysta</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {routes.map(r => (
                     <tr>
-                      <td><strong>Ajmer → {r.to}</strong></td>
-                      <td>{r.km}</td>
-                      <td>{r.time}</td>
+                      <td>
+                        <strong class="route-name">Ajmer → {r.to}</strong>
+                      </td>
+                      <td><span class="spec-badge">{r.km}</span></td>
+                      <td><span class="spec-badge time">{r.time}</span></td>
                       <td class="fare-cell">{r.sedan}</td>
-                      <td class="fare-cell">{r.ertiga}</td>
-                      <td class="fare-cell">{r.crysta}</td>
+                      <td class="fare-cell ertiga">{r.ertiga}</td>
+                      <td class="fare-cell crysta">{r.crysta}</td>
+                      <td>
+                        <a href={getRouteWaUrl(r.to, r.sedan)} target="_blank" rel="noopener noreferrer" class="btn-table-wa">
+                          Book &rarr;
+                        </a>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            <p class="table-note">* Toll charges are extra as per actual FASTag receipts. Zero advance payment required.</p>
 
-            <div class="route-itinerary-box" style="margin-top: var(--space-xl)">
-              <h3>Why Choose Our One-Way Taxis?</h3>
-              <ul>
-                <li>• <strong>No Return Fare:</strong> Pay only for your one-way journey — the most honest pricing model in Ajmer.</li>
-                <li>• <strong>No Advance Required:</strong> Zero upfront payment. Pay the driver directly at the end of your journey.</li>
-                <li>• <strong>24/7 Availability:</strong> Early morning or late night — our cabs are available round the clock.</li>
-                <li>• <strong>AC Cabs Only:</strong> All our vehicles are 100% air-conditioned and regularly maintained.</li>
-                <li>• <strong>Verified Drivers:</strong> Commercial permit, police verification, and 18+ years of safe driving on Rajasthan routes.</li>
-              </ul>
+            <!-- Mobile View: Clean Native Cards (Under 768px) -->
+            <div class="mobile-route-cards">
+              {routes.map(r => (
+                <div class="m-route-card">
+                  <div class="m-route-top">
+                    <div class="m-route-title">
+                      <span class="m-city-badge">Ajmer</span>
+                      <span class="m-arrow">&rarr;</span>
+                      <span class="m-dest-name">{r.to}</span>
+                    </div>
+                    <div class="m-route-meta">
+                      <span class="m-meta-pill">📍 {r.km}</span>
+                      <span class="m-meta-pill">⏱️ {r.time}</span>
+                    </div>
+                  </div>
+
+                  <div class="m-route-prices">
+                    <div class="m-price-col">
+                      <span class="m-car-lbl">🚗 Sedan</span>
+                      <strong class="m-car-fare">{r.sedan}</strong>
+                    </div>
+                    <div class="m-price-col m-price-col--featured">
+                      <span class="m-car-lbl">🚙 Ertiga</span>
+                      <strong class="m-car-fare">{r.ertiga}</strong>
+                    </div>
+                    <div class="m-price-col">
+                      <span class="m-car-lbl">🚐 Crysta</span>
+                      <strong class="m-car-fare">{r.crysta}</strong>
+                    </div>
+                  </div>
+
+                  <a href={getRouteWaUrl(r.to, r.sedan)} target="_blank" rel="noopener noreferrer" class="m-route-wa-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.288.043.088.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.2.662.589 1.221.77 1.394.856.173.086.275.073.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.043.072.043.419-.101.824z"/></svg>
+                    <span>Book {r.to} Drop via WhatsApp</span>
+                    <span class="arr">&rarr;</span>
+                  </a>
+                </div>
+              ))}
+            </div>
+
+            <p class="table-note">* Toll taxes are charged at actuals via FASTag receipts. Zero advance payment required.</p>
+
+            <!-- Benefits Feature Grid -->
+            <div class="benefits-container">
+              <h3 class="tier-heading">Why Travelers Choose Our One-Way Taxis</h3>
+              <div class="benefits-grid">
+                <div class="benefit-card">
+                  <div class="benefit-icon">🚫</div>
+                  <div class="benefit-body">
+                    <h4>Zero Return Charges</h4>
+                    <p>Pay strictly for distance traveled to your destination. Never pay for the vehicle's return trip to Ajmer.</p>
+                  </div>
+                </div>
+
+                <div class="benefit-card">
+                  <div class="benefit-icon">💵</div>
+                  <div class="benefit-body">
+                    <h4>No Advance Required</h4>
+                    <p>Book your taxi instantly with zero advance deposit. Pay the driver directly upon reaching your destination.</p>
+                  </div>
+                </div>
+
+                <div class="benefit-card">
+                  <div class="benefit-icon">⏱️</div>
+                  <div class="benefit-body">
+                    <h4>24/7 Doorstep Pickup</h4>
+                    <p>Pickup available at Ajmer Railway Station, Pushkar resorts, Kishangarh airport, or any residential address.</p>
+                  </div>
+                </div>
+
+                <div class="benefit-card">
+                  <div class="benefit-icon">❄️</div>
+                  <div class="benefit-body">
+                    <h4>100% Chilled AC Cabs</h4>
+                    <p>Clean, sanitized interiors, commercial permit safety compliance, and dual air conditioning on all highway trips.</p>
+                  </div>
+                </div>
+
+                <div class="benefit-card">
+                  <div class="benefit-icon">🛡️</div>
+                  <div class="benefit-body">
+                    <h4>Verified Highway Chauffeurs</h4>
+                    <p>Experienced drivers with verified police credentials and 18+ years of smooth driving on Rajasthan routes.</p>
+                  </div>
+                </div>
+
+                <div class="benefit-card">
+                  <div class="benefit-icon">🧾</div>
+                  <div class="benefit-body">
+                    <h4>Transparent GST Invoices</h4>
+                    <p>Receive digital receipts immediately for your corporate tax deductions and company travel reimbursements.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
+          <!-- Sidebar Column -->
           <aside class="route-sidebar">
-            <div class="sidebar-box">
-              <h3 class="side-title">Book One-Way Cab</h3>
-              <p style="font-size:0.875rem; color:var(--color-text-muted); margin-bottom:var(--space-md);">Share your pickup point and destination for an instant quote.</p>
+            <!-- Booking Card -->
+            <div class="sidebar-box sidebar-cta-box">
+              <span class="side-badge">Direct Taxi Booking</span>
+              <h3 class="side-title">Need a Quick One-Way Quote?</h3>
+              <p class="side-desc">Tell us your pickup locality and destination for an exact, instant price quote.</p>
+              
               <div class="side-actions">
-                <a href={waGeneral} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--sm full-w">WhatsApp for Quote</a>
-                <a href={`tel:${business.phone}`} class="btn btn--outline-primary btn--sm full-w">Call: {business.phoneFormatted}</a>
+                <a href={waGeneral} target="_blank" rel="noopener noreferrer" class="side-btn side-btn--wa">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.288.043.088.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.2.662.589 1.221.77 1.394.856.173.086.275.073.376-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.043.072.043.419-.101.824z"/></svg>
+                  <span>Chat on WhatsApp</span>
+                </a>
+                <a href={`tel:${business.phone}`} class="side-btn side-btn--call">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                  <span>Call {business.phoneFormatted}</span>
+                </a>
               </div>
             </div>
+
+            <!-- Quick Routes Card -->
             <div class="sidebar-box">
-              <h3 class="side-title" style="font-size:1rem">Popular One-Way Cabs</h3>
+              <h3 class="side-title">Top One-Way Routes</h3>
               <div class="quick-routes">
-                <a href={waJaipur} target="_blank" rel="noopener noreferrer" class="quick-route-btn">Ajmer → Jaipur ₹1,800</a>
-                <a href={createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jodhpur", tripType: "One Way" })} target="_blank" rel="noopener noreferrer" class="quick-route-btn">Ajmer → Jodhpur ₹2,800</a>
-                <a href={createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Delhi", tripType: "One Way" })} target="_blank" rel="noopener noreferrer" class="quick-route-btn">Ajmer → Delhi ₹5,500</a>
-                <a href={createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Udaipur", tripType: "One Way" })} target="_blank" rel="noopener noreferrer" class="quick-route-btn">Ajmer → Udaipur ₹3,500</a>
+                <a href={waJaipur} target="_blank" rel="noopener noreferrer" class="quick-route-btn">
+                  <span class="qr-name">Ajmer &rarr; Jaipur</span>
+                  <strong class="qr-fare">₹1,800</strong>
+                </a>
+                <a href={createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Pushkar", tripType: "One Way" })} target="_blank" rel="noopener noreferrer" class="quick-route-btn">
+                  <span class="qr-name">Ajmer &rarr; Pushkar</span>
+                  <strong class="qr-fare">₹700</strong>
+                </a>
+                <a href={createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Jodhpur", tripType: "One Way" })} target="_blank" rel="noopener noreferrer" class="quick-route-btn">
+                  <span class="qr-name">Ajmer &rarr; Jodhpur</span>
+                  <strong class="qr-fare">₹2,800</strong>
+                </a>
+                <a href={createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Delhi", tripType: "One Way" })} target="_blank" rel="noopener noreferrer" class="quick-route-btn">
+                  <span class="qr-name">Ajmer &rarr; Delhi</span>
+                  <strong class="qr-fare">₹5,500</strong>
+                </a>
+                <a href={createWhatsAppBookingUrl({ pickup: "Ajmer", destination: "Udaipur", tripType: "One Way" })} target="_blank" rel="noopener noreferrer" class="quick-route-btn">
+                  <span class="qr-name">Ajmer &rarr; Udaipur</span>
+                  <strong class="qr-fare">₹3,500</strong>
+                </a>
               </div>
             </div>
+
+            <!-- Trust Badge -->
             <div class="sidebar-trust">
-              <h4>Honest Pricing Since 2008</h4>
-              <p>We have never charged a hidden return fare. What you see is what you pay — always.</p>
+              <div class="trust-stars">★★★★★</div>
+              <h4>Direct Operator Pricing Since 2008</h4>
+              <p>We operate our own fleet of commercial vehicles in Ajmer. No middleman commissions or surge pricing.</p>
             </div>
           </aside>
         </div>
       </div>
     </section>
 
+    <!-- FAQs Section -->
     <FAQ items={faqs} title="One-Way Taxi Ajmer FAQs" subtitle="Frequently Asked Questions" />
   </main>
+
   <Footer />
   <WhatsAppBubble />
   <MobileBottomBar />
 </Layout>
 
 <style>
-  .route-hero { background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%); color: #FFF; padding: calc(var(--header-height, 74px) + 38px) 0 36px; border-bottom: 3px solid var(--color-accent); }
-  .heritage-pill { display: inline-block; background: rgba(197,155,39,0.2); border: 1px solid var(--color-accent); color: var(--color-accent-light); font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 14px; border-radius: var(--radius-full); margin-bottom: 12px; }
-  .route-title { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 2.75rem); color: #FFF; margin-bottom: 6px; }
-  .route-subtitle { font-size: 1.125rem; color: rgba(255,255,255,0.9); max-width: 720px; margin: 0 auto var(--space-lg); }
-  .hero-fare-pills { display: flex; justify-content: center; gap: var(--space-sm); flex-wrap: wrap; }
-  .h-pill { background: rgba(0,0,0,0.3); border: 1px solid rgba(197,155,39,0.4); padding: 6px 14px; border-radius: var(--radius-full); font-size: 0.875rem; color: #F8E6B8; }
-  .h-pill strong { color: #FFF; }
-  .route-content-section { padding: var(--space-4xl) 0; background: #FFF; }
-  .route-grid { display: grid; grid-template-columns: 1fr 340px; gap: var(--space-3xl); }
-  .tier-heading { font-family: var(--font-heading); font-size: 1.375rem; color: var(--color-primary); margin: var(--space-xl) 0 var(--space-md); }
-  .fare-table-wrap { overflow-x: auto; border-radius: var(--radius-lg); border: 1px solid var(--color-border); margin-bottom: var(--space-sm); }
-  .fare-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-  .fare-table th { background: var(--color-primary); color: #FFF; padding: 10px 14px; text-align: left; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
-  .fare-table td { padding: 10px 14px; border-bottom: 1px solid var(--color-border); color: var(--color-text); }
-  .fare-table tbody tr:last-child td { border-bottom: none; }
-  .fare-table tbody tr:nth-child(even) { background: var(--color-surface); }
-  .fare-cell { font-weight: 700; color: var(--color-primary); }
-  .table-note { font-size: 0.78rem; color: var(--color-text-muted); margin-bottom: 0; }
-  .route-itinerary-box { background: var(--color-cream); border: 1px solid var(--color-border); border-left: 4px solid var(--color-accent); padding: var(--space-xl); border-radius: var(--radius-md); }
-  .route-itinerary-box h3 { font-family: var(--font-heading); color: var(--color-primary); font-size: 1.25rem; margin-bottom: var(--space-sm); }
-  .route-itinerary-box ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.875rem; color: var(--color-text); }
-  .route-sidebar { display: flex; flex-direction: column; gap: var(--space-lg); }
-  .sidebar-box { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-xl); }
-  .side-title { font-family: var(--font-heading); font-size: 1.125rem; color: var(--color-primary); margin-bottom: var(--space-md); padding-bottom: 6px; border-bottom: 2px solid var(--color-accent); }
-  .side-actions { display: flex; flex-direction: column; gap: 8px; }
-  .full-w { width: 100%; justify-content: center; }
-  .quick-routes { display: flex; flex-direction: column; gap: 8px; }
-  .quick-route-btn { display: block; background: var(--color-cream); border: 1px solid var(--color-border); color: var(--color-primary); font-size: 0.8125rem; font-weight: 600; padding: 8px 12px; border-radius: var(--radius-md); text-decoration: none; transition: all 0.2s; }
-  .quick-route-btn:hover { background: var(--color-primary); color: #FFF; border-color: var(--color-primary); }
-  .sidebar-trust { background: var(--color-cream); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-lg); }
-  .sidebar-trust h4 { font-family: var(--font-heading); color: var(--color-primary); font-size: 1rem; margin-bottom: 4px; }
-  .sidebar-trust p { font-size: 0.8125rem; color: var(--color-text-muted); line-height: 1.5; margin: 0; }
-  @media (max-width: 992px) { .route-grid { grid-template-columns: 1fr; } }
+  /* Hero Banner */
+  .route-hero {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #FFFFFF;
+    padding: calc(var(--header-height, 74px) + 24px) 0 32px;
+    border-bottom: 3px solid var(--color-accent);
+  }
+
+  .heritage-pill {
+    display: inline-block;
+    background: rgba(197, 155, 39, 0.2);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-light);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 12px;
+    border-radius: var(--radius-full);
+    margin-bottom: 10px;
+  }
+
+  .route-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    color: #FFFFFF;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .route-subtitle {
+    font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 720px;
+    margin: 0 auto 20px;
+    line-height: 1.5;
+  }
+
+  .hero-fare-pills {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 640px) {
+    .hero-fare-pills {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  }
+
+  .h-pill {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(197, 155, 39, 0.45);
+    padding: 7px 12px;
+    border-radius: var(--radius-full);
+    font-size: 0.8125rem;
+    color: #F8E6B8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    white-space: nowrap;
+  }
+
+  .h-pill strong {
+    color: #FFFFFF;
+    font-weight: 800;
+  }
+
+  /* Content Section */
+  .route-content-section {
+    padding: var(--space-xl) 0 var(--space-3xl);
+    background: #FFFFFF;
+  }
+
+  /* Mobile CTA Bar */
+  .route-mobile-cta-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  @media (min-width: 769px) {
+    .route-mobile-cta-bar {
+      display: none;
+    }
+  }
+
+  .m-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: none;
+    min-height: 48px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .m-cta-btn--wa {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFFFFF;
+  }
+
+  .m-cta-btn--call {
+    background: var(--color-primary);
+    color: #FFFFFF;
+  }
+
+  /* Layout Grid */
+  .route-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  @media (min-width: 992px) {
+    .route-grid {
+      grid-template-columns: 1fr 340px;
+      gap: var(--space-3xl);
+    }
+  }
+
+  .tier-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    color: var(--color-primary);
+    margin: var(--space-xl) 0 var(--space-sm);
+    line-height: 1.3;
+  }
+
+  .table-header-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: var(--space-lg);
+  }
+
+  .table-header-row .tier-heading {
+    margin-top: 0;
+  }
+
+  .table-badge {
+    background: #ECFDF5;
+    color: #047857;
+    border: 1px solid #A7F3D0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+  }
+
+  /* Fare Table (Desktop Only) */
+  .fare-table-wrap {
+    display: none;
+  }
+
+  @media (min-width: 769px) {
+    .fare-table-wrap {
+      display: block;
+      overflow-x: auto;
+      border-radius: var(--radius-lg);
+      border: 1.5px solid var(--color-border);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      margin-bottom: var(--space-sm);
+    }
+  }
+
+  .fare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  .fare-table th {
+    background: var(--color-primary);
+    color: #FFFFFF;
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .fare-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text);
+  }
+
+  .fare-table tbody tr:hover {
+    background: rgba(197, 155, 39, 0.05);
+  }
+
+  .fare-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .fare-table tbody tr:nth-child(even) {
+    background: var(--color-surface);
+  }
+
+  .route-name {
+    font-size: 0.9375rem;
+    color: #111827;
+  }
+
+  .spec-badge {
+    background: #F3F4F6;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.775rem;
+    font-weight: 600;
+    color: #374151;
+  }
+
+  .spec-badge.time {
+    background: #FEF3C7;
+    color: #92400E;
+  }
+
+  .fare-cell {
+    font-weight: 800;
+    color: var(--color-primary);
+    font-size: 0.9375rem;
+  }
+
+  .fare-cell.ertiga {
+    color: #0F766E;
+  }
+
+  .fare-cell.crysta {
+    color: #854D0E;
+  }
+
+  .btn-table-wa {
+    display: inline-block;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFFFFF !important;
+    font-size: 0.775rem;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: transform 0.15s ease;
+  }
+
+  .btn-table-wa:hover {
+    transform: scale(1.05);
+  }
+
+  /* Mobile Route Cards (Visible under 768px) */
+  .mobile-route-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: var(--space-md);
+  }
+
+  @media (min-width: 769px) {
+    .mobile-route-cards {
+      display: none;
+    }
+  }
+
+  .m-route-card {
+    background: #FFFFFF;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: border-color 0.2s;
+  }
+
+  .m-route-card:hover {
+    border-color: var(--color-accent);
+  }
+
+  .m-route-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed var(--color-border);
+    padding-bottom: 8px;
+  }
+
+  .m-route-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .m-city-badge {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: #4B5563;
+  }
+
+  .m-arrow {
+    color: var(--color-accent-dark);
+    font-weight: 800;
+  }
+
+  .m-dest-name {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--color-primary);
+  }
+
+  .m-route-meta {
+    display: flex;
+    gap: 5px;
+  }
+
+  .m-meta-pill {
+    background: #F3F4F6;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #374151;
+  }
+
+  .m-route-prices {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .m-price-col {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 6px 8px;
+    text-align: center;
+  }
+
+  .m-price-col--featured {
+    background: #F0FDF4;
+    border-color: #86EFAC;
+  }
+
+  .m-car-lbl {
+    display: block;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: #6B7280;
+    margin-bottom: 2px;
+  }
+
+  .m-car-fare {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: var(--color-primary);
+    font-weight: 800;
+  }
+
+  .m-price-col--featured .m-car-fare {
+    color: #15803D;
+  }
+
+  .m-route-wa-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFFFFF !important;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    padding: 10px 12px;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    min-height: 44px;
+    box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+  }
+
+  .m-route-wa-btn:active {
+    transform: scale(0.98);
+  }
+
+  .table-note {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-xl);
+    line-height: 1.4;
+  }
+
+  /* Benefits Section */
+  .benefits-container {
+    margin-top: var(--space-2xl);
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  @media (min-width: 640px) {
+    .benefits-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+  }
+
+  .benefit-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--color-cream);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 14px 16px;
+  }
+
+  .benefit-icon {
+    font-size: 1.35rem;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .benefit-body h4 {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: var(--color-primary);
+    margin-bottom: 2px;
+    font-weight: 700;
+  }
+
+  .benefit-body p {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  /* Sidebar */
+  .route-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .sidebar-box {
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: 18px 16px;
+  }
+
+  @media (min-width: 640px) {
+    .sidebar-box {
+      padding: var(--space-xl);
+    }
+  }
+
+  .side-badge {
+    display: inline-block;
+    background: rgba(90, 12, 26, 0.08);
+    color: var(--color-primary);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    margin-bottom: 10px;
+  }
+
+  .side-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  .side-desc {
+    font-size: 0.84rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-md);
+    line-height: 1.45;
+  }
+
+  .side-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .side-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: none;
+    min-height: 46px;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .side-btn--wa {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  }
+
+  .side-btn--wa:hover {
+    filter: brightness(1.05);
+    color: #FFFFFF;
+  }
+
+  .side-btn--call {
+    background: #FFFFFF;
+    border: 1.5px solid var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .side-btn--call:hover {
+    background: var(--color-primary);
+    color: #FFFFFF;
+  }
+
+  .quick-routes {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .quick-route-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    color: var(--color-primary);
+    padding: 10px 12px;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .quick-route-btn:hover {
+    background: var(--color-cream);
+    border-color: var(--color-accent);
+    transform: translateX(3px);
+  }
+
+  .qr-name {
+    font-size: 0.84rem;
+    font-weight: 700;
+  }
+
+  .qr-fare {
+    font-size: 0.875rem;
+    color: var(--color-primary);
+  }
+
+  .sidebar-trust {
+    background: var(--color-cream);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-lg);
+    text-align: center;
+  }
+
+  .trust-stars {
+    color: #F59E0B;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+    letter-spacing: 2px;
+  }
+
+  .sidebar-trust h4 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-trust p {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    line-height: 1.45;
+    margin: 0;
+  }
 </style>
