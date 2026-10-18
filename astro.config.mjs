@@ -7,7 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://taxirentalinajmer.com',
+  site: 'https://www.taxiservicesinajmer.com',
   integrations: [sitemap()],
   compressHTML: true,
   vite: {

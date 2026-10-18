@@ -12,7 +12,7 @@
 
   /* Royal Gold Accents */
   --color-accent: #C59B27;
-  --color-accent-dark: #A47E18;
+  --color-accent-dark: #854D0E;
   --color-accent-light: #D4AF37;
   --color-accent-gold: #FAD66D;
   --color-accent-rgb: 197, 155, 39;
@@ -29,8 +29,8 @@
   /* Text & Contrast */
   --color-text: #22181C;
   --color-text-secondary: #4A3A3F;
-  --color-text-muted: #7A6A6F;
-  --color-text-light: #A09096;
+  --color-text-muted: #594A4E;
+  --color-text-light: #807075;
   --color-text-on-primary: #FCF8F0;
   --color-text-on-accent: #22181C;
   --color-white: #FFFFFF;

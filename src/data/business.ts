@@ -54,5 +54,5 @@ export const business: BusinessInfo = {
     "All India Outstation"
   ],
   googleMapsUrl: "https://maps.google.com/?q=Ajmer+Rajasthan",
-  website: "https://taxirentalinajmer.com"
+  website: "https://www.taxiservicesinajmer.com"
 };

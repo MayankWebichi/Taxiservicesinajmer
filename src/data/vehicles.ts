@@ -43,7 +43,7 @@ export const vehicles: Vehicle[] = [
     freeCancellation: true,
     bestFor: "Intercity one-way travel, airport transfers & business trips",
     popular: true,
-    image: "/images/vehicles/Maruti%20Swift%20Dzire.png",
+    image: "/images/vehicles/Maruti%20Swift%20Dzire.webp",
     altText: "Maruti Swift Dzire AC sedan taxi available for rental in Ajmer",
     fixedFares: {
       ajmerToPushkar: 700,
@@ -65,7 +65,7 @@ export const vehicles: Vehicle[] = [
     freeCancellation: true,
     bestFor: "Comfortable highway rides with large boot space",
     popular: true,
-    image: "/images/vehicles/Toyota%20Etios.png",
+    image: "/images/vehicles/Toyota%20Etios.webp",
     altText: "Toyota Etios sedan cab for outstation and airport pickup from Ajmer",
     fixedFares: {
       ajmerToPushkar: 700,
@@ -87,7 +87,7 @@ export const vehicles: Vehicle[] = [
     freeCancellation: true,
     bestFor: "Family trips, Pushkar pilgrimages & outstation tours",
     popular: true,
-    image: "/images/vehicles/Maruti%20Suzuki%20Ertiga.png",
+    image: "/images/vehicles/Maruti%20Suzuki%20Ertiga.webp",
     altText: "Maruti Ertiga 6-seater AC SUV taxi rental in Ajmer",
     fixedFares: {
       ajmerToPushkar: 1200,
@@ -109,7 +109,7 @@ export const vehicles: Vehicle[] = [
     freeCancellation: true,
     bestFor: "VIP travel, airport transfers & premium comfort tours",
     popular: true,
-    image: "/images/vehicles/inova%20cresta.png",
+    image: "/images/vehicles/inova%20cresta.webp",
     altText: "Toyota Innova Crysta luxury taxi rental in Ajmer",
     fixedFares: {
       ajmerToPushkar: 1800,
@@ -131,7 +131,7 @@ export const vehicles: Vehicle[] = [
     freeCancellation: true,
     bestFor: "Luxury group tours, royal weddings & corporate VIP delegation",
     popular: true,
-    image: "/images/vehicles/13%20Seater%20Maharaja%20Urbania.png",
+    image: "/images/vehicles/13%20Seater%20Maharaja%20Urbania.webp",
     altText: "13 Seater Maharaja Urbania luxury tempo traveller in Ajmer",
     featureBoxes: [
       { point: "Comfort:", price: "Maharaja Recliner Seats", toll: "(Push-Back)", isLuxury: true },
@@ -153,7 +153,7 @@ export const vehicles: Vehicle[] = [
     freeCancellation: true,
     bestFor: "High-comfort group journeys & outstation trips across Rajasthan",
     popular: false,
-    image: "/images/vehicles/17%20Seater%20Urbania%20Traveller.png",
+    image: "/images/vehicles/17%20Seater%20Urbania%20Traveller.webp",
     altText: "17 Seater Urbania luxury traveller in Ajmer",
     featureBoxes: [
       { point: "Comfort:", price: "Push-Back Recliners", toll: "(High-Roof AC)", isLuxury: true },
@@ -175,7 +175,7 @@ export const vehicles: Vehicle[] = [
     freeCancellation: true,
     bestFor: "Budget city travel, local Ajmer darshan & solo/couple trips",
     popular: false,
-    image: "/images/vehicles/Toyota%20Glanza.png",
+    image: "/images/vehicles/Toyota%20Glanza.webp",
     altText: "Toyota Glanza AC hatchback taxi available for hire in Ajmer",
     featureBoxes: [
       { point: "Ajmer City:", price: "Local Darshan Tour", toll: "(Full Day)" },
@@ -194,7 +194,7 @@ export const vehicles: Vehicle[] = [
     freeCancellation: true,
     bestFor: "Smooth highway cruising & family outstation packages",
     popular: false,
-    image: "/images/vehicles/Toyota%20Rumion.png",
+    image: "/images/vehicles/Toyota%20Rumion.webp",
     altText: "Toyota Rumion premium SUV cab booking in Ajmer",
     fixedFares: {
       ajmerToPushkar: 1200,
@@ -214,7 +214,7 @@ export const vehicles: Vehicle[] = [
     freeCancellation: true,
     bestFor: "Executive travel & long-distance Rajasthan tours",
     popular: false,
-    image: "/images/vehicles/Kia%20Carens.png",
+    image: "/images/vehicles/Kia%20Carens.webp",
     altText: "Kia Carens premium cab service in Ajmer and Pushkar",
     featureBoxes: [
       { point: "Executive:", price: "Plush Captain Seats", toll: "(6-Seater)" },
@@ -233,7 +233,7 @@ export const vehicles: Vehicle[] = [
     freeCancellation: true,
     bestFor: "Extended family tours & outstation pilgrimage trips",
     popular: false,
-    image: "/images/vehicles/Force%20Tempo%20Traveller.png",
+    image: "/images/vehicles/Force%20Tempo%20Traveller.webp",
     altText: "17 Seater Tempo Traveller on rent in Ajmer",
     featureBoxes: [
       { point: "Group Coach:", price: "High-Roof AC Cabin", toll: "(Push-Back)" },
@@ -256,7 +256,7 @@ export const vehicles: Vehicle[] = [
     freeCancellation: true,
     bestFor: "College trips, large family events & religious tours",
     popular: false,
-    image: "/images/vehicles/Force%20Tempo%20Traveller.png",
+    image: "/images/vehicles/Force%20Tempo%20Traveller.webp",
     altText: "21 Seater Tempo Traveller for hire in Ajmer",
     featureBoxes: [
       { point: "Large Group:", price: "Spacious Legroom & AC", toll: "(21 Seats)" },
@@ -279,7 +279,7 @@ export const vehicles: Vehicle[] = [
     freeCancellation: true,
     bestFor: "Wedding transportation, school/college groups & conventions",
     popular: false,
-    image: "/images/vehicles/Force%20Tempo%20Traveller.png",
+    image: "/images/vehicles/Force%20Tempo%20Traveller.webp",
     altText: "27 Seater luxury mini bus tempo traveller in Ajmer",
     featureBoxes: [
       { point: "Maxi Coach:", price: "Deluxe 27-Seater AC", toll: "(High-Roof)" },

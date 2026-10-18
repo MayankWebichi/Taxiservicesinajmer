@@ -71,15 +71,29 @@ const websiteSearchSchema = generateWebSiteSearchSchema();
   <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-seal.png" />
   <link rel="shortcut icon" href="/images/logo-seal.png" />
 
-  <!-- Fonts — Preconnect & Load -->
+  <!-- Fonts — Preconnect & Non-blocking Load -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
+    rel="preload"
+    as="style"
     href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
   />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    media="print"
+    onload="this.media='all'"
+  />
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    />
+  </noscript>
 
-
+  <!-- Preload Critical Above-the-fold Hero Image -->
+  <link rel="preload" as="image" href="/images/hero-top-car.webp" type="image/webp" fetchpriority="high" />
 
   <!-- LocalBusiness Schema (Global) -->
   <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
@@ -104,11 +118,13 @@ const websiteSearchSchema = generateWebSiteSearchSchema();
       <div class="preloader-glow"></div>
       <div class="preloader-logo-wrap">
         <img
-          src="/images/logo-seal.png"
+          src="/images/logo-seal.webp"
           alt="Taxi Services in Ajmer Crest"
-          width="130"
-          height="130"
+          width="120"
+          height="120"
           class="preloader-logo-img"
+          loading="eager"
+          decoding="async"
         />
         <div class="preloader-pulse-ring"></div>
       </div>
@@ -176,12 +192,12 @@ const websiteSearchSchema = generateWebSiteSearchSchema();
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.45s ease;
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity;
     }
 
     .site-preloader.is-loaded {
       opacity: 0;
-      visibility: hidden;
       pointer-events: none;
     }
 
@@ -282,23 +298,23 @@ const websiteSearchSchema = generateWebSiteSearchSchema();
       top: 0;
       left: 0;
       bottom: 0;
-      width: 50%;
+      width: 100%;
       background: linear-gradient(90deg, #C59B27, #FDE68A, #C59B27);
       border-radius: 4px;
+      transform-origin: left center;
+      will-change: transform;
       animation: preloaderProgress 1.4s ease-in-out infinite;
     }
 
     @keyframes preloaderProgress {
       0% {
-        left: -50%;
-        width: 30%;
+        transform: scaleX(0.2) translateX(-100%);
       }
       50% {
-        width: 60%;
+        transform: scaleX(0.6) translateX(25%);
       }
       100% {
-        left: 100%;
-        width: 30%;
+        transform: scaleX(0.2) translateX(450%);
       }
     }
   </style>

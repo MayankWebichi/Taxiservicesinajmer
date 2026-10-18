@@ -409,7 +409,7 @@ const reviews = [
   }
 
   .verified-badge {
-    color: #059669;
+    color: #047857;
     font-weight: 700;
   }
 
@@ -446,22 +446,27 @@ const reviews = [
     transform: scale(1.08);
   }
 
-  .rev-dots { display: flex; gap: 8px; align-items: center; }
+  .rev-dots { display: flex; gap: 4px; align-items: center; }
 
   .rev-dot {
-    width: 8px;
-    height: 8px;
+    width: 32px;
+    height: 32px;
+    padding: 12px;
+    box-sizing: border-box;
     border-radius: 50%;
-    background: var(--color-border);
+    background-color: var(--color-border);
+    background-clip: content-box;
     border: none;
     cursor: pointer;
     transition: all 0.2s;
-    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .rev-dot.active {
-    background: var(--color-primary);
-    width: 24px;
+    background-color: var(--color-primary);
+    width: 44px;
     border-radius: var(--radius-full);
   }
 

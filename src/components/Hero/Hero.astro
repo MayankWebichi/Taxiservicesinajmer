@@ -41,7 +41,7 @@ const whatsappUrl = createWhatsAppBookingUrl();
             <div class="mobile-car-slider" id="mobile-car-slider">
               <div class="car-image-frame" id="car-image-frame">
                 <img
-                  src="/images/hero-top-car.jpg"
+                  src="/images/hero-top-car.webp"
                   alt="Private Luxury White Cab - Taxi Services in Ajmer"
                   class="hero-car-image"
                   id="hero-car-image"
@@ -58,14 +58,15 @@ const whatsappUrl = createWhatsAppBookingUrl();
     <!-- Hero Live Taxi Fare Calculator & Route Search Engine -->
     <div class="hero-search-wrapper" id="booking-search-bar">
       <div class="hero-calc-card">
+        <h2 class="sr-only">Live Ajmer Taxi Fare Calculator & Instant Cab Booking</h2>
         
         <!-- Trip Mode Navigation Tabs -->
         <div class="hero-calc-top-bar">
-          <div class="hero-tab-group" role="tablist">
-            <button type="button" class="hero-mode-tab active" data-trip="one-way" id="hero-tab-oneway">
+          <div class="hero-tab-group" role="tablist" aria-label="Trip Mode Selection">
+            <button type="button" role="tab" aria-selected="true" class="hero-mode-tab active" data-trip="one-way" id="hero-tab-oneway">
               <span class="tab-icon">➔</span> One-Way Drop
             </button>
-            <button type="button" class="hero-mode-tab" data-trip="round-trip" id="hero-tab-roundtrip">
+            <button type="button" role="tab" aria-selected="false" class="hero-mode-tab" data-trip="round-trip" id="hero-tab-roundtrip">
               <span class="tab-icon">⇄</span> Round Trip
             </button>
           </div>
@@ -92,17 +93,17 @@ const whatsappUrl = createWhatsAppBookingUrl();
                 value="Ajmer" 
                 autocomplete="off" 
               />
-              <button type="button" class="btn-hero-gps" id="btn-hero-gps" title="Use Current GPS">
+              <button type="button" class="btn-hero-gps" id="btn-hero-gps" title="Use Current GPS" aria-label="Use Current GPS">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
               </button>
-              <button type="button" class="btn-hero-clear" id="btn-hero-clear-origin">✕</button>
+              <button type="button" class="btn-hero-clear" id="btn-hero-clear-origin" aria-label="Clear Pickup City">✕</button>
             </div>
             <ul class="hero-suggestions" id="hero-origin-suggestions" style="display:none;"></ul>
           </div>
 
           <!-- Swap Locations Button -->
           <div class="hero-swap-wrap">
-            <button type="button" class="btn-hero-swap" id="btn-hero-swap" title="Swap Pickup & Destination">
+            <button type="button" class="btn-hero-swap" id="btn-hero-swap" title="Swap Pickup & Destination" aria-label="Swap Pickup and Destination">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 4v12m0 0l4-4m-4 4l-4-4"/></svg>
             </button>
           </div>
@@ -122,7 +123,7 @@ const whatsappUrl = createWhatsAppBookingUrl();
                 value="Pushkar" 
                 autocomplete="off" 
               />
-              <button type="button" class="btn-hero-clear" id="btn-hero-clear-dest">✕</button>
+              <button type="button" class="btn-hero-clear" id="btn-hero-clear-dest" aria-label="Clear Destination City">✕</button>
             </div>
             <ul class="hero-suggestions" id="hero-dest-suggestions" style="display:none;"></ul>
           </div>
@@ -135,7 +136,7 @@ const whatsappUrl = createWhatsAppBookingUrl();
             </div>
             <div class="hero-datetime-inner">
               <input type="date" id="hero-travel-date" class="hero-text-field hero-date-field" />
-              <select id="hero-travel-time" class="hero-text-field hero-time-field">
+              <select id="hero-travel-time" class="hero-text-field hero-time-field" aria-label="Departure Time">
                 <option value="Morning (06:00 AM)">Morning (06:00 AM)</option>
                 <option value="Morning (09:00 AM)" selected>Morning (09:00 AM)</option>
                 <option value="Afternoon (12:00 PM)">Noon (12:00 PM)</option>
@@ -666,12 +667,16 @@ const whatsappUrl = createWhatsAppBookingUrl();
   .btn-hero-clear {
     border: none;
     background: transparent;
-    color: #9CA3AF;
+    color: #6B7280;
     cursor: pointer;
-    padding: 4px;
-    display: flex;
+    min-width: 36px;
+    min-height: 36px;
+    padding: 6px;
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
     transition: color 0.15s;
+    touch-action: manipulation;
   }
   .btn-hero-gps:hover { color: #10B981; }
   .btn-hero-clear:hover { color: #EF4444; }
@@ -1007,7 +1012,7 @@ const whatsappUrl = createWhatsAppBookingUrl();
 
   .veh-mrp {
     font-size: 0.75rem;
-    color: #9CA3AF;
+    color: #4B5563;
     text-decoration: line-through;
     font-weight: 600;
   }
@@ -1015,7 +1020,7 @@ const whatsappUrl = createWhatsAppBookingUrl();
   .veh-save-badge {
     font-size: 0.65rem;
     font-weight: 800;
-    color: #DC2626;
+    color: #991B1B;
     background: #FEF2F2;
     border: 1px solid #FECACA;
     padding: 1px 6px;
@@ -1055,7 +1060,7 @@ const whatsappUrl = createWhatsAppBookingUrl();
 
   .veh-perk-hint {
     font-size: 0.6875rem;
-    color: #059669;
+    color: #047857;
     font-weight: 700;
     margin-top: 4px;
   }

@@ -40,7 +40,7 @@ const {
 
     <div class="faq-footer-card">
       <div class="footer-prompt">
-        <h4>Have a specific custom route or query?</h4>
+        <h3 class="footer-prompt-title">Have a specific custom route or query?</h3>
         <p>Our Ajmer dispatch team is available 24/7 to assist with rates and custom tour plans.</p>
       </div>
       <a href="tel:+917737314538" class="btn btn--primary btn--sm">
@@ -136,10 +136,13 @@ const {
     gap: var(--space-md);
   }
 
-  .footer-prompt h4 {
+  .footer-prompt h4,
+  .footer-prompt-title {
     font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
     color: var(--color-primary);
-    margin-bottom: 2px;
+    margin: 0 0 4px 0;
   }
 
   .footer-prompt p {
