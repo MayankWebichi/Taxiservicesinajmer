@@ -7,7 +7,7 @@ import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
 import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
 import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
-import { generateServiceSchema } from "@/utils/seo";
+import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/utils/seo";
 
 const pageTitle = "Corporate Taxi Ajmer | Office Cab Service — Taxi Services in Ajmer (2026)";
 const pageDescription = "Book corporate cab service in Ajmer for employee transfers, client pickups, and airport drops. Monthly contracts available. AC vehicles, uniformed drivers, billing support. 24/7 available.";
@@ -28,9 +28,17 @@ const faqs = [
   { question: "Do you provide GST invoices for corporate billing?", answer: "Yes, we provide proper GST-compliant invoices for all corporate bookings. Monthly billing with MIS reports can be arranged for companies with regular requirements.", category: "Booking" as const },
   { question: "Are your drivers suitable for executive client transfers?", answer: "Our drivers for corporate bookings are formally dressed, trained in professional etiquette, and maintain strict confidentiality. Vehicles are always impeccably clean.", category: "Booking" as const }
 ];
+
+const faqSchema = generateFAQSchema(faqs);
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: `${business.website}/` },
+  { name: "Services", url: `${business.website}/#services-section` },
+  { name: "Corporate Taxi Ajmer", url: `${business.website}/corporate-taxi-ajmer/` }
+]);
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonicalPath="/corporate-taxi-ajmer/" schemaMarkup={serviceSchema}>
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/corporate-taxi-ajmer/" schemaMarkup={[serviceSchema, faqSchema, breadcrumbSchema]}>
   <Header />
   <main id="main-content">
     <section class="route-hero corporate-hero">

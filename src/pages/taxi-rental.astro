@@ -7,14 +7,32 @@ import FleetComparison from "@/components/Vehicles/FleetComparison.astro";
 import FAQ from "@/components/FAQ/FAQ.astro";
 import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
 import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { faqs } from "@/data/faqs";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/utils/seo";
 
 const pageTitle = "Taxi Rental in Ajmer | Fleet & Per-KM Rates (Since 2008)";
 const pageDescription = "Explore our AC car rental fleet in Ajmer: Dzire & Etios (₹11/km), Ertiga (₹13/km), Innova Crysta (₹18/km), and Force Urbania (₹35/km). Zero advance booking.";
 const waUrl = createWhatsAppBookingUrl();
+
+const serviceSchema = generateServiceSchema({
+  name: "Taxi Rental in Ajmer",
+  description: "Explore our AC car rental fleet in Ajmer: Dzire & Etios (₹11/km), Ertiga (₹13/km), Innova Crysta (₹18/km), and Force Urbania (₹35/km). Zero advance booking.",
+  url: `${business.website}/taxi-rental/`,
+  price: "10",
+  priceCurrency: "INR"
+});
+
+const faqSchema = generateFAQSchema(faqs);
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: `${business.website}/` },
+  { name: "Taxi Rental Fleet", url: `${business.website}/taxi-rental/` }
+]);
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonicalPath="/taxi-rental/">
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/taxi-rental/" schemaMarkup={[serviceSchema, faqSchema, breadcrumbSchema]}>
   <Header />
 
   <main id="main-content">

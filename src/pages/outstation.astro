@@ -7,14 +7,32 @@ import FleetComparison from "@/components/Vehicles/FleetComparison.astro";
 import FAQ from "@/components/FAQ/FAQ.astro";
 import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
 import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { faqs } from "@/data/faqs";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/utils/seo";
 
 const pageTitle = "Outstation Taxi Service in Ajmer | One-Way & Round Trip (Since 2008)";
 const pageDescription = "Reliable outstation cabs from Ajmer & Pushkar to Jaipur, Delhi, Udaipur, Jodhpur, and beyond. Verified one-way rates: Dzire/Etios from ₹11/km, Innova Crysta ₹18/km, Urbania ₹35/km. 24/7 highway drivers.";
 const waUrl = createWhatsAppBookingUrl({ tripType: "Outstation Cab" });
+
+const serviceSchema = generateServiceSchema({
+  name: "Outstation Taxi Service in Ajmer",
+  description: "Reliable outstation cabs from Ajmer & Pushkar to Jaipur, Delhi, Udaipur, Jodhpur, and beyond. Verified one-way rates starting at ₹11/km.",
+  url: `${business.website}/outstation/`,
+  price: "11",
+  priceCurrency: "INR"
+});
+
+const faqSchema = generateFAQSchema(faqs);
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: `${business.website}/` },
+  { name: "Outstation Cabs", url: `${business.website}/outstation/` }
+]);
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonicalPath="/outstation/">
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/outstation/" schemaMarkup={[serviceSchema, faqSchema, breadcrumbSchema]}>
   <Header />
 
   <main id="main-content">

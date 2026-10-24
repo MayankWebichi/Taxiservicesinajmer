@@ -7,6 +7,7 @@ import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro"
 import { seoRoutesData } from "@/data/seoRoutesData";
 import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateBreadcrumbSchema } from "@/utils/seo";
 
 const pageTitle = "220+ Taxi Routes & Cab Fares | Ajmer & Pushkar Intercity Directory";
 const pageDescription = "Explore 220+ verified taxi routes connecting Ajmer, Pushkar, Jaipur, Delhi, Udaipur, Jodhpur, and pilgrimage shrines across Rajasthan. Accurate fares, distances, and 24/7 doorstep cabs.";
@@ -14,9 +15,14 @@ const pageDescription = "Explore 220+ verified taxi routes connecting Ajmer, Pus
 const pushkarRoutes = seoRoutesData.filter(r => r.from === 'Pushkar' || r.to === 'Pushkar');
 const airportRoutes = seoRoutesData.filter(r => r.from.includes('Airport') || r.to.includes('Airport') || r.from.includes('Railway') || r.to.includes('Station'));
 const inboundRoutes = seoRoutesData.filter(r => (r.to === 'Ajmer' || r.to === 'Pushkar') && r.from !== 'Ajmer' && r.from !== 'Pushkar');
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: `${business.website}/` },
+  { name: "Intercity Taxi Routes", url: `${business.website}/routes/` }
+]);
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonicalPath="/routes/">
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/routes/" schemaMarkup={breadcrumbSchema}>
   <Header />
 
   <main id="main-content">

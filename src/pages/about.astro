@@ -9,12 +9,19 @@ import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro"
 import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
 
+import { generateBreadcrumbSchema } from "@/utils/seo";
+
 const pageTitle = "About Us | Taxi Services in Ajmer — Serving Ajmer Since 2008";
 const pageDescription = "Learn about Taxi Services in Ajmer's 18+ years of heritage since 2008. Dedicated local taxi fleet, transparent pricing, verified chauffeurs, and 24/7 service in Ajmer & Pushkar.";
 const waUrl = createWhatsAppBookingUrl();
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: `${business.website}/` },
+  { name: "About Us", url: `${business.website}/about/` }
+]);
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonicalPath="/about/">
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/about/" schemaMarkup={breadcrumbSchema}>
   <Header />
 
   <main id="main-content">

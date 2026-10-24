@@ -7,7 +7,7 @@ import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
 import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
 import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
-import { generateServiceSchema } from "@/utils/seo";
+import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/utils/seo";
 
 const pageTitle = "Dargah Taxi Ajmer | Ajmer Sharif Cab Service ₹200 Onwards (2026)";
 const pageDescription = "Book a taxi to Ajmer Sharif Dargah from anywhere in Ajmer. Local cab service from ₹200. Pickup from hotels, railway station, and bus stand. 24/7 availability, AC cabs, verified drivers.";
@@ -28,9 +28,17 @@ const faqs = [
   { question: "Can I book a cab from my hotel to Ajmer Sharif Dargah?", answer: "Absolutely. We provide doorstep hotel pickup from all hotels in Ajmer — including Pushkar Road, Vaishali Nagar, Nasirabad Road, and the city center area.", category: "Booking" as const },
   { question: "What other places can I visit near Ajmer Sharif Dargah?", answer: "Within the same local sightseeing tour, we cover: Adhai Din Ka Jhonpra (a 12th-century mosque), Ana Sagar Lake, Taragarh Fort, Nareli Jain Temple, and the Ajmer Museum.", category: "Routes" as const }
 ];
+
+const faqSchema = generateFAQSchema(faqs);
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: `${business.website}/` },
+  { name: "Pilgrimage Taxis", url: `${business.website}/tours/` },
+  { name: "Dargah Taxi Ajmer", url: `${business.website}/dargah-taxi-ajmer/` }
+]);
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonicalPath="/dargah-taxi-ajmer/" schemaMarkup={serviceSchema}>
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/dargah-taxi-ajmer/" schemaMarkup={[serviceSchema, faqSchema, breadcrumbSchema]}>
   <Header />
   <main id="main-content">
 

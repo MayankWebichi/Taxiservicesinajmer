@@ -7,7 +7,7 @@ import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
 import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
 import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
-import { generateServiceSchema } from "@/utils/seo";
+import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/utils/seo";
 
 const pageTitle = "Ajmer to Pushkar Taxi | Cab Fare ₹700 (Since 2008)";
 const pageDescription = "Book Ajmer to Pushkar taxi from ₹700 (Swift Dzire / Etios), Innova Crysta ₹1,800, Tempo Traveller ₹3,500 & Force Urbania ₹4,500. 14 km scenic hill drive via Pushkar Ghati. 24/7 doorstep pickup.";
@@ -31,23 +31,36 @@ const serviceSchema = generateServiceSchema({
 const pushkarFaqs = [
   {
     question: "What is the taxi fare from Ajmer Railway Station or hotels to Pushkar?",
-    answer: "Our verified one-way drop fares are: AC Sedan (Maruti Swift Dzire / Toyota Etios) at ₹700; Maruti Ertiga (6-Seater) at ₹1,200; VIP Toyota Innova Crysta at ₹1,800; Tempo Traveller (13–17 Seater) at ₹3,500; and Maharaja Force Urbania (13–17 Seater) at ₹4,500. Full-day Pushkar sightseeing starts at ₹1,500.",
+    answer: "Our verified one-way drop fares are: AC Sedan (Maruti Swift Dzire / Toyota Etios) at ₹700; Maruti Ertiga (6-Seater) at ₹1,200; VIP Toyota Innova Crysta at ₹1,800; Tempo Traveller (13–17 Seater) at ₹3,500; and Maharaja Force Urbania (13–17 Seater) at ₹4,500. Full-day Pushkar sightseeing starts at ₹1,500 with zero hidden return fees.",
     category: "Pricing" as const
   },
   {
+    question: "Is Ola or Uber available in Pushkar?",
+    answer: "Ola and Uber are generally unavailable or unreliable in Pushkar. App drivers often cancel trips crossing the mountain pass or demand extra cash return fares. Pre-booking with Taxi Services in Ajmer guarantees confirmed yellow-plate commercial cabs with verified chauffeurs at fixed upfront rates.",
+    category: "General" as const
+  },
+  {
     question: "How long does it take from Ajmer to Pushkar by cab?",
-    answer: "Pushkar is just 14 km away across the scenic Nagpahari hill pass (Pushkar Ghati). The drive takes roughly 30 to 40 minutes.",
+    answer: "Pushkar is approximately 14 to 15 km away across the scenic Nagpahari mountain pass (Pushkar Ghati). The drive takes roughly 30 to 35 minutes in a private AC taxi.",
     category: "Routes" as const
   },
   {
     question: "Can the cab wait while we complete Brahma Temple darshan and Lake Pooja?",
-    answer: "Yes, our round-trip and tour packages include driver wait-time so you can comfortably perform your rituals, aarti, and shopping.",
+    answer: "Yes, our round-trip and tour packages include driver wait-time so you can comfortably perform your rituals at Pushkar Sarovar, attend evening Maha Aarti, visit Brahma Temple and Savitri Temple, and shop in the bazaar.",
     category: "General" as const
   }
 ];
+
+const faqSchema = generateFAQSchema(pushkarFaqs);
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: `${business.website}/` },
+  { name: "Sightseeing Taxis", url: `${business.website}/tours/` },
+  { name: "Ajmer to Pushkar Taxi", url: `${business.website}/ajmer-to-pushkar-taxi/` }
+]);
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonicalPath="/ajmer-to-pushkar-taxi/" schemaMarkup={serviceSchema}>
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/ajmer-to-pushkar-taxi/" schemaMarkup={[serviceSchema, faqSchema, breadcrumbSchema]}>
   <Header />
 
   <main id="main-content">
@@ -63,6 +76,35 @@ const pushkarFaqs = [
       <div class="container">
         <div class="route-grid">
           <div class="route-main">
+            <!-- Google AI Overview & Key Travel Details Card -->
+            <div class="ai-overview-card">
+              <div class="ai-badge-row">
+                <span class="ai-tag">✨ KEY TRAVEL &amp; CAB OVERVIEW</span>
+                <span class="ai-verified">2026 Operator Direct Rates</span>
+              </div>
+              <p class="ai-lead">
+                Traveling by cab from <strong>Ajmer to Pushkar</strong> covers approximately <strong>14 to 15 kilometers</strong> and takes roughly <strong>30 to 35 minutes</strong> via the scenic Pushkar Ghati pass. Fixed one-way sedan fares start at <strong>₹700</strong> with ₹0 advance required.
+              </p>
+              <div class="ai-stats-grid">
+                <div class="ai-stat-item">
+                  <span class="ai-stat-val">15 KM</span>
+                  <span class="ai-stat-lbl">Road Distance</span>
+                </div>
+                <div class="ai-stat-item">
+                  <span class="ai-stat-val">~30 Mins</span>
+                  <span class="ai-stat-lbl">Drive Time</span>
+                </div>
+                <div class="ai-stat-item">
+                  <span class="ai-stat-val">₹700</span>
+                  <span class="ai-stat-lbl">AC Sedan (Dzire)</span>
+                </div>
+                <div class="ai-stat-item">
+                  <span class="ai-stat-val">₹1,200</span>
+                  <span class="ai-stat-lbl">Ertiga 6-Seater</span>
+                </div>
+              </div>
+            </div>
+
             <span class="section-subtitle">Spiritual &amp; Scenic Ride</span>
             <h2 class="section-title">Reliable Cabs for Pushkar Darshan</h2>
             <p>
@@ -372,4 +414,65 @@ const pushkarFaqs = [
       grid-template-columns: 1fr;
     }
   }
+
+  .ai-overview-card {
+    border-left: 5px solid var(--color-accent, #C59B27);
+    background: #FFFDF9;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  }
+  .ai-badge-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .ai-tag {
+    background: #FEF3C7;
+    color: #92400E;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .ai-verified {
+    font-size: 0.75rem;
+    color: #059669;
+    font-weight: 700;
+  }
+  .ai-lead {
+    font-size: 1rem;
+    color: #1F2937;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .ai-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 10px;
+  }
+  .ai-stat-item {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    padding: 10px;
+    text-align: center;
+  }
+  .ai-stat-val {
+    display: block;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--color-primary, #5A0C1A);
+  }
+  .ai-stat-lbl {
+    font-size: 0.7rem;
+    color: #6B7280;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
 </style>

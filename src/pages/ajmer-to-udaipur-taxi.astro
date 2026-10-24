@@ -7,7 +7,7 @@ import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
 import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
 import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
-import { generateServiceSchema } from "@/utils/seo";
+import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/utils/seo";
 
 const pageTitle = "Ajmer to Udaipur Taxi ₹4,500 Fixed | Dzire, Ertiga & Crysta Cab (Since 2008)";
 const pageDescription = "Book verified Ajmer to Udaipur taxi. 265 km scenic highway ride in 4.5 hours. Swift Dzire/Etios (₹4,500), Ertiga (₹6,500), Innova Crysta (₹8,500). En-route Nathdwara Shrinathji halt.";
@@ -42,9 +42,17 @@ const udaipurFaqs = [
     category: "Pricing" as const
   }
 ];
+
+const faqSchema = generateFAQSchema(udaipurFaqs);
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: `${business.website}/` },
+  { name: "Intercity Cabs", url: `${business.website}/routes/` },
+  { name: "Ajmer to Udaipur Taxi", url: `${business.website}/ajmer-to-udaipur-taxi/` }
+]);
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonicalPath="/ajmer-to-udaipur-taxi/" schemaMarkup={serviceSchema}>
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/ajmer-to-udaipur-taxi/" schemaMarkup={[serviceSchema, faqSchema, breadcrumbSchema]}>
   <Header />
 
   <main id="main-content">

@@ -138,6 +138,41 @@ const breadcrumbSchema = generateBreadcrumbSchema([
       <div class="container">
         <div class="route-grid">
           <div class="route-main">
+            <!-- Google AI Overview & Pilgrimage Quick Facts Card -->
+            <div class="content-block ai-overview-card">
+              <div class="ai-badge-row">
+                <span class="ai-tag">✨ KEY PILGRIMAGE &amp; FARE OVERVIEW</span>
+                <span class="ai-verified">Verified 2026 Direct Rates</span>
+              </div>
+              <p class="ai-lead">
+                Traveling by taxi from <strong>Ajmer to Sarwar Sharif Dargah</strong> covers approximately <strong>64 kilometers</strong> and takes <strong>1 hour 15 minutes to 1.5 hours</strong> via the Nasirabad–Kekri highway corridor (NH 448). Round-trip packages include <strong>2 to 3 hours of waiting time</strong> for holy Ziyarat, Dua, and Langar.
+              </p>
+              <div class="ai-stats-grid">
+                <div class="ai-stat-item">
+                  <span class="ai-stat-val">64 KM</span>
+                  <span class="ai-stat-lbl">Road Distance</span>
+                </div>
+                <div class="ai-stat-item">
+                  <span class="ai-stat-val">~1.25 Hrs</span>
+                  <span class="ai-stat-lbl">Drive Time</span>
+                </div>
+                <div class="ai-stat-item">
+                  <span class="ai-stat-val">₹1,500 – ₹2,000</span>
+                  <span class="ai-stat-lbl">Sedan Fare</span>
+                </div>
+                <div class="ai-stat-item">
+                  <span class="ai-stat-val">3 Hours</span>
+                  <span class="ai-stat-lbl">Wait Time Included</span>
+                </div>
+              </div>
+              <div class="ai-inclusions-list">
+                <div class="ai-inc-item"><strong>Highway Route:</strong> Ajmer City / Railway Station ➔ Nasirabad Bypass ➔ Srinagar Road ➔ Kekri Highway ➔ Sarwar Sharif Dargah</div>
+                <div class="ai-inc-item"><strong>What is Included:</strong> 100% AC commercial cab, fuel expenses, driver allowance, and 2–3 hours Dargah parking wait-time.</div>
+                <div class="ai-inc-item"><strong>What is Extra:</strong> Highway toll charges at actuals (~₹60) and entry/parking receipts if applicable.</div>
+                <div class="ai-inc-item"><strong>Booking Policy:</strong> ₹0 advance deposit required. Pay chauffeur directly via cash or UPI upon completing your return drop.</div>
+              </div>
+            </div>
+
             <!-- Spiritual Introduction -->
             <div class="content-block">
               <span class="section-subtitle">Complete Your Ajmer Sharif Pilgrimage</span>
@@ -167,7 +202,7 @@ const breadcrumbSchema = generateBreadcrumbSchema([
                   </div>
                   <div class="p-image-wrap">
                     <img 
-                      src="/images/vehicles/Maruti%20Swift%20Dzire.png" 
+                      src="/images/vehicles/Maruti%20Swift%20Dzire.webp" 
                       alt="Maruti Swift Dzire Cab for Sarwar Sharif"
                       width="240"
                       height="140"
@@ -199,7 +234,7 @@ const breadcrumbSchema = generateBreadcrumbSchema([
                   </div>
                   <div class="p-image-wrap">
                     <img 
-                      src="/images/vehicles/Maruti%20Suzuki%20Ertiga.png" 
+                      src="/images/vehicles/Maruti%20Suzuki%20Ertiga.webp" 
                       alt="Maruti Suzuki Ertiga for Sarwar Sharif"
                       width="240"
                       height="140"
@@ -230,7 +265,7 @@ const breadcrumbSchema = generateBreadcrumbSchema([
                   </div>
                   <div class="p-image-wrap">
                     <img 
-                      src="/images/vehicles/inova%20cresta.png" 
+                      src="/images/vehicles/inova%20cresta.webp" 
                       alt="Toyota Innova Crysta for Sarwar Sharif"
                       width="240"
                       height="140"
@@ -450,7 +485,6 @@ const breadcrumbSchema = generateBreadcrumbSchema([
   <MobileBottomBar />
 </Layout>
 
-<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 <style>
   .sarwar-hero {
@@ -1016,4 +1050,138 @@ const breadcrumbSchema = generateBreadcrumbSchema([
       grid-template-columns: 1fr;
     }
   }
+
+  /* AI Overview Fact Card */
+  .ai-overview-card {
+    border-left: 5px solid var(--color-accent, #C59B27);
+    background: #FFFDF9;
+    padding: clamp(20px, 3vw, 28px);
+  }
+
+  .ai-badge-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .ai-tag {
+    background: #FEF3C7;
+    color: #92400E;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+
+  .ai-verified {
+    font-size: 0.75rem;
+    color: #059669;
+    font-weight: 700;
+  }
+
+  .ai-lead {
+    font-size: 1.05rem !important;
+    color: #1F2937 !important;
+    line-height: 1.65 !important;
+    margin-bottom: 20px !important;
+  }
+
+  .ai-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .ai-stat-item {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 12px 10px;
+    text-align: center;
+  }
+
+  .ai-stat-val {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-primary, #5A0C1A);
+    margin-bottom: 2px;
+  }
+
+  .ai-stat-lbl {
+    font-size: 0.75rem;
+    color: #6B7280;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .ai-inclusions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-top: 1px solid #F3F4F6;
+    padding-top: 14px;
+    font-size: 0.875rem;
+    color: #4B5563;
+  }
+
+  .ai-inc-item {
+    line-height: 1.5;
+  }
+
+  .ai-inc-item strong {
+    color: #111827;
+  }
+
+  /* Improved Pricing Cards Grid Responsiveness */
+  .pricing-cards-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .p-image-wrap img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+  }
+
+  @media (max-width: 640px) {
+    .sarwar-hero {
+      padding: calc(var(--header-height, 74px) + 20px) 0 32px;
+    }
+    .hero-fare-pills {
+      gap: 8px;
+    }
+    .h-pill {
+      font-size: 0.8125rem;
+      padding: 6px 12px;
+    }
+    .hero-cta-btns {
+      flex-direction: column;
+      width: 100%;
+    }
+    .hero-cta-btns .btn {
+      width: 100%;
+    }
+    .content-block {
+      padding: 20px 16px;
+    }
+    .bottom-cta-row {
+      flex-direction: column;
+      width: 100%;
+    }
+    .bottom-cta-row .btn {
+      width: 100%;
+    }
+  }
+
 </style>

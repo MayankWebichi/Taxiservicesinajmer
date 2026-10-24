@@ -7,7 +7,7 @@ import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
 import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
 import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
-import { generateServiceSchema } from "@/utils/seo";
+import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/utils/seo";
 
 const pageTitle = "Pushkar Tour from Ajmer | Day Trip Cab ₹1,800 & One-Way Drop ₹700 (2026)";
 const pageDescription = "Book an Ajmer to Pushkar cab: one-way drop from ₹700 (Swift Dzire / Toyota Etios) or full-day package from ₹1,800. Brahma Temple, Pushkar Lake Ghats & desert sunset. AC cab, verified local chauffeur.";
@@ -28,9 +28,17 @@ const faqs = [
   { question: "Can I book a return cab from Pushkar to Ajmer?", answer: "Yes, we provide return cabs from Pushkar to Ajmer Railway Station, Bus Stand, and all hotels at any time. Call or WhatsApp for immediate pickup in Pushkar.", category: "Booking" as const },
   { question: "What is the best time to visit Pushkar from Ajmer?", answer: "Pushkar is best visited in the morning (temple darshan before 11 AM) or evening (sunset aarti at the Pushkar Lake ghats is magical). The Pushkar Camel Fair in November is the most iconic time.", category: "Routes" as const }
 ];
+
+const faqSchema = generateFAQSchema(faqs);
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: `${business.website}/` },
+  { name: "Tours", url: `${business.website}/tours/` },
+  { name: "Pushkar Day Tour from Ajmer", url: `${business.website}/pushkar-tour-from-ajmer/` }
+]);
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonicalPath="/pushkar-tour-from-ajmer/" schemaMarkup={serviceSchema}>
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/pushkar-tour-from-ajmer/" schemaMarkup={[serviceSchema, faqSchema, breadcrumbSchema]}>
   <Header />
   <main id="main-content">
     <section class="route-hero pushkar-hero">

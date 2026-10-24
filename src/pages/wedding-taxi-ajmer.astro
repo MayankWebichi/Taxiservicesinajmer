@@ -7,7 +7,7 @@ import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
 import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
 import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
-import { generateServiceSchema } from "@/utils/seo";
+import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/utils/seo";
 
 const pageTitle = "Wedding Taxi Ajmer | Marriage Cab Booking — Taxi Services in Ajmer (2026)";
 const pageDescription = "Book wedding & marriage cab service in Ajmer. AC Sedan, Innova Crysta & Tempo Traveller for baraat, venue drops, and guest transfers. Decorated vehicles available. Call 24/7.";
@@ -28,9 +28,17 @@ const faqs = [
   { question: "Can I book multiple cabs for a wedding in Ajmer?", answer: "Yes, we handle multi-vehicle wedding logistics. We can coordinate 2–10+ vehicles for simultaneous guest pickup from different locations, venues, and hotels.", category: "Booking" as const },
   { question: "How far in advance should I book wedding cabs?", answer: "We recommend booking wedding cabs at least 7–15 days in advance, especially for popular wedding seasons (November to February and April to May). Peak season bookings should be made a month in advance.", category: "Booking" as const }
 ];
+
+const faqSchema = generateFAQSchema(faqs);
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: `${business.website}/` },
+  { name: "Services", url: `${business.website}/#services-section` },
+  { name: "Wedding Taxi Ajmer", url: `${business.website}/wedding-taxi-ajmer/` }
+]);
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonicalPath="/wedding-taxi-ajmer/" schemaMarkup={serviceSchema}>
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/wedding-taxi-ajmer/" schemaMarkup={[serviceSchema, faqSchema, breadcrumbSchema]}>
   <Header />
   <main id="main-content">
     <section class="route-hero wedding-hero">

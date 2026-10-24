@@ -7,7 +7,7 @@ import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
 import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
 import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
-import { generateServiceSchema } from "@/utils/seo";
+import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/utils/seo";
 
 const pageTitle = "Ajmer to Kishangarh Airport Taxi | Cab Fare from ₹800 (Since 2008)";
 const pageDescription = "Reliable taxi service from Ajmer & Pushkar to Kishangarh Airport (KQH). 30 km in 45 minutes. Fixed fares from ₹800. Guaranteed flight synchronization 24/7.";
@@ -27,23 +27,36 @@ const serviceSchema = generateServiceSchema({
 const kishangarhFaqs = [
   {
     question: "What is the distance from Ajmer to Kishangarh Airport?",
-    answer: "Kishangarh Airport (KQH) is located approximately 30 km northeast of Ajmer. The smooth highway drive takes about 40 to 45 minutes.",
+    answer: "Kishangarh Airport (KQH) is located approximately 30 km northeast of Ajmer via NH 48. In a private AC cab, the highway drive takes about 35 to 45 minutes.",
     category: "Routes" as const
   },
   {
     question: "What is the taxi fare for an Ajmer to Kishangarh Airport cab?",
-    answer: "One-way AC sedan transfer starts from ₹800. A 6-seater Maruti Ertiga is ₹1,400, and an Innova Crysta is ₹2,200.",
+    answer: "Our verified one-way fixed taxi fare is: AC Sedan (Maruti Dzire / Toyota Etios) at ₹800; 6-Seater Maruti Ertiga at ₹1,400; and VIP Toyota Innova Crysta at ₹2,000. Doorstep pickup across all Ajmer localities included.",
     category: "Pricing" as const
   },
   {
     question: "Can I book a cab from Kishangarh Airport to Pushkar?",
-    answer: "Yes, we provide direct airport pickups for incoming flights at Kishangarh Airport with drops to any hotel or resort in Pushkar (~45 km, ~1 hour).",
+    answer: "Yes, we provide direct flight-synced pickups at Kishangarh Airport arrival terminal with direct drops to all Pushkar hotels, desert camps, and resorts (approx 45 km, 1 hour) from ₹1,400.",
     category: "Booking" as const
+  },
+  {
+    question: "What if my flight gets delayed at Kishangarh Airport?",
+    answer: "We actively track real-time flight schedules for all incoming flights from Delhi, Hyderabad, and Ahmedabad. If your flight is delayed, your chauffeur will adjust pickup timing with zero extra waiting charge.",
+    category: "General" as const
   }
 ];
+
+const faqSchema = generateFAQSchema(kishangarhFaqs);
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: `${business.website}/` },
+  { name: "Airport Transfers", url: `${business.website}/airport-transfer/` },
+  { name: "Ajmer to Kishangarh Airport Taxi", url: `${business.website}/ajmer-to-kishangarh-airport-taxi/` }
+]);
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonicalPath="/ajmer-to-kishangarh-airport-taxi/" schemaMarkup={serviceSchema}>
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/ajmer-to-kishangarh-airport-taxi/" schemaMarkup={[serviceSchema, faqSchema, breadcrumbSchema]}>
   <Header />
 
   <main id="main-content">
@@ -59,6 +72,35 @@ const kishangarhFaqs = [
       <div class="container">
         <div class="route-grid">
           <div class="route-main">
+            <!-- Google AI Overview & Key Travel Details Card -->
+            <div class="ai-overview-card">
+              <div class="ai-badge-row">
+                <span class="ai-tag">✨ AIRPORT TRANSFER OVERVIEW</span>
+                <span class="ai-verified">2026 Operator Direct Rates</span>
+              </div>
+              <p class="ai-lead">
+                Traveling by private cab from <strong>Ajmer to Kishangarh Airport (KQH)</strong> covers roughly <strong>30 kilometers</strong> and takes <strong>35 to 45 minutes</strong> via the 6-lane NH 48 corridor. One-way sedan transfers start at <strong>₹800</strong> with live flight tracking included.
+              </p>
+              <div class="ai-stats-grid">
+                <div class="ai-stat-item">
+                  <span class="ai-stat-val">30 KM</span>
+                  <span class="ai-stat-lbl">Road Distance</span>
+                </div>
+                <div class="ai-stat-item">
+                  <span class="ai-stat-val">~40 Mins</span>
+                  <span class="ai-stat-lbl">Drive Time</span>
+                </div>
+                <div class="ai-stat-item">
+                  <span class="ai-stat-val">₹800</span>
+                  <span class="ai-stat-lbl">AC Sedan (Dzire)</span>
+                </div>
+                <div class="ai-stat-item">
+                  <span class="ai-stat-val">₹1,400</span>
+                  <span class="ai-stat-lbl">Ertiga 6-Seater</span>
+                </div>
+              </div>
+            </div>
+
             <span class="section-subtitle">Punctual Airport Transfers</span>
             <h2 class="section-title">The Fastest Route to Kishangarh Airport (KQH)</h2>
             <p>
@@ -334,4 +376,65 @@ const kishangarhFaqs = [
       grid-template-columns: 1fr;
     }
   }
+
+  .ai-overview-card {
+    border-left: 5px solid var(--color-accent, #C59B27);
+    background: #FFFDF9;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  }
+  .ai-badge-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .ai-tag {
+    background: #FEF3C7;
+    color: #92400E;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .ai-verified {
+    font-size: 0.75rem;
+    color: #059669;
+    font-weight: 700;
+  }
+  .ai-lead {
+    font-size: 1rem;
+    color: #1F2937;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .ai-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 10px;
+  }
+  .ai-stat-item {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    padding: 10px;
+    text-align: center;
+  }
+  .ai-stat-val {
+    display: block;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--color-primary, #5A0C1A);
+  }
+  .ai-stat-lbl {
+    font-size: 0.7rem;
+    color: #6B7280;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
 </style>

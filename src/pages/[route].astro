@@ -57,7 +57,31 @@ const serviceSchema = generateServiceSchema({
   priceCurrency: "INR"
 });
 
-const faqSchema = generateFAQSchema(route.faqs);
+const standardPAAFaqs = [
+  {
+    question: `Is Ola or Uber available for ${route.from} to ${route.to} cab?`,
+    answer: `While aggregator apps operate inside large city limits, they are notoriously unreliable for highway routes like ${route.from} to ${route.to}, with frequent cancellations, off-app fare demands, or unavailability during night hours. Booking directly with Taxi Services in Ajmer guarantees an on-time commercial yellow-plate AC cab, verified driver details in advance, and zero cancellation surprises.`
+  },
+  {
+    question: `How far is ${route.to} from ${route.from} by car and how long does it take?`,
+    answer: `The driving distance from ${route.from} to ${route.to} is approximately ${route.distanceKm} km via ${route.highway.split(';')[0]}. In a well-maintained private AC cab, the highway drive takes around ${route.estimatedTime} under normal traffic conditions.`
+  },
+  {
+    question: `Which cab is the cheapest for ${route.from} to ${route.to}?`,
+    answer: `Our AC Sedan (Maruti Swift Dzire / Toyota Etios) at a verified flat rate of ₹${route.sedanFare.toLocaleString('en-IN')} is the most economical one-way private taxi option, comfortably accommodating up to 4 passengers with dedicated boot space for luggage.`
+  },
+  {
+    question: `What is included in the taxi fare from ${route.from} to ${route.to}?`,
+    answer: `Our quoted one-way fare covers the air-conditioned vehicle, experienced verified highway chauffeur, fuel expenses, and doorstep pickup. Highway toll taxes (FASTag receipts), state border permits (if applicable), and parking fees are paid at actual receipts with zero return fare penalty.`
+  }
+];
+
+const allFaqs = [
+  ...route.faqs,
+  ...standardPAAFaqs.filter(p => !route.faqs.some(rf => rf.question.toLowerCase().includes(p.question.slice(0, 15).toLowerCase())))
+];
+
+const faqSchema = generateFAQSchema(allFaqs);
 
 const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "Home", url: `${business.website}/` },
@@ -179,6 +203,68 @@ const timingSlots = [
         <div class="route-grid">
           <!-- Main Content Area -->
           <div class="route-main">
+            <!-- Google AI Overview & Key Travel Details Summary Card -->
+            <div class="content-card ai-overview-card">
+              <div class="ai-badge-row">
+                <span class="ai-tag">✨ KEY TRAVEL &amp; CAB OVERVIEW</span>
+                <span class="ai-verified">2026 Operator Direct Rates</span>
+              </div>
+              <p class="ai-lead">
+                Traveling by private cab from <strong>{route.from} to {route.to}</strong> covers roughly <strong>{route.distanceKm} kilometers</strong> and takes approximately <strong>{route.estimatedTime}</strong> via <strong>{route.highway.split(';')[0]}</strong>. One-way sedan fares start at <strong>₹{route.sedanFare.toLocaleString('en-IN')}</strong> with zero advance deposit required.
+              </p>
+              
+              <!-- Quick Stats Strip -->
+              <div class="ai-stats-grid">
+                <div class="ai-stat-item">
+                  <span class="ai-stat-val">~{route.distanceKm} KM</span>
+                  <span class="ai-stat-lbl">Road Distance</span>
+                </div>
+                <div class="ai-stat-item">
+                  <span class="ai-stat-val">{route.estimatedTime}</span>
+                  <span class="ai-stat-lbl">Driving Time</span>
+                </div>
+                <div class="ai-stat-item">
+                  <span class="ai-stat-val">₹{route.sedanFare.toLocaleString('en-IN')}</span>
+                  <span class="ai-stat-lbl">AC Sedan (Dzire)</span>
+                </div>
+                <div class="ai-stat-item">
+                  <span class="ai-stat-val">₹{route.suvFare.toLocaleString('en-IN')}</span>
+                  <span class="ai-stat-lbl">Ertiga 6-Seater</span>
+                </div>
+              </div>
+
+              <!-- Key Travel Details Table -->
+              <div class="ai-details-box">
+                <h4 class="ai-details-title">Key Journey Details ({route.from} ➔ {route.to})</h4>
+                <div class="ai-details-grid">
+                  <div class="ai-detail-row">
+                    <span class="ai-d-key">Highway Route:</span>
+                    <span class="ai-d-val">{route.from} ➔ {route.highway.split(';')[0]} ➔ {route.to}</span>
+                  </div>
+                  <div class="ai-detail-row">
+                    <span class="ai-d-key">Fare Estimates:</span>
+                    <span class="ai-d-val">Sedan: ₹{route.sedanFare.toLocaleString('en-IN')} | Ertiga: ₹{route.suvFare.toLocaleString('en-IN')} | Innova Crysta: ₹{route.crystaFare.toLocaleString('en-IN')}</span>
+                  </div>
+                  <div class="ai-detail-row">
+                    <span class="ai-d-key">What is Included:</span>
+                    <span class="ai-d-val">100% AC commercial taxi, dedicated highway chauffeur, fuel expenses, and doorstep pickup.</span>
+                  </div>
+                  <div class="ai-detail-row">
+                    <span class="ai-d-key">What is Extra:</span>
+                    <span class="ai-d-val">Toll taxes (FASTag actuals), state border taxes (if crossing state lines), and airport/monument parking.</span>
+                  </div>
+                  <div class="ai-detail-row">
+                    <span class="ai-d-key">Popular En-Route Stops:</span>
+                    <span class="ai-d-val">{route.popularStops.slice(0, 3).join(" • ")}</span>
+                  </div>
+                  <div class="ai-detail-row">
+                    <span class="ai-d-key">Payment Terms:</span>
+                    <span class="ai-d-val"><strong>₹0 Advance</strong>. Pay via cash or UPI directly to your chauffeur upon reaching {route.to}.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <!-- Route Overview -->
             <div class="content-card">
               <span class="section-subtitle">Comfortable Highway Journey</span>
@@ -478,14 +564,15 @@ const timingSlots = [
         </div>
       </div>
     </section>
+
+    <!-- People Also Ask / FAQ Section -->
+    <FAQ items={allFaqs} title={`${route.from} to ${route.to} Taxi FAQs`} subtitle="People Also Ask" />
   </main>
 
   <Footer />
   <WhatsAppBubble />
   <MobileBottomBar />
 </Layout>
-
-<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 <style>
   /* Hero Banner matching Ajmer site standard */
@@ -1321,4 +1408,134 @@ const timingSlots = [
       margin: 0 auto;
     }
   }
+
+  /* ─── Google AI Overview Quick Fact Summary Card ─── */
+  .ai-overview-card {
+    border-left: 5px solid var(--color-accent, #C59B27);
+    background: #FFFDF9;
+    padding: clamp(20px, 3vw, 28px);
+    margin-bottom: var(--space-2xl, 32px);
+  }
+
+  .ai-badge-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .ai-tag {
+    background: #FEF3C7;
+    color: #92400E;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+
+  .ai-verified {
+    font-size: 0.75rem;
+    color: #059669;
+    font-weight: 700;
+  }
+
+  .ai-lead {
+    font-size: 1.05rem;
+    color: #1F2937;
+    line-height: 1.65;
+    margin-bottom: 18px;
+  }
+
+  .ai-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+
+  .ai-stat-item {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 12px 10px;
+    text-align: center;
+  }
+
+  .ai-stat-val {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-primary, #5A0C1A);
+    margin-bottom: 2px;
+  }
+
+  .ai-stat-lbl {
+    font-size: 0.75rem;
+    color: #6B7280;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .ai-details-box {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+
+  .ai-details-title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 12px;
+  }
+
+  .ai-details-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ai-detail-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 0.875rem;
+    border-bottom: 1px solid #F3F4F6;
+    padding-bottom: 8px;
+  }
+
+  .ai-detail-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .ai-d-key {
+    font-weight: 700;
+    color: #374151;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .ai-d-val {
+    color: #4B5563;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 640px) {
+    .ai-detail-row {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .ai-d-key {
+      min-width: 140px;
+      flex-shrink: 0;
+    }
+  }
+
 </style>
