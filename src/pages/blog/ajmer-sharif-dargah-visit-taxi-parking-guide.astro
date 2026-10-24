@@ -6,9 +6,10 @@ import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
 import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
 import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateFAQSchema, generateBreadcrumbSchema } from "@/utils/seo";
 
-const pageTitle = "Ajmer Sharif Dargah Visit Guide 2026 — Cab Drop Locations, Parking & Timings | Taxi Services in Ajmer";
-const pageDescription = "Planning your pilgrimage to Ajmer Sharif Dargah in 2026? Full guide for taxi drop locations (Nizam Gate, Delhi Gate), authorized parking, darshan timings & Sarwar Sharif cabs.";
+const pageTitle = "Ajmer Sharif Dargah Visit Guide 2026 — Station Distance, Cab Drops & Parking";
+const pageDescription = "Ajmer Railway Station to Ajmer Sharif distance is 2.5 km (10 mins). Complete guide for taxi drop spots (Nizam Gate, Delhi Gate), parking, Ziyarat timings & Sarwar Sharif cabs.";
 
 const waDargah = createWhatsAppBookingUrl({ 
   destination: "Ajmer Sharif Dargah", 
@@ -37,13 +38,40 @@ const articleSchema = {
     "url": business.website
   }
 };
+
+const dargahFaqs = [
+  {
+    question: "What is the Ajmer Railway Station to Ajmer Sharif distance?",
+    answer: "The distance from Ajmer Junction Railway Station to Ajmer Sharif Dargah (Nizam Gate drop-off) is exactly 2.5 km. An AC taxi takes around 8 to 12 minutes depending on inner bazaar traffic."
+  },
+  {
+    question: "How much is the taxi fare from Ajmer Railway Station to Ajmer Sharif Dargah?",
+    answer: "The taxi fare from Ajmer Railway Station to the Dargah drop point is ₹300 for an AC sedan. Chauffeurs can also assist with luggage and guide you to authorized cloakrooms or nearby hotels."
+  },
+  {
+    question: "Can your taxi wait while we perform Ziarat at the Dargah?",
+    answer: "Yes. If you book our local hourly rental or station-to-Pushkar transfer with Dargah halt, your chauffeur will park at the authorized Patel Stadium or Delhi Gate parking and wait with your luggage safely stored."
+  },
+  {
+    question: "What is the taxi fare for Ajmer to Sarwar Sharif same-day return?",
+    answer: "The round-trip fare for an AC Sedan (Dzire/Etios) from Ajmer to Sarwar Sharif Dargah is ₹1,800 to ₹2,000, and for a 6-seater Ertiga is ₹2,500, including 2 to 3 hours of waiting time during your holy Ziyarat."
+  }
+];
+
+const faqSchema = generateFAQSchema(dargahFaqs);
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: `${business.website}/` },
+  { name: "Blog", url: `${business.website}/blog/` },
+  { name: "Ajmer Sharif Dargah Visit Guide", url: `${business.website}/blog/ajmer-sharif-dargah-visit-taxi-parking-guide/` }
+]);
 ---
 
 <Layout
   title={pageTitle}
   description={pageDescription}
   canonicalPath="/blog/ajmer-sharif-dargah-visit-taxi-parking-guide/"
-  schemaMarkup={articleSchema}
+  schemaMarkup={[articleSchema, faqSchema, breadcrumbSchema]}
 >
   <Header />
   <main id="main-content">

@@ -6,6 +6,7 @@ import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
 import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
 import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateFAQSchema, generateBreadcrumbSchema } from "@/utils/seo";
 
 const pageTitle = "Ajmer Railway Station Taxi Guide 2026 — Pre-paid Cabs, Fares & Dargah Transfer | Taxi Services in Ajmer";
 const pageDescription = "Arriving at Ajmer Junction (AII)? Full 2026 guide for railway station taxis, auto vs cab fares, Dargah drop points, Pushkar transfers & pre-booking verified drivers.";
@@ -37,13 +38,40 @@ const articleSchema = {
     "url": business.website
   }
 };
+
+const stationFaqs = [
+  {
+    question: "What is the Ajmer Railway Station to Ajmer Sharif distance?",
+    answer: "The distance from Ajmer Junction Railway Station to Ajmer Sharif Dargah is exactly 2.5 km. A private AC taxi takes approximately 8 to 12 minutes to reach the Nizam Gate / Delhi Gate drop point."
+  },
+  {
+    question: "What if my train gets delayed at Ajmer Junction?",
+    answer: "We actively track live train running status via NTES. If your train is delayed by 1 hour or 5 hours, our driver will automatically adjust the pickup time at zero extra waiting charge."
+  },
+  {
+    question: "Where will the taxi driver meet me at Ajmer Junction?",
+    answer: "The standard meeting point is right outside Exit Gate 1 (Clock Tower Portico) near the designated cab parking bay. The driver will hold a welcome nameplate or call you as soon as you alight."
+  },
+  {
+    question: "What is the taxi fare from Ajmer Railway Station to Pushkar?",
+    answer: "The verified one-way fixed taxi fare from Ajmer Railway Station to Pushkar is ₹700 for an AC sedan (Swift Dzire / Toyota Etios) and ₹1,200 for a 6-seater Ertiga. Doorstep drop at any hotel or resort in Pushkar."
+  }
+];
+
+const faqSchema = generateFAQSchema(stationFaqs);
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: `${business.website}/` },
+  { name: "Blog", url: `${business.website}/blog/` },
+  { name: "Ajmer Railway Station Taxi Guide", url: `${business.website}/blog/ajmer-railway-station-taxi-guide-2026/` }
+]);
 ---
 
 <Layout
   title={pageTitle}
   description={pageDescription}
   canonicalPath="/blog/ajmer-railway-station-taxi-guide-2026/"
-  schemaMarkup={articleSchema}
+  schemaMarkup={[articleSchema, faqSchema, breadcrumbSchema]}
 >
   <Header />
   <main id="main-content">

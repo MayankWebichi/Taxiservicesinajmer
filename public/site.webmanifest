@@ -1,0 +1,21 @@
+{
+  "name": "Taxi Services in Ajmer",
+  "short_name": "Ajmer Taxi",
+  "description": "Trusted taxi and cab rental service in Ajmer & Pushkar since 2008. Direct rates from ₹10/km, one-way cabs, and 24/7 airport transfers.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8F9FB",
+  "theme_color": "#5A0C1A",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

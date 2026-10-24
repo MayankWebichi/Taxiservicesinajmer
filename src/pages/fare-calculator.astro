@@ -2,10 +2,37 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header/Header.astro";
 import Footer from "@/components/Footer/Footer.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
 import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
 import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
 import { business } from "@/data/business";
-import { generateServiceSchema } from "@/utils/seo";
+import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/utils/seo";
+
+const calcFaqs = [
+  {
+    question: "How is the taxi fare calculated in the fare calculator?",
+    answer: "Our fare engine calculates fares based on verified direct highway distances across Rajasthan. For standard one-way intercity corridors (like Ajmer to Jaipur, Pushkar, Kishangarh Airport, or Delhi), it displays our verified flat rates. For custom outstation routes, fares are calculated at transparent per-kilometer rates (₹10/km for Hatchback, ₹11/km for Sedan, ₹13/km for Ertiga, and ₹18/km for Innova Crysta)."
+  },
+  {
+    question: "Are toll charges and parking included in the estimated fare?",
+    answer: "Our fares cover the AC vehicle, driver allowance, and fuel. State border taxes, monument parking fees, and expressway FASTag tolls (such as NH 48 Jaipur-Ajmer tolls) are paid at actual receipts by the traveler."
+  },
+  {
+    question: "Do I need to pay any advance to book through the fare calculator?",
+    answer: "No advance payment is required for standard local pickups and one-way transfers. You can reserve your cab instantly on WhatsApp and pay the driver in cash or UPI upon completing your journey."
+  },
+  {
+    question: "Can I customize intermediate sightseeing stops along my route?",
+    answer: "Yes! Popular halts like Kishangarh Marble Dumping Yard on the way to Jaipur or Dargah Sharif halt before heading to Pushkar can be easily added. Simply inform our 24/7 dispatch coordinator upon booking."
+  }
+];
+
+const faqSchema = generateFAQSchema(calcFaqs);
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: `${business.website}/` },
+  { name: "Fare Calculator", url: `${business.website}/fare-calculator/` }
+]);
 
 const pageTitle = "Ajmer Taxi Fare Calculator 2026 | Live Cab Rates & Route Search Engine";
 const pageDescription = "Calculate instant taxi fares, per-km rates & highway distances across Ajmer, Pushkar, Jaipur & Rajasthan. Live rates for Swift Dzire, Ertiga, Innova Crysta & 13-Seater Maharaja Urbania with zero advance.";
@@ -61,7 +88,7 @@ const calcSchema = {
 };
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonicalPath="/fare-calculator/" schemaMarkup={calcSchema}>
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/fare-calculator/" schemaMarkup={[calcSchema, faqSchema, breadcrumbSchema]}>
   <Header />
 
   <main id="main-content">
@@ -513,6 +540,9 @@ const calcSchema = {
         </div>
       </div>
     </section>
+
+    <!-- Calculator FAQs -->
+    <FAQ items={calcFaqs} title="Ajmer Taxi Fare Calculator FAQs" subtitle="Transparent Estimates & Inclusions" />
 
   </main>
 

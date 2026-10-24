@@ -1,0 +1,564 @@
+---
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+
+interface RouteFare {
+  destination: string;
+  distance: string;
+  time: string;
+  sedanFare: number;
+  suvFare: number;
+  crystaFare: number;
+  highlight?: string;
+  link?: string;
+}
+
+const popularRouteFares: RouteFare[] = [
+  {
+    destination: "Ajmer to Pushkar",
+    distance: "15 km",
+    time: "30 mins",
+    sedanFare: 700,
+    suvFare: 1200,
+    crystaFare: 1800,
+    highlight: "Most Popular",
+    link: "/ajmer-to-pushkar-taxi/"
+  },
+  {
+    destination: "Ajmer to Kishangarh Airport (KQH)",
+    distance: "30 km",
+    time: "40 mins",
+    sedanFare: 800,
+    suvFare: 1400,
+    crystaFare: 2000,
+    highlight: "Flight Connect",
+    link: "/ajmer-to-kishangarh-airport-taxi/"
+  },
+  {
+    destination: "Ajmer to Kishangarh Marble Dumping Yard",
+    distance: "32 km",
+    time: "45 mins",
+    sedanFare: 1200,
+    suvFare: 1800,
+    crystaFare: 2500,
+    highlight: "Photo Spot",
+    link: "/pushkar-to-dumping-yard-taxi/"
+  },
+  {
+    destination: "Ajmer to Jaipur (One-Way)",
+    distance: "135 km",
+    time: "2.5 hrs",
+    sedanFare: 1999,
+    suvFare: 3000,
+    crystaFare: 4500,
+    highlight: "Fixed Express Fare",
+    link: "/ajmer-to-jaipur-taxi/"
+  },
+  {
+    destination: "Ajmer to Sarwar Sharif Dargah",
+    distance: "64 km",
+    time: "1.5 hrs",
+    sedanFare: 1500,
+    suvFare: 2200,
+    crystaFare: 3200,
+    highlight: "Wait Time Included",
+    link: "/ajmer-to-sarwar-sharif-taxi/"
+  },
+  {
+    destination: "Ajmer to Khatu Shyam Ji",
+    distance: "175 km",
+    time: "3.5 hrs",
+    sedanFare: 3500,
+    suvFare: 4800,
+    crystaFare: 6500,
+    highlight: "Same Day Return",
+    link: "/routes/"
+  },
+  {
+    destination: "Ajmer to Salasar Balaji",
+    distance: "175 km",
+    time: "3.5 hrs",
+    sedanFare: 3800,
+    suvFare: 5200,
+    crystaFare: 7000,
+    highlight: "Pilgrim Special",
+    link: "/routes/"
+  },
+  {
+    destination: "Ajmer to Udaipur",
+    distance: "265 km",
+    time: "5 hrs",
+    sedanFare: 4500,
+    suvFare: 6500,
+    crystaFare: 8500,
+    highlight: "Lake City Express",
+    link: "/ajmer-to-udaipur-taxi/"
+  },
+  {
+    destination: "Ajmer to Jodhpur",
+    distance: "205 km",
+    time: "4.5 hrs",
+    sedanFare: 3800,
+    suvFare: 5500,
+    crystaFare: 7500,
+    highlight: "Sun City Direct",
+    link: "/ajmer-to-jodhpur-taxi/"
+  },
+  {
+    destination: "Ajmer to Delhi IGI Airport (One-Way)",
+    distance: "390 km",
+    time: "7 hrs",
+    sedanFare: 5500,
+    suvFare: 8000,
+    crystaFare: 11000,
+    highlight: "24/7 Airport Connect",
+    link: "/ajmer-to-delhi-taxi/"
+  }
+];
+
+const perKmRates = [
+  {
+    type: "Hatchback",
+    models: "WagonR, Swift, Glanza",
+    capacity: "4 Passengers + 2 Bags",
+    rate: 10,
+    minKm: "250 km / day",
+    idealFor: "Budget solo or couple trips & quick city transfers"
+  },
+  {
+    type: "Comfort Sedan",
+    models: "Maruti Swift Dzire, Toyota Etios",
+    capacity: "4 Passengers + 3 Bags",
+    rate: 11,
+    minKm: "250 km / day",
+    idealFor: "Comfortable family trips, airport drops & Jaipur highway"
+  },
+  {
+    type: "Family SUV (6+1)",
+    models: "Maruti Ertiga, Toyota Rumion",
+    capacity: "6 Passengers + 3 Bags",
+    rate: 13,
+    minKm: "250 km / day",
+    idealFor: "Family pilgrimage, Pushkar excursions & extra luggage"
+  },
+  {
+    type: "Premium SUV",
+    models: "Toyota Innova Crysta",
+    capacity: "6 or 7 Passengers + 5 Bags",
+    rate: 18,
+    minKm: "250 km / day",
+    idealFor: "VIP luxury, corporate outstation & long highway travel"
+  },
+  {
+    type: "Tempo Traveller",
+    models: "13, 17, 20 & 26 Seater AC",
+    capacity: "12 to 26 Passengers",
+    rate: 25,
+    minKm: "300 km / day",
+    idealFor: "Large pilgrim groups, wedding guests & group tours"
+  },
+  {
+    type: "Maharaja Luxury Van",
+    models: "Force Urbania 12–17 Seater",
+    capacity: "12 to 17 Reclining Seats",
+    rate: 35,
+    minKm: "300 km / day",
+    idealFor: "Executive luxury group pilgrimage & royal hospitality"
+  }
+];
+
+const generalWa = createWhatsAppBookingUrl({
+  tripType: "Fare Inquiry",
+  customMessage: "Hello! I saw your transparent taxi fare table. I want to inquire about booking a cab from Ajmer."
+});
+---
+
+<section class="fare-table-section" id="rates" aria-label="Taxi Fare Breakdown and Rate Card in Ajmer">
+  <div class="container">
+    
+    <div class="section-header text-center">
+      <span class="section-subtitle">100% Transparent Rate Card • No Hidden Charges</span>
+      <h2 class="section-title">Taxi Services in Ajmer Fares &amp; Rate Card (2026 Updated)</h2>
+      <p class="section-desc">
+        We believe in honest, direct operator rates with zero broker commission. Compare our per-kilometer outstation rates and fixed popular one-way fares below. Book with ₹0 advance payment and pay upon drop.
+      </p>
+    </div>
+
+    <!-- Pricing Policy Highlights Strip -->
+    <div class="fare-policy-banner">
+      <div class="policy-chip">
+        <span class="p-icon">✓</span>
+        <span><strong>₹0 Advance</strong>: Pay Chauffeur at Drop</span>
+      </div>
+      <div class="policy-chip">
+        <span class="p-icon">✓</span>
+        <span><strong>Chilled AC Guaranteed</strong> in All Seasons</span>
+      </div>
+      <div class="policy-chip">
+        <span class="p-icon">✓</span>
+        <span><strong>Commercial Yellow Plate</strong> RTO Certified</span>
+      </div>
+      <div class="policy-chip">
+        <span class="p-icon">✓</span>
+        <span><strong>Free Cancellation</strong> Up to 2 Hrs Before Pickup</span>
+      </div>
+    </div>
+
+    <!-- Table 1: Popular Fixed Fares -->
+    <div class="table-card">
+      <div class="table-card-header">
+        <div>
+          <h3 class="table-card-title">Popular One-Way &amp; Sightseeing Fixed Taxi Fares from Ajmer</h3>
+          <p class="table-card-subtitle">Verified point-to-point drop fares including vehicle, driver, and fuel expenses.</p>
+        </div>
+        <a href={generalWa} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">
+          WhatsApp Instant Quote
+        </a>
+      </div>
+
+      <div class="table-responsive">
+        <table class="fare-table">
+          <thead>
+            <tr>
+              <th scope="col">Destination Route</th>
+              <th scope="col">Distance &amp; Time</th>
+              <th scope="col">Sedan (Dzire / Etios)</th>
+              <th scope="col">SUV (Ertiga 6-Seater)</th>
+              <th scope="col">Innova Crysta</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {popularRouteFares.map((r) => {
+              const routeWa = createWhatsAppBookingUrl({
+                pickup: "Ajmer",
+                destination: r.destination.replace("Ajmer to ", ""),
+                tripType: r.destination,
+                customMessage: `Hello! I would like to book a cab for ${r.destination} (Sedan ₹${r.sedanFare.toLocaleString('en-IN')} / SUV ₹${r.suvFare.toLocaleString('en-IN')}). Please check availability.`
+              });
+              return (
+                <tr>
+                  <td>
+                    <div class="route-name-cell">
+                      {r.link ? (
+                        <a href={r.link} class="route-link"><strong>{r.destination}</strong></a>
+                      ) : (
+                        <strong>{r.destination}</strong>
+                      )}
+                      {r.highlight && <span class="route-tag">{r.highlight}</span>}
+                    </div>
+                  </td>
+                  <td>
+                    <span class="dist-pill">{r.distance}</span>
+                    <span class="time-meta">~{r.time}</span>
+                  </td>
+                  <td>
+                    <span class="fare-val">₹{r.sedanFare.toLocaleString('en-IN')}</span>
+                    <span class="fare-type">All-incl. fuel</span>
+                  </td>
+                  <td>
+                    <span class="fare-val">₹{r.suvFare.toLocaleString('en-IN')}</span>
+                    <span class="fare-type">6 Passenger</span>
+                  </td>
+                  <td>
+                    <span class="fare-val">₹{r.crystaFare.toLocaleString('en-IN')}</span>
+                    <span class="fare-type">Luxury</span>
+                  </td>
+                  <td>
+                    <a href={routeWa} target="_blank" rel="noopener noreferrer" class="book-mini-btn" aria-label={`Book ${r.destination} cab on WhatsApp`}>
+                      Book Now
+                    </a>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Table 2: Per KM Outstation Rates -->
+    <div class="table-card mt-lg">
+      <div class="table-card-header">
+        <div>
+          <h3 class="table-card-title">Per KM Car Rental Rates for Outstation Trips from Ajmer</h3>
+          <p class="table-card-subtitle">Transparent per-km rate card for multi-city Rajasthan tours and round trips.</p>
+        </div>
+        <a href="tel:+917737314538" class="btn btn--secondary btn--sm">
+          Call +91 77373 14538
+        </a>
+      </div>
+
+      <div class="table-responsive">
+        <table class="fare-table">
+          <thead>
+            <tr>
+              <th scope="col">Vehicle Category</th>
+              <th scope="col">Popular Models</th>
+              <th scope="col">Capacity</th>
+              <th scope="col">Rate per KM</th>
+              <th scope="col">Min. Running / Day</th>
+              <th scope="col">Best Suited For</th>
+            </tr>
+          </thead>
+          <tbody>
+            {perKmRates.map((pkg) => (
+              <tr>
+                <td>
+                  <strong>{pkg.type}</strong>
+                </td>
+                <td>{pkg.models}</td>
+                <td>{pkg.capacity}</td>
+                <td>
+                  <span class="fare-val">₹{pkg.rate} / km</span>
+                </td>
+                <td>{pkg.minKm}</td>
+                <td><small class="suit-text">{pkg.idealFor}</small></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-footer-notes">
+        <h4>Fare Calculation Guidelines &amp; Terms:</h4>
+        <ul>
+          <li><strong>Outstation Minimum Km</strong>: 250 km running per calendar day is standard for outstation cabs (300 km for Tempo Travellers).</li>
+          <li><strong>Driver Allowance (Batta)</strong>: ₹300 per day for driver food &amp; lodging during outstation overnight trips.</li>
+          <li><strong>Toll &amp; Parking Charges</strong>: Highway toll taxes (FASTag) and parking fees are paid at actuals by the passenger.</li>
+          <li><strong>Night Driving Charges</strong>: Nominal ₹200 night charge applies only if vehicle runs between 10:00 PM and 6:00 AM.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .fare-table-section {
+    padding: clamp(48px, 6vw, 72px) 0;
+    background-color: #FFFFFF;
+  }
+
+  .section-subtitle {
+    display: inline-block;
+    color: var(--color-accent-dark, #854D0E);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-xs, 8px);
+  }
+
+  .fare-policy-banner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin: 24px 0 32px;
+  }
+
+  .policy-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #FEF3C7;
+    border: 1px solid #FDE68A;
+    color: #92400E;
+    padding: 8px 16px;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+  }
+
+  .p-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: #D97706;
+    color: #FFFFFF;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+
+  .table-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+  }
+
+  .mt-lg {
+    margin-top: 40px;
+  }
+
+  .table-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px 24px;
+    background: #F9FAFB;
+    border-bottom: 1px solid #E5E7EB;
+  }
+
+  .table-card-title {
+    font-family: var(--font-heading, "Marcellus", serif);
+    font-size: 1.25rem;
+    color: #111827;
+    margin: 0 0 4px;
+  }
+
+  .table-card-subtitle {
+    font-size: 0.875rem;
+    color: #4B5563;
+    margin: 0;
+  }
+
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .fare-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 680px;
+  }
+
+  .fare-table th {
+    background-color: #F3F4F6;
+    color: #374151;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 14px 18px;
+    border-bottom: 2px solid #E5E7EB;
+  }
+
+  .fare-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #F3F4F6;
+    font-size: 0.9375rem;
+    color: #1F2937;
+    vertical-align: middle;
+  }
+
+  .fare-table tr:hover {
+    background-color: #FDFBF7;
+  }
+
+  .route-name-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .route-link {
+    color: #1F2937;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .route-link:hover {
+    color: var(--color-primary, #5A0C1A);
+    text-decoration: underline;
+  }
+
+  .route-tag {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #B45309;
+    background: #FEF3C7;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .dist-pill {
+    display: inline-block;
+    font-weight: 600;
+    color: #374151;
+  }
+
+  .time-meta {
+    display: block;
+    font-size: 0.75rem;
+    color: #6B7280;
+  }
+
+  .fare-val {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-primary, #5A0C1A);
+    display: block;
+  }
+
+  .fare-type {
+    display: block;
+    font-size: 0.7rem;
+    color: #6B7280;
+  }
+
+  .book-mini-btn {
+    display: inline-block;
+    background: #059669;
+    color: #FFFFFF;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.15s ease;
+  }
+
+  .book-mini-btn:hover {
+    background: #047857;
+  }
+
+  .suit-text {
+    color: #4B5563;
+    line-height: 1.4;
+  }
+
+  .table-footer-notes {
+    padding: 20px 24px;
+    background: #F9FAFB;
+    border-top: 1px solid #E5E7EB;
+  }
+
+  .table-footer-notes h4 {
+    font-size: 0.9375rem;
+    margin: 0 0 10px;
+    color: #111827;
+  }
+
+  .table-footer-notes ul {
+    margin: 0;
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 8px 24px;
+  }
+
+  .table-footer-notes li {
+    font-size: 0.8125rem;
+    color: #4B5563;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 640px) {
+    .table-card-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

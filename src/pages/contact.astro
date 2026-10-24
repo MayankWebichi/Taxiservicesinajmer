@@ -2,17 +2,70 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header/Header.astro";
 import Footer from "@/components/Footer/Footer.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
 import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
 import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
 import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateFAQSchema, generateBreadcrumbSchema } from "@/utils/seo";
 
-const pageTitle = "Contact Us | Taxi Services in Ajmer — 24/7 Cab Booking";
-const pageDescription = "Contact our 24/7 taxi booking helpline in Ajmer. Call +91 77373 14538 or WhatsApp for instant cab bookings, airport transfers, and outstation inquiries.";
+const pageTitle = "Taxi Services in Ajmer Contact Number (+91 77373 14538) & 24/7 Office";
+const pageDescription = "Call 24/7 Taxi Services in Ajmer contact number +91 77373 14538 for instant cab booking. Doorstep pickup across Ajmer Railway Station, Dargah Sharif, Pushkar & Kishangarh.";
 const waUrl = createWhatsAppBookingUrl();
+
+const contactFaqs = [
+  {
+    question: "What is the contact number for taxi service in Ajmer?",
+    answer: "The direct 24/7 contact number for Taxi Services in Ajmer is +91 77373 14538. You can call directly or send a message on WhatsApp for instant cab confirmation and immediate doorstep pickup.",
+    category: "General" as const
+  },
+  {
+    question: "Is 24 hours taxi service available in Ajmer?",
+    answer: "Yes, our taxi service operates 24 hours a day, 7 days a week, 365 days a year. We provide midnight train arrival pickups at Ajmer Junction, early-morning departures for Jaipur or Delhi Airport, and emergency outstation cabs with zero night surge fees.",
+    category: "General" as const
+  },
+  {
+    question: "Which is the cheapest taxi service in Ajmer?",
+    answer: "With direct operator fleet rates starting from just ₹10/km for hatchbacks (Toyota Glanza / WagonR) and verified fixed fares (Ajmer to Pushkar at ₹700, Ajmer to Kishangarh Airport at ₹800, and Ajmer to Jaipur at ₹1,999) with ₹0 advance payment, we are the most affordable and reliable cab service in Ajmer.",
+    category: "Pricing" as const
+  },
+  {
+    question: "Where can your taxis pick me up in Ajmer?",
+    answer: "We provide 100% doorstep pickup anywhere in Ajmer — including Ajmer Junction Railway Station (Platforms 1 & 2), Dargah Sharif Nizam Gate, Pushkar Chungi, Panchsheel Nagar, Vaishali Nagar, Adarsh Nagar, and all city hotels.",
+    category: "Booking" as const
+  }
+];
+
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Taxi Services in Ajmer Contact & Booking",
+  "url": `${business.website}/contact/`,
+  "mainEntity": {
+    "@type": "TaxiService",
+    "name": business.name,
+    "telephone": business.phone,
+    "email": business.email,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": business.address.line1,
+      "addressLocality": business.address.city,
+      "addressRegion": business.address.state,
+      "postalCode": business.address.pincode,
+      "addressCountry": "IN"
+    }
+  }
+};
+
+const faqSchema = generateFAQSchema(contactFaqs);
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: `${business.website}/` },
+  { name: "Contact Us", url: `${business.website}/contact/` }
+]);
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonicalPath="/contact/">
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/contact/" schemaMarkup={[contactSchema, faqSchema, breadcrumbSchema]}>
   <Header />
 
   <main id="main-content">
@@ -169,6 +222,9 @@ const waUrl = createWhatsAppBookingUrl();
         </div>
       </div>
     </section>
+
+    <!-- Contact & Booking FAQs -->
+    <FAQ items={contactFaqs} title="Ajmer Taxi Contact & Booking FAQs" subtitle="Instant Answers" />
   </main>
 
   <Footer />

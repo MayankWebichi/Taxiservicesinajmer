@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header/Header.astro";
 import Hero from "@/components/Hero/Hero.astro";
 import TrustSection from "@/components/Trust/TrustSection.astro";
+import FareTable from "@/components/Pricing/FareTable.astro";
 import VehicleGrid from "@/components/Vehicles/VehicleGrid.astro";
 import PopularRoutes from "@/components/Routes/PopularRoutes.astro";
 import MobileCarScrollTransition from "@/components/Transitions/MobileCarScrollTransition.astro";
@@ -14,17 +15,22 @@ import FAQ from "@/components/FAQ/FAQ.astro";
 import Footer from "@/components/Footer/Footer.astro";
 import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
 import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { faqs } from "@/data/faqs";
+import { generateFAQSchema } from "@/utils/seo";
 
-const pageTitle = "Taxi Services in Ajmer | Reliable Cab Service (Serving Since 2008)";
-const pageDescription = "Ajmer's trusted taxi service since 2008. Verified AC cabs, direct operator rates from ₹10/km, one-way transfers to Jaipur, Delhi, Pushkar, and Kishangarh Airport. 24/7 call & WhatsApp.";
+const pageTitle = "Taxi Services in Ajmer | #1 Cab Service & Car Rental (Rates from ₹10/km)";
+const pageDescription = "Best taxi services in Ajmer & Pushkar since 2008. Transparent cab fares from ₹10/km, one-way cabs to Jaipur (₹1,999), Delhi, Pushkar (₹700), and Kishangarh Airport (₹800). Verified AC fleet, 24/7 booking: +91 77373 14538.";
+
+const homeFaqSchema = generateFAQSchema(faqs);
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonicalPath="/">
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/" schemaMarkup={homeFaqSchema}>
   <Header />
   
   <main id="main-content">
     <Hero />
     <TrustSection />
+    <FareTable />
     <VehicleGrid limit={8} />
     <PopularRoutes limit={6} />
     <MobileCarScrollTransition />

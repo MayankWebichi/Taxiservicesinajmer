@@ -9,7 +9,7 @@ export interface Props {
   description: string;
   canonicalPath?: string;
   ogImage?: string;
-  schemaMarkup?: Record<string, any>;
+  schemaMarkup?: Record<string, any> | Array<Record<string, any>>;
   noIndex?: boolean;
 }
 
@@ -65,11 +65,13 @@ const websiteSearchSchema = generateWebSiteSearchSchema();
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={fullOgImage} />
 
-  <!-- Favicon -->
+  <!-- Favicon & App Icons -->
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="icon" type="image/png" sizes="192x192" href="/images/logo-seal.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-seal.png" />
-  <link rel="shortcut icon" href="/images/logo-seal.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 
   <!-- Fonts — Preconnect & Non-blocking Load -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -103,7 +105,13 @@ const websiteSearchSchema = generateWebSiteSearchSchema();
 
   <!-- Page-specific Schema -->
   {schemaMarkup && (
-    <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
+    Array.isArray(schemaMarkup) ? (
+      schemaMarkup.map((schema) => (
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      ))
+    ) : (
+      <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
+    )
   )}
 
   <!-- Theme Color -->

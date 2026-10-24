@@ -8,7 +8,7 @@ import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
 import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
 import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
-import { generateServiceSchema, generateFAQSchema } from "@/utils/seo";
+import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/utils/seo";
 
 export async function getStaticPaths() {
   return seoRoutesData.map((route) => ({
@@ -59,6 +59,12 @@ const serviceSchema = generateServiceSchema({
 
 const faqSchema = generateFAQSchema(route.faqs);
 
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: `${business.website}/` },
+  { name: "Taxi Routes", url: `${business.website}/routes/` },
+  { name: `${route.from} to ${route.to} Taxi`, url: `${business.website}/${route.slug}/` }
+]);
+
 // Timing Slots metadata
 const timingSlots = [
   {
@@ -92,7 +98,7 @@ const timingSlots = [
   title={route.title}
   description={route.metaDescription}
   canonicalPath={`/${route.slug}/`}
-  schemaMarkup={serviceSchema}
+  schemaMarkup={[serviceSchema, faqSchema, breadcrumbSchema]}
 >
   <Header />
 

@@ -7,10 +7,10 @@ import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
 import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
 import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
-import { generateServiceSchema, generateFAQSchema } from "@/utils/seo";
+import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/utils/seo";
 
-const pageTitle = "Ajmer to Sarwar Sharif Taxi | Cab Fare ₹2,000 (Dzire, Ertiga & Crysta)";
-const pageDescription = "Book Ajmer to Sarwar Sharif taxi from ₹2,000. AC Sedan (₹2,000), Ertiga (₹2,500), Innova Crysta (₹3,500). Ziyarat of Hazrat Khwaja Fakhruddin Chishti Dargah with wait-time included.";
+const pageTitle = "Ajmer to Sarwar Sharif Taxi Fare ₹1,500 | Cab Rates (Dzire, Ertiga & Crysta)";
+const pageDescription = "Affordable Ajmer to Sarwar Sharif taxi fare starting from ₹1,500 (one-way) and ₹2,000 (round-trip with 3 hrs Ziyarat wait-time). Sedan, Ertiga & Innova Crysta. 24/7 booking: +91 77373 14538.";
 
 const waSedan = createWhatsAppBookingUrl({
   pickup: "Ajmer",
@@ -88,13 +88,19 @@ const sarwarFaqs = [
 ];
 
 const faqSchema = generateFAQSchema(sarwarFaqs);
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: `${business.website}/` },
+  { name: "Ajmer Pilgrimage Taxis", url: `${business.website}/tours/` },
+  { name: "Ajmer to Sarwar Sharif Taxi", url: `${business.website}/ajmer-to-sarwar-sharif-taxi/` }
+]);
 ---
 
 <Layout 
   title={pageTitle} 
   description={pageDescription} 
   canonicalPath="/ajmer-to-sarwar-sharif-taxi/"
-  schemaMarkup={serviceSchema}
+  schemaMarkup={[serviceSchema, faqSchema, breadcrumbSchema]}
 >
   <Header />
 

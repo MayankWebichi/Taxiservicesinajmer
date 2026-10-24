@@ -1,0 +1,506 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/utils/seo";
+
+const pageTitle = "Ajmer Railway Station Taxi Service | 24/7 Cab Pickup (Junction AII)";
+const pageDescription = "Book 24/7 Ajmer Railway Station taxi service. Instant pickup at Exit 1 & 2. Station to Dargah Sharif (2.5 km, ₹300), Pushkar (₹700), Jaipur (₹1,999). Zero advance, verified AC cabs.";
+
+const waSedanStation = createWhatsAppBookingUrl({
+  pickup: "Ajmer Railway Station",
+  destination: "Dargah Sharif / Pushkar",
+  vehicle: "AC Sedan (Dzire / Etios)",
+  tripType: "Station Pickup",
+  customMessage: "Hello! I am arriving at Ajmer Railway Station (AII) and want to book an AC cab. Please share vehicle availability."
+});
+
+const waPushkar = createWhatsAppBookingUrl({
+  pickup: "Ajmer Railway Station",
+  destination: "Pushkar Hotel",
+  vehicle: "AC Sedan (₹700 Fixed)",
+  tripType: "Station to Pushkar",
+  customMessage: "Hello! I need a taxi from Ajmer Railway Station to Pushkar @ ₹700 fixed fare. Please confirm driver details."
+});
+
+const stationFares = [
+  { dest: "Dargah Sharif Nizam Gate", dist: "2.5 km", time: "10 mins", sedan: 300, suv: 500, highlight: "2.5 KM Away" },
+  { dest: "Pushkar Town & Brahma Temple", dist: "15 km", time: "30 mins", sedan: 700, suv: 1200, highlight: "Most Popular" },
+  { dest: "Kishangarh Airport (KQH)", dist: "30 km", time: "40 mins", sedan: 800, suv: 1400, highlight: "Flight Connect" },
+  { dest: "Kishangarh Marble Dumping Yard", dist: "32 km", time: "45 mins", sedan: 1200, suv: 1800, highlight: "Photoshoot Tour" },
+  { dest: "Sarwar Sharif Dargah", dist: "64 km", time: "1.5 hrs", sedan: 1500, suv: 2200, highlight: "Ziyarat Return Available" },
+  { dest: "Jaipur Pink City (One-Way)", dist: "135 km", time: "2.5 hrs", sedan: 1999, suv: 3000, highlight: "Express Highway" }
+];
+
+const stationFaqs = [
+  {
+    question: "What is the Ajmer Railway Station to Ajmer Sharif distance?",
+    answer: "The distance from Ajmer Junction Railway Station (AII) to Ajmer Sharif Dargah (Nizam Gate drop) is approximately 2.5 km. By an AC taxi, it takes only 8 to 12 minutes through Station Road."
+  },
+  {
+    question: "Where do taxi drivers pick up passengers at Ajmer Railway Station?",
+    answer: "Our chauffeurs provide meet-and-greet pickup right outside Exit Gate 1 (Clock Tower Main Portico) or Exit Gate 2 (Topdara side) near the official taxi parking. The driver contacts you via phone/WhatsApp upon your train arrival."
+  },
+  {
+    question: "What if my train arrives late at night at Ajmer Junction?",
+    answer: "We provide 24/7 continuous dispatch with live train tracking via NTES. If your train is delayed by hours, your chauffeur will adjust pickup timing automatically with zero extra waiting charge and zero midnight surge fee."
+  },
+  {
+    question: "What is the taxi fare from Ajmer Railway Station to Pushkar?",
+    answer: "The fixed taxi fare from Ajmer Junction Railway Station to Pushkar is ₹700 for an AC Sedan (Maruti Dzire / Toyota Etios) and ₹1,200 for a 6-seater Maruti Ertiga. Doorstep hotel drop included."
+  },
+  {
+    question: "Can I book a taxi from the station for full day sightseeing?",
+    answer: "Yes, you can book an 8-hour / 80 km local city sightseeing package covering Dargah Sharif, Ana Sagar Lake, Adhai Din Ka Jhonpra, Taragarh Fort, and Pushkar Brahma Temple with luggage safely stored in the car."
+  }
+];
+
+const serviceSchema = generateServiceSchema({
+  name: "Ajmer Railway Station Taxi Service",
+  description: "24/7 dedicated cab service from Ajmer Junction (AII) railway station with meet-and-greet, live train tracking, and direct transfers to Dargah Sharif, Pushkar, Jaipur, and Kishangarh Airport.",
+  url: `${business.website}/ajmer-railway-station-taxi/`,
+  price: "300",
+  priceCurrency: "INR"
+});
+
+const faqSchema = generateFAQSchema(stationFaqs);
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: `${business.website}/` },
+  { name: "Ajmer Railway Station Taxi", url: `${business.website}/ajmer-railway-station-taxi/` }
+]);
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalPath="/ajmer-railway-station-taxi/"
+  schemaMarkup={[serviceSchema, faqSchema, breadcrumbSchema]}
+>
+  <Header />
+
+  <main id="main-content">
+    
+    <!-- Hero Banner -->
+    <section class="stn-hero">
+      <div class="container text-center">
+        <span class="heritage-pill">24/7 Meet &amp; Greet • Ajmer Junction (AII)</span>
+        <h1 class="stn-title">Ajmer Railway Station Taxi Service</h1>
+        <p class="stn-subtitle">
+          Verified AC Cabs • Direct Pickup at Platform 1 &amp; 2 Portico • Live Train Tracking • Zero Advance
+        </p>
+
+        <div class="stn-quick-strip">
+          <div class="q-chip">Dargah Drop: <strong>₹300 (2.5 km)</strong></div>
+          <div class="q-chip">Pushkar Drop: <strong>₹700 (15 km)</strong></div>
+          <div class="q-chip">Jaipur Drop: <strong>₹1,999 (135 km)</strong></div>
+        </div>
+
+        <div class="stn-hero-cta">
+          <a href={waSedanStation} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--lg">
+            WhatsApp Station Pickup
+          </a>
+          <a href={`tel:${business.phone}`} class="btn btn--outline-light btn--lg">
+            Call: {business.phoneFormatted}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <section class="stn-section">
+      <div class="container">
+        
+        <!-- Distance & Station Overview Card -->
+        <div class="stn-card distance-card">
+          <div class="dist-badge">KEY DISTANCE ANSWER</div>
+          <h2>Ajmer Railway Station to Ajmer Sharif Distance &amp; Transit Info</h2>
+          <p>
+            The driving distance from <strong>Ajmer Junction Railway Station (AII) to Ajmer Sharif Dargah is exactly 2.5 kilometers</strong> via Station Road and Delhi Gate approach. In a comfortable AC cab, the drive takes just <strong>8 to 12 minutes</strong> depending on pedestrian traffic near the market bazaar.
+          </p>
+          <div class="dist-specs-grid">
+            <div class="ds-box">
+              <span class="ds-num">2.5 KM</span>
+              <span class="ds-label">Driving Distance</span>
+            </div>
+            <div class="ds-box">
+              <span class="ds-num">10 Mins</span>
+              <span class="ds-label">Average Cab Time</span>
+            </div>
+            <div class="ds-box">
+              <span class="ds-num">₹300</span>
+              <span class="ds-label">Fixed Sedan Fare</span>
+            </div>
+            <div class="ds-box">
+              <span class="ds-num">Gate 1 &amp; 2</span>
+              <span class="ds-label">Exit Pickup Points</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Station Fares Table -->
+        <div class="stn-card mt-xl">
+          <div class="card-header-flex">
+            <div>
+              <h3>Fixed Taxi Fares from Ajmer Railway Station (2026 Updated)</h3>
+              <p>Transparent rates from platform exit to your hotel or destination. Chilled AC and luggage assistance included.</p>
+            </div>
+            <a href={waPushkar} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">
+              Book Pushkar Drop @ ₹700
+            </a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="stn-fare-table">
+              <thead>
+                <tr>
+                  <th scope="col">Destination</th>
+                  <th scope="col">Distance &amp; Time</th>
+                  <th scope="col">Sedan (Dzire / Etios)</th>
+                  <th scope="col">SUV (Ertiga 6-Seater)</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Book</th>
+                </tr>
+              </thead>
+              <tbody>
+                {stationFares.map((f) => {
+                  const fWa = createWhatsAppBookingUrl({
+                    pickup: "Ajmer Railway Station",
+                    destination: f.dest,
+                    tripType: "Station Transfer",
+                    customMessage: `Hello! I want to book a taxi from Ajmer Railway Station to ${f.dest} (Sedan ₹${f.sedan} / SUV ₹${f.suv}). Please check train schedule.`
+                  });
+                  return (
+                    <tr>
+                      <td>
+                        <strong>{f.dest}</strong>
+                        {f.highlight && <span class="tag-pill">{f.highlight}</span>}
+                      </td>
+                      <td>
+                        <span>{f.dist}</span>
+                        <small>~{f.time}</small>
+                      </td>
+                      <td><span class="f-amt">₹{f.sedan}</span></td>
+                      <td><span class="f-amt">₹{f.suv}</span></td>
+                      <td><span class="badge-avail">✓ 24/7 Available</span></td>
+                      <td>
+                        <a href={fWa} target="_blank" rel="noopener noreferrer" class="book-mini-link">
+                          Book
+                        </a>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Meet & Greet Steps -->
+        <div class="stn-steps-grid mt-xl">
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <h4>Share Train Details</h4>
+            <p>Send your Train Name, Train Number, and expected arrival date on WhatsApp or by call.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <h4>Live Train Tracking</h4>
+            <p>We monitor live train tracking on NTES. Delay of 1 hr or 4 hrs? Chauffeur waits with zero extra penalty.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <h4>Platform Portico Meet</h4>
+            <p>Chauffeur awaits at Exit Gate 1 (Clock Tower) or Gate 2 with your nameplate. Luggage assistance provided.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">4</div>
+            <h4>Pay After Drop</h4>
+            <p>100% chilled AC ride straight to your hotel or Dargah. Pay driver via cash or UPI upon drop.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <FAQ items={stationFaqs} title="Ajmer Railway Station Taxi FAQs" subtitle="Common Passenger Queries" />
+
+  </main>
+
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .stn-hero {
+    background: linear-gradient(135deg, var(--color-primary-dark, #3B0811) 0%, var(--color-primary, #5A0C1A) 100%);
+    color: #FFFFFF;
+    padding: calc(var(--header-height, 74px) + 36px) 0 44px;
+    border-bottom: 3px solid var(--color-accent, #C59B27);
+  }
+
+  .heritage-pill {
+    display: inline-block;
+    background: rgba(197, 155, 39, 0.2);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-light, #F8E6B8);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 14px;
+    border-radius: 9999px;
+    margin-bottom: 12px;
+  }
+
+  .stn-title {
+    font-family: var(--font-heading, "Marcellus", serif);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: #FFFFFF;
+    margin-bottom: 8px;
+  }
+
+  .stn-subtitle {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 720px;
+    margin: 0 auto 24px;
+  }
+
+  .stn-quick-strip {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .q-chip {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(197, 155, 39, 0.5);
+    padding: 6px 16px;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    color: #F8E6B8;
+  }
+
+  .q-chip strong {
+    color: #FFFFFF;
+  }
+
+  .stn-hero-cta {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .stn-section {
+    padding: 56px 0;
+    background: #F8F9FB;
+  }
+
+  .stn-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  }
+
+  .distance-card {
+    border-left: 5px solid var(--color-accent, #C59B27);
+  }
+
+  .dist-badge {
+    display: inline-block;
+    background: #FEF3C7;
+    color: #92400E;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+
+  .distance-card h2 {
+    font-size: 1.5rem;
+    color: #111827;
+    margin-bottom: 12px;
+  }
+
+  .distance-card p {
+    font-size: 1.05rem;
+    color: #4B5563;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .dist-specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+  }
+
+  .ds-box {
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .ds-num {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-primary, #5A0C1A);
+    margin-bottom: 4px;
+  }
+
+  .ds-label {
+    font-size: 0.8125rem;
+    color: #6B7280;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .mt-xl {
+    margin-top: 36px;
+  }
+
+  .card-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .card-header-flex h3 {
+    font-size: 1.25rem;
+    color: #111827;
+    margin: 0 0 4px;
+  }
+
+  .card-header-flex p {
+    font-size: 0.875rem;
+    color: #6B7280;
+    margin: 0;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  .stn-fare-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+  }
+
+  .stn-fare-table th {
+    background: #F3F4F6;
+    color: #374151;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    border-bottom: 2px solid #E5E7EB;
+    text-align: left;
+  }
+
+  .stn-fare-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #F3F4F6;
+    vertical-align: middle;
+    font-size: 0.9375rem;
+  }
+
+  .tag-pill {
+    display: block;
+    font-size: 0.7rem;
+    color: #92400E;
+    background: #FEF3C7;
+    padding: 2px 6px;
+    border-radius: 4px;
+    width: fit-content;
+    margin-top: 4px;
+  }
+
+  .f-amt {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-primary, #5A0C1A);
+  }
+
+  .badge-avail {
+    color: #059669;
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+
+  .book-mini-link {
+    display: inline-block;
+    background: #059669;
+    color: #FFFFFF;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+  }
+
+  .book-mini-link:hover {
+    background: #047857;
+  }
+
+  .stn-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .step-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+  }
+
+  .step-num {
+    width: 32px;
+    height: 32px;
+    background: var(--color-primary, #5A0C1A);
+    color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .step-card h4 {
+    font-size: 1.05rem;
+    color: #111827;
+    margin: 0 0 8px;
+  }
+
+  .step-card p {
+    font-size: 0.875rem;
+    color: #6B7280;
+    line-height: 1.5;
+    margin: 0;
+  }
+</style>

@@ -7,7 +7,7 @@ import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
 import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
 import { business } from "@/data/business";
 import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
-import { generateServiceSchema } from "@/utils/seo";
+import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/utils/seo";
 
 const pageTitle = "Ajmer to Delhi Taxi ₹5,500 Fixed | IGI Airport & NCR (Since 2008)";
 const pageDescription = "Verified Ajmer to Delhi one-way cab from ₹5,500. 390 km direct highway transfer to Delhi IGI Airport (T3/T2/T1), Gurgaon, and Delhi NCR. 24/7 night pickups.";
@@ -36,14 +36,27 @@ const delhiFaqs = [
     category: "Routes" as const
   },
   {
+    question: "Do you drop passengers directly at Delhi IGI Airport Terminals?",
+    answer: "Yes, our chauffeurs drop directly at the departure gates of Terminal 3 (T3 International & Domestic), Terminal 2 (T2), and Terminal 1 (T1) of Indira Gandhi International Airport.",
+    category: "Routes" as const
+  },
+  {
     question: "Do you offer night departures from Ajmer to Delhi?",
-    answer: "Yes, our drivers are highly experienced in night highway driving. 24/7 departures at midnight or 2:00 AM are common for catching morning flights at Delhi Airport.",
+    answer: "Yes, our drivers are highly experienced in night highway driving. 24/7 departures at midnight or 2:00 AM are common for catching morning flights at Delhi Airport with zero hidden night surge.",
     category: "General" as const
   }
 ];
+
+const faqSchema = generateFAQSchema(delhiFaqs);
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: `${business.website}/` },
+  { name: "Intercity Cabs", url: `${business.website}/routes/` },
+  { name: "Ajmer to Delhi Taxi", url: `${business.website}/ajmer-to-delhi-taxi/` }
+]);
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonicalPath="/ajmer-to-delhi-taxi/" schemaMarkup={serviceSchema}>
+<Layout title={pageTitle} description={pageDescription} canonicalPath="/ajmer-to-delhi-taxi/" schemaMarkup={[serviceSchema, faqSchema, breadcrumbSchema]}>
   <Header />
 
   <main id="main-content">

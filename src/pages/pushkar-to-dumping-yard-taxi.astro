@@ -1,0 +1,325 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header/Header.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import FAQ from "@/components/FAQ/FAQ.astro";
+import WhatsAppBubble from "@/components/WhatsApp/WhatsAppBubble.astro";
+import MobileBottomBar from "@/components/MobileBottomBar/MobileBottomBar.astro";
+import { business } from "@/data/business";
+import { createWhatsAppBookingUrl } from "@/utils/whatsapp";
+import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/utils/seo";
+
+const pageTitle = "Pushkar to Dumping Yard Distance & Taxi Fare ₹1,500 (Kishangarh Cabs)";
+const pageDescription = "Pushkar to dumping yard distance is 48 km (55 mins). Book direct photoshoot taxi to Kishangarh Marble Dumping Yard from ₹1,500 (Sedan) & ₹2,200 (Ertiga). Wait-time included.";
+
+const waSedan = createWhatsAppBookingUrl({
+  pickup: "Pushkar",
+  destination: "Kishangarh Marble Dumping Yard",
+  vehicle: "AC Sedan (Dzire / Etios) ₹1,500",
+  tripType: "Photoshoot Trip",
+  customMessage: "Hello! I want to book a taxi from Pushkar to Kishangarh Marble Dumping Yard @ ₹1,500 with waiting time for photoshoot. Please confirm."
+});
+
+const waErtiga = createWhatsAppBookingUrl({
+  pickup: "Pushkar",
+  destination: "Kishangarh Marble Dumping Yard",
+  vehicle: "Maruti Ertiga 6-Seater ₹2,200",
+  tripType: "Family Photoshoot",
+  customMessage: "Hello! We need a 6-seater Ertiga from Pushkar to Kishangarh Dumping Yard @ ₹2,200. Please confirm availability."
+});
+
+const dumpingFaqs = [
+  {
+    question: "What is the Pushkar to dumping yard distance?",
+    answer: "The driving distance from Pushkar to the Kishangarh Marble Slurry Dumping Yard is approximately 48 kilometers via the Pushkar Ghati mountain pass and 6-lane National Highway 48 (NH 48). In a private AC cab, the drive takes 50 to 60 minutes."
+  },
+  {
+    question: "What is the taxi fare from Pushkar to Kishangarh Marble Dumping Yard?",
+    answer: "Our fixed fares for a round-trip photoshoot cab with waiting time included are: AC Sedan (Maruti Dzire / Toyota Etios) at ₹1,500; 6-seater Maruti Ertiga at ₹2,200; and luxury Toyota Innova Crysta at ₹3,000. Highway toll taxes are payable as per actuals."
+  },
+  {
+    question: "How do I get the entry pass/ticket for Kishangarh Dumping Yard?",
+    answer: "Entry permits are issued at the Kishangarh Marble Association office located near the dumping yard gate. There is a nominal entrance token fee (approx ₹50 per person). Our knowledgeable local drivers will stop at the association office to guide you through the 2-minute permit process."
+  },
+  {
+    question: "Is driver waiting time included for our photoshoot or video shoot?",
+    answer: "Yes, our round-trip packages include 2 to 3 hours of waiting time at the dumping yard so you can comfortably explore the snow-white landscape, take photos, shoot reels or pre-wedding portraits, and enjoy the sunset."
+  },
+  {
+    question: "What is the best time to visit the Kishangarh Dumping Yard from Pushkar?",
+    answer: "The best times are early morning (07:00 AM – 09:30 AM) for soft golden light and minimal crowd, or late afternoon (04:00 PM – 06:30 PM) for the magical sunset reflection across the marble lakes."
+  }
+];
+
+const serviceSchema = generateServiceSchema({
+  name: "Pushkar to Kishangarh Marble Dumping Yard Taxi",
+  description: "Direct photoshoot and sightseeing taxi service from Pushkar hotels and resorts to Kishangarh Marble Slurry Dumping Yard ('Switzerland of Rajasthan') with waiting time included.",
+  url: `${business.website}/pushkar-to-dumping-yard-taxi/`,
+  price: "1500",
+  priceCurrency: "INR"
+});
+
+const faqSchema = generateFAQSchema(dumpingFaqs);
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: `${business.website}/` },
+  { name: "Sightseeing Taxis", url: `${business.website}/tours/` },
+  { name: "Pushkar to Dumping Yard Taxi", url: `${business.website}/pushkar-to-dumping-yard-taxi/` }
+]);
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalPath="/pushkar-to-dumping-yard-taxi/"
+  schemaMarkup={[serviceSchema, faqSchema, breadcrumbSchema]}
+>
+  <Header />
+
+  <main id="main-content">
+    
+    <!-- Hero Banner -->
+    <section class="dump-hero">
+      <div class="container text-center">
+        <span class="heritage-pill">Photoshoot &amp; Sightseeing Tour • 48 KM</span>
+        <h1 class="dump-title">Pushkar to Dumping Yard Distance &amp; Taxi Service</h1>
+        <p class="dump-subtitle">
+          Visit the "Switzerland of Rajasthan" • AC Sedan ₹1,500 • Ertiga ₹2,200 • 2-3 Hours Photoshoot Wait Time Included
+        </p>
+
+        <div class="dump-pills">
+          <div class="d-pill">Distance: <strong>48 KM</strong></div>
+          <div class="d-pill">Travel Time: <strong>~55 Mins</strong></div>
+          <div class="d-pill">Sedan Fare: <strong>₹1,500</strong></div>
+          <div class="d-pill">Ertiga 6-Seater: <strong>₹2,200</strong></div>
+        </div>
+
+        <div class="dump-cta">
+          <a href={waSedan} target="_blank" rel="noopener noreferrer" class="btn btn--gold btn--lg">
+            Book Photoshoot Cab on WhatsApp
+          </a>
+          <a href={`tel:${business.phone}`} class="btn btn--outline-light btn--lg">
+            Call {business.phoneFormatted}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="dump-section">
+      <div class="container">
+        
+        <!-- Answer Box for Distance Query -->
+        <div class="dump-card highlight-card">
+          <div class="card-tag">DIRECT ANSWER</div>
+          <h2>What is the Pushkar to Dumping Yard Distance?</h2>
+          <p>
+            The road distance from <strong>Pushkar to Kishangarh Marble Dumping Yard is exactly 48 kilometers</strong>. The route travels through the scenic Pushkar Ghati winding pass, bypasses Ajmer city via the National Highway 48 (NH 48) express corridor, and reaches Kishangarh in <strong>50 to 60 minutes</strong>.
+          </p>
+
+          <div class="stats-grid">
+            <div class="stat-box">
+              <span class="s-val">48 KM</span>
+              <span class="s-lbl">Road Distance</span>
+            </div>
+            <div class="stat-box">
+              <span class="s-val">55 Mins</span>
+              <span class="s-lbl">Average Drive Time</span>
+            </div>
+            <div class="stat-box">
+              <span class="s-val">₹1,500</span>
+              <span class="s-lbl">Sedan Return Fare</span>
+            </div>
+            <div class="stat-box">
+              <span class="s-val">3 Hours</span>
+              <span class="s-lbl">Wait Time Included</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photoshoot Info -->
+        <div class="dump-card mt-xl">
+          <h3>Why Visit Kishangarh Marble Dumping Yard from Pushkar?</h3>
+          <p>
+            Known globally as the "Switzerland of Rajasthan" and the "Moonland of India," this surreal white expanse was created from accumulated marble slurry over decades. Popularized by Bollywood movies, celebrity music videos, and fashion photo shoots, the vast snow-white grounds and turquoise rainwater pools offer an unforgettable backdrop.
+          </p>
+          <ul class="dump-checklist">
+            <li>✓ <strong>Doorstep Resort Pickup:</strong> We pick you up from any resort, camp, or hotel across Pushkar.</li>
+            <li>✓ <strong>Permit Assistance:</strong> Chauffeur stops at the Kishangarh Marble Association gate office for your quick entry token.</li>
+            <li>✓ <strong>Ample Waiting Time:</strong> 2 to 3 hours included for photo shoots, reel recording, and leisurely sightseeing.</li>
+            <li>✓ <strong>Comfortable Highway Ride:</strong> 100% chilled AC, clean sanitized interior, and polite driver.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <FAQ items={dumpingFaqs} title="Pushkar to Dumping Yard FAQs" subtitle="Planning Your Photoshoot Trip" />
+
+  </main>
+
+  <Footer />
+  <WhatsAppBubble />
+  <MobileBottomBar />
+</Layout>
+
+<style>
+  .dump-hero {
+    background: linear-gradient(135deg, var(--color-primary-dark, #3B0811) 0%, var(--color-primary, #5A0C1A) 100%);
+    color: #FFFFFF;
+    padding: calc(var(--header-height, 74px) + 36px) 0 44px;
+    border-bottom: 3px solid var(--color-accent, #C59B27);
+  }
+
+  .heritage-pill {
+    display: inline-block;
+    background: rgba(197, 155, 39, 0.2);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-light, #F8E6B8);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 14px;
+    border-radius: 9999px;
+    margin-bottom: 12px;
+  }
+
+  .dump-title {
+    font-family: var(--font-heading, "Marcellus", serif);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: #FFFFFF;
+    margin-bottom: 8px;
+  }
+
+  .dump-subtitle {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 720px;
+    margin: 0 auto 24px;
+  }
+
+  .dump-pills {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .d-pill {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(197, 155, 39, 0.5);
+    padding: 6px 16px;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    color: #F8E6B8;
+  }
+
+  .d-pill strong {
+    color: #FFFFFF;
+  }
+
+  .dump-cta {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .dump-section {
+    padding: 56px 0;
+    background: #F8F9FB;
+  }
+
+  .dump-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  }
+
+  .highlight-card {
+    border-left: 5px solid var(--color-accent, #C59B27);
+  }
+
+  .card-tag {
+    display: inline-block;
+    background: #FEF3C7;
+    color: #92400E;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+
+  .highlight-card h2 {
+    font-size: 1.5rem;
+    color: #111827;
+    margin-bottom: 12px;
+  }
+
+  .highlight-card p {
+    font-size: 1.05rem;
+    color: #4B5563;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+  }
+
+  .stat-box {
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .s-val {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-primary, #5A0C1A);
+    margin-bottom: 4px;
+  }
+
+  .s-lbl {
+    font-size: 0.8125rem;
+    color: #6B7280;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .mt-xl {
+    margin-top: 36px;
+  }
+
+  .dump-card h3 {
+    font-size: 1.25rem;
+    color: #111827;
+    margin-bottom: 12px;
+  }
+
+  .dump-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+  }
+
+  .dump-checklist li {
+    font-size: 0.9375rem;
+    color: #374151;
+  }
+</style>
